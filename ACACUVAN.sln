@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33424.131
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI", "GUI\GUI.csproj", "{9675EC4B-6886-46F0-818D-FE288F302ACC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaNegocio", "Controllers\CapaNegocio.csproj", "{1FD64E51-3387-4868-9396-77A74D7B1364}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaDatos", "CapaDatos\CapaDatos.csproj", "{10A52413-E119-4D01-A28E-FE1C65788C74}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9675EC4B-6886-46F0-818D-FE288F302ACC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9675EC4B-6886-46F0-818D-FE288F302ACC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9675EC4B-6886-46F0-818D-FE288F302ACC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9675EC4B-6886-46F0-818D-FE288F302ACC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FD64E51-3387-4868-9396-77A74D7B1364}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FD64E51-3387-4868-9396-77A74D7B1364}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FD64E51-3387-4868-9396-77A74D7B1364}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FD64E51-3387-4868-9396-77A74D7B1364}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10A52413-E119-4D01-A28E-FE1C65788C74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10A52413-E119-4D01-A28E-FE1C65788C74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10A52413-E119-4D01-A28E-FE1C65788C74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10A52413-E119-4D01-A28E-FE1C65788C74}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C09D3BAB-63A1-4B68-982B-A950DBA2AFCB}
+	EndGlobalSection
+EndGlobal
