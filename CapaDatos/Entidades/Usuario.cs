@@ -93,9 +93,16 @@ namespace CapaDatos.Entidades
             StringBuilder sentencia = new StringBuilder();
             DBOperacion operacion= new DBOperacion();
 
-            sentencia.Append("select usuario, nombres, apellidos, estado, idrol from usuarios where BINARY usuario='" + user +"' and password='" + pass + "';");
-            return null; 
-            
+            sentencia.Append("select usuario, nombres, apellidos, estado, idrol from usuarios where  usuario='" + user + "' and BINARY password='" + pass + "';");
+
+            try
+            { 
+                return operacion.Consultar(sentencia.ToString());
+            }catch (Exception ex)
+            {
+                Console.Error.WriteLine(ex.ToString());
+                return null;
+            }  
         }
     }
 

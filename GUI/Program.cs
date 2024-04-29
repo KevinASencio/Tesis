@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GUI.FormsGestion;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -16,6 +17,7 @@ namespace GUI
         [STAThread]
         static void Main()
         {
+            int a;
             bool nuevaInstancia;
             using (Mutex mu= new Mutex(true, Process.GetCurrentProcess().ProcessName, out nuevaInstancia))
             {
@@ -23,7 +25,7 @@ namespace GUI
                 {
                     Application.EnableVisualStyles();
                     Application.SetCompatibleTextRenderingDefault(false);
-                    Application.Run(new Form1());
+                    Application.Run(new FrmLogin());
 
                 }
                 else
