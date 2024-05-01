@@ -12,18 +12,21 @@ namespace GUI.FormsGestion
 {
     public partial class FrmLogin : Form
     {   
-        UsuarioNeg user = new UsuarioNeg();
-        Program.
+        UsuarioNeg _userActivo = new UsuarioNeg();
+        bool _Autorizado;
+
         public FrmLogin()
         {
             InitializeComponent();
         }
-
+        // atributo de solo lectura, para pasar la informacion del usuario logeado
+        public UsuarioNeg User { get => _userActivo; }
+        public bool Autorizado { get => _Autorizado; }
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (user.Iniciar(txtUsuario.Text, txtPassword.Text).Rows.Count>=1)
+            if (User.Iniciar(txtUsuario.Text, txtPassword.Text))
             {
-                MessageBox.Show("Se Inicio lml");
+                
             }
             else { MessageBox.Show("no se inicio putito .l."); }
 

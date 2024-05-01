@@ -46,16 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases\AppManager.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormsGestion\FrmLogin.cs">
+    <Compile Include="FormInicio\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormsGestion\FrmLogin.Designer.cs">
+    <Compile Include="FormInicio\FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="FormsGestion\GestionClientes.cs">
@@ -64,13 +65,12 @@
     <Compile Include="FormsGestion\GestionClientes.Designer.cs">
       <DependentUpon>GestionClientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="InfSesion\UsuarioActivo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormsGestion\FrmLogin.resx">
+    <EmbeddedResource Include="FormInicio\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormsGestion\GestionClientes.resx">
@@ -104,5 +104,6 @@
       <Name>CapaNegocio</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

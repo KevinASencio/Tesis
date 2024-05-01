@@ -89,22 +89,28 @@ namespace CapaDatos.Entidades
             }
         }
 
-        public DataTable Validar(string user, string pass) { 
+        public DataTable Validar(string user, string pass) {
             StringBuilder sentencia = new StringBuilder();
-            DBOperacion operacion= new DBOperacion();
+            DBOperacion operacion = new DBOperacion();
 
             sentencia.Append("select usuario, nombres, apellidos, estado, idrol from usuarios where  usuario='" + user + "' and BINARY password='" + pass + "';");
 
             try
-            { 
+            {
                 return operacion.Consultar(sentencia.ToString());
-            }catch (Exception ex)
+            } catch (Exception ex)
             {
                 Console.Error.WriteLine(ex.ToString());
                 return null;
-            }  
+            }
+        }
+
+        public Dictionary<string, int> permisos()
+        {
+            return null;
         }
     }
 
+   
     
 }
