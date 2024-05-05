@@ -8,15 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaNegocio.ClientesNeg;
+using CapaNegocio.UsuarioNeg;
 namespace GUI.FormsGestion
 {
-    public partial class GestionClientes : Form
+    public partial class frmPrincipal : Form
     {
+        static UsuarioNeg _UserActivo= new UsuarioNeg();
         BindingSource listclientes ;
         ClientesNeg clientes;
         int alto;
         int aux;
-        public GestionClientes()
+        public frmPrincipal()
         {
             listclientes = new BindingSource();
             clientes = new ClientesNeg();
@@ -25,12 +27,14 @@ namespace GUI.FormsGestion
 
         }
 
+        public static UsuarioNeg UserActivo { get => _UserActivo; set => _UserActivo = value; }
+
         private void GestionClientes_Load(object sender, EventArgs e)
         {
             dtgvClientes.AutoGenerateColumns = false;
             listclientes.DataSource = clientes.ConsultarClientes();
             dtgvClientes.DataSource = listclientes;
-
+            lblprueba.Text = "el usuario es " + _UserActivo.usuario() + " el nombre es " + _UserActivo.nombres() + " el estado es "+ _UserActivo.estado(); 
         }
 
         private void GestionClientes_ResizeBegin(object sender, EventArgs e)
@@ -46,5 +50,6 @@ namespace GUI.FormsGestion
         {
            
         }
+
     }
 }

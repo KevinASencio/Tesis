@@ -1,6 +1,6 @@
 ﻿namespace GUI.FormsGestion
 {
-    partial class GestionClientes
+    partial class frmPrincipal
     {
         /// <summary>
         /// Required designer variable.
@@ -50,6 +50,7 @@
             this.DUI = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dirreccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblprueba = new System.Windows.Forms.Label();
             this.pnlClientes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvClientes)).BeginInit();
             this.SuspendLayout();
@@ -257,11 +258,21 @@
             this.Dirreccion.Name = "Dirreccion";
             this.Dirreccion.ReadOnly = true;
             // 
-            // GestionClientes
+            // lblprueba
+            // 
+            this.lblprueba.AutoSize = true;
+            this.lblprueba.Location = new System.Drawing.Point(580, 52);
+            this.lblprueba.Name = "lblprueba";
+            this.lblprueba.Size = new System.Drawing.Size(35, 13);
+            this.lblprueba.TabIndex = 14;
+            this.lblprueba.Text = "label1";
+            // 
+            // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1345, 645);
+            this.Controls.Add(this.lblprueba);
             this.Controls.Add(this.pnlClientes);
             this.Controls.Add(this.cmbEstado);
             this.Controls.Add(this.lblEstado);
@@ -276,7 +287,7 @@
             this.Controls.Add(this.txtNombres);
             this.Controls.Add(this.lblNombres);
             this.Controls.Add(this.lbTitle);
-            this.Name = "GestionClientes";
+            this.Name = "frmPrincipal";
             this.Text = "Clientes";
             this.Load += new System.EventHandler(this.GestionClientes_Load);
             this.ResizeBegin += new System.EventHandler(this.GestionClientes_ResizeBegin);
@@ -313,5 +324,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dirreccion;
         public System.Windows.Forms.Label lblNombres;
+        private System.Windows.Forms.Label lblprueba;
     }
 }
