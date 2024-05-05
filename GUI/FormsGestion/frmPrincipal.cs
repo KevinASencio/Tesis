@@ -34,6 +34,7 @@ namespace GUI.FormsGestion
             dtgvClientes.AutoGenerateColumns = false;
             listclientes.DataSource = clientes.ConsultarClientes();
             dtgvClientes.DataSource = listclientes;
+            MessageBox.Show("jaolkjsdalksjdakld");
             lblprueba.Text = "el usuario es " + _UserActivo.usuario() + " el nombre es " + _UserActivo.nombres() + " el estado es "+ _UserActivo.estado(); 
         }
 
