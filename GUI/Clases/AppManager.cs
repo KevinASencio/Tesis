@@ -19,6 +19,7 @@ namespace GUI.Clases
             {
                 frmPrincipal.UserActivo = _usuario;
                 FrmPrincipal.ShowDialog();
+                string j = "no se que pex";
                 Application.Exit();
             }
             else 

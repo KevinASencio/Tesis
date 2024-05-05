@@ -36,6 +36,8 @@ namespace GUI.FormsGestion
             dtgvClientes.DataSource = listclientes;
             MessageBox.Show("jaolkjsdalksjdakld");
             lblprueba.Text = "el usuario es " + _UserActivo.usuario() + " el nombre es " + _UserActivo.nombres() + " el estado es "+ _UserActivo.estado(); 
+            MessageBox.Show("el usuario es " + _UserActivo.usuario());
+
         }
 
         private void GestionClientes_ResizeBegin(object sender, EventArgs e)
