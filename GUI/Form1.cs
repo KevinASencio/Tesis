@@ -28,7 +28,7 @@ namespace GUI
 
         private void btnAbrirClientes_Click(object sender, EventArgs e)
         {
-            FormsGestion.GestionClientes frmCliente = new FormsGestion.GestionClientes();
+            FormsGestion.frmPrincipal frmCliente = new FormsGestion.frmPrincipal();
             AbrirEnContenedor(frmCliente);
         }
 

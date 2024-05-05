@@ -1,6 +1,6 @@
 ﻿namespace GUI.FormsGestion
 {
-    partial class GestionClientes
+    partial class frmPrincipal
     {
         /// <summary>
         /// Required designer variable.
