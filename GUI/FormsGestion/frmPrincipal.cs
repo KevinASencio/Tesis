@@ -24,7 +24,6 @@ namespace GUI.FormsGestion
             clientes = new ClientesNeg();
             InitializeComponent();
             alto = this.Location.Y;
-
         }
 
         public static UsuarioNeg UserActivo { get => _UserActivo; set => _UserActivo = value; }
@@ -34,7 +33,7 @@ namespace GUI.FormsGestion
             dtgvClientes.AutoGenerateColumns = false;
             listclientes.DataSource = clientes.ConsultarClientes();
             dtgvClientes.DataSource = listclientes;
-            MessageBox.Show("jaolkjsdalksjdakld");
+            MessageBox.Show(_UserActivo.Permisos()[0].ToString());
             lblprueba.Text = "el usuario es " + _UserActivo.usuario() + " el nombre es " + _UserActivo.nombres() + " el estado es "+ _UserActivo.estado(); 
             MessageBox.Show("el usuario es " + _UserActivo.usuario());
 

@@ -27,7 +27,7 @@ namespace GUI.FormsGestion
         {
             if (UserActivo.Iniciar(txtUsuario.Text, txtPassword.Text))
             {
-                   _Autorizado |= true;
+                   _Autorizado = true;
                 Close();
             }
             else { MessageBox.Show("no se inicio putito .l."); }

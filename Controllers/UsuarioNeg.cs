@@ -12,14 +12,10 @@ namespace CapaNegocio.UsuarioNeg
     {
 
         private Usuario user = new Usuario();
-
-        Dictionary<string,int> _Permisos = new Dictionary<string,int>();
-
-        public Dictionary<string, int> Permisos { get => _Permisos; set => _Permisos = value; }
         public Usuario User { get => user; set => user = value; }
 
         public Boolean Iniciar(string usuario, string pass)
-        {   DataTable result = new DataTable();
+        { DataTable result = new DataTable();
             result = User.Validar(usuario, pass);
             if (result.Rows.Count > 0) {
 
@@ -27,7 +23,7 @@ namespace CapaNegocio.UsuarioNeg
                 user.Apellidos = result.Rows[0]["apellidos"].ToString();
                 user.Uusuario = usuario;
                 user.Estado = result.Rows[0]["estado"].ToString();
-
+                user.IdRol = result.Rows[0]["idrol"].ToString();
                 return true;
             }
             return false;
@@ -38,5 +34,9 @@ namespace CapaNegocio.UsuarioNeg
         public string apellidos() { return user.Apellidos; }
         public string estado() { return user.Estado; }
 
+        public int[] Permisos()
+        {
+            return user.permisos();
+        }
     }
 }

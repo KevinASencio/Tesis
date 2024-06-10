@@ -105,9 +105,25 @@ namespace CapaDatos.Entidades
             }
         }
 
-        public Dictionary<string, int> permisos()
+        public int[] permisos()
         {
-            return null;
+            int[] privilegios = new int[7];
+            DataTable aux = new DataTable();
+            string consulta = "SELECT idaccion FROM db_acacuvan.permisos where idrol=" + _IdRol + ";";
+            DBOperacion operacion = new DBOperacion();
+            try
+            {
+                aux = operacion.Consultar(consulta);
+                int i = 0;
+                foreach (DataRow row in aux.Rows)
+                {
+                    privilegios[i]= int.Parse(row["idaccion"].ToString());
+                    i++;
+                }
+                return privilegios;
+            } catch (Exception e) {
+                return null;
+            }
         }
     }
 
