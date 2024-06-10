@@ -28,302 +28,352 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lbTitle = new System.Windows.Forms.Label();
-            this.lblNombres = new System.Windows.Forms.Label();
-            this.txtNombres = new System.Windows.Forms.TextBox();
-            this.lblApellidos = new System.Windows.Forms.Label();
-            this.txtApellidos = new System.Windows.Forms.TextBox();
-            this.lblDui = new System.Windows.Forms.Label();
-            this.txtDui = new System.Windows.Forms.TextBox();
-            this.lblTelefono = new System.Windows.Forms.Label();
-            this.txtTelefono = new System.Windows.Forms.TextBox();
-            this.lblDireccion = new System.Windows.Forms.Label();
-            this.txtDireccion = new System.Windows.Forms.TextBox();
-            this.lblEstado = new System.Windows.Forms.Label();
-            this.cmbEstado = new System.Windows.Forms.ComboBox();
-            this.pnlClientes = new System.Windows.Forms.Panel();
-            this.dtgvClientes = new System.Windows.Forms.DataGridView();
-            this.IdCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombres = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Apellidos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DUI = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Dirreccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblprueba = new System.Windows.Forms.Label();
-            this.pnlClientes.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvClientes)).BeginInit();
+            System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblUsuarios = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblClientes = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
+            this.pnlTop = new System.Windows.Forms.Panel();
+            this.ptbRestaurar = new System.Windows.Forms.PictureBox();
+            this.ptbMaximizar = new System.Windows.Forms.PictureBox();
+            this.ptbMinimizar = new System.Windows.Forms.PictureBox();
+            this.prbCerrar = new System.Windows.Forms.PictureBox();
+            this.pnlMenus = new System.Windows.Forms.Panel();
+            this.pnlPrincipal = new System.Windows.Forms.Panel();
+            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanel1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.pnlTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbRestaurar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbMaximizar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbMinimizar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prbCerrar)).BeginInit();
+            this.pnlPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
-            // lbTitle
+            // flowLayoutPanel1
             // 
-            this.lbTitle.AutoSize = true;
-            this.lbTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTitle.Location = new System.Drawing.Point(133, 41);
-            this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(85, 24);
-            this.lbTitle.TabIndex = 0;
-            this.lbTitle.Text = "Clientes";
-            // 
-            // lblNombres
-            // 
-            this.lblNombres.AutoSize = true;
-            this.lblNombres.Location = new System.Drawing.Point(50, 103);
-            this.lblNombres.Name = "lblNombres";
-            this.lblNombres.Size = new System.Drawing.Size(55, 13);
-            this.lblNombres.TabIndex = 1;
-            this.lblNombres.Text = "Nombres: ";
-            // 
-            // txtNombres
-            // 
-            this.txtNombres.Location = new System.Drawing.Point(53, 119);
-            this.txtNombres.Name = "txtNombres";
-            this.txtNombres.Size = new System.Drawing.Size(294, 20);
-            this.txtNombres.TabIndex = 2;
-            // 
-            // lblApellidos
-            // 
-            this.lblApellidos.AutoSize = true;
-            this.lblApellidos.Location = new System.Drawing.Point(50, 165);
-            this.lblApellidos.Name = "lblApellidos";
-            this.lblApellidos.Size = new System.Drawing.Size(52, 13);
-            this.lblApellidos.TabIndex = 3;
-            this.lblApellidos.Text = "Apellidos:";
-            // 
-            // txtApellidos
-            // 
-            this.txtApellidos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtApellidos.Location = new System.Drawing.Point(53, 181);
-            this.txtApellidos.Name = "txtApellidos";
-            this.txtApellidos.Size = new System.Drawing.Size(294, 20);
-            this.txtApellidos.TabIndex = 4;
-            // 
-            // lblDui
-            // 
-            this.lblDui.AutoSize = true;
-            this.lblDui.Location = new System.Drawing.Point(50, 227);
-            this.lblDui.Name = "lblDui";
-            this.lblDui.Size = new System.Drawing.Size(29, 13);
-            this.lblDui.TabIndex = 5;
-            this.lblDui.Text = "Dui: ";
-            // 
-            // txtDui
-            // 
-            this.txtDui.Location = new System.Drawing.Point(53, 243);
-            this.txtDui.Name = "txtDui";
-            this.txtDui.Size = new System.Drawing.Size(294, 20);
-            this.txtDui.TabIndex = 6;
-            // 
-            // lblTelefono
-            // 
-            this.lblTelefono.AutoSize = true;
-            this.lblTelefono.Location = new System.Drawing.Point(50, 290);
-            this.lblTelefono.Name = "lblTelefono";
-            this.lblTelefono.Size = new System.Drawing.Size(55, 13);
-            this.lblTelefono.TabIndex = 7;
-            this.lblTelefono.Text = "Teléfono: ";
-            // 
-            // txtTelefono
-            // 
-            this.txtTelefono.Location = new System.Drawing.Point(53, 306);
-            this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(294, 20);
-            this.txtTelefono.TabIndex = 8;
-            // 
-            // lblDireccion
-            // 
-            this.lblDireccion.AutoSize = true;
-            this.lblDireccion.Location = new System.Drawing.Point(50, 351);
-            this.lblDireccion.Name = "lblDireccion";
-            this.lblDireccion.Size = new System.Drawing.Size(58, 13);
-            this.lblDireccion.TabIndex = 9;
-            this.lblDireccion.Text = "Dirección: ";
-            // 
-            // txtDireccion
-            // 
-            this.txtDireccion.Location = new System.Drawing.Point(53, 367);
-            this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(294, 20);
-            this.txtDireccion.TabIndex = 10;
-            // 
-            // lblEstado
-            // 
-            this.lblEstado.AutoSize = true;
-            this.lblEstado.Location = new System.Drawing.Point(50, 410);
-            this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(46, 13);
-            this.lblEstado.TabIndex = 11;
-            this.lblEstado.Text = "Estado: ";
-            // 
-            // cmbEstado
-            // 
-            this.cmbEstado.FormattingEnabled = true;
-            this.cmbEstado.Items.AddRange(new object[] {
-            "Activo",
-            "De Baja"});
-            this.cmbEstado.Location = new System.Drawing.Point(53, 426);
-            this.cmbEstado.Name = "cmbEstado";
-            this.cmbEstado.Size = new System.Drawing.Size(294, 21);
-            this.cmbEstado.TabIndex = 12;
-            // 
-            // pnlClientes
-            // 
-            this.pnlClientes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlClientes.AutoSize = true;
-            this.pnlClientes.Controls.Add(this.dtgvClientes);
-            this.pnlClientes.Location = new System.Drawing.Point(410, 103);
-            this.pnlClientes.Name = "pnlClientes";
-            this.pnlClientes.Size = new System.Drawing.Size(934, 543);
-            this.pnlClientes.TabIndex = 13;
+            flowLayoutPanel1.AutoSize = true;
+            flowLayoutPanel1.Controls.Add(this.groupBox1);
+            flowLayoutPanel1.Controls.Add(this.groupBox2);
+            flowLayoutPanel1.Controls.Add(this.groupBox3);
+            flowLayoutPanel1.Controls.Add(this.groupBox5);
+            flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(5);
+            flowLayoutPanel1.Size = new System.Drawing.Size(679, 597);
+            flowLayoutPanel1.TabIndex = 0;
+            flowLayoutPanel1.WrapContents = false;
             // 
-            // dtgvClientes
+            // groupBox1
             // 
-            this.dtgvClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dtgvClientes.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dtgvClientes.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dtgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.IdCliente,
-            this.Nombres,
-            this.Apellidos,
-            this.Estado,
-            this.DUI,
-            this.Telefono,
-            this.Dirreccion});
-            this.dtgvClientes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dtgvClientes.Location = new System.Drawing.Point(0, 0);
-            this.dtgvClientes.MultiSelect = false;
-            this.dtgvClientes.Name = "dtgvClientes";
-            this.dtgvClientes.ReadOnly = true;
-            this.dtgvClientes.RowHeadersVisible = false;
-            this.dtgvClientes.Size = new System.Drawing.Size(934, 543);
-            this.dtgvClientes.TabIndex = 1;
+            this.groupBox1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.groupBox1.Controls.Add(this.lblUsuarios);
+            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Location = new System.Drawing.Point(8, 8);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(130, 108);
+            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabStop = false;
             // 
-            // IdCliente
+            // lblUsuarios
             // 
-            this.IdCliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.IdCliente.DataPropertyName = "idcliente";
-            this.IdCliente.HeaderText = "IdCliente";
-            this.IdCliente.Name = "IdCliente";
-            this.IdCliente.ReadOnly = true;
+            this.lblUsuarios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblUsuarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuarios.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblUsuarios.Location = new System.Drawing.Point(0, 0);
+            this.lblUsuarios.Name = "lblUsuarios";
+            this.lblUsuarios.Size = new System.Drawing.Size(130, 23);
+            this.lblUsuarios.TabIndex = 42;
+            this.lblUsuarios.Text = "Usuarios";
+            this.lblUsuarios.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // Nombres
+            // button2
             // 
-            this.Nombres.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Nombres.DataPropertyName = "nombres";
-            this.Nombres.HeaderText = "Nombres";
-            this.Nombres.Name = "Nombres";
-            this.Nombres.ReadOnly = true;
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(198)))));
+            this.button2.FlatAppearance.BorderSize = 2;
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.Black;
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.Location = new System.Drawing.Point(0, 0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(130, 108);
+            this.button2.TabIndex = 41;
+            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button2.UseVisualStyleBackColor = true;
             // 
-            // Apellidos
+            // groupBox2
             // 
-            this.Apellidos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Apellidos.DataPropertyName = "apellidos";
-            this.Apellidos.HeaderText = "Apellidos";
-            this.Apellidos.Name = "Apellidos";
-            this.Apellidos.ReadOnly = true;
+            this.groupBox2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.groupBox2.Controls.Add(this.lblClientes);
+            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Location = new System.Drawing.Point(144, 8);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(130, 108);
+            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabStop = false;
             // 
-            // Estado
+            // lblClientes
             // 
-            this.Estado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Estado.DataPropertyName = "estado";
-            this.Estado.HeaderText = "Estado";
-            this.Estado.Name = "Estado";
-            this.Estado.ReadOnly = true;
+            this.lblClientes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClientes.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblClientes.Location = new System.Drawing.Point(0, 0);
+            this.lblClientes.Name = "lblClientes";
+            this.lblClientes.Size = new System.Drawing.Size(130, 23);
+            this.lblClientes.TabIndex = 42;
+            this.lblClientes.Text = "Clientes";
+            this.lblClientes.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // DUI
+            // button1
             // 
-            this.DUI.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.DUI.DataPropertyName = "dui";
-            this.DUI.HeaderText = "DUI";
-            this.DUI.Name = "DUI";
-            this.DUI.ReadOnly = true;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(198)))));
+            this.button1.FlatAppearance.BorderSize = 2;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(130, 108);
+            this.button1.TabIndex = 41;
+            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button1.UseVisualStyleBackColor = true;
             // 
-            // Telefono
+            // groupBox3
             // 
-            this.Telefono.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Telefono.DataPropertyName = "telefono";
-            this.Telefono.HeaderText = "Telefono ";
-            this.Telefono.Name = "Telefono";
-            this.Telefono.ReadOnly = true;
+            this.groupBox3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Controls.Add(this.button3);
+            this.groupBox3.Location = new System.Drawing.Point(280, 8);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(130, 108);
+            this.groupBox3.TabIndex = 4;
+            this.groupBox3.TabStop = false;
             // 
-            // Dirreccion
+            // label3
             // 
-            this.Dirreccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Dirreccion.DataPropertyName = "direccion";
-            this.Dirreccion.HeaderText = "Dirrección";
-            this.Dirreccion.Name = "Dirreccion";
-            this.Dirreccion.ReadOnly = true;
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label3.Location = new System.Drawing.Point(0, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(130, 23);
+            this.label3.TabIndex = 42;
+            this.label3.Text = "Cobrar";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // lblprueba
+            // button3
             // 
-            this.lblprueba.AutoSize = true;
-            this.lblprueba.Location = new System.Drawing.Point(580, 52);
-            this.lblprueba.Name = "lblprueba";
-            this.lblprueba.Size = new System.Drawing.Size(35, 13);
-            this.lblprueba.TabIndex = 14;
-            this.lblprueba.Text = "label1";
+            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(198)))));
+            this.button3.FlatAppearance.BorderSize = 2;
+            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.Black;
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
+            this.button3.Location = new System.Drawing.Point(0, 0);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(130, 108);
+            this.button3.TabIndex = 41;
+            this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.groupBox5.Controls.Add(this.label5);
+            this.groupBox5.Controls.Add(this.button5);
+            this.groupBox5.Location = new System.Drawing.Point(416, 8);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(130, 108);
+            this.groupBox5.TabIndex = 44;
+            this.groupBox5.TabStop = false;
+            // 
+            // label5
+            // 
+            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label5.Location = new System.Drawing.Point(0, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(130, 23);
+            this.label5.TabIndex = 42;
+            this.label5.Text = "Generar Recibos";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // button5
+            // 
+            this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(198)))));
+            this.button5.FlatAppearance.BorderSize = 2;
+            this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.ForeColor = System.Drawing.Color.Black;
+            this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
+            this.button5.Location = new System.Drawing.Point(0, 0);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(130, 108);
+            this.button5.TabIndex = 41;
+            this.button5.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // pnlTop
+            // 
+            this.pnlTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.pnlTop.Controls.Add(this.ptbRestaurar);
+            this.pnlTop.Controls.Add(this.ptbMaximizar);
+            this.pnlTop.Controls.Add(this.ptbMinimizar);
+            this.pnlTop.Controls.Add(this.prbCerrar);
+            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTop.Location = new System.Drawing.Point(0, 0);
+            this.pnlTop.Name = "pnlTop";
+            this.pnlTop.Size = new System.Drawing.Size(900, 48);
+            this.pnlTop.TabIndex = 1;
+            // 
+            // ptbRestaurar
+            // 
+            this.ptbRestaurar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ptbRestaurar.Image = ((System.Drawing.Image)(resources.GetObject("ptbRestaurar.Image")));
+            this.ptbRestaurar.Location = new System.Drawing.Point(849, 1);
+            this.ptbRestaurar.Name = "ptbRestaurar";
+            this.ptbRestaurar.Size = new System.Drawing.Size(26, 27);
+            this.ptbRestaurar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbRestaurar.TabIndex = 3;
+            this.ptbRestaurar.TabStop = false;
+            this.ptbRestaurar.Visible = false;
+            this.ptbRestaurar.Click += new System.EventHandler(this.ptbRestaurar_Click);
+            // 
+            // ptbMaximizar
+            // 
+            this.ptbMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ptbMaximizar.Image = ((System.Drawing.Image)(resources.GetObject("ptbMaximizar.Image")));
+            this.ptbMaximizar.Location = new System.Drawing.Point(849, 1);
+            this.ptbMaximizar.Margin = new System.Windows.Forms.Padding(0);
+            this.ptbMaximizar.Name = "ptbMaximizar";
+            this.ptbMaximizar.Size = new System.Drawing.Size(26, 27);
+            this.ptbMaximizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbMaximizar.TabIndex = 2;
+            this.ptbMaximizar.TabStop = false;
+            this.ptbMaximizar.Click += new System.EventHandler(this.ptbMaximizar_Click);
+            // 
+            // ptbMinimizar
+            // 
+            this.ptbMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ptbMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("ptbMinimizar.Image")));
+            this.ptbMinimizar.Location = new System.Drawing.Point(826, 1);
+            this.ptbMinimizar.Margin = new System.Windows.Forms.Padding(0);
+            this.ptbMinimizar.Name = "ptbMinimizar";
+            this.ptbMinimizar.Size = new System.Drawing.Size(26, 27);
+            this.ptbMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbMinimizar.TabIndex = 1;
+            this.ptbMinimizar.TabStop = false;
+            this.ptbMinimizar.Click += new System.EventHandler(this.ptbMinimizar_Click);
+            // 
+            // prbCerrar
+            // 
+            this.prbCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.prbCerrar.Image = ((System.Drawing.Image)(resources.GetObject("prbCerrar.Image")));
+            this.prbCerrar.Location = new System.Drawing.Point(871, 1);
+            this.prbCerrar.Name = "prbCerrar";
+            this.prbCerrar.Size = new System.Drawing.Size(26, 27);
+            this.prbCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.prbCerrar.TabIndex = 0;
+            this.prbCerrar.TabStop = false;
+            this.prbCerrar.Click += new System.EventHandler(this.prbCerrar_Click);
+            // 
+            // pnlMenus
+            // 
+            this.pnlMenus.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlMenus.Location = new System.Drawing.Point(0, 48);
+            this.pnlMenus.Name = "pnlMenus";
+            this.pnlMenus.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.pnlMenus.Size = new System.Drawing.Size(221, 597);
+            this.pnlMenus.TabIndex = 2;
+            // 
+            // pnlPrincipal
+            // 
+            this.pnlPrincipal.Controls.Add(flowLayoutPanel1);
+            this.pnlPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlPrincipal.Location = new System.Drawing.Point(221, 48);
+            this.pnlPrincipal.Name = "pnlPrincipal";
+            this.pnlPrincipal.Size = new System.Drawing.Size(679, 597);
+            this.pnlPrincipal.TabIndex = 3;
             // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1345, 645);
-            this.Controls.Add(this.lblprueba);
-            this.Controls.Add(this.pnlClientes);
-            this.Controls.Add(this.cmbEstado);
-            this.Controls.Add(this.lblEstado);
-            this.Controls.Add(this.txtDireccion);
-            this.Controls.Add(this.lblDireccion);
-            this.Controls.Add(this.txtTelefono);
-            this.Controls.Add(this.lblTelefono);
-            this.Controls.Add(this.txtDui);
-            this.Controls.Add(this.lblDui);
-            this.Controls.Add(this.txtApellidos);
-            this.Controls.Add(this.lblApellidos);
-            this.Controls.Add(this.txtNombres);
-            this.Controls.Add(this.lblNombres);
-            this.Controls.Add(this.lbTitle);
+            this.ClientSize = new System.Drawing.Size(900, 645);
+            this.Controls.Add(this.pnlPrincipal);
+            this.Controls.Add(this.pnlMenus);
+            this.Controls.Add(this.pnlTop);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmPrincipal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clientes";
             this.Load += new System.EventHandler(this.GestionClientes_Load);
             this.ResizeBegin += new System.EventHandler(this.GestionClientes_ResizeBegin);
             this.ResizeEnd += new System.EventHandler(this.GestionClientes_ResizeEnd);
             this.SizeChanged += new System.EventHandler(this.GestionClientes_SizeChanged);
-            this.pnlClientes.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvClientes)).EndInit();
+            flowLayoutPanel1.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.pnlTop.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ptbRestaurar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbMaximizar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbMinimizar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prbCerrar)).EndInit();
+            this.pnlPrincipal.ResumeLayout(false);
+            this.pnlPrincipal.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label lbTitle;
-        private System.Windows.Forms.TextBox txtNombres;
-        private System.Windows.Forms.Label lblApellidos;
-        private System.Windows.Forms.TextBox txtApellidos;
-        private System.Windows.Forms.Label lblDui;
-        private System.Windows.Forms.TextBox txtDui;
-        private System.Windows.Forms.Label lblTelefono;
-        private System.Windows.Forms.TextBox txtTelefono;
-        private System.Windows.Forms.Label lblDireccion;
-        private System.Windows.Forms.TextBox txtDireccion;
-        private System.Windows.Forms.Label lblEstado;
-        private System.Windows.Forms.ComboBox cmbEstado;
-        private System.Windows.Forms.Panel pnlClientes;
-        private System.Windows.Forms.DataGridView dtgvClientes;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdCliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombres;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Apellidos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DUI;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Dirreccion;
-        public System.Windows.Forms.Label lblNombres;
-        private System.Windows.Forms.Label lblprueba;
+        private System.Windows.Forms.Panel pnlTop;
+        private System.Windows.Forms.PictureBox ptbRestaurar;
+        private System.Windows.Forms.PictureBox ptbMaximizar;
+        private System.Windows.Forms.PictureBox ptbMinimizar;
+        private System.Windows.Forms.PictureBox prbCerrar;
+        private System.Windows.Forms.Panel pnlMenus;
+        private System.Windows.Forms.Panel pnlPrincipal;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label lblUsuarios;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label lblClientes;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button5;
     }
 }

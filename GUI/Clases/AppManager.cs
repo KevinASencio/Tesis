@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,18 +17,16 @@ namespace GUI.Clases
         public pruebainterfas frm = new pruebainterfas();
         public AppManager() {
             //ejecutar splash
-            frm.ShowDialog();
-           /* if (login())
+            if (login())
             {
-                frmPrincipal.UserActivo = _usuario;
+                frmPrincipal.useractivo = _usuario;
                 FrmPrincipal.ShowDialog();
-                string j = "no se que pex";
                 Application.Exit();
             }
             else 
             {
                 Application.Exit();
-            }*/
+            }
         }    
 
         Boolean login() {
