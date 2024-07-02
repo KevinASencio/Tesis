@@ -17,7 +17,8 @@ namespace GUI.Clases
         public pruebainterfas frm = new pruebainterfas();
         public AppManager() {
             //ejecutar splash
-            if (login())
+            FrmPrincipal.ShowDialog();
+          /*  if (login())
             {
                 frmPrincipal.useractivo = _usuario;
                 FrmPrincipal.ShowDialog();
@@ -26,9 +27,13 @@ namespace GUI.Clases
             else 
             {
                 Application.Exit();
-            }
-        }    
+            }*/
+        }
 
+        public static void Exit()
+        {
+            Application.Exit();
+        }
         Boolean login() {
             FrmLogin f= new FrmLogin();
             f.ShowDialog();

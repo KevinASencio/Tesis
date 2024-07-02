@@ -4,12 +4,14 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Forms;
 using CapaNegocio.ClientesNeg;
 using CapaNegocio.UsuarioNeg;
+using GUI.Clases;
 namespace GUI.FormsGestion
 {
     public partial class frmPrincipal : Form
@@ -32,18 +34,7 @@ namespace GUI.FormsGestion
 
         private void GestionClientes_Load(object sender, EventArgs e)
         {
-            //pnlMenus.Visible = false;
-
-            Pos(PnlPrincipal.Width, PnlPrincipal.Height, 4, btnUsuarios);
-            Pos(211+PnlPrincipal.Width, PnlPrincipal.Height, 4, btn1);
-            Pos(PnlPrincipal.Width, PnlPrincipal.Height, 4, btn2);
-            Pos(PnlPrincipal.Width, PnlPrincipal.Height, 4, btn3);
-            Pos(PnlPrincipal.Width, PnlPrincipal.Height, 4, btn4);
-            Pos(PnlPrincipal.Width, PnlPrincipal.Height, 4, btn5);
-            Pos(PnlPrincipal.Width, PnlPrincipal.Height, 4, btn6);
-            Pos(PnlPrincipal.Width, PnlPrincipal.Height, 4, btnCierre);
-            label8.Text= "Left ->" + btnUsuarios.Margin.Left + "************ Top ->" + btnUsuarios.Margin.Top +
-                "*********right ->" + btnUsuarios.Margin.Right + "***********down -> " + btnUsuarios.Margin.Bottom;
+            Pos(PnlPrincipal.Width, PnlPrincipal.Height, 4, 2);
         }
 
         private void GestionClientes_ResizeBegin(object sender, EventArgs e)
@@ -52,21 +43,12 @@ namespace GUI.FormsGestion
 
         private void GestionClientes_ResizeEnd(object sender, EventArgs e)
         {
-            Pos(PnlPrincipal.Width, PnlPrincipal.Height, 4, btnUsuarios);
-            Pos(PnlPrincipal.Width, PnlPrincipal.Height, 4, btn1);
-            Pos(PnlPrincipal.Width, PnlPrincipal.Height, 4, btn2);
-            Pos(PnlPrincipal.Width, PnlPrincipal.Height, 4, btn3);
-            Pos(PnlPrincipal.Width, PnlPrincipal.Height, 4, btn4);
-            Pos(PnlPrincipal.Width, PnlPrincipal.Height, 4, btn5);
-            Pos(PnlPrincipal.Width, PnlPrincipal.Height, 4, btn6);
-            Pos(PnlPrincipal.Width, PnlPrincipal.Height, 4, btnCierre);
-            label8.Text = "Left ->" + btnUsuarios.Margin.Left + "************ Top ->" + btnUsuarios.Margin.Top +
-                "*********right ->" + btnUsuarios.Margin.Right + "***********down -> " + btnUsuarios.Margin.Bottom;
+            
         }
 
         private void GestionClientes_SizeChanged(object sender, EventArgs e)
         {
-            //CalTamaño();
+            Pos(PnlPrincipal.Width, PnlPrincipal.Height, 4, 2);
         }
         #region funciones de los botones para el control de la ventana
         private void prbCerrar_Click(object sender, EventArgs e)
@@ -101,35 +83,55 @@ namespace GUI.FormsGestion
         }
         #endregion
 
-        //recalcular el tamaño de los paneles y el area para mostrar la pantalla principal
-
-        public void CalTamaño()
+        public void Pos(int x, int y, int cantx, int canty)
         {
-            pnlMenus.Size = new Size(Convert.ToInt32(this.Width * .25), this.Height);
+            int PosX = 0, PosY = 0;
+            Int16 cont = 0;
+            Int16 linea = 0;
+            #region posicionar los botones
+            foreach (System.Windows.Forms.Control cr in PnlPrincipal.Controls)
+            {
+                try
+                {
+                    System.Windows.Forms.Panel btn = (System.Windows.Forms.Panel)cr;
+                    PosX = (PnlPrincipal.Width - btn.Width * cantx) / (cantx + 1);
+                    PosY = (PnlPrincipal.Height - btn.Height * canty) / (canty + 1);
+                    if (cont < canty)
+                    {
+                        btn.Location = new Point((btn.Width * cont) + PosX * (cont + 1), (btn.Height * linea) + PosY * (linea + 1));
+                    }
+                    else
+                    {
+                        btn.Location = new Point((btn.Width * cont) + PosX * (cont + 1), (btn.Height * linea) + PosY * (linea + 1));
+                    }
+                    btn.Update();
+                    if (cont >= cantx - 1) { cont = 0; linea++; } else { cont++; };
 
-            btn1.Margin = new Padding(0, Convert.ToInt32(PnlPrincipal.Height * .50), 0, Convert.ToInt32(PnlPrincipal.Height * .21));
-            btnCierre.Margin = new Padding(0, Convert.ToInt32(PnlPrincipal.Height * .21), 0, Convert.ToInt32(PnlPrincipal.Height * .21));
-
-            btn1.Update();
-
-            //label1.Text = "el ancho de la pantlla es" + this.Width.ToString() + "el ancho del panel es==" + pnlMargen.Width.ToString();
+                }
+                catch (Exception ex)
+                { Console.WriteLine(ex.Message); }
+            }
+            #endregion
+            
         }
 
-
-        private void btnUsuarios_Click_1(object sender, EventArgs e)
+        private void PnlPrincipal_MouseHover(object sender, EventArgs e)
         {
-            MessageBox.Show("si funciona la mierda");
+            
         }
 
-        public void Pos(int x, int y, int cantidad, object obj)
+        private void btnGenerarFac_MouseEnter(object sender, EventArgs e)
         {
-            System.Windows.Forms.Control control = obj as System.Windows.Forms.Control;
-            control.Location = new Point(control.Location.X+ Convert.ToInt32((x - (control.Width * cantidad)) / cantidad), control.Location.Y+ Convert.ToInt32((y - (control.Height * 2)) / cantidad));
-            //control.Margin = new Padding(+200, Convert.ToInt32((y - (control.Height*2)) / cantidad), 0,0);
-            control.BackColor = Color.Aqua;
-            control.Update();
-            label9.Text = "Left ->" + control.Margin.Left + "************ Top ->" + control.Margin.Top +
-                "*********right ->" + control.Margin.Right + "***********down -> " + control.Margin.Bottom;
+            label4.ForeColor = Color.White;
+            label4.BackColor = Color.FromArgb(64, 64, 64);
+            label4.Update();
+        }
+
+        private void btnGenerarFac_MouseLeave(object sender, EventArgs e)
+        {
+            label4.ForeColor = Color.Black;
+            label4.BackColor = Color.Transparent;
+            label4.Update();
         }
     }
 }
