@@ -9,29 +9,46 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Forms;
-using CapaNegocio.ClientesNeg;
+using CapaNegocio;
 using CapaNegocio.UsuarioNeg;
 using GUI.Clases;
 namespace GUI.FormsGestion
 {
     public partial class frmPrincipal : Form
     {
+        #region declaracion formilarios
+        frmVistaClientes frmVistaCliente = new frmVistaClientes();
+        #endregion
+
         static UsuarioNeg _useractivo = new UsuarioNeg();
         BindingSource listclientes;
-        ClientesNeg clientes;
         int auxancho;
         int auxalto;
         int posicionX;
         int posicionY;
         public frmPrincipal()
         {
-            listclientes = new BindingSource();
-            clientes = new ClientesNeg();
+          
             InitializeComponent();
         }
 
-        public static UsuarioNeg useractivo { get => _useractivo; set => _useractivo = value; }
+        private void AbrirEnContenedor(object frm)
+        {
+            if (this.PnlPrincipal.Controls.Count > 1)
+            {
+                this.PnlPrincipal.Controls.RemoveAt(0);
+            }
+            Form aux = frm as Form;
+            aux.TopLevel = false;
+            aux.Dock = DockStyle.Fill;
+            this.PnlPrincipal.Controls.Add(aux);
+            this.PnlPrincipal.Tag = aux;
+            aux.BringToFront();
+            aux.Show();
+        }
 
+        public static UsuarioNeg useractivo { get => _useractivo; set => _useractivo = value; }
+        #region botones control del formulario
         private void GestionClientes_Load(object sender, EventArgs e)
         {
             Pos(PnlPrincipal.Width, PnlPrincipal.Height, 4, 2);
@@ -82,7 +99,7 @@ namespace GUI.FormsGestion
             this.WindowState = FormWindowState.Minimized;
         }
         #endregion
-
+        #endregion
         public void Pos(int x, int y, int cantx, int canty)
         {
             int PosX = 0, PosY = 0;
@@ -132,6 +149,11 @@ namespace GUI.FormsGestion
             label4.ForeColor = Color.Black;
             label4.BackColor = Color.Transparent;
             label4.Update();
+        }
+
+        private void btnClientes_Click(object sender, EventArgs e)
+        {
+            AbrirEnContenedor(frmVistaCliente);
         }
     }
 }

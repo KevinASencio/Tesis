@@ -30,7 +30,7 @@ namespace GUI
                 }
                 else
                 {
-                    MessageBox.Show("YA hay una Instancia de este programa");
+                    MessageBox.Show("YA hay una instancia de este programa");
                 }
             }
         }

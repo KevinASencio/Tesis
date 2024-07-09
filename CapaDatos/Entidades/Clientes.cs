@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CapaDatos.Entidades
 {
-    public class Clientes
+    public  class Clientes
     {
         private string _Nombres;
         private string _Apellidos;
@@ -26,7 +26,7 @@ namespace CapaDatos.Entidades
         public string Dui { get => _Dui; set => _Dui = value; }
         public string Direecion { get => _Direecion; set => _Direecion = value; }
         public string Estado { get => _Estado; set => _Estado = value; }
-        public DataTable Consultar() 
+        public static DataTable Consultar() 
         { 
             DataTable resul = new DataTable();
             StringBuilder sentencia = new StringBuilder();
