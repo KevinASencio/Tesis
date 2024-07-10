@@ -78,6 +78,12 @@
     <Compile Include="FormInicio\FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormsGestion\frmGestionClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsGestion\frmGestionClientes.Designer.cs">
+      <DependentUpon>frmGestionClientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormsGestion\frmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +106,9 @@
     </Compile>
     <EmbeddedResource Include="FormInicio\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsGestion\frmGestionClientes.resx">
+      <DependentUpon>frmGestionClientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormsGestion\frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>

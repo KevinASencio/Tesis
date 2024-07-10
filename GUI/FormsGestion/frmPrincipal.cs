@@ -21,7 +21,6 @@ namespace GUI.FormsGestion
         #endregion
 
         static UsuarioNeg _useractivo = new UsuarioNeg();
-        BindingSource listclientes;
         int auxancho;
         int auxalto;
         int posicionX;
@@ -36,7 +35,8 @@ namespace GUI.FormsGestion
         {
             if (this.PnlPrincipal.Controls.Count > 1)
             {
-                this.PnlPrincipal.Controls.RemoveAt(0);
+                this.PnlPrincipal.Controls.RemoveAt(1);
+                //this.PnlPrincipal.Controls.Clear();
             }
             Form aux = frm as Form;
             aux.TopLevel = false;
@@ -106,11 +106,11 @@ namespace GUI.FormsGestion
             Int16 cont = 0;
             Int16 linea = 0;
             #region posicionar los botones
-            foreach (System.Windows.Forms.Control cr in PnlPrincipal.Controls)
+            foreach (System.Windows.Forms.Control cr in pnlBotones.Controls)
             {
                 try
                 {
-                    System.Windows.Forms.Panel btn = (System.Windows.Forms.Panel)cr;
+                    System.Windows.Forms.Button btn = (System.Windows.Forms.Button)cr;
                     PosX = (PnlPrincipal.Width - btn.Width * cantx) / (cantx + 1);
                     PosY = (PnlPrincipal.Height - btn.Height * canty) / (canty + 1);
                     if (cont < canty)
@@ -139,16 +139,12 @@ namespace GUI.FormsGestion
 
         private void btnGenerarFac_MouseEnter(object sender, EventArgs e)
         {
-            label4.ForeColor = Color.White;
-            label4.BackColor = Color.FromArgb(64, 64, 64);
-            label4.Update();
+            
         }
 
         private void btnGenerarFac_MouseLeave(object sender, EventArgs e)
         {
-            label4.ForeColor = Color.Black;
-            label4.BackColor = Color.Transparent;
-            label4.Update();
+            
         }
 
         private void btnClientes_Click(object sender, EventArgs e)

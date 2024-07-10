@@ -31,7 +31,7 @@ namespace CapaDatos.Entidades
             DataTable resul = new DataTable();
             StringBuilder sentencia = new StringBuilder();
             DBOperacion operacion = new DBOperacion();
-            sentencia.Append(@"select * from clientes");
+            sentencia.Append(@"select * from clientes;");
             
             try {
                 resul = operacion.Consultar(sentencia.ToString());

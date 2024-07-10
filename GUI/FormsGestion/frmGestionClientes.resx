@@ -117,33 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="dgtvClientes.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </metadata>
-  <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="toolStripCerrar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAADQAAAA0CAYAAADFeBvrAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALwSURBVGhD7VrNbhJRGGVCQMQwsB1CQkIIfws2PIKa+BRq
-        mxh9F+NTNNaF1tISa3Rhok26cKsrl7rQhfoAllrPYe4Y5vrNZbC9cEPmJCctc7/vu+fMz8cdZnIZMmSw
-        jip43/O8SalU+lCpVL76vv9tFeRcnBNzH1KD0nIhbBeLxZ/1ev2s0+lMe73e+TrYbDZPqYFaoOluKG15
-        PKpWq+fdbvdMmmQdpBZqgraHocT02KrVamJRF6hM3Q6lLoaPQ/vDpSOjk9qg8Tu0VkLJZjzA+XoqFXKJ
-        QRBMofVeKNkAdJR97IG1NYC0ZJOC1mdKdjLQJj9KBVwkW7qSnQz0/s9SsoukViU7GQj6IiW7SGpVspOR
-        GVojbRs6Rue5hb9jbbuJY5VzrG1PRZuG3jQajauqRB6fd7RxiTuMZUK73b4CYxMhxkhbht63Wq3YKng0
-        GhXwXfZciJ2RY4xR4TMMh8Nr2P5Oik+iFUP9fv+6So1hMBgUMS6dfmPdTATUuiHEJ9KKIezVFxSv0mNQ
-        pg7n4g9Msaw1F7uQVgyROP9f4Z6lpEroyEPoE8Ts8v9wUxzMZQ2ptonWDJHSdRGBFz2pPsaw6Hoz0aoh
-        xZeGI/UPGMscrUZqrsIQeZR0NObBGMT+txlyVYZIoyll5kjLWZorM8RutcjQsh1N4koMoVvtJTWHeVyk
-        GUS0bsjUmiXQFHeAVCsNrRqCsEnSacbtpjHmSjUX0aahx0gVjwwXrRD8mpxbwOrIY3xXqGukFUO8uDdq
-        6XOZi1OM3dRijbR1hN5CYFmlz6A62L4UT7K76aacuX0gcf6f4OL2mb/EcubvMom5rCHEGGnNEMm9C1G8
-        nT7Qxwx09hZ8LcwMuc60hjbrp+CN+7He87y9IAh+SQVcIjVC61Ml24htBDv79C4iNP6G1juhZDP8QqHg
-        9CNJfHdNoTH1I0liiw9mpWIu0Pf9pR4aR9iox/oRNurFiwixV2PK5fKnVZJzYu5LezUmQ4YMJuRyfwAX
-        XFGIvreT+gAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>353, 17</value>
-  </metadata>
 </root>

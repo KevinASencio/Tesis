@@ -21,8 +21,10 @@ namespace GUI.FormsGestion
         {
 
             ListaClientes.DataSource = CapaNegocio.ClientesNeg.ConsultarClientes();
-             //.AutoGenerateColumns = false;
-            //dtg.DataSource = ListaClientes;
+            dgtvClientes.AutoGenerateColumns = false;
+            dgtvClientes.DataSource = ListaClientes;
+            //txbFiltro
+           
         }
     }
 }
