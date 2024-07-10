@@ -15,11 +15,12 @@ namespace GUI.FormsGestion
         public frmGestionClientes()
         {
             InitializeComponent();
+            
         }
 
         private void frmGestionClientes_Load(object sender, EventArgs e)
         {
-
+            Clases.OrganizadorObj.Organizar(1, 7, this,pnlApellidos.GetType());
         }
     }
 }

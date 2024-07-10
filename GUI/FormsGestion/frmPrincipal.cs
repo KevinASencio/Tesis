@@ -17,7 +17,8 @@ namespace GUI.FormsGestion
     public partial class frmPrincipal : Form
     {
         #region declaracion formilarios
-        frmVistaClientes frmVistaCliente = new frmVistaClientes();
+        frmVistaClientes _frmVistaCliente = new frmVistaClientes();
+        frmGestionClientes _frmGestionClientes = new frmGestionClientes();
         #endregion
 
         static UsuarioNeg _useractivo = new UsuarioNeg();
@@ -27,7 +28,7 @@ namespace GUI.FormsGestion
         int posicionY;
         public frmPrincipal()
         {
-          
+
             InitializeComponent();
         }
 
@@ -35,7 +36,7 @@ namespace GUI.FormsGestion
         {
             if (this.PnlPrincipal.Controls.Count > 1)
             {
-                this.PnlPrincipal.Controls.RemoveAt(1);
+                this.PnlPrincipal.Controls.RemoveAt(0);
                 //this.PnlPrincipal.Controls.Clear();
             }
             Form aux = frm as Form;
@@ -51,7 +52,7 @@ namespace GUI.FormsGestion
         #region botones control del formulario
         private void GestionClientes_Load(object sender, EventArgs e)
         {
-            Pos(PnlPrincipal.Width, PnlPrincipal.Height, 4, 2);
+            OrganizadorObj.Organizar(4, 2, pnlBotones, btnClientes.GetType());
         }
 
         private void GestionClientes_ResizeBegin(object sender, EventArgs e)
@@ -60,12 +61,12 @@ namespace GUI.FormsGestion
 
         private void GestionClientes_ResizeEnd(object sender, EventArgs e)
         {
-            
+
         }
 
         private void GestionClientes_SizeChanged(object sender, EventArgs e)
         {
-            Pos(PnlPrincipal.Width, PnlPrincipal.Height, 4, 2);
+            OrganizadorObj.Organizar( 4, 2, pnlBotones, btnClientes.GetType());
         }
         #region funciones de los botones para el control de la ventana
         private void prbCerrar_Click(object sender, EventArgs e)
@@ -100,56 +101,50 @@ namespace GUI.FormsGestion
         }
         #endregion
         #endregion
-        public void Pos(int x, int y, int cantx, int canty)
-        {
-            int PosX = 0, PosY = 0;
-            Int16 cont = 0;
-            Int16 linea = 0;
-            #region posicionar los botones
-            foreach (System.Windows.Forms.Control cr in pnlBotones.Controls)
-            {
-                try
-                {
-                    System.Windows.Forms.Button btn = (System.Windows.Forms.Button)cr;
-                    PosX = (PnlPrincipal.Width - btn.Width * cantx) / (cantx + 1);
-                    PosY = (PnlPrincipal.Height - btn.Height * canty) / (canty + 1);
-                    if (cont < canty)
-                    {
-                        btn.Location = new Point((btn.Width * cont) + PosX * (cont + 1), (btn.Height * linea) + PosY * (linea + 1));
-                    }
-                    else
-                    {
-                        btn.Location = new Point((btn.Width * cont) + PosX * (cont + 1), (btn.Height * linea) + PosY * (linea + 1));
-                    }
-                    btn.Update();
-                    if (cont >= cantx - 1) { cont = 0; linea++; } else { cont++; };
-
-                }
-                catch (Exception ex)
-                { Console.WriteLine(ex.Message); }
-            }
-            #endregion
-            
-        }
 
         private void PnlPrincipal_MouseHover(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnGenerarFac_MouseEnter(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnGenerarFac_MouseLeave(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnClientes_Click(object sender, EventArgs e)
         {
-            AbrirEnContenedor(frmVistaCliente);
+            AbrirEnContenedor(new frmVistaClientes());
+            pnlMenuDetalles.Enabled = true;
+            pnlMenuDetalles.Visible = true;
+            pnlMenuDetalles.BringToFront();
+        }
+
+        private void pnlBotones_Enter(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void PnlPrincipal_ControlRemoved(object sender, ControlEventArgs e)
+        {
+            pnlMenuDetalles.Visible = false;
+            pnlMenuInicio.Enabled = true;
+            pnlMenus.Controls.Add(pnlMenuInicio);
+            pnlMenuInicio.Dock = DockStyle.Fill;
+            pnlMenuInicio.Visible = true;
+            pnlMenuInicio.BringToFront();
+            pnlMenuInicio.Update();
+            pnlMenuDetalles.Update();
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            AbrirEnContenedor(_frmGestionClientes);
         }
     }
 }

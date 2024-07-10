@@ -28,275 +28,279 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.pnlNombres = new System.Windows.Forms.Panel();
+            this.txbNombres = new System.Windows.Forms.TextBox();
+            this.lblNombres = new System.Windows.Forms.Label();
+            this.pnlApellidos = new System.Windows.Forms.Panel();
+            this.txbApellidos = new System.Windows.Forms.TextBox();
+            this.lblApellidos = new System.Windows.Forms.Label();
+            this.pnlDirreccion = new System.Windows.Forms.Panel();
+            this.txbDirreccion = new System.Windows.Forms.TextBox();
+            this.lblDirreccion = new System.Windows.Forms.Label();
+            this.pnlDui = new System.Windows.Forms.Panel();
+            this.txbDui = new System.Windows.Forms.TextBox();
+            this.lblDui = new System.Windows.Forms.Label();
+            this.pnlTelefono = new System.Windows.Forms.Panel();
+            this.txbTelefono = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.panel7.SuspendLayout();
+            this.pnlEstado = new System.Windows.Forms.Panel();
+            this.cmbEstado = new System.Windows.Forms.ComboBox();
+            this.lblEstado = new System.Windows.Forms.Label();
+            this.lblId = new System.Windows.Forms.Label();
+            this.txbId = new System.Windows.Forms.TextBox();
+            this.pnlId = new System.Windows.Forms.Panel();
+            this.pnlNombres.SuspendLayout();
+            this.pnlApellidos.SuspendLayout();
+            this.pnlDirreccion.SuspendLayout();
+            this.pnlDui.SuspendLayout();
+            this.pnlTelefono.SuspendLayout();
+            this.pnlEstado.SuspendLayout();
+            this.pnlId.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // pnlNombres
             // 
-            this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(242, 21);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(394, 43);
-            this.panel1.TabIndex = 0;
+            this.pnlNombres.Controls.Add(this.txbNombres);
+            this.pnlNombres.Controls.Add(this.lblNombres);
+            this.pnlNombres.Location = new System.Drawing.Point(242, 83);
+            this.pnlNombres.Name = "pnlNombres";
+            this.pnlNombres.Size = new System.Drawing.Size(394, 43);
+            this.pnlNombres.TabIndex = 1;
             // 
-            // label1
+            // txbNombres
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 4);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this.txbNombres.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.txbNombres.Location = new System.Drawing.Point(0, 23);
+            this.txbNombres.Name = "txbNombres";
+            this.txbNombres.Size = new System.Drawing.Size(394, 20);
+            this.txbNombres.TabIndex = 1;
             // 
-            // textBox1
+            // lblNombres
             // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.textBox1.Location = new System.Drawing.Point(0, 23);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(394, 20);
-            this.textBox1.TabIndex = 1;
+            this.lblNombres.AutoSize = true;
+            this.lblNombres.Location = new System.Drawing.Point(4, 4);
+            this.lblNombres.Name = "lblNombres";
+            this.lblNombres.Size = new System.Drawing.Size(49, 13);
+            this.lblNombres.TabIndex = 0;
+            this.lblNombres.Text = "Nombres";
             // 
-            // panel2
+            // pnlApellidos
             // 
-            this.panel2.Controls.Add(this.textBox2);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Location = new System.Drawing.Point(242, 83);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(394, 43);
-            this.panel2.TabIndex = 1;
+            this.pnlApellidos.Controls.Add(this.txbApellidos);
+            this.pnlApellidos.Controls.Add(this.lblApellidos);
+            this.pnlApellidos.Location = new System.Drawing.Point(242, 146);
+            this.pnlApellidos.Name = "pnlApellidos";
+            this.pnlApellidos.Size = new System.Drawing.Size(394, 43);
+            this.pnlApellidos.TabIndex = 2;
             // 
-            // textBox2
+            // txbApellidos
             // 
-            this.textBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.textBox2.Location = new System.Drawing.Point(0, 23);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(394, 20);
-            this.textBox2.TabIndex = 1;
+            this.txbApellidos.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.txbApellidos.Location = new System.Drawing.Point(0, 23);
+            this.txbApellidos.Name = "txbApellidos";
+            this.txbApellidos.Size = new System.Drawing.Size(394, 20);
+            this.txbApellidos.TabIndex = 1;
             // 
-            // label2
+            // lblApellidos
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(4, 4);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "label2";
+            this.lblApellidos.AutoSize = true;
+            this.lblApellidos.Location = new System.Drawing.Point(4, 4);
+            this.lblApellidos.Name = "lblApellidos";
+            this.lblApellidos.Size = new System.Drawing.Size(49, 13);
+            this.lblApellidos.TabIndex = 0;
+            this.lblApellidos.Text = "Apellidos";
             // 
-            // panel3
+            // pnlDirreccion
             // 
-            this.panel3.Controls.Add(this.textBox3);
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Location = new System.Drawing.Point(242, 146);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(394, 43);
-            this.panel3.TabIndex = 2;
+            this.pnlDirreccion.Controls.Add(this.txbDirreccion);
+            this.pnlDirreccion.Controls.Add(this.lblDirreccion);
+            this.pnlDirreccion.Location = new System.Drawing.Point(242, 209);
+            this.pnlDirreccion.Name = "pnlDirreccion";
+            this.pnlDirreccion.Size = new System.Drawing.Size(394, 43);
+            this.pnlDirreccion.TabIndex = 2;
             // 
-            // textBox3
+            // txbDirreccion
             // 
-            this.textBox3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.textBox3.Location = new System.Drawing.Point(0, 23);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(394, 20);
-            this.textBox3.TabIndex = 1;
+            this.txbDirreccion.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.txbDirreccion.Location = new System.Drawing.Point(0, 23);
+            this.txbDirreccion.Name = "txbDirreccion";
+            this.txbDirreccion.Size = new System.Drawing.Size(394, 20);
+            this.txbDirreccion.TabIndex = 1;
             // 
-            // label3
+            // lblDirreccion
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(4, 4);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "label3";
+            this.lblDirreccion.AutoSize = true;
+            this.lblDirreccion.Location = new System.Drawing.Point(4, 4);
+            this.lblDirreccion.Name = "lblDirreccion";
+            this.lblDirreccion.Size = new System.Drawing.Size(55, 13);
+            this.lblDirreccion.TabIndex = 0;
+            this.lblDirreccion.Text = "Dirreccion";
             // 
-            // panel4
+            // pnlDui
             // 
-            this.panel4.Controls.Add(this.textBox4);
-            this.panel4.Controls.Add(this.label4);
-            this.panel4.Location = new System.Drawing.Point(242, 209);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(394, 43);
-            this.panel4.TabIndex = 2;
+            this.pnlDui.Controls.Add(this.txbDui);
+            this.pnlDui.Controls.Add(this.lblDui);
+            this.pnlDui.Location = new System.Drawing.Point(242, 268);
+            this.pnlDui.Name = "pnlDui";
+            this.pnlDui.Size = new System.Drawing.Size(394, 43);
+            this.pnlDui.TabIndex = 3;
             // 
-            // textBox4
+            // txbDui
             // 
-            this.textBox4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.textBox4.Location = new System.Drawing.Point(0, 23);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(394, 20);
-            this.textBox4.TabIndex = 1;
+            this.txbDui.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.txbDui.Location = new System.Drawing.Point(0, 23);
+            this.txbDui.Name = "txbDui";
+            this.txbDui.Size = new System.Drawing.Size(394, 20);
+            this.txbDui.TabIndex = 1;
             // 
-            // label4
+            // lblDui
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(4, 4);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "label4";
+            this.lblDui.AutoSize = true;
+            this.lblDui.Location = new System.Drawing.Point(4, 4);
+            this.lblDui.Name = "lblDui";
+            this.lblDui.Size = new System.Drawing.Size(26, 13);
+            this.lblDui.TabIndex = 0;
+            this.lblDui.Text = "DUI";
             // 
-            // panel5
+            // pnlTelefono
             // 
-            this.panel5.Controls.Add(this.textBox5);
-            this.panel5.Controls.Add(this.label5);
-            this.panel5.Location = new System.Drawing.Point(242, 268);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(394, 43);
-            this.panel5.TabIndex = 3;
+            this.pnlTelefono.Controls.Add(this.txbTelefono);
+            this.pnlTelefono.Controls.Add(this.label6);
+            this.pnlTelefono.Location = new System.Drawing.Point(242, 334);
+            this.pnlTelefono.Name = "pnlTelefono";
+            this.pnlTelefono.Size = new System.Drawing.Size(394, 43);
+            this.pnlTelefono.TabIndex = 4;
             // 
-            // textBox5
+            // txbTelefono
             // 
-            this.textBox5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.textBox5.Location = new System.Drawing.Point(0, 23);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(394, 20);
-            this.textBox5.TabIndex = 1;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(4, 4);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "label5";
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.textBox6);
-            this.panel6.Controls.Add(this.label6);
-            this.panel6.Location = new System.Drawing.Point(242, 334);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(394, 43);
-            this.panel6.TabIndex = 4;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.textBox6.Location = new System.Drawing.Point(0, 23);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(394, 20);
-            this.textBox6.TabIndex = 1;
+            this.txbTelefono.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.txbTelefono.Location = new System.Drawing.Point(0, 23);
+            this.txbTelefono.Name = "txbTelefono";
+            this.txbTelefono.Size = new System.Drawing.Size(394, 20);
+            this.txbTelefono.TabIndex = 1;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(4, 4);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 13);
+            this.label6.Size = new System.Drawing.Size(63, 13);
             this.label6.TabIndex = 0;
-            this.label6.Text = "label6";
+            this.label6.Text = "N. Teléfono";
             // 
-            // panel7
+            // pnlEstado
             // 
-            this.panel7.Controls.Add(this.comboBox1);
-            this.panel7.Controls.Add(this.label7);
-            this.panel7.Location = new System.Drawing.Point(242, 383);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(394, 43);
-            this.panel7.TabIndex = 5;
+            this.pnlEstado.Controls.Add(this.cmbEstado);
+            this.pnlEstado.Controls.Add(this.lblEstado);
+            this.pnlEstado.Location = new System.Drawing.Point(242, 12);
+            this.pnlEstado.Name = "pnlEstado";
+            this.pnlEstado.Size = new System.Drawing.Size(394, 43);
+            this.pnlEstado.TabIndex = 5;
             // 
-            // label7
+            // cmbEstado
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(4, 4);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 13);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "label7";
+            this.cmbEstado.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.cmbEstado.FormattingEnabled = true;
+            this.cmbEstado.Items.AddRange(new object[] {
+            "Activo",
+            "Inactivo"});
+            this.cmbEstado.Location = new System.Drawing.Point(0, 22);
+            this.cmbEstado.Name = "cmbEstado";
+            this.cmbEstado.Size = new System.Drawing.Size(394, 21);
+            this.cmbEstado.TabIndex = 1;
             // 
-            // comboBox1
+            // lblEstado
             // 
-            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(0, 22);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(394, 21);
-            this.comboBox1.TabIndex = 1;
+            this.lblEstado.AutoSize = true;
+            this.lblEstado.Location = new System.Drawing.Point(4, 4);
+            this.lblEstado.Name = "lblEstado";
+            this.lblEstado.Size = new System.Drawing.Size(40, 13);
+            this.lblEstado.TabIndex = 0;
+            this.lblEstado.Text = "Estado";
+            // 
+            // lblId
+            // 
+            this.lblId.AutoSize = true;
+            this.lblId.Location = new System.Drawing.Point(4, 4);
+            this.lblId.Name = "lblId";
+            this.lblId.Size = new System.Drawing.Size(51, 13);
+            this.lblId.TabIndex = 0;
+            this.lblId.Text = "Id Cliente";
+            // 
+            // txbId
+            // 
+            this.txbId.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.txbId.Location = new System.Drawing.Point(0, 23);
+            this.txbId.Name = "txbId";
+            this.txbId.Size = new System.Drawing.Size(394, 20);
+            this.txbId.TabIndex = 1;
+            // 
+            // pnlId
+            // 
+            this.pnlId.Controls.Add(this.txbId);
+            this.pnlId.Controls.Add(this.lblId);
+            this.pnlId.Location = new System.Drawing.Point(242, 393);
+            this.pnlId.Name = "pnlId";
+            this.pnlId.Size = new System.Drawing.Size(394, 43);
+            this.pnlId.TabIndex = 0;
             // 
             // frmGestionClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panel7);
-            this.Controls.Add(this.panel6);
-            this.Controls.Add(this.panel5);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(848, 476);
+            
+            this.Controls.Add(this.pnlId);
+            this.Controls.Add(this.pnlNombres);
+            this.Controls.Add(this.pnlApellidos);
+            this.Controls.Add(this.pnlDirreccion);
+            this.Controls.Add(this.pnlDui);
+            this.Controls.Add(this.pnlTelefono);
+            this.Controls.Add(this.pnlEstado);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmGestionClientes";
             this.Text = "frmGestionClientes";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmGestionClientes_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
+            this.pnlNombres.ResumeLayout(false);
+            this.pnlNombres.PerformLayout();
+            this.pnlApellidos.ResumeLayout(false);
+            this.pnlApellidos.PerformLayout();
+            this.pnlDirreccion.ResumeLayout(false);
+            this.pnlDirreccion.PerformLayout();
+            this.pnlDui.ResumeLayout(false);
+            this.pnlDui.PerformLayout();
+            this.pnlTelefono.ResumeLayout(false);
+            this.pnlTelefono.PerformLayout();
+            this.pnlEstado.ResumeLayout(false);
+            this.pnlEstado.PerformLayout();
+            this.pnlId.ResumeLayout(false);
+            this.pnlId.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Panel pnlNombres;
+        private System.Windows.Forms.TextBox txbNombres;
+        private System.Windows.Forms.Label lblNombres;
+        private System.Windows.Forms.Panel pnlApellidos;
+        private System.Windows.Forms.TextBox txbApellidos;
+        private System.Windows.Forms.Label lblApellidos;
+        private System.Windows.Forms.Panel pnlDirreccion;
+        private System.Windows.Forms.TextBox txbDirreccion;
+        private System.Windows.Forms.Label lblDirreccion;
+        private System.Windows.Forms.Panel pnlDui;
+        private System.Windows.Forms.TextBox txbDui;
+        private System.Windows.Forms.Label lblDui;
+        private System.Windows.Forms.Panel pnlTelefono;
+        private System.Windows.Forms.TextBox txbTelefono;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Panel pnlEstado;
+        private System.Windows.Forms.ComboBox cmbEstado;
+        private System.Windows.Forms.Label lblEstado;
+        private System.Windows.Forms.Label lblId;
+        private System.Windows.Forms.TextBox txbId;
+        private System.Windows.Forms.Panel pnlId;
     }
 }
