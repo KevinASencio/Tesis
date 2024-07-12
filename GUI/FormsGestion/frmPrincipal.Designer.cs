@@ -35,6 +35,15 @@
             this.ptbMinimizar = new System.Windows.Forms.PictureBox();
             this.prbCerrar = new System.Windows.Forms.PictureBox();
             this.pnlMenus = new System.Windows.Forms.Panel();
+            this.pnlMenuDetalles = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.pnlMenuInicio = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblRol = new System.Windows.Forms.Label();
+            this.lblCerrarSesion = new System.Windows.Forms.Label();
+            this.lblUsuario = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.PnlPrincipal = new System.Windows.Forms.Panel();
             this.pnlBotones = new System.Windows.Forms.Panel();
             this.btnClientes = new System.Windows.Forms.Button();
@@ -45,26 +54,17 @@
             this.btnTransacciones = new System.Windows.Forms.Button();
             this.btnCobro = new System.Windows.Forms.Button();
             this.btnServiciosMora = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.lblRol = new System.Windows.Forms.Label();
-            this.lblCerrarSesion = new System.Windows.Forms.Label();
-            this.lblUsuario = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pnlMenuDetalles = new System.Windows.Forms.Panel();
-            this.btnEditar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.pnlMenuInicio = new System.Windows.Forms.Panel();
             this.pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbRestaurar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.prbCerrar)).BeginInit();
             this.pnlMenus.SuspendLayout();
-            this.PnlPrincipal.SuspendLayout();
-            this.pnlBotones.SuspendLayout();
+            this.pnlMenuDetalles.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.pnlMenuDetalles.SuspendLayout();
+            this.PnlPrincipal.SuspendLayout();
+            this.pnlBotones.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlTop
@@ -142,6 +142,116 @@
             this.pnlMenus.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.pnlMenus.Size = new System.Drawing.Size(221, 720);
             this.pnlMenus.TabIndex = 2;
+            // 
+            // pnlMenuDetalles
+            // 
+            this.pnlMenuDetalles.Controls.Add(this.button1);
+            this.pnlMenuDetalles.Controls.Add(this.btnEditar);
+            this.pnlMenuDetalles.Controls.Add(this.pnlMenuInicio);
+            this.pnlMenuDetalles.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlMenuDetalles.Enabled = false;
+            this.pnlMenuDetalles.Location = new System.Drawing.Point(0, 0);
+            this.pnlMenuDetalles.Name = "pnlMenuDetalles";
+            this.pnlMenuDetalles.Size = new System.Drawing.Size(221, 620);
+            this.pnlMenuDetalles.TabIndex = 27;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(1, 389);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(219, 51);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Cambiar Estado";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEditar.FlatAppearance.BorderSize = 0;
+            this.btnEditar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditar.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditar.ForeColor = System.Drawing.Color.White;
+            this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEditar.Location = new System.Drawing.Point(2, 312);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(219, 51);
+            this.btnEditar.TabIndex = 1;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
+            // pnlMenuInicio
+            // 
+            this.pnlMenuInicio.Enabled = false;
+            this.pnlMenuInicio.Location = new System.Drawing.Point(12, 16);
+            this.pnlMenuInicio.Name = "pnlMenuInicio";
+            this.pnlMenuInicio.Size = new System.Drawing.Size(200, 100);
+            this.pnlMenuInicio.TabIndex = 3;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.lblRol);
+            this.panel1.Controls.Add(this.lblCerrarSesion);
+            this.panel1.Controls.Add(this.lblUsuario);
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 620);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(221, 100);
+            this.panel1.TabIndex = 26;
+            // 
+            // lblRol
+            // 
+            this.lblRol.AutoSize = true;
+            this.lblRol.Location = new System.Drawing.Point(98, 48);
+            this.lblRol.Name = "lblRol";
+            this.lblRol.Size = new System.Drawing.Size(35, 13);
+            this.lblRol.TabIndex = 3;
+            this.lblRol.Text = "label1";
+            // 
+            // lblCerrarSesion
+            // 
+            this.lblCerrarSesion.AutoSize = true;
+            this.lblCerrarSesion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblCerrarSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCerrarSesion.Location = new System.Drawing.Point(98, 65);
+            this.lblCerrarSesion.Name = "lblCerrarSesion";
+            this.lblCerrarSesion.Size = new System.Drawing.Size(83, 13);
+            this.lblCerrarSesion.TabIndex = 2;
+            this.lblCerrarSesion.Text = "Cerrar Sesion";
+            // 
+            // lblUsuario
+            // 
+            this.lblUsuario.AutoSize = true;
+            this.lblUsuario.Location = new System.Drawing.Point(98, 32);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(35, 13);
+            this.lblUsuario.TabIndex = 1;
+            this.lblUsuario.Text = "label1";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(22, 17);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(70, 61);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // PnlPrincipal
             // 
@@ -331,116 +441,6 @@
             this.btnServiciosMora.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnServiciosMora.UseVisualStyleBackColor = true;
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.lblRol);
-            this.panel1.Controls.Add(this.lblCerrarSesion);
-            this.panel1.Controls.Add(this.lblUsuario);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 620);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(221, 100);
-            this.panel1.TabIndex = 26;
-            // 
-            // lblRol
-            // 
-            this.lblRol.AutoSize = true;
-            this.lblRol.Location = new System.Drawing.Point(98, 48);
-            this.lblRol.Name = "lblRol";
-            this.lblRol.Size = new System.Drawing.Size(35, 13);
-            this.lblRol.TabIndex = 3;
-            this.lblRol.Text = "label1";
-            // 
-            // lblCerrarSesion
-            // 
-            this.lblCerrarSesion.AutoSize = true;
-            this.lblCerrarSesion.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblCerrarSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCerrarSesion.Location = new System.Drawing.Point(98, 65);
-            this.lblCerrarSesion.Name = "lblCerrarSesion";
-            this.lblCerrarSesion.Size = new System.Drawing.Size(83, 13);
-            this.lblCerrarSesion.TabIndex = 2;
-            this.lblCerrarSesion.Text = "Cerrar Sesion";
-            // 
-            // lblUsuario
-            // 
-            this.lblUsuario.AutoSize = true;
-            this.lblUsuario.Location = new System.Drawing.Point(98, 32);
-            this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(35, 13);
-            this.lblUsuario.TabIndex = 1;
-            this.lblUsuario.Text = "label1";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(22, 17);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(70, 61);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pnlMenuDetalles
-            // 
-            this.pnlMenuDetalles.Controls.Add(this.button1);
-            this.pnlMenuDetalles.Controls.Add(this.btnEditar);
-            this.pnlMenuDetalles.Controls.Add(this.pnlMenuInicio);
-            this.pnlMenuDetalles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMenuDetalles.Enabled = false;
-            this.pnlMenuDetalles.Location = new System.Drawing.Point(0, 0);
-            this.pnlMenuDetalles.Name = "pnlMenuDetalles";
-            this.pnlMenuDetalles.Size = new System.Drawing.Size(221, 620);
-            this.pnlMenuDetalles.TabIndex = 27;
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEditar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEditar.FlatAppearance.BorderSize = 0;
-            this.btnEditar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
-            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditar.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditar.ForeColor = System.Drawing.Color.White;
-            this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditar.Location = new System.Drawing.Point(2, 312);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(219, 51);
-            this.btnEditar.TabIndex = 1;
-            this.btnEditar.Text = "Editar";
-            this.btnEditar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnEditar.UseVisualStyleBackColor = true;
-            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(1, 389);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(219, 51);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Cambiar Estado";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // pnlMenuInicio
-            // 
-            this.pnlMenuInicio.Enabled = false;
-            this.pnlMenuInicio.Location = new System.Drawing.Point(12, 16);
-            this.pnlMenuInicio.Name = "pnlMenuInicio";
-            this.pnlMenuInicio.Size = new System.Drawing.Size(200, 100);
-            this.pnlMenuInicio.TabIndex = 3;
-            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -464,12 +464,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.ptbMinimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.prbCerrar)).EndInit();
             this.pnlMenus.ResumeLayout(false);
-            this.PnlPrincipal.ResumeLayout(false);
-            this.pnlBotones.ResumeLayout(false);
+            this.pnlMenuDetalles.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.pnlMenuDetalles.ResumeLayout(false);
+            this.PnlPrincipal.ResumeLayout(false);
+            this.pnlBotones.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -482,7 +482,6 @@
         private System.Windows.Forms.PictureBox ptbMinimizar;
         private System.Windows.Forms.PictureBox prbCerrar;
         private System.Windows.Forms.Panel pnlMenus;
-        private System.Windows.Forms.Panel PnlPrincipal;
         private System.Windows.Forms.Button btnClientes;
         private System.Windows.Forms.Button btnCorte;
         private System.Windows.Forms.Button btnServiciosMora;
@@ -501,5 +500,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel pnlMenuInicio;
+        public System.Windows.Forms.Panel PnlPrincipal;
     }
 }

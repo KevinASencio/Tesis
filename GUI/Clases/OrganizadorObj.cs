@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Windows.Forms;
+using GUI.FormsGestion;
 
 namespace GUI.Clases
 {
@@ -40,6 +42,22 @@ namespace GUI.Clases
                     { Console.WriteLine(ex.Message); }
                 }
             }
+        }
+
+        public static void abrirCont(object frm)
+        {
+            if (frmPrincipal.fr.PnlPrincipal.Controls.Count > 1)
+            {
+                frmPrincipal.fr.PnlPrincipal.Controls.RemoveAt(0);
+                //this.PnlPrincipal.Controls.Clear();
+            }
+            Form aux = frm as Form;
+            aux.TopLevel = false;
+            aux.Dock = DockStyle.Fill;
+            frmPrincipal.fr.PnlPrincipal.Controls.Add(aux);
+            frmPrincipal.fr.PnlPrincipal.Tag = aux;
+            aux.BringToFront();
+            aux.Show();
         }
     }
 }

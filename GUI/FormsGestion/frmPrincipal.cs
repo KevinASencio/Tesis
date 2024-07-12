@@ -16,6 +16,7 @@ namespace GUI.FormsGestion
 {
     public partial class frmPrincipal : Form
     {
+        internal static frmPrincipal fr;
         #region declaracion formilarios
         frmVistaClientes _frmVistaCliente = new frmVistaClientes();
         frmGestionClientes _frmGestionClientes = new frmGestionClientes();
@@ -30,6 +31,7 @@ namespace GUI.FormsGestion
         {
 
             InitializeComponent();
+            fr = this;
         }
 
         private void AbrirEnContenedor(object frm)
@@ -144,7 +146,7 @@ namespace GUI.FormsGestion
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            AbrirEnContenedor(_frmGestionClientes);
+            _frmVistaCliente.Editar();
         }
     }
 }

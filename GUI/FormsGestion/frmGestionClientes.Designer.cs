@@ -49,6 +49,7 @@
             this.lblId = new System.Windows.Forms.Label();
             this.txbId = new System.Windows.Forms.TextBox();
             this.pnlId = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.pnlNombres.SuspendLayout();
             this.pnlApellidos.SuspendLayout();
             this.pnlDirreccion.SuspendLayout();
@@ -192,7 +193,7 @@
             // 
             this.pnlEstado.Controls.Add(this.cmbEstado);
             this.pnlEstado.Controls.Add(this.lblEstado);
-            this.pnlEstado.Location = new System.Drawing.Point(242, 12);
+            this.pnlEstado.Location = new System.Drawing.Point(242, 25);
             this.pnlEstado.Name = "pnlEstado";
             this.pnlEstado.Size = new System.Drawing.Size(394, 43);
             this.pnlEstado.TabIndex = 5;
@@ -244,12 +245,22 @@
             this.pnlId.Size = new System.Drawing.Size(394, 43);
             this.pnlId.TabIndex = 0;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(724, 136);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmGestionClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(848, 476);
-            
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.pnlId);
             this.Controls.Add(this.pnlNombres);
             this.Controls.Add(this.pnlApellidos);
@@ -282,25 +293,26 @@
 
         #endregion
         private System.Windows.Forms.Panel pnlNombres;
-        private System.Windows.Forms.TextBox txbNombres;
         private System.Windows.Forms.Label lblNombres;
         private System.Windows.Forms.Panel pnlApellidos;
-        private System.Windows.Forms.TextBox txbApellidos;
         private System.Windows.Forms.Label lblApellidos;
         private System.Windows.Forms.Panel pnlDirreccion;
-        private System.Windows.Forms.TextBox txbDirreccion;
         private System.Windows.Forms.Label lblDirreccion;
         private System.Windows.Forms.Panel pnlDui;
-        private System.Windows.Forms.TextBox txbDui;
         private System.Windows.Forms.Label lblDui;
         private System.Windows.Forms.Panel pnlTelefono;
-        private System.Windows.Forms.TextBox txbTelefono;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel pnlEstado;
-        private System.Windows.Forms.ComboBox cmbEstado;
         private System.Windows.Forms.Label lblEstado;
         private System.Windows.Forms.Label lblId;
-        private System.Windows.Forms.TextBox txbId;
         private System.Windows.Forms.Panel pnlId;
+        internal System.Windows.Forms.TextBox txbNombres;
+        internal System.Windows.Forms.TextBox txbApellidos;
+        internal System.Windows.Forms.TextBox txbDirreccion;
+        internal System.Windows.Forms.TextBox txbDui;
+        internal System.Windows.Forms.TextBox txbTelefono;
+        internal System.Windows.Forms.ComboBox cmbEstado;
+        internal System.Windows.Forms.TextBox txbId;
+        private System.Windows.Forms.Button button1;
     }
 }

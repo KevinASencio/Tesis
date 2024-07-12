@@ -36,17 +36,17 @@
             this.toolStripCerrar = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblRegistro = new System.Windows.Forms.ToolStripStatusLabel();
-            this.dgtvClientes = new System.Windows.Forms.DataGridView();
+            this.dtgvClientes = new System.Windows.Forms.DataGridView();
             this.idcliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombres = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.apellidos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dirreccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dui = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgtvClientes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvClientes)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -101,42 +101,49 @@
             this.lblRegistro.Size = new System.Drawing.Size(133, 17);
             this.lblRegistro.Text = "0 Registros encontrados";
             // 
-            // dgtvClientes
+            // dtgvClientes
             // 
-            this.dgtvClientes.AllowUserToAddRows = false;
-            this.dgtvClientes.AllowUserToDeleteRows = false;
-            this.dgtvClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgtvClientes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dgtvClientes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dtgvClientes.AllowUserToAddRows = false;
+            this.dtgvClientes.AllowUserToDeleteRows = false;
+            this.dtgvClientes.AllowUserToResizeColumns = false;
+            this.dtgvClientes.AllowUserToResizeRows = false;
+            this.dtgvClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgvClientes.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dtgvClientes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Info;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgtvClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgtvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgtvClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dtgvClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dtgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idcliente,
             this.nombres,
             this.apellidos,
-            this.dirreccion,
+            this.direccion,
             this.dui,
             this.telefono,
             this.estado});
-            this.dgtvClientes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgtvClientes.Location = new System.Drawing.Point(0, 25);
-            this.dgtvClientes.Name = "dgtvClientes";
-            this.dgtvClientes.ReadOnly = true;
-            this.dgtvClientes.RowHeadersVisible = false;
-            this.dgtvClientes.Size = new System.Drawing.Size(800, 403);
-            this.dgtvClientes.TabIndex = 6;
+            this.dtgvClientes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dtgvClientes.EnableHeadersVisualStyles = false;
+            this.dtgvClientes.GridColor = System.Drawing.SystemColors.Control;
+            this.dtgvClientes.Location = new System.Drawing.Point(0, 25);
+            this.dtgvClientes.MultiSelect = false;
+            this.dtgvClientes.Name = "dtgvClientes";
+            this.dtgvClientes.ReadOnly = true;
+            this.dtgvClientes.RowHeadersVisible = false;
+            this.dtgvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgvClientes.Size = new System.Drawing.Size(800, 403);
+            this.dtgvClientes.TabIndex = 6;
+            this.dtgvClientes.SelectionChanged += new System.EventHandler(this.dtgvClientes_SelectionChanged);
             // 
             // idcliente
             // 
             this.idcliente.DataPropertyName = "idcliente";
-            this.idcliente.HeaderText = "IdCliente";
+            this.idcliente.HeaderText = "Id Cliente";
             this.idcliente.Name = "idcliente";
             this.idcliente.ReadOnly = true;
             // 
@@ -154,12 +161,12 @@
             this.apellidos.Name = "apellidos";
             this.apellidos.ReadOnly = true;
             // 
-            // dirreccion
+            // direccion
             // 
-            this.dirreccion.DataPropertyName = "direccion";
-            this.dirreccion.HeaderText = "Dirección";
-            this.dirreccion.Name = "dirreccion";
-            this.dirreccion.ReadOnly = true;
+            this.direccion.DataPropertyName = "direccion";
+            this.direccion.HeaderText = "Direccion ";
+            this.direccion.Name = "direccion";
+            this.direccion.ReadOnly = true;
             // 
             // dui
             // 
@@ -187,7 +194,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dgtvClientes);
+            this.Controls.Add(this.dtgvClientes);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -199,7 +206,7 @@
             this.toolStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgtvClientes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvClientes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -213,14 +220,13 @@
         private System.Windows.Forms.ToolStripButton toolStripCerrar;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel lblRegistro;
-        private System.Windows.Forms.DataGridView dgtvClientes;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Idcliente;
+        private System.Windows.Forms.DataGridView dtgvClientes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idcliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombres;
         private System.Windows.Forms.DataGridViewTextBoxColumn apellidos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dirreccion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn direccion;
         private System.Windows.Forms.DataGridViewTextBoxColumn dui;
         private System.Windows.Forms.DataGridViewTextBoxColumn telefono;
         private System.Windows.Forms.DataGridViewTextBoxColumn estado;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idcliente;
     }
 }
