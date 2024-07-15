@@ -42,7 +42,7 @@ namespace CapaDatos.Entidades
             }
         }
 
-        public int insert()
+        public Boolean insert()
         {
             StringBuilder sentencia = new StringBuilder();
             DBOperacion operacion = new DBOperacion();
@@ -61,15 +61,15 @@ namespace CapaDatos.Entidades
             catch (Exception ex)
             {
                 Console.Error.WriteLine(ex.ToString());
-                return 0;
+                return false;
             }
         }
 
-        public int update()
+        public Boolean update()
         {
             StringBuilder sentencia = new StringBuilder();
             DBOperacion operacion = new DBOperacion();
-            sentencia.Append("update lcientes set ");
+            sentencia.Append("Actualizar lcientes set ");
             sentencia.Append("usuario = '" + _Uusuario + "',");
             sentencia.Append("nombres = '" + _Nombres + "',");
             sentencia.Append("apellidos = '" + _Apellidos + "',");
@@ -85,7 +85,7 @@ namespace CapaDatos.Entidades
             catch (Exception ex)
             {
                 Console.Error.WriteLine(ex.ToString());
-                return 0;
+                return false;
             }
         }
 

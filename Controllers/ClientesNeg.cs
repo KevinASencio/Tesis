@@ -7,14 +7,44 @@ using System.Threading.Tasks;
 using CapaDatos.Entidades;
 namespace CapaNegocio
 {
-    public static class ClientesNeg
+    public class ClientesNeg
     {
-        public static DataTable ConsultarClientes()
+        private Clientes cl;
+
+        public ClientesNeg(int idcliente, string nombres, string apellidos, string direccion, string dui, string telefono, string estado)
         {
-            DataTable lista = new DataTable();
-            lista = Clientes.Consultar();
-            return lista;
+            this.cl = new Clientes();
+            this.cl.IdCliente = idcliente;
+            this.cl.Nombres = nombres;
+            this.cl.Apellidos = apellidos;
+            this.cl.Direecion = direccion;
+            this.cl.Dui= dui;
+            this.cl.Telefono = telefono;
+            this.cl.Estado = estado;
         }
+        public ClientesNeg(int idcliente, string estado) 
+        {
+            this.cl = new Clientes();
+            this.cl.IdCliente = idcliente;
+            this.cl.Estado = estado;
+        }
+
+        public Boolean guardar()
+        {
+            return this.cl.Guardar();
+        }
+
+        public Boolean Actualizar()
+        {
+            return this.cl.Actualizar();
+        }
+
+        public Boolean CambiarEstado() 
+        {
+           return this.cl.CambiarEstado();
+        }
+
+
     }
 }
 

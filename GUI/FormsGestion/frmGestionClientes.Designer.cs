@@ -44,12 +44,11 @@
             this.txbTelefono = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.pnlEstado = new System.Windows.Forms.Panel();
-            this.cmbEstado = new System.Windows.Forms.ComboBox();
             this.lblEstado = new System.Windows.Forms.Label();
             this.lblId = new System.Windows.Forms.Label();
             this.txbId = new System.Windows.Forms.TextBox();
             this.pnlId = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.cmbEstado = new System.Windows.Forms.ComboBox();
             this.pnlNombres.SuspendLayout();
             this.pnlApellidos.SuspendLayout();
             this.pnlDirreccion.SuspendLayout();
@@ -79,9 +78,10 @@
             // lblNombres
             // 
             this.lblNombres.AutoSize = true;
+            this.lblNombres.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNombres.Location = new System.Drawing.Point(4, 4);
             this.lblNombres.Name = "lblNombres";
-            this.lblNombres.Size = new System.Drawing.Size(49, 13);
+            this.lblNombres.Size = new System.Drawing.Size(73, 20);
             this.lblNombres.TabIndex = 0;
             this.lblNombres.Text = "Nombres";
             // 
@@ -105,9 +105,10 @@
             // lblApellidos
             // 
             this.lblApellidos.AutoSize = true;
+            this.lblApellidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblApellidos.Location = new System.Drawing.Point(4, 4);
             this.lblApellidos.Name = "lblApellidos";
-            this.lblApellidos.Size = new System.Drawing.Size(49, 13);
+            this.lblApellidos.Size = new System.Drawing.Size(73, 20);
             this.lblApellidos.TabIndex = 0;
             this.lblApellidos.Text = "Apellidos";
             // 
@@ -131,9 +132,10 @@
             // lblDirreccion
             // 
             this.lblDirreccion.AutoSize = true;
+            this.lblDirreccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDirreccion.Location = new System.Drawing.Point(4, 4);
             this.lblDirreccion.Name = "lblDirreccion";
-            this.lblDirreccion.Size = new System.Drawing.Size(55, 13);
+            this.lblDirreccion.Size = new System.Drawing.Size(80, 20);
             this.lblDirreccion.TabIndex = 0;
             this.lblDirreccion.Text = "Dirreccion";
             // 
@@ -157,9 +159,10 @@
             // lblDui
             // 
             this.lblDui.AutoSize = true;
+            this.lblDui.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDui.Location = new System.Drawing.Point(4, 4);
             this.lblDui.Name = "lblDui";
-            this.lblDui.Size = new System.Drawing.Size(26, 13);
+            this.lblDui.Size = new System.Drawing.Size(38, 20);
             this.lblDui.TabIndex = 0;
             this.lblDui.Text = "DUI";
             // 
@@ -183,9 +186,10 @@
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(4, 4);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(63, 13);
+            this.label6.Size = new System.Drawing.Size(90, 20);
             this.label6.TabIndex = 0;
             this.label6.Text = "N. Teléfono";
             // 
@@ -193,44 +197,35 @@
             // 
             this.pnlEstado.Controls.Add(this.cmbEstado);
             this.pnlEstado.Controls.Add(this.lblEstado);
-            this.pnlEstado.Location = new System.Drawing.Point(242, 25);
+            this.pnlEstado.Location = new System.Drawing.Point(242, 22);
             this.pnlEstado.Name = "pnlEstado";
-            this.pnlEstado.Size = new System.Drawing.Size(394, 43);
+            this.pnlEstado.Size = new System.Drawing.Size(394, 46);
             this.pnlEstado.TabIndex = 5;
-            // 
-            // cmbEstado
-            // 
-            this.cmbEstado.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.cmbEstado.FormattingEnabled = true;
-            this.cmbEstado.Items.AddRange(new object[] {
-            "Activo",
-            "Inactivo"});
-            this.cmbEstado.Location = new System.Drawing.Point(0, 22);
-            this.cmbEstado.Name = "cmbEstado";
-            this.cmbEstado.Size = new System.Drawing.Size(394, 21);
-            this.cmbEstado.TabIndex = 1;
             // 
             // lblEstado
             // 
             this.lblEstado.AutoSize = true;
+            this.lblEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEstado.Location = new System.Drawing.Point(4, 4);
             this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(40, 13);
+            this.lblEstado.Size = new System.Drawing.Size(60, 20);
             this.lblEstado.TabIndex = 0;
             this.lblEstado.Text = "Estado";
             // 
             // lblId
             // 
             this.lblId.AutoSize = true;
+            this.lblId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblId.Location = new System.Drawing.Point(4, 4);
             this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(51, 13);
+            this.lblId.Size = new System.Drawing.Size(76, 20);
             this.lblId.TabIndex = 0;
             this.lblId.Text = "Id Cliente";
             // 
             // txbId
             // 
             this.txbId.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.txbId.Enabled = false;
             this.txbId.Location = new System.Drawing.Point(0, 23);
             this.txbId.Name = "txbId";
             this.txbId.Size = new System.Drawing.Size(394, 20);
@@ -245,22 +240,20 @@
             this.pnlId.Size = new System.Drawing.Size(394, 43);
             this.pnlId.TabIndex = 0;
             // 
-            // button1
+            // cmbEstado
             // 
-            this.button1.Location = new System.Drawing.Point(724, 136);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.cmbEstado.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.cmbEstado.FormattingEnabled = true;
+            this.cmbEstado.Location = new System.Drawing.Point(0, 25);
+            this.cmbEstado.Name = "cmbEstado";
+            this.cmbEstado.Size = new System.Drawing.Size(394, 21);
+            this.cmbEstado.TabIndex = 1;
             // 
             // frmGestionClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(848, 476);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.pnlId);
             this.Controls.Add(this.pnlNombres);
             this.Controls.Add(this.pnlApellidos);
@@ -311,8 +304,7 @@
         internal System.Windows.Forms.TextBox txbDirreccion;
         internal System.Windows.Forms.TextBox txbDui;
         internal System.Windows.Forms.TextBox txbTelefono;
-        internal System.Windows.Forms.ComboBox cmbEstado;
         internal System.Windows.Forms.TextBox txbId;
-        private System.Windows.Forms.Button button1;
+        public System.Windows.Forms.ComboBox cmbEstado;
     }
 }

@@ -15,17 +15,15 @@ namespace GUI.FormsGestion
     {
         BindingSource ListaClientes = new BindingSource();
         frmGestionClientes _frmGestionClientes;
-        static frmVistaClientes fl;
         public frmVistaClientes()
         {
             InitializeComponent();
-            fl = this;
         }
 
         private void frmVistaClientes_Load(object sender, EventArgs e)
         {
-
-            ListaClientes.DataSource = CapaNegocio.ClientesNeg.ConsultarClientes();
+            
+            ListaClientes.DataSource = CapaNegocio.SistemCache.ConsultarClientes();
             dtgvClientes.AutoGenerateColumns = false;
             dtgvClientes.DataSource = ListaClientes;
         }
@@ -38,10 +36,13 @@ namespace GUI.FormsGestion
         public void Editar()
         {
             _frmGestionClientes = new frmGestionClientes();
-            //_frmGestionClientes.txbId.Text =
-            MessageBox.Show(dtgvClientes.SelectedRows.Count.ToString());
-
-            //MessageBox.Show(dgtvClientes.CurrentRow.Cells["apellidos"].Value.ToString());
+            _frmGestionClientes.txbId.Text = dtgvClientes.CurrentRow.Cells["idcliente"].Value.ToString();
+            _frmGestionClientes.txbNombres.Text = dtgvClientes.CurrentRow.Cells["nombres"].Value.ToString();
+            _frmGestionClientes.txbApellidos.Text = dtgvClientes.CurrentRow.Cells["apellidos"].Value.ToString();
+            _frmGestionClientes.txbDirreccion.Text = dtgvClientes.CurrentRow.Cells["direccion"].Value.ToString();
+            _frmGestionClientes.txbDui.Text = dtgvClientes.CurrentRow.Cells["dui"].Value.ToString();
+            _frmGestionClientes.txbTelefono.Text = dtgvClientes.CurrentRow.Cells["telefono"].Value.ToString();
+            _frmGestionClientes.cmbEstado.SelectedItem = dtgvClientes.CurrentRow.Cells["estado"].Value.ToString();
             OrganizadorObj.abrirCont(_frmGestionClientes);
         }
 

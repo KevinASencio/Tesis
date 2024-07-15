@@ -18,8 +18,8 @@ namespace GUI.FormsGestion
     {
         internal static frmPrincipal fr;
         #region declaracion formilarios
-        frmVistaClientes _frmVistaCliente = new frmVistaClientes();
-        frmGestionClientes _frmGestionClientes = new frmGestionClientes();
+        frmVistaClientes _frmVistaCliente;
+        frmGestionClientes _frmGestionClientes;
         #endregion
 
         static UsuarioNeg _useractivo = new UsuarioNeg();
@@ -121,7 +121,8 @@ namespace GUI.FormsGestion
 
         private void btnClientes_Click(object sender, EventArgs e)
         {
-            AbrirEnContenedor(new frmVistaClientes());
+            _frmVistaCliente = new frmVistaClientes();
+            AbrirEnContenedor(_frmVistaCliente);
             pnlMenuDetalles.Enabled = true;
             pnlMenuDetalles.Visible = true;
             pnlMenuDetalles.BringToFront();

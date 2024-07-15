@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CapaDatos.Entidades
 {
-    public  class Clientes
+    public class Clientes
     {
         private string _Nombres;
         private string _Apellidos;
@@ -26,53 +26,54 @@ namespace CapaDatos.Entidades
         public string Dui { get => _Dui; set => _Dui = value; }
         public string Direecion { get => _Direecion; set => _Direecion = value; }
         public string Estado { get => _Estado; set => _Estado = value; }
-        public static DataTable Consultar() 
-        { 
+        public static DataTable Consultar()
+        {
             DataTable resul = new DataTable();
             StringBuilder sentencia = new StringBuilder();
             DBOperacion operacion = new DBOperacion();
             sentencia.Append(@"select * from clientes;");
-            
+
             try {
                 resul = operacion.Consultar(sentencia.ToString());
                 return resul;
             }
-            catch(Exception ex) {
+            catch (Exception ex) {
                 Console.Error.WriteLine(ex.ToString());
                 return new DataTable();
             }
         }
 
-        public int insert() {
+        public Boolean Guardar() {
             StringBuilder sentencia = new StringBuilder();
-            DBOperacion operacion= new DBOperacion();
-            sentencia.Append("insert into clientes (nombres, apellidos, direccion, dui, telefono) values(");
+            DBOperacion operacion = new DBOperacion();
+            sentencia.Append("insert into clientes (nombres, apellidos, direccion, dui, estado,telefono) values(");
             sentencia.Append("'" + _Nombres + "',");
             sentencia.Append("'" + _Apellidos + "',");
             sentencia.Append("'" + _Direecion + "',");
             sentencia.Append("'" + _Dui + "',");
+            sentencia.Append("'" + _Estado + "',");
             sentencia.Append("'" + _Telefono + "');");
             try {
                 return operacion.Insertar(sentencia.ToString());
-                
             }
-            catch(Exception ex) {
+            catch (Exception ex) {
                 Console.Error.WriteLine(ex.ToString());
-                return 0;
+                return false;
             }
         }
 
-        public int update()
+        public Boolean Actualizar()
         {
             StringBuilder sentencia = new StringBuilder();
             DBOperacion operacion = new DBOperacion();
-            sentencia.Append("update lcientes set ");
+            sentencia.Append("Actualizar clientes set ");
             sentencia.Append("nombres='" + _Nombres + "',");
             sentencia.Append("apellidos='" + _Apellidos + "',");
             sentencia.Append("direccion='" + _Direecion + "',");
             sentencia.Append("dui='" + _Dui + "',");
-            sentencia.Append("telefono='" + _Telefono + "'");
-            sentencia.Append("where idcliente=" + _IdCliente.ToString());
+            sentencia.Append("telefono='" + _Telefono + "',");
+            sentencia.Append("estado='" + _Estado + "'");
+            sentencia.Append("where idcliente=" + _IdCliente + ";");
             try
             {
                 return operacion.Actualizar(sentencia.ToString());
@@ -81,8 +82,31 @@ namespace CapaDatos.Entidades
             catch (Exception ex)
             {
                 Console.Error.WriteLine(ex.ToString());
-                return 0;
+                return false;
             }
+        }
+
+        public Boolean CambiarEstado () 
+        {
+            StringBuilder sentencia = new StringBuilder();
+            DBOperacion operacion = new DBOperacion();
+            sentencia.Append("Actualizar clientes set estado = " +_Estado+ "where idcliente=" +_IdCliente+ ";");
+            try
+            {
+                if (operacion.Eliminar(sentencia.ToString())) 
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch 
+            {
+                return false;
+            }
+            
         }
     }
 }

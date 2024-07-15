@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CapaNegocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,5 +28,21 @@ namespace GUI.FormsGestion
         {
             this.Close();
         }
+
+        public void procesar() 
+        {
+            if(txbId.Text != null) 
+            {
+                ClientesNeg cliente = new ClientesNeg(int.Parse(txbId.Text.ToString()), txbNombres.Text.ToString(), txbApellidos.Text.ToString(),
+                                                      txbDirreccion.Text.ToString(), txbDui.Text.ToString(), txbTelefono.Text.ToString(), cmbEstado.SelectedText);
+
+            }
+            else 
+            {
+            
+            }
+        }
+
+
     }
 }

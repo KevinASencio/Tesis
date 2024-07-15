@@ -15,23 +15,23 @@ namespace CapaDatos
             return EjecutarConsulta(pConsulta);
         }
 
-        public Int32 Insertar(String pSentencia)
+        public Boolean Insertar(String pSentencia)
         {
             return EjecutarSentencia(pSentencia);
         }
-        public Int32 Actualizar(String pSentencia)
+        public Boolean Actualizar(String pSentencia)
         {
             return EjecutarSentencia(pSentencia);
         }
-        public Int32 Eliminar(String pSentencia)
+        public Boolean Eliminar(String pSentencia)
         {
             return EjecutarSentencia(pSentencia);
         }
-        public Int32 EjecutarProcedure(String pSentencia)
+        public Boolean EjecutarProcedure(String pSentencia)
         {
             return EjecutarSentencia(pSentencia);
         }
-        private Int32 EjecutarSentencia(String pSentencia)
+        private Boolean EjecutarSentencia(String pSentencia)
         {
             Int32 FilasAfectadas = 0;
             if (base.Conectar())
@@ -42,7 +42,8 @@ namespace CapaDatos
                 FilasAfectadas = Comando.ExecuteNonQuery();
                 base.Desconectar();
             }
-            return FilasAfectadas;
+
+            return FilasAfectadas > 0 ?  true : false;
         }
         private DataTable EjecutarConsulta(String pConsulta)
         {
