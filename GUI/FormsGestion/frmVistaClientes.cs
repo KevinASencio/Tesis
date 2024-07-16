@@ -1,4 +1,5 @@
-﻿using GUI.Clases;
+﻿using CapaNegocio;
+using GUI.Clases;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -51,6 +52,21 @@ namespace GUI.FormsGestion
         {
             
             //MessageBox.Show(dtgvClientes.CurrentRow.Cells["apellidos"].Value.ToString());
+        }
+
+        public void CambiarEstado() 
+        {
+            ClientesNeg cl = new ClientesNeg(int.Parse(dtgvClientes.CurrentRow.Cells["idcliente"].Value.ToString()),
+                                             dtgvClientes.CurrentRow.Cells["estado"].Value.ToString());
+            if (cl.CambiarEstado() == true)
+            {
+                MessageBox.Show("Erro al Cambiar Estado", "Error", MessageBoxButtons.OK);
+            }
+            else
+            { 
+                //MessageBox.Show()
+            }
+           
         }
     }
 }

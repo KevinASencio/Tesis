@@ -29,31 +29,17 @@ namespace GUI.FormsGestion
         int posicionY;
         public frmPrincipal()
         {
-
             InitializeComponent();
             fr = this;
         }
 
-        private void AbrirEnContenedor(object frm)
-        {
-            if (this.PnlPrincipal.Controls.Count > 1)
-            {
-                this.PnlPrincipal.Controls.RemoveAt(0);
-                //this.PnlPrincipal.Controls.Clear();
-            }
-            Form aux = frm as Form;
-            aux.TopLevel = false;
-            aux.Dock = DockStyle.Fill;
-            this.PnlPrincipal.Controls.Add(aux);
-            this.PnlPrincipal.Tag = aux;
-            aux.BringToFront();
-            aux.Show();
-        }
 
         public static UsuarioNeg useractivo { get => _useractivo; set => _useractivo = value; }
 
         private void GestionClientes_Load(object sender, EventArgs e)
         {
+            this.lblUsuario.Text = _useractivo.nombres();
+
             OrganizadorObj.Organizar(4, 2, pnlBotones, btnClientes.GetType());
             OrganizadorObj.ocuktar(pnlMenus, pnlMenuDetalles);
             OrganizadorObj.ocuktar(pnlMenus, pnlAcciones);
@@ -110,7 +96,7 @@ namespace GUI.FormsGestion
         private void btnClientes_Click(object sender, EventArgs e)
         {
             _frmVistaCliente = new frmVistaClientes();
-            AbrirEnContenedor(_frmVistaCliente);
+            OrganizadorObj.abrirCont(_frmVistaCliente);
             OrganizadorObj.ocuktar(pnlMenus, pnlMenuInicio);
             OrganizadorObj.ocuktar(pnlMenus, pnlAcciones);
             OrganizadorObj.mostrar(pnlMenus, pnlMenuDetalles);
