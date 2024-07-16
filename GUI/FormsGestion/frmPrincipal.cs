@@ -51,10 +51,14 @@ namespace GUI.FormsGestion
         }
 
         public static UsuarioNeg useractivo { get => _useractivo; set => _useractivo = value; }
-        #region botones control del formulario
+
         private void GestionClientes_Load(object sender, EventArgs e)
         {
             OrganizadorObj.Organizar(4, 2, pnlBotones, btnClientes.GetType());
+            OrganizadorObj.ocuktar(pnlMenus, pnlMenuDetalles);
+            OrganizadorObj.ocuktar(pnlMenus, pnlAcciones);
+            OrganizadorObj.mostrar(pnlMenus, pnlMenuInicio);
+            OrganizadorObj.Organizar(1, 6, pnlMenuInicio, btnUsuarios.GetType());
         }
 
         private void GestionClientes_ResizeBegin(object sender, EventArgs e)
@@ -102,30 +106,14 @@ namespace GUI.FormsGestion
             this.WindowState = FormWindowState.Minimized;
         }
         #endregion
-        #endregion
-
-        private void PnlPrincipal_MouseHover(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnGenerarFac_MouseEnter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnGenerarFac_MouseLeave(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void btnClientes_Click(object sender, EventArgs e)
         {
             _frmVistaCliente = new frmVistaClientes();
             AbrirEnContenedor(_frmVistaCliente);
-            pnlMenuDetalles.Enabled = true;
-            pnlMenuDetalles.Visible = true;
-            pnlMenuDetalles.BringToFront();
+            OrganizadorObj.ocuktar(pnlMenus, pnlMenuInicio);
+            OrganizadorObj.ocuktar(pnlMenus, pnlAcciones);
+            OrganizadorObj.mostrar(pnlMenus, pnlMenuDetalles);
         }
 
         private void pnlBotones_Enter(object sender, EventArgs e)
@@ -148,6 +136,14 @@ namespace GUI.FormsGestion
         private void btnEditar_Click(object sender, EventArgs e)
         {
             _frmVistaCliente.Editar();
+            OrganizadorObj.ocuktar(pnlMenus, pnlMenuInicio);
+            OrganizadorObj.ocuktar(pnlMenus, pnlMenuDetalles);
+            OrganizadorObj.mostrar(pnlMenus, pnlAcciones);
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            frmGestionClientes.frmgc.procesar();
         }
     }
 }

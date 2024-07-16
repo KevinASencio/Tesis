@@ -1,4 +1,5 @@
 ﻿using CapaNegocio;
+using GUI.Clases;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,7 @@ namespace GUI.FormsGestion
 {
     public partial class frmGestionClientes : Form
     {
+        public static frmGestionClientes frmgc;
         public frmGestionClientes()
         {
             InitializeComponent();
@@ -21,28 +23,51 @@ namespace GUI.FormsGestion
 
         private void frmGestionClientes_Load(object sender, EventArgs e)
         {
-            Clases.OrganizadorObj.Organizar(1, 7, this,pnlApellidos.GetType());
+            frmgc = this;
+            Clases.OrganizadorObj.Organizar(1, 7, this, pnlApellidos.GetType());
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
+        } 
 
-        public void procesar() 
+        public void procesar()
         {
-            if(txbId.Text != null) 
+            if (SistemCache.seguro())
             {
                 ClientesNeg cliente = new ClientesNeg(int.Parse(txbId.Text.ToString()), txbNombres.Text.ToString(), txbApellidos.Text.ToString(),
-                                                      txbDirreccion.Text.ToString(), txbDui.Text.ToString(), txbTelefono.Text.ToString(), cmbEstado.SelectedText);
+                                                          txbDirreccion.Text.ToString(), txbDui.Text.ToString(), txbTelefono.Text.ToString(), cmbEstado.SelectedItem.ToString());
 
-            }
-            else 
-            {
-            
+                if (txbId.Text != null)
+                {
+                    if (cliente.Actualizar())
+                    {
+                        MessageBox.Show("¡Cambios guardados!", "Exito", MessageBoxButtons.OK);
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("¡Error al guardar!", "Error", MessageBoxButtons.OK);
+                    }
+                }
+                else
+                {
+                    if (cliente.guardar())
+                    {
+                        MessageBox.Show("¡Regustro guardado!", "Exito", MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        MessageBox.Show("¡Error al guardar!", "Error", MessageBoxButtons.OK);
+                    }
+                }
             }
         }
 
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }

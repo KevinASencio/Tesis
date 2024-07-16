@@ -44,11 +44,11 @@
             this.txbTelefono = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.pnlEstado = new System.Windows.Forms.Panel();
+            this.cmbEstado = new System.Windows.Forms.ComboBox();
             this.lblEstado = new System.Windows.Forms.Label();
             this.lblId = new System.Windows.Forms.Label();
             this.txbId = new System.Windows.Forms.TextBox();
             this.pnlId = new System.Windows.Forms.Panel();
-            this.cmbEstado = new System.Windows.Forms.ComboBox();
             this.pnlNombres.SuspendLayout();
             this.pnlApellidos.SuspendLayout();
             this.pnlDirreccion.SuspendLayout();
@@ -62,7 +62,7 @@
             // 
             this.pnlNombres.Controls.Add(this.txbNombres);
             this.pnlNombres.Controls.Add(this.lblNombres);
-            this.pnlNombres.Location = new System.Drawing.Point(242, 83);
+            this.pnlNombres.Location = new System.Drawing.Point(21, 93);
             this.pnlNombres.Name = "pnlNombres";
             this.pnlNombres.Size = new System.Drawing.Size(394, 43);
             this.pnlNombres.TabIndex = 1;
@@ -89,7 +89,7 @@
             // 
             this.pnlApellidos.Controls.Add(this.txbApellidos);
             this.pnlApellidos.Controls.Add(this.lblApellidos);
-            this.pnlApellidos.Location = new System.Drawing.Point(242, 146);
+            this.pnlApellidos.Location = new System.Drawing.Point(21, 156);
             this.pnlApellidos.Name = "pnlApellidos";
             this.pnlApellidos.Size = new System.Drawing.Size(394, 43);
             this.pnlApellidos.TabIndex = 2;
@@ -116,7 +116,7 @@
             // 
             this.pnlDirreccion.Controls.Add(this.txbDirreccion);
             this.pnlDirreccion.Controls.Add(this.lblDirreccion);
-            this.pnlDirreccion.Location = new System.Drawing.Point(242, 209);
+            this.pnlDirreccion.Location = new System.Drawing.Point(21, 219);
             this.pnlDirreccion.Name = "pnlDirreccion";
             this.pnlDirreccion.Size = new System.Drawing.Size(394, 43);
             this.pnlDirreccion.TabIndex = 2;
@@ -143,7 +143,7 @@
             // 
             this.pnlDui.Controls.Add(this.txbDui);
             this.pnlDui.Controls.Add(this.lblDui);
-            this.pnlDui.Location = new System.Drawing.Point(242, 268);
+            this.pnlDui.Location = new System.Drawing.Point(21, 278);
             this.pnlDui.Name = "pnlDui";
             this.pnlDui.Size = new System.Drawing.Size(394, 43);
             this.pnlDui.TabIndex = 3;
@@ -170,7 +170,7 @@
             // 
             this.pnlTelefono.Controls.Add(this.txbTelefono);
             this.pnlTelefono.Controls.Add(this.label6);
-            this.pnlTelefono.Location = new System.Drawing.Point(242, 334);
+            this.pnlTelefono.Location = new System.Drawing.Point(21, 344);
             this.pnlTelefono.Name = "pnlTelefono";
             this.pnlTelefono.Size = new System.Drawing.Size(394, 43);
             this.pnlTelefono.TabIndex = 4;
@@ -197,10 +197,22 @@
             // 
             this.pnlEstado.Controls.Add(this.cmbEstado);
             this.pnlEstado.Controls.Add(this.lblEstado);
-            this.pnlEstado.Location = new System.Drawing.Point(242, 22);
+            this.pnlEstado.Location = new System.Drawing.Point(21, 26);
             this.pnlEstado.Name = "pnlEstado";
             this.pnlEstado.Size = new System.Drawing.Size(394, 46);
             this.pnlEstado.TabIndex = 5;
+            // 
+            // cmbEstado
+            // 
+            this.cmbEstado.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.cmbEstado.FormattingEnabled = true;
+            this.cmbEstado.Items.AddRange(new object[] {
+            "Activo",
+            "De Baja"});
+            this.cmbEstado.Location = new System.Drawing.Point(0, 25);
+            this.cmbEstado.Name = "cmbEstado";
+            this.cmbEstado.Size = new System.Drawing.Size(394, 21);
+            this.cmbEstado.TabIndex = 1;
             // 
             // lblEstado
             // 
@@ -235,19 +247,10 @@
             // 
             this.pnlId.Controls.Add(this.txbId);
             this.pnlId.Controls.Add(this.lblId);
-            this.pnlId.Location = new System.Drawing.Point(242, 393);
+            this.pnlId.Location = new System.Drawing.Point(21, 403);
             this.pnlId.Name = "pnlId";
             this.pnlId.Size = new System.Drawing.Size(394, 43);
             this.pnlId.TabIndex = 0;
-            // 
-            // cmbEstado
-            // 
-            this.cmbEstado.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.cmbEstado.FormattingEnabled = true;
-            this.cmbEstado.Location = new System.Drawing.Point(0, 25);
-            this.cmbEstado.Name = "cmbEstado";
-            this.cmbEstado.Size = new System.Drawing.Size(394, 21);
-            this.cmbEstado.TabIndex = 1;
             // 
             // frmGestionClientes
             // 
@@ -257,9 +260,9 @@
             this.Controls.Add(this.pnlId);
             this.Controls.Add(this.pnlNombres);
             this.Controls.Add(this.pnlApellidos);
-            this.Controls.Add(this.pnlDirreccion);
             this.Controls.Add(this.pnlDui);
             this.Controls.Add(this.pnlTelefono);
+            this.Controls.Add(this.pnlDirreccion);
             this.Controls.Add(this.pnlEstado);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmGestionClientes";

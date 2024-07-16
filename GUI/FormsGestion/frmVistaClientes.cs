@@ -43,7 +43,7 @@ namespace GUI.FormsGestion
             _frmGestionClientes.txbDui.Text = dtgvClientes.CurrentRow.Cells["dui"].Value.ToString();
             _frmGestionClientes.txbTelefono.Text = dtgvClientes.CurrentRow.Cells["telefono"].Value.ToString();
             _frmGestionClientes.cmbEstado.SelectedItem = dtgvClientes.CurrentRow.Cells["estado"].Value.ToString();
-            OrganizadorObj.abrirCont(_frmGestionClientes);
+            OrganizadorObj.abrirFormularioHijo(this,_frmGestionClientes);
         }
 
         private void dtgvClientes_SelectionChanged(object sender, EventArgs e)

@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CapaNegocio
 {
@@ -16,5 +17,13 @@ namespace CapaNegocio
             lista = Clientes.Consultar();
             return lista;
         }
+
+        public static Boolean seguro() 
+        {
+
+            return MessageBox.Show("¿Esta seguro de modificar el resgistro?", "Advertencia", MessageBoxButtons.YesNo).Equals(DialogResult.Yes)==true ?  true : false;
+        }
+
+
     }
 }
