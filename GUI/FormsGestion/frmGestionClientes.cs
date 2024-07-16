@@ -55,7 +55,7 @@ namespace GUI.FormsGestion
                 {
                     if (cliente.guardar())
                     {
-                        MessageBox.Show("¡Regustro guardado!", "Exito", MessageBoxButtons.OK);
+                        MessageBox.Show("¡Registro guardado!", "Exito", MessageBoxButtons.OK);
                     }
                     else
                     {
@@ -65,9 +65,5 @@ namespace GUI.FormsGestion
             }
         }
 
-        private void btnGuardar_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
