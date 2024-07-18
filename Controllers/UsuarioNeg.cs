@@ -14,6 +14,8 @@ namespace CapaNegocio.UsuarioNeg
         private Usuario user = new Usuario();
         public Usuario User { get => user; set => user = value; }
 
+        public static DataTable consultar() { return Usuario.Consultar(); }
+
         public Boolean Iniciar(string usuario, string pass)
         { DataTable result = new DataTable();
             result = User.Validar(usuario, pass);
@@ -24,6 +26,7 @@ namespace CapaNegocio.UsuarioNeg
                 user.Uusuario = usuario;
                 user.Estado = result.Rows[0]["estado"].ToString();
                 user.IdRol = result.Rows[0]["idrol"].ToString();
+                user.Rol= result.Rows[0]["rol"].ToString() ;
                 return true;
             }
             return false;
@@ -34,6 +37,7 @@ namespace CapaNegocio.UsuarioNeg
         public string apellidos() { return user.Apellidos; }
         public string estado() { return user.Estado; }
 
+        public string rol() { return user.Rol; }
         public int[] Permisos()
         {
             return user.permisos();

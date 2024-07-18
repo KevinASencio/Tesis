@@ -36,9 +36,19 @@
             this.prbCerrar = new System.Windows.Forms.PictureBox();
             this.pnlMenus = new System.Windows.Forms.Panel();
             this.pnlMenuDetalles = new System.Windows.Forms.Panel();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnServicios = new System.Windows.Forms.Button();
+            this.btnLosFacturas = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.pnlMenuInicio = new System.Windows.Forms.Panel();
+            this.pnlAcciones = new System.Windows.Forms.Panel();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnParametro = new System.Windows.Forms.Button();
+            this.btnCuotas = new System.Windows.Forms.Button();
+            this.btnUsuarios = new System.Windows.Forms.Button();
+            this.btnFacturas = new System.Windows.Forms.Button();
             this.pnlUser = new System.Windows.Forms.Panel();
             this.lblRol = new System.Windows.Forms.Label();
             this.lblCerrarSesion = new System.Windows.Forms.Label();
@@ -54,16 +64,6 @@
             this.btnTransacciones = new System.Windows.Forms.Button();
             this.btnCobro = new System.Windows.Forms.Button();
             this.btnServiciosMora = new System.Windows.Forms.Button();
-            this.btnFacturas = new System.Windows.Forms.Button();
-            this.btnUsuarios = new System.Windows.Forms.Button();
-            this.btnParametros = new System.Windows.Forms.Button();
-            this.btnParametro = new System.Windows.Forms.Button();
-            this.btnLosFacturas = new System.Windows.Forms.Button();
-            this.btnServicios = new System.Windows.Forms.Button();
-            this.pnlAcciones = new System.Windows.Forms.Panel();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnGuardar = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
             this.pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbRestaurar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbMaximizar)).BeginInit();
@@ -72,11 +72,11 @@
             this.pnlMenus.SuspendLayout();
             this.pnlMenuDetalles.SuspendLayout();
             this.pnlMenuInicio.SuspendLayout();
+            this.pnlAcciones.SuspendLayout();
             this.pnlUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.PnlPrincipal.SuspendLayout();
             this.pnlBotones.SuspendLayout();
-            this.pnlAcciones.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlTop
@@ -171,6 +171,63 @@
             this.pnlMenuDetalles.TabIndex = 27;
             this.pnlMenuDetalles.Visible = false;
             // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEliminar.FlatAppearance.BorderSize = 0;
+            this.btnEliminar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.ForeColor = System.Drawing.Color.White;
+            this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEliminar.Location = new System.Drawing.Point(3, 413);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(219, 51);
+            this.btnEliminar.TabIndex = 6;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            // 
+            // btnServicios
+            // 
+            this.btnServicios.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnServicios.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnServicios.FlatAppearance.BorderSize = 0;
+            this.btnServicios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnServicios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnServicios.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnServicios.ForeColor = System.Drawing.Color.White;
+            this.btnServicios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnServicios.Location = new System.Drawing.Point(3, 158);
+            this.btnServicios.Name = "btnServicios";
+            this.btnServicios.Size = new System.Drawing.Size(219, 51);
+            this.btnServicios.TabIndex = 5;
+            this.btnServicios.Text = "Servicios";
+            this.btnServicios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnServicios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnServicios.UseVisualStyleBackColor = true;
+            // 
+            // btnLosFacturas
+            // 
+            this.btnLosFacturas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLosFacturas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLosFacturas.FlatAppearance.BorderSize = 0;
+            this.btnLosFacturas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnLosFacturas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLosFacturas.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLosFacturas.ForeColor = System.Drawing.Color.White;
+            this.btnLosFacturas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLosFacturas.Location = new System.Drawing.Point(2, 228);
+            this.btnLosFacturas.Name = "btnLosFacturas";
+            this.btnLosFacturas.Size = new System.Drawing.Size(219, 51);
+            this.btnLosFacturas.TabIndex = 4;
+            this.btnLosFacturas.Text = "Facturas";
+            this.btnLosFacturas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLosFacturas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnLosFacturas.UseVisualStyleBackColor = true;
+            // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -214,14 +271,141 @@
             // 
             this.pnlMenuInicio.Controls.Add(this.pnlAcciones);
             this.pnlMenuInicio.Controls.Add(this.btnParametro);
-            this.pnlMenuInicio.Controls.Add(this.btnParametros);
+            this.pnlMenuInicio.Controls.Add(this.btnCuotas);
             this.pnlMenuInicio.Controls.Add(this.btnUsuarios);
             this.pnlMenuInicio.Controls.Add(this.btnFacturas);
             this.pnlMenuInicio.Enabled = false;
-            this.pnlMenuInicio.Location = new System.Drawing.Point(34, 83);
+            this.pnlMenuInicio.Location = new System.Drawing.Point(34, 116);
             this.pnlMenuInicio.Name = "pnlMenuInicio";
             this.pnlMenuInicio.Size = new System.Drawing.Size(221, 458);
             this.pnlMenuInicio.TabIndex = 3;
+            // 
+            // pnlAcciones
+            // 
+            this.pnlAcciones.Controls.Add(this.btnCancelar);
+            this.pnlAcciones.Controls.Add(this.btnGuardar);
+            this.pnlAcciones.Enabled = false;
+            this.pnlAcciones.Location = new System.Drawing.Point(29, 0);
+            this.pnlAcciones.Name = "pnlAcciones";
+            this.pnlAcciones.Size = new System.Drawing.Size(221, 458);
+            this.pnlAcciones.TabIndex = 6;
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelar.FlatAppearance.BorderSize = 0;
+            this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.Color.White;
+            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCancelar.Location = new System.Drawing.Point(1, 264);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(219, 51);
+            this.btnCancelar.TabIndex = 3;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGuardar.FlatAppearance.BorderSize = 0;
+            this.btnGuardar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.ForeColor = System.Drawing.Color.White;
+            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGuardar.Location = new System.Drawing.Point(1, 204);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(219, 51);
+            this.btnGuardar.TabIndex = 2;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // btnParametro
+            // 
+            this.btnParametro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnParametro.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnParametro.FlatAppearance.BorderSize = 0;
+            this.btnParametro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnParametro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnParametro.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnParametro.ForeColor = System.Drawing.Color.White;
+            this.btnParametro.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnParametro.Location = new System.Drawing.Point(2, 378);
+            this.btnParametro.Name = "btnParametro";
+            this.btnParametro.Size = new System.Drawing.Size(219, 51);
+            this.btnParametro.TabIndex = 5;
+            this.btnParametro.Text = "Parametros";
+            this.btnParametro.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnParametro.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnParametro.UseVisualStyleBackColor = true;
+            // 
+            // btnCuotas
+            // 
+            this.btnCuotas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCuotas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCuotas.FlatAppearance.BorderSize = 0;
+            this.btnCuotas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnCuotas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCuotas.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCuotas.ForeColor = System.Drawing.Color.White;
+            this.btnCuotas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCuotas.Location = new System.Drawing.Point(1, 321);
+            this.btnCuotas.Name = "btnCuotas";
+            this.btnCuotas.Size = new System.Drawing.Size(219, 51);
+            this.btnCuotas.TabIndex = 4;
+            this.btnCuotas.Text = "Gestion Cuotas";
+            this.btnCuotas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCuotas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCuotas.UseVisualStyleBackColor = true;
+            // 
+            // btnUsuarios
+            // 
+            this.btnUsuarios.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnUsuarios.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUsuarios.FlatAppearance.BorderSize = 0;
+            this.btnUsuarios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUsuarios.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUsuarios.ForeColor = System.Drawing.Color.White;
+            this.btnUsuarios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUsuarios.Location = new System.Drawing.Point(1, 264);
+            this.btnUsuarios.Name = "btnUsuarios";
+            this.btnUsuarios.Size = new System.Drawing.Size(219, 51);
+            this.btnUsuarios.TabIndex = 3;
+            this.btnUsuarios.Text = "Gestion Usuarios";
+            this.btnUsuarios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUsuarios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnUsuarios.UseVisualStyleBackColor = true;
+            this.btnUsuarios.Click += new System.EventHandler(this.btnUsuarios_Click);
+            // 
+            // btnFacturas
+            // 
+            this.btnFacturas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFacturas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFacturas.FlatAppearance.BorderSize = 0;
+            this.btnFacturas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnFacturas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFacturas.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFacturas.ForeColor = System.Drawing.Color.White;
+            this.btnFacturas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFacturas.Location = new System.Drawing.Point(1, 204);
+            this.btnFacturas.Name = "btnFacturas";
+            this.btnFacturas.Size = new System.Drawing.Size(219, 51);
+            this.btnFacturas.TabIndex = 2;
+            this.btnFacturas.Text = "Facturas";
+            this.btnFacturas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFacturas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnFacturas.UseVisualStyleBackColor = true;
             // 
             // pnlUser
             // 
@@ -238,9 +422,11 @@
             // lblRol
             // 
             this.lblRol.AutoSize = true;
-            this.lblRol.Location = new System.Drawing.Point(98, 48);
+            this.lblRol.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRol.ForeColor = System.Drawing.Color.White;
+            this.lblRol.Location = new System.Drawing.Point(98, 43);
             this.lblRol.Name = "lblRol";
-            this.lblRol.Size = new System.Drawing.Size(35, 13);
+            this.lblRol.Size = new System.Drawing.Size(46, 18);
             this.lblRol.TabIndex = 3;
             this.lblRol.Text = "label1";
             // 
@@ -249,6 +435,7 @@
             this.lblCerrarSesion.AutoSize = true;
             this.lblCerrarSesion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblCerrarSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCerrarSesion.ForeColor = System.Drawing.Color.White;
             this.lblCerrarSesion.Location = new System.Drawing.Point(98, 65);
             this.lblCerrarSesion.Name = "lblCerrarSesion";
             this.lblCerrarSesion.Size = new System.Drawing.Size(83, 13);
@@ -258,9 +445,11 @@
             // lblUsuario
             // 
             this.lblUsuario.AutoSize = true;
-            this.lblUsuario.Location = new System.Drawing.Point(98, 32);
+            this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuario.ForeColor = System.Drawing.Color.White;
+            this.lblUsuario.Location = new System.Drawing.Point(98, 23);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(35, 13);
+            this.lblUsuario.Size = new System.Drawing.Size(46, 18);
             this.lblUsuario.TabIndex = 1;
             this.lblUsuario.Text = "label1";
             // 
@@ -441,6 +630,7 @@
             this.btnCobro.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCobro.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCobro.UseVisualStyleBackColor = true;
+            this.btnCobro.Click += new System.EventHandler(this.btnCobro_Click);
             // 
             // btnServiciosMora
             // 
@@ -461,188 +651,6 @@
             this.btnServiciosMora.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnServiciosMora.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnServiciosMora.UseVisualStyleBackColor = true;
-            // 
-            // btnFacturas
-            // 
-            this.btnFacturas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFacturas.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFacturas.FlatAppearance.BorderSize = 0;
-            this.btnFacturas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
-            this.btnFacturas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFacturas.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFacturas.ForeColor = System.Drawing.Color.White;
-            this.btnFacturas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFacturas.Location = new System.Drawing.Point(1, 204);
-            this.btnFacturas.Name = "btnFacturas";
-            this.btnFacturas.Size = new System.Drawing.Size(219, 51);
-            this.btnFacturas.TabIndex = 2;
-            this.btnFacturas.Text = "Facturas";
-            this.btnFacturas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFacturas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnFacturas.UseVisualStyleBackColor = true;
-            // 
-            // btnUsuarios
-            // 
-            this.btnUsuarios.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUsuarios.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnUsuarios.FlatAppearance.BorderSize = 0;
-            this.btnUsuarios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
-            this.btnUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUsuarios.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUsuarios.ForeColor = System.Drawing.Color.White;
-            this.btnUsuarios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUsuarios.Location = new System.Drawing.Point(1, 264);
-            this.btnUsuarios.Name = "btnUsuarios";
-            this.btnUsuarios.Size = new System.Drawing.Size(219, 51);
-            this.btnUsuarios.TabIndex = 3;
-            this.btnUsuarios.Text = "Gestion Usuarios";
-            this.btnUsuarios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUsuarios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnUsuarios.UseVisualStyleBackColor = true;
-            // 
-            // btnParametros
-            // 
-            this.btnParametros.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnParametros.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnParametros.FlatAppearance.BorderSize = 0;
-            this.btnParametros.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
-            this.btnParametros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnParametros.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnParametros.ForeColor = System.Drawing.Color.White;
-            this.btnParametros.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnParametros.Location = new System.Drawing.Point(1, 321);
-            this.btnParametros.Name = "btnParametros";
-            this.btnParametros.Size = new System.Drawing.Size(219, 51);
-            this.btnParametros.TabIndex = 4;
-            this.btnParametros.Text = "Gestion Usuarios";
-            this.btnParametros.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnParametros.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnParametros.UseVisualStyleBackColor = true;
-            // 
-            // btnParametro
-            // 
-            this.btnParametro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnParametro.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnParametro.FlatAppearance.BorderSize = 0;
-            this.btnParametro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
-            this.btnParametro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnParametro.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnParametro.ForeColor = System.Drawing.Color.White;
-            this.btnParametro.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnParametro.Location = new System.Drawing.Point(2, 378);
-            this.btnParametro.Name = "btnParametro";
-            this.btnParametro.Size = new System.Drawing.Size(219, 51);
-            this.btnParametro.TabIndex = 5;
-            this.btnParametro.Text = "Parametros";
-            this.btnParametro.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnParametro.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnParametro.UseVisualStyleBackColor = true;
-            // 
-            // btnLosFacturas
-            // 
-            this.btnLosFacturas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLosFacturas.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLosFacturas.FlatAppearance.BorderSize = 0;
-            this.btnLosFacturas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
-            this.btnLosFacturas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLosFacturas.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLosFacturas.ForeColor = System.Drawing.Color.White;
-            this.btnLosFacturas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLosFacturas.Location = new System.Drawing.Point(2, 228);
-            this.btnLosFacturas.Name = "btnLosFacturas";
-            this.btnLosFacturas.Size = new System.Drawing.Size(219, 51);
-            this.btnLosFacturas.TabIndex = 4;
-            this.btnLosFacturas.Text = "Facturas";
-            this.btnLosFacturas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLosFacturas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnLosFacturas.UseVisualStyleBackColor = true;
-            // 
-            // btnServicios
-            // 
-            this.btnServicios.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnServicios.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnServicios.FlatAppearance.BorderSize = 0;
-            this.btnServicios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
-            this.btnServicios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnServicios.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnServicios.ForeColor = System.Drawing.Color.White;
-            this.btnServicios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnServicios.Location = new System.Drawing.Point(3, 158);
-            this.btnServicios.Name = "btnServicios";
-            this.btnServicios.Size = new System.Drawing.Size(219, 51);
-            this.btnServicios.TabIndex = 5;
-            this.btnServicios.Text = "Servicios";
-            this.btnServicios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnServicios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnServicios.UseVisualStyleBackColor = true;
-            // 
-            // pnlAcciones
-            // 
-            this.pnlAcciones.Controls.Add(this.btnCancelar);
-            this.pnlAcciones.Controls.Add(this.btnGuardar);
-            this.pnlAcciones.Enabled = false;
-            this.pnlAcciones.Location = new System.Drawing.Point(42, 30);
-            this.pnlAcciones.Name = "pnlAcciones";
-            this.pnlAcciones.Size = new System.Drawing.Size(221, 458);
-            this.pnlAcciones.TabIndex = 6;
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancelar.FlatAppearance.BorderSize = 0;
-            this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
-            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(1, 264);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(219, 51);
-            this.btnCancelar.TabIndex = 3;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGuardar.FlatAppearance.BorderSize = 0;
-            this.btnGuardar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
-            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(1, 204);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(219, 51);
-            this.btnGuardar.TabIndex = 2;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnGuardar.UseVisualStyleBackColor = true;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEliminar.FlatAppearance.BorderSize = 0;
-            this.btnEliminar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
-            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminar.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminar.ForeColor = System.Drawing.Color.White;
-            this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEliminar.Location = new System.Drawing.Point(3, 413);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(219, 51);
-            this.btnEliminar.TabIndex = 6;
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnEliminar.UseVisualStyleBackColor = true;
             // 
             // frmPrincipal
             // 
@@ -669,12 +677,12 @@
             this.pnlMenus.ResumeLayout(false);
             this.pnlMenuDetalles.ResumeLayout(false);
             this.pnlMenuInicio.ResumeLayout(false);
+            this.pnlAcciones.ResumeLayout(false);
             this.pnlUser.ResumeLayout(false);
             this.pnlUser.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.PnlPrincipal.ResumeLayout(false);
             this.pnlBotones.ResumeLayout(false);
-            this.pnlAcciones.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -706,7 +714,7 @@
         private System.Windows.Forms.Panel pnlMenuInicio;
         public System.Windows.Forms.Panel PnlPrincipal;
         private System.Windows.Forms.Button btnFacturas;
-        private System.Windows.Forms.Button btnParametros;
+        private System.Windows.Forms.Button btnCuotas;
         private System.Windows.Forms.Button btnUsuarios;
         private System.Windows.Forms.Button btnParametro;
         private System.Windows.Forms.Button btnLosFacturas;

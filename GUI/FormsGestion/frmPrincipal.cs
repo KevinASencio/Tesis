@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using CapaNegocio;
 using CapaNegocio.UsuarioNeg;
 using GUI.Clases;
+using GUI.FormsProcesos;
 namespace GUI.FormsGestion
 {
     public partial class frmPrincipal : Form
@@ -20,6 +21,7 @@ namespace GUI.FormsGestion
         #region declaracion formilarios
         frmVistaClientes _frmVistaCliente;
         frmGestionClientes _frmGestionClientes;
+        frmVistaUsuarios _frmVistaUsuarios;
         #endregion
 
         static UsuarioNeg _useractivo = new UsuarioNeg();
@@ -34,31 +36,17 @@ namespace GUI.FormsGestion
             fr = this;
         }
 
-        private void AbrirEnContenedor(object frm)
-        {
-            if (this.PnlPrincipal.Controls.Count > 1)
-            {
-                this.PnlPrincipal.Controls.RemoveAt(0);
-                //this.PnlPrincipal.Controls.Clear();
-            }
-            Form aux = frm as Form;
-            aux.TopLevel = false;
-            aux.Dock = DockStyle.Fill;
-            this.PnlPrincipal.Controls.Add(aux);
-            this.PnlPrincipal.Tag = aux;
-            aux.BringToFront();
-            aux.Show();
-        }
-
         public static UsuarioNeg useractivo { get => _useractivo; set => _useractivo = value; }
 
         private void GestionClientes_Load(object sender, EventArgs e)
         {
+            lblUsuario.Text = _useractivo.nombres();
+            lblRol.Text = _useractivo.rol();
             OrganizadorObj.Organizar(4, 2, pnlBotones, btnClientes.GetType());
             OrganizadorObj.ocuktar(pnlMenus, pnlMenuDetalles);
             OrganizadorObj.ocuktar(pnlMenus, pnlAcciones);
             OrganizadorObj.mostrar(pnlMenus, pnlMenuInicio);
-            OrganizadorObj.Organizar(1, 6, pnlMenuInicio, btnUsuarios.GetType());
+            OrganizadorObj.Organizar(1, 8, pnlMenuInicio, btnUsuarios.GetType());
         }
 
         private void GestionClientes_ResizeBegin(object sender, EventArgs e)
@@ -110,7 +98,7 @@ namespace GUI.FormsGestion
         private void btnClientes_Click(object sender, EventArgs e)
         {
             _frmVistaCliente = new frmVistaClientes();
-            AbrirEnContenedor(_frmVistaCliente);
+            OrganizadorObj.abrirCont(_frmVistaCliente);
             OrganizadorObj.ocuktar(pnlMenus, pnlMenuInicio);
             OrganizadorObj.ocuktar(pnlMenus, pnlAcciones);
             OrganizadorObj.mostrar(pnlMenus, pnlMenuDetalles);
@@ -144,6 +132,22 @@ namespace GUI.FormsGestion
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             frmGestionClientes.frmgc.procesar();
+        }
+
+        private void btnCobro_Click(object sender, EventArgs e)
+        {
+            OrganizadorObj.abrirCont(new frmCobroFacturas());
+        }
+
+        private void btnUsuarios_Click(object sender, EventArgs e)
+        {
+            _frmVistaUsuarios = new frmVistaUsuarios();
+            OrganizadorObj.abrirCont(_frmVistaUsuarios);
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            if (frmGestionClientes.frmgc != null) { frmGestionClientes.frmgc.cerrar(); }
         }
     }
 }
