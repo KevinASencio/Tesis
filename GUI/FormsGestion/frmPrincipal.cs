@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using CapaNegocio;
 using CapaNegocio.UsuarioNeg;
 using GUI.Clases;
+using GUI.FormsProcesos;
 namespace GUI.FormsGestion
 {
     public partial class frmPrincipal : Form
@@ -144,6 +145,11 @@ namespace GUI.FormsGestion
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             frmGestionClientes.frmgc.procesar();
+        }
+
+        private void btnCobro_Click(object sender, EventArgs e)
+        {
+            OrganizadorObj.abrirCont(new frmCobroFacturas());
         }
     }
 }
