@@ -94,6 +94,7 @@
     <Compile Include="ConexionDB\DBConexion.cs" />
     <Compile Include="ConexionDB\DBOperaciones.cs" />
     <Compile Include="Entidades\Servicios.cs" />
+    <Compile Include="Entidades\ServiciosConsumo.cs" />
     <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

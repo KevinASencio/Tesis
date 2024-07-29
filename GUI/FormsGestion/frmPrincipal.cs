@@ -26,7 +26,7 @@ namespace GUI.FormsGestion
         #endregion
 
         static UsuarioNeg _useractivo = new UsuarioNeg();
-        string formCall;
+        static string formCall;
         int auxancho;
         int auxalto;
         int posicionX;

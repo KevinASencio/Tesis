@@ -85,6 +85,12 @@
     <Compile Include="FormsGestion\frmGestionClientes.Designer.cs">
       <DependentUpon>frmGestionClientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormsGestion\frmGestionConsumo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsGestion\frmGestionConsumo.Designer.cs">
+      <DependentUpon>frmGestionConsumo.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormsGestion\frmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,6 +134,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormsGestion\frmGestionClientes.resx">
       <DependentUpon>frmGestionClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsGestion\frmGestionConsumo.resx">
+      <DependentUpon>frmGestionConsumo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormsGestion\frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>

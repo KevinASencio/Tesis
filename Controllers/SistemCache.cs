@@ -15,10 +15,13 @@ namespace CapaNegocio
 
         public static DataTable ConsultarUsuarios(){return Usuario.Consultar();}
 
-        public static DataTable ConsultarServicios() { return Servicios.Consultar(); }
+        public static DataTable ConsultarServiciosCon() { return Servicios.ConsultarCon(); }
 
-        public static DataTable ConsultarServicios(int idcliente) { return Servicios.Consultar(idcliente); }
+        public static DataTable ConsultarServiciosCon(int idcliente) { return Servicios.ConsultarCon(idcliente); }
 
+        public static DataTable ConsultarServiciosAco() { return Servicios.ConsultarAco(); }
+
+        public static DataTable ConsultarServiciosAco(int idcliente) { return Servicios.ConsultarAco(idcliente); }
 
         public static Boolean seguro() 
         {

@@ -97,7 +97,9 @@ namespace GUI.FormsGestion
             _frmVistaServicios.Show();
             _frmVistaServicios.StartPosition= FormStartPosition.CenterParent;
             _frmVistaServicios.Update();*/
-            OrganizadorObj.abrirFormularioHijo(this, _frmVistaServicios);
+            //OrganizadorObj.abrirFormularioHijo(this, _frmVistaServicios);
+            _frmVistaServicios.StartPosition= FormStartPosition.CenterParent;
+            _frmVistaServicios.ShowDialog();
         }
     }
 }
