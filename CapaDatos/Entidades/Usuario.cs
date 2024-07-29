@@ -15,6 +15,7 @@ namespace CapaDatos.Entidades
         string _IdRol;
         string _Estado;
         string _Password;
+        string _Rol;
 
         public string Uusuario { get => _Uusuario; set => _Uusuario = value; }
         public string Apellidos { get => _Apellidos; set => _Apellidos = value; }
@@ -22,13 +23,14 @@ namespace CapaDatos.Entidades
         public string IdRol { get => _IdRol; set => _IdRol = value; }
         public string Estado { get => _Estado; set => _Estado = value; }
         public string Password { get => _Password; set => _Password = value; }
+        public string Rol { get => _Rol; set => _Rol = value; }
 
-        public DataTable Consultar()
+        public static DataTable Consultar()
         {
             DataTable resul = new DataTable();
             StringBuilder sentencia = new StringBuilder();
             DBOperacion operacion = new DBOperacion();
-            sentencia.Append(@"select * from clientes");
+            sentencia.Append(@"select us.*, (select rol from roles as rl where us.idrol=rl.idrol) as rol from usuarios as us;");
 
             try
             {
@@ -93,7 +95,7 @@ namespace CapaDatos.Entidades
             StringBuilder sentencia = new StringBuilder();
             DBOperacion operacion = new DBOperacion();
 
-            sentencia.Append("select usuario, nombres, apellidos, estado, idrol from usuarios where  usuario='" + user + "' and BINARY password='" + pass + "';");
+            sentencia.Append("select us.usuario, us.nombres, us.apellidos, us.estado,us.idrol , (select rol from roles as rl where us.idrol=rl.idrol) as rol from usuarios as us where  usuario='" + user + "' and BINARY password='" + pass + "';");
 
             try
             {

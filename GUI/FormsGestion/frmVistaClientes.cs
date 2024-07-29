@@ -23,10 +23,7 @@ namespace GUI.FormsGestion
 
         private void frmVistaClientes_Load(object sender, EventArgs e)
         {
-            
-            ListaClientes.DataSource = CapaNegocio.SistemCache.ConsultarClientes();
-            dtgvClientes.AutoGenerateColumns = false;
-            dtgvClientes.DataSource = ListaClientes;
+            CargarDatos();
         }
 
         private void toolStripCerrar_Click(object sender, EventArgs e)
@@ -67,6 +64,19 @@ namespace GUI.FormsGestion
                 //MessageBox.Show()
             }
            
+        }
+
+        private void frmVistaClientes_ControlRemoved(object sender, ControlEventArgs e)
+        {
+            CargarDatos();
+        }
+
+        public void CargarDatos() 
+        {
+            ListaClientes.DataSource = CapaNegocio.SistemCache.ConsultarClientes();
+            dtgvClientes.AutoGenerateColumns = false;
+            dtgvClientes.DataSource = ListaClientes;
+            lblRegistro.Text = ListaClientes.Count.ToString();
         }
     }
 }

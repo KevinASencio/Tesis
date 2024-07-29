@@ -27,7 +27,7 @@ namespace GUI.FormsGestion
             Clases.OrganizadorObj.Organizar(1, 7, this, pnlApellidos.GetType());
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        public void cerrar()
         {
             this.Close();
         } 

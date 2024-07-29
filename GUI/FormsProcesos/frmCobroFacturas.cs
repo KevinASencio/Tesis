@@ -28,6 +28,9 @@ namespace GUI.FormsProcesos
             //Buscar();
         }
 
-        
+        private void toolStripCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

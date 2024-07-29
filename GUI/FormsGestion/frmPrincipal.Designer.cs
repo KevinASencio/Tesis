@@ -46,7 +46,7 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnParametro = new System.Windows.Forms.Button();
-            this.btnParametros = new System.Windows.Forms.Button();
+            this.btnCuotas = new System.Windows.Forms.Button();
             this.btnUsuarios = new System.Windows.Forms.Button();
             this.btnFacturas = new System.Windows.Forms.Button();
             this.pnlUser = new System.Windows.Forms.Panel();
@@ -271,11 +271,11 @@
             // 
             this.pnlMenuInicio.Controls.Add(this.pnlAcciones);
             this.pnlMenuInicio.Controls.Add(this.btnParametro);
-            this.pnlMenuInicio.Controls.Add(this.btnParametros);
+            this.pnlMenuInicio.Controls.Add(this.btnCuotas);
             this.pnlMenuInicio.Controls.Add(this.btnUsuarios);
             this.pnlMenuInicio.Controls.Add(this.btnFacturas);
             this.pnlMenuInicio.Enabled = false;
-            this.pnlMenuInicio.Location = new System.Drawing.Point(34, 83);
+            this.pnlMenuInicio.Location = new System.Drawing.Point(34, 116);
             this.pnlMenuInicio.Name = "pnlMenuInicio";
             this.pnlMenuInicio.Size = new System.Drawing.Size(221, 458);
             this.pnlMenuInicio.TabIndex = 3;
@@ -285,7 +285,7 @@
             this.pnlAcciones.Controls.Add(this.btnCancelar);
             this.pnlAcciones.Controls.Add(this.btnGuardar);
             this.pnlAcciones.Enabled = false;
-            this.pnlAcciones.Location = new System.Drawing.Point(67, 73);
+            this.pnlAcciones.Location = new System.Drawing.Point(29, 0);
             this.pnlAcciones.Name = "pnlAcciones";
             this.pnlAcciones.Size = new System.Drawing.Size(221, 458);
             this.pnlAcciones.TabIndex = 6;
@@ -308,6 +308,7 @@
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnGuardar
             // 
@@ -348,24 +349,24 @@
             this.btnParametro.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnParametro.UseVisualStyleBackColor = true;
             // 
-            // btnParametros
+            // btnCuotas
             // 
-            this.btnParametros.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnParametros.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnParametros.FlatAppearance.BorderSize = 0;
-            this.btnParametros.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
-            this.btnParametros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnParametros.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnParametros.ForeColor = System.Drawing.Color.White;
-            this.btnParametros.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnParametros.Location = new System.Drawing.Point(1, 321);
-            this.btnParametros.Name = "btnParametros";
-            this.btnParametros.Size = new System.Drawing.Size(219, 51);
-            this.btnParametros.TabIndex = 4;
-            this.btnParametros.Text = "Gestion Usuarios";
-            this.btnParametros.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnParametros.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnParametros.UseVisualStyleBackColor = true;
+            this.btnCuotas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCuotas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCuotas.FlatAppearance.BorderSize = 0;
+            this.btnCuotas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnCuotas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCuotas.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCuotas.ForeColor = System.Drawing.Color.White;
+            this.btnCuotas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCuotas.Location = new System.Drawing.Point(1, 321);
+            this.btnCuotas.Name = "btnCuotas";
+            this.btnCuotas.Size = new System.Drawing.Size(219, 51);
+            this.btnCuotas.TabIndex = 4;
+            this.btnCuotas.Text = "Gestion Cuotas";
+            this.btnCuotas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCuotas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCuotas.UseVisualStyleBackColor = true;
             // 
             // btnUsuarios
             // 
@@ -385,6 +386,7 @@
             this.btnUsuarios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnUsuarios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnUsuarios.UseVisualStyleBackColor = true;
+            this.btnUsuarios.Click += new System.EventHandler(this.btnUsuarios_Click);
             // 
             // btnFacturas
             // 
@@ -420,9 +422,11 @@
             // lblRol
             // 
             this.lblRol.AutoSize = true;
-            this.lblRol.Location = new System.Drawing.Point(98, 48);
+            this.lblRol.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRol.ForeColor = System.Drawing.Color.White;
+            this.lblRol.Location = new System.Drawing.Point(98, 43);
             this.lblRol.Name = "lblRol";
-            this.lblRol.Size = new System.Drawing.Size(35, 13);
+            this.lblRol.Size = new System.Drawing.Size(46, 18);
             this.lblRol.TabIndex = 3;
             this.lblRol.Text = "label1";
             // 
@@ -431,6 +435,7 @@
             this.lblCerrarSesion.AutoSize = true;
             this.lblCerrarSesion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblCerrarSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCerrarSesion.ForeColor = System.Drawing.Color.White;
             this.lblCerrarSesion.Location = new System.Drawing.Point(98, 65);
             this.lblCerrarSesion.Name = "lblCerrarSesion";
             this.lblCerrarSesion.Size = new System.Drawing.Size(83, 13);
@@ -440,9 +445,11 @@
             // lblUsuario
             // 
             this.lblUsuario.AutoSize = true;
-            this.lblUsuario.Location = new System.Drawing.Point(98, 32);
+            this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuario.ForeColor = System.Drawing.Color.White;
+            this.lblUsuario.Location = new System.Drawing.Point(98, 23);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(35, 13);
+            this.lblUsuario.Size = new System.Drawing.Size(46, 18);
             this.lblUsuario.TabIndex = 1;
             this.lblUsuario.Text = "label1";
             // 
@@ -707,7 +714,7 @@
         private System.Windows.Forms.Panel pnlMenuInicio;
         public System.Windows.Forms.Panel PnlPrincipal;
         private System.Windows.Forms.Button btnFacturas;
-        private System.Windows.Forms.Button btnParametros;
+        private System.Windows.Forms.Button btnCuotas;
         private System.Windows.Forms.Button btnUsuarios;
         private System.Windows.Forms.Button btnParametro;
         private System.Windows.Forms.Button btnLosFacturas;
