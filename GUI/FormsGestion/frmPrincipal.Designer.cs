@@ -285,7 +285,7 @@
             this.pnlAcciones.Controls.Add(this.btnCancelar);
             this.pnlAcciones.Controls.Add(this.btnGuardar);
             this.pnlAcciones.Enabled = false;
-            this.pnlAcciones.Location = new System.Drawing.Point(42, 30);
+            this.pnlAcciones.Location = new System.Drawing.Point(67, 73);
             this.pnlAcciones.Name = "pnlAcciones";
             this.pnlAcciones.Size = new System.Drawing.Size(221, 458);
             this.pnlAcciones.TabIndex = 6;
@@ -420,34 +420,29 @@
             // lblRol
             // 
             this.lblRol.AutoSize = true;
-            this.lblRol.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRol.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblRol.Location = new System.Drawing.Point(97, 39);
+            this.lblRol.Location = new System.Drawing.Point(98, 48);
             this.lblRol.Name = "lblRol";
-            this.lblRol.Size = new System.Drawing.Size(99, 18);
+            this.lblRol.Size = new System.Drawing.Size(35, 13);
             this.lblRol.TabIndex = 3;
-            this.lblRol.Text = "Administrador";
+            this.lblRol.Text = "label1";
             // 
             // lblCerrarSesion
             // 
             this.lblCerrarSesion.AutoSize = true;
             this.lblCerrarSesion.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblCerrarSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCerrarSesion.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblCerrarSesion.Location = new System.Drawing.Point(98, 62);
+            this.lblCerrarSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCerrarSesion.Location = new System.Drawing.Point(98, 65);
             this.lblCerrarSesion.Name = "lblCerrarSesion";
-            this.lblCerrarSesion.Size = new System.Drawing.Size(102, 16);
+            this.lblCerrarSesion.Size = new System.Drawing.Size(83, 13);
             this.lblCerrarSesion.TabIndex = 2;
             this.lblCerrarSesion.Text = "Cerrar Sesion";
             // 
             // lblUsuario
             // 
             this.lblUsuario.AutoSize = true;
-            this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuario.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblUsuario.Location = new System.Drawing.Point(98, 17);
+            this.lblUsuario.Location = new System.Drawing.Point(98, 32);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(46, 18);
+            this.lblUsuario.Size = new System.Drawing.Size(35, 13);
             this.lblUsuario.TabIndex = 1;
             this.lblUsuario.Text = "label1";
             // 
@@ -628,6 +623,7 @@
             this.btnCobro.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCobro.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCobro.UseVisualStyleBackColor = true;
+            this.btnCobro.Click += new System.EventHandler(this.btnCobro_Click);
             // 
             // btnServiciosMora
             // 

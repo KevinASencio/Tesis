@@ -97,11 +97,11 @@
     <Compile Include="FormsGestion\frmVistaClientes.Designer.cs">
       <DependentUpon>frmVistaClientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormsGestion\frmVistaUsuarios.cs">
+    <Compile Include="FormsProcesos\frmCobroFacturas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormsGestion\frmVistaUsuarios.Designer.cs">
-      <DependentUpon>frmVistaUsuarios.cs</DependentUpon>
+    <Compile Include="FormsProcesos\frmCobroFacturas.Designer.cs">
+      <DependentUpon>frmCobroFacturas.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -124,8 +124,8 @@
     <EmbeddedResource Include="FormsGestion\frmVistaClientes.resx">
       <DependentUpon>frmVistaClientes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormsGestion\frmVistaUsuarios.resx">
-      <DependentUpon>frmVistaUsuarios.cs</DependentUpon>
+    <EmbeddedResource Include="FormsProcesos\frmCobroFacturas.resx">
+      <DependentUpon>frmCobroFacturas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
