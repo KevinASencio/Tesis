@@ -21,31 +21,34 @@ namespace GUI.FormsGestion
         #region declaracion formilarios
         frmVistaClientes _frmVistaCliente;
         frmGestionClientes _frmGestionClientes;
+        frmVistaUsuarios _frmVistaUsuarios;
+        frmVistaServicios _frmVistaServicios;
         #endregion
 
         static UsuarioNeg _useractivo = new UsuarioNeg();
+        string formCall;
         int auxancho;
         int auxalto;
         int posicionX;
         int posicionY;
         public frmPrincipal()
         {
+
             InitializeComponent();
             fr = this;
         }
-
 
         public static UsuarioNeg useractivo { get => _useractivo; set => _useractivo = value; }
 
         private void GestionClientes_Load(object sender, EventArgs e)
         {
-            this.lblUsuario.Text = _useractivo.nombres();
-
+            lblUsuario.Text = _useractivo.nombres();
+            lblRol.Text = _useractivo.rol();
             OrganizadorObj.Organizar(4, 2, pnlBotones, btnClientes.GetType());
             OrganizadorObj.ocuktar(pnlMenus, pnlMenuDetalles);
             OrganizadorObj.ocuktar(pnlMenus, pnlAcciones);
             OrganizadorObj.mostrar(pnlMenus, pnlMenuInicio);
-            OrganizadorObj.Organizar(1, 6, pnlMenuInicio, btnUsuarios.GetType());
+            OrganizadorObj.Organizar(1, 8, pnlMenuInicio, btnUsuarios.GetType());
         }
 
         private void GestionClientes_ResizeBegin(object sender, EventArgs e)
@@ -59,7 +62,7 @@ namespace GUI.FormsGestion
 
         private void GestionClientes_SizeChanged(object sender, EventArgs e)
         {
-            OrganizadorObj.Organizar( 4, 2, pnlBotones, btnClientes.GetType());
+            OrganizadorObj.Organizar(4, 2, pnlBotones, btnClientes.GetType());
         }
         #region funciones de los botones para el control de la ventana
         private void prbCerrar_Click(object sender, EventArgs e)
@@ -93,10 +96,11 @@ namespace GUI.FormsGestion
             this.WindowState = FormWindowState.Minimized;
         }
         #endregion
-        
+
         private void btnClientes_Click(object sender, EventArgs e)
         {
             _frmVistaCliente = new frmVistaClientes();
+            formCall = "clientes";
             OrganizadorObj.abrirCont(_frmVistaCliente);
             OrganizadorObj.ocuktar(pnlMenus, pnlMenuInicio);
             OrganizadorObj.ocuktar(pnlMenus, pnlAcciones);
@@ -105,7 +109,7 @@ namespace GUI.FormsGestion
 
         private void pnlBotones_Enter(object sender, EventArgs e)
         {
-            
+
         }
 
         private void PnlPrincipal_ControlRemoved(object sender, ControlEventArgs e)
@@ -122,10 +126,7 @@ namespace GUI.FormsGestion
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            _frmVistaCliente.Editar();
-            OrganizadorObj.ocuktar(pnlMenus, pnlMenuInicio);
-            OrganizadorObj.ocuktar(pnlMenus, pnlMenuDetalles);
-            OrganizadorObj.mostrar(pnlMenus, pnlAcciones);
+            abrirFormulariosGestion(formCall);
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -136,6 +137,38 @@ namespace GUI.FormsGestion
         private void btnCobro_Click(object sender, EventArgs e)
         {
             OrganizadorObj.abrirCont(new frmCobroFacturas());
+        }
+
+        private void btnUsuarios_Click(object sender, EventArgs e)
+        {
+            _frmVistaUsuarios = new frmVistaUsuarios();
+            OrganizadorObj.abrirCont(_frmVistaUsuarios);
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            if (frmGestionClientes.frmgc != null) { frmGestionClientes.frmgc.cerrar(); }
+
+        }
+
+        private void btnServicios_Click(object sender, EventArgs e)
+        {
+            _frmVistaCliente.Servicios();
+        }
+
+        public void abrirFormulariosGestion(string form)
+        {
+            switch (form)
+            {
+                case "clientes":
+                    _frmVistaCliente.Editar();
+                    OrganizadorObj.ocuktar(pnlMenus, pnlMenuInicio);
+                    OrganizadorObj.ocuktar(pnlMenus, pnlMenuDetalles);
+                    OrganizadorObj.mostrar(pnlMenus, pnlAcciones);
+                    break;
+                default: break;
+            }
+
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCobroFacturas));
             this.lblIdFactura = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -56,6 +57,8 @@
             this.btnProcesar = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripCerrar = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -65,6 +68,7 @@
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel9.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblIdFactura
@@ -93,12 +97,13 @@
             // textBox1
             // 
             this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.textBox1.Location = new System.Drawing.Point(99, 3);
             this.textBox1.Margin = new System.Windows.Forms.Padding(5);
-            this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(422, 24);
             this.textBox1.TabIndex = 3;
+            this.textBox1.Text = "102258";
             this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
             // button1
@@ -164,11 +169,11 @@
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(69, 3);
+            this.label3.Location = new System.Drawing.Point(65, 3);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(289, 20);
+            this.label3.Size = new System.Drawing.Size(62, 20);
             this.label3.TabIndex = 1;
-            this.label3.Text = "aqui aparecerá el nombre de la persona";
+            this.label3.Text = "$ 25.50";
             // 
             // label4
             // 
@@ -177,9 +182,9 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(3, 3);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(66, 20);
+            this.label4.Size = new System.Drawing.Size(62, 20);
             this.label4.TabIndex = 0;
-            this.label4.Text = "Cliente: ";
+            this.label4.Text = "Monto: ";
             // 
             // panel4
             // 
@@ -196,11 +201,11 @@
             this.label5.AutoSize = true;
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(69, 3);
+            this.label5.Location = new System.Drawing.Point(68, 3);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(289, 20);
+            this.label5.Size = new System.Drawing.Size(53, 20);
             this.label5.TabIndex = 1;
-            this.label5.Text = "aqui aparecerá el nombre de la persona";
+            this.label5.Text = "$ 1.00";
             // 
             // label6
             // 
@@ -209,9 +214,9 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(3, 3);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(66, 20);
+            this.label6.Size = new System.Drawing.Size(65, 20);
             this.label6.TabIndex = 0;
-            this.label6.Text = "Cliente: ";
+            this.label6.Text = "Mora:    ";
             // 
             // panel5
             // 
@@ -228,11 +233,11 @@
             this.label7.AutoSize = true;
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(69, 3);
+            this.label7.Location = new System.Drawing.Point(127, 3);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(289, 20);
+            this.label7.Size = new System.Drawing.Size(80, 20);
             this.label7.TabIndex = 1;
-            this.label7.Text = "aqui aparecerá el nombre de la persona";
+            this.label7.Text = "Diciembre";
             // 
             // label8
             // 
@@ -241,9 +246,9 @@
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(3, 3);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(66, 20);
+            this.label8.Size = new System.Drawing.Size(124, 20);
             this.label8.TabIndex = 0;
-            this.label8.Text = "Cliente: ";
+            this.label8.Text = "Mes Facturado: ";
             // 
             // panel6
             // 
@@ -260,11 +265,11 @@
             this.label9.AutoSize = true;
             this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(69, 3);
+            this.label9.Location = new System.Drawing.Point(151, 3);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(289, 20);
+            this.label9.Size = new System.Drawing.Size(149, 20);
             this.label9.TabIndex = 1;
-            this.label9.Text = "aqui aparecerá el nombre de la persona";
+            this.label9.Text = "Octubre, Noviembre";
             // 
             // label10
             // 
@@ -273,9 +278,9 @@
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(3, 3);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(66, 20);
+            this.label10.Size = new System.Drawing.Size(148, 20);
             this.label10.TabIndex = 0;
-            this.label10.Text = "Cliente: ";
+            this.label10.Text = "Meses Pendientes: ";
             // 
             // panel7
             // 
@@ -291,12 +296,13 @@
             // textBox2
             // 
             this.textBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox2.Location = new System.Drawing.Point(109, 3);
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.textBox2.Location = new System.Drawing.Point(113, 3);
             this.textBox2.Margin = new System.Windows.Forms.Padding(5);
-            this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(487, 24);
+            this.textBox2.Size = new System.Drawing.Size(483, 24);
             this.textBox2.TabIndex = 3;
+            this.textBox2.Text = "25.0";
             // 
             // label11
             // 
@@ -305,9 +311,9 @@
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(3, 3);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(106, 20);
+            this.label11.Size = new System.Drawing.Size(110, 20);
             this.label11.TabIndex = 0;
-            this.label11.Text = "Total a pagar:";
+            this.label11.Text = "Total a pagar: ";
             // 
             // panel8
             // 
@@ -323,12 +329,13 @@
             // textBox3
             // 
             this.textBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.textBox3.Location = new System.Drawing.Point(114, 3);
             this.textBox3.Margin = new System.Windows.Forms.Padding(5);
-            this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(482, 24);
             this.textBox3.TabIndex = 3;
+            this.textBox3.Text = "0.00";
             // 
             // label12
             // 
@@ -380,11 +387,33 @@
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripCerrar});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(892, 25);
+            this.toolStrip1.TabIndex = 8;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripCerrar
+            // 
+            this.toolStripCerrar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripCerrar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripCerrar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripCerrar.Image")));
+            this.toolStripCerrar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripCerrar.Name = "toolStripCerrar";
+            this.toolStripCerrar.Size = new System.Drawing.Size(23, 22);
+            this.toolStripCerrar.Text = "toolStripButton1";
+            this.toolStripCerrar.Click += new System.EventHandler(this.toolStripCerrar_Click);
+            // 
             // frmCobroFacturas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(892, 766);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
@@ -394,7 +423,7 @@
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel9);
-            this.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmCobroFacturas";
             this.Text = "frmCobroFacturas";
@@ -417,7 +446,10 @@
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             this.panel9.ResumeLayout(false);
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -451,5 +483,7 @@
         private System.Windows.Forms.Button btnProcesar;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton toolStripCerrar;
     }
 }

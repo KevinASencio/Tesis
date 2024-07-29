@@ -11,12 +11,14 @@ namespace CapaNegocio
 {
      public static class  SistemCache
     {
-        public static DataTable ConsultarClientes()
-        {
-            DataTable lista = new DataTable();
-            lista = Clientes.Consultar();
-            return lista;
-        }
+        public static DataTable ConsultarClientes(){return Clientes.Consultar();}
+
+        public static DataTable ConsultarUsuarios(){return Usuario.Consultar();}
+
+        public static DataTable ConsultarServicios() { return Servicios.Consultar(); }
+
+        public static DataTable ConsultarServicios(int idcliente) { return Servicios.Consultar(idcliente); }
+
 
         public static Boolean seguro() 
         {

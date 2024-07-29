@@ -16,6 +16,8 @@ namespace GUI.FormsGestion
     {
         BindingSource ListaClientes = new BindingSource();
         frmGestionClientes _frmGestionClientes;
+        frmVistaServicios _frmVistaServicios;
+
         public frmVistaClientes()
         {
             InitializeComponent();
@@ -23,10 +25,7 @@ namespace GUI.FormsGestion
 
         private void frmVistaClientes_Load(object sender, EventArgs e)
         {
-            
-            ListaClientes.DataSource = CapaNegocio.SistemCache.ConsultarClientes();
-            dtgvClientes.AutoGenerateColumns = false;
-            dtgvClientes.DataSource = ListaClientes;
+            CargarDatos();
         }
 
         private void toolStripCerrar_Click(object sender, EventArgs e)
@@ -67,6 +66,38 @@ namespace GUI.FormsGestion
                 //MessageBox.Show()
             }
            
+        }
+
+        private void frmVistaClientes_ControlRemoved(object sender, ControlEventArgs e)
+        {
+            CargarDatos();
+            OrganizadorObj.ocuktar(frmPrincipal.fr.pnlMenus, frmPrincipal.fr.pnlMenuInicio);
+            OrganizadorObj.mostrar(frmPrincipal.fr.pnlMenus, frmPrincipal.fr.pnlMenuDetalles);
+            OrganizadorObj.ocuktar(frmPrincipal.fr.pnlMenus, frmPrincipal.fr.pnlAcciones);
+        }
+
+        public void CargarDatos() 
+        {
+            ListaClientes.DataSource = CapaNegocio.SistemCache.ConsultarClientes();
+            dtgvClientes.AutoGenerateColumns = false;
+            dtgvClientes.DataSource = ListaClientes;
+            lblRegistro.Text = ListaClientes.Count.ToString();
+        }
+        public void Servicios() 
+        {
+            _frmVistaServicios = new frmVistaServicios();
+            OrganizadorObj.ocuktar(frmPrincipal.fr.pnlMenus, frmPrincipal.fr.pnlMenuInicio);
+            OrganizadorObj.ocuktar(frmPrincipal.fr.pnlMenus, frmPrincipal.fr.pnlMenuDetalles);
+            OrganizadorObj.mostrar(frmPrincipal.fr.pnlMenus, frmPrincipal.fr.pnlAcciones);
+            _frmVistaServicios.CargarDatos(Convert.ToInt32(dtgvClientes.CurrentRow.Cells["idcliente"].Value.ToString()));
+            /*this.AddOwnedForm(_frmVistaServicios);
+            _frmVistaServicios.TopLevel = false;
+            this.Controls.Add(_frmVistaServicios);
+            _frmVistaServicios.BringToFront();
+            _frmVistaServicios.Show();
+            _frmVistaServicios.StartPosition= FormStartPosition.CenterParent;
+            _frmVistaServicios.Update();*/
+            OrganizadorObj.abrirFormularioHijo(this, _frmVistaServicios);
         }
     }
 }

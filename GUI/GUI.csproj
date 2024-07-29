@@ -97,6 +97,18 @@
     <Compile Include="FormsGestion\frmVistaClientes.Designer.cs">
       <DependentUpon>frmVistaClientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormsGestion\frmVistaServicios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsGestion\frmVistaServicios.Designer.cs">
+      <DependentUpon>frmVistaServicios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsGestion\frmVistaUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsGestion\frmVistaUsuarios.Designer.cs">
+      <DependentUpon>frmVistaUsuarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormsProcesos\frmCobroFacturas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +135,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormsGestion\frmVistaClientes.resx">
       <DependentUpon>frmVistaClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsGestion\frmVistaServicios.resx">
+      <DependentUpon>frmVistaServicios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsGestion\frmVistaUsuarios.resx">
+      <DependentUpon>frmVistaUsuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormsProcesos\frmCobroFacturas.resx">
       <DependentUpon>frmCobroFacturas.cs</DependentUpon>

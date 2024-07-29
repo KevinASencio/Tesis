@@ -30,7 +30,7 @@ namespace GUI.FormsGestion
                    _Autorizado = true;
                 Close();
             }
-            else { MessageBox.Show("no se inicio putito .l."); }
+            else { lblError.Text= "¡CREDENCIALES ERRONEAS!"; lblError.ForeColor = Color.Red; }
 
         }
     }
