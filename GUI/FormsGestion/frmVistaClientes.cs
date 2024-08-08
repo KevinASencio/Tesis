@@ -50,7 +50,6 @@ namespace GUI.FormsGestion
            
             _frmGestionClientes.StartPosition = FormStartPosition.CenterParent;
             _frmGestionClientes.ShowDialog();
-            CargarDatos();
         }
 
         private void dtgvClientes_SelectionChanged(object sender, EventArgs e)

@@ -71,5 +71,10 @@ namespace GUI.FormsGestion
             this.Close();
             frmVistaClientes.frmvc.CargarDatos();
         }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

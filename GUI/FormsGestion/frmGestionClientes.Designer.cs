@@ -55,6 +55,7 @@
             this.pnlPrincipal = new System.Windows.Forms.Panel();
             this.pnlBoton = new System.Windows.Forms.Panel();
             this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.pnlNombres.SuspendLayout();
             this.pnlApellidos.SuspendLayout();
             this.pnlDirreccion.SuspendLayout();
@@ -70,7 +71,7 @@
             // 
             // pnlNombres
             // 
-            this.pnlNombres.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pnlNombres.BackColor = System.Drawing.SystemColors.Control;
             this.pnlNombres.Controls.Add(this.txbNombres);
             this.pnlNombres.Controls.Add(this.lblNombres);
             this.pnlNombres.Location = new System.Drawing.Point(3, 75);
@@ -98,7 +99,7 @@
             // 
             // pnlApellidos
             // 
-            this.pnlApellidos.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pnlApellidos.BackColor = System.Drawing.SystemColors.Control;
             this.pnlApellidos.Controls.Add(this.txbApellidos);
             this.pnlApellidos.Controls.Add(this.lblApellidos);
             this.pnlApellidos.Location = new System.Drawing.Point(3, 138);
@@ -126,7 +127,7 @@
             // 
             // pnlDirreccion
             // 
-            this.pnlDirreccion.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pnlDirreccion.BackColor = System.Drawing.SystemColors.Control;
             this.pnlDirreccion.Controls.Add(this.txbDirreccion);
             this.pnlDirreccion.Controls.Add(this.lblDirreccion);
             this.pnlDirreccion.Location = new System.Drawing.Point(3, 201);
@@ -154,7 +155,7 @@
             // 
             // pnlDui
             // 
-            this.pnlDui.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pnlDui.BackColor = System.Drawing.SystemColors.Control;
             this.pnlDui.Controls.Add(this.txbDui);
             this.pnlDui.Controls.Add(this.lblDui);
             this.pnlDui.Location = new System.Drawing.Point(3, 260);
@@ -182,7 +183,7 @@
             // 
             // pnlTelefono
             // 
-            this.pnlTelefono.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pnlTelefono.BackColor = System.Drawing.SystemColors.Control;
             this.pnlTelefono.Controls.Add(this.txbTelefono);
             this.pnlTelefono.Controls.Add(this.label6);
             this.pnlTelefono.Location = new System.Drawing.Point(3, 326);
@@ -210,7 +211,7 @@
             // 
             // pnlEstado
             // 
-            this.pnlEstado.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pnlEstado.BackColor = System.Drawing.SystemColors.Control;
             this.pnlEstado.Controls.Add(this.cmbEstado);
             this.pnlEstado.Controls.Add(this.lblEstado);
             this.pnlEstado.Location = new System.Drawing.Point(3, 8);
@@ -261,7 +262,7 @@
             // 
             // pnlId
             // 
-            this.pnlId.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pnlId.BackColor = System.Drawing.SystemColors.Control;
             this.pnlId.Controls.Add(this.txbId);
             this.pnlId.Controls.Add(this.lblId);
             this.pnlId.Location = new System.Drawing.Point(3, 385);
@@ -308,6 +309,7 @@
             // 
             // pnlBoton
             // 
+            this.pnlBoton.Controls.Add(this.btnCancelar);
             this.pnlBoton.Controls.Add(this.btnAgregar);
             this.pnlBoton.Location = new System.Drawing.Point(42, 434);
             this.pnlBoton.Name = "pnlBoton";
@@ -322,13 +324,29 @@
             this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregar.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnAgregar.Location = new System.Drawing.Point(74, 4);
+            this.btnAgregar.Location = new System.Drawing.Point(3, 3);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(121, 46);
             this.btnAgregar.TabIndex = 1;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = false;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnCancelar.FlatAppearance.BorderSize = 0;
+            this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnCancelar.Location = new System.Drawing.Point(142, 3);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(121, 46);
+            this.btnCancelar.TabIndex = 2;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // frmGestionClientes
             // 
@@ -390,5 +408,6 @@
         private System.Windows.Forms.Panel pnlPrincipal;
         private System.Windows.Forms.Panel pnlBoton;
         private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Button btnCancelar;
     }
 }

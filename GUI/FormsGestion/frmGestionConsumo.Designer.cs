@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGestionConsumo));
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripCerrar = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txbId = new System.Windows.Forms.TextBox();
             this.lblId = new System.Windows.Forms.Label();
@@ -46,40 +43,24 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.txbComentario = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.toolStrip1.SuspendLayout();
+            this.pnlBoton = new System.Windows.Forms.Panel();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.pnlPrincipal = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.pnlBoton.SuspendLayout();
+            this.pnlPrincipal.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripCerrar});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(872, 25);
-            this.toolStrip1.TabIndex = 5;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // toolStripCerrar
-            // 
-            this.toolStripCerrar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripCerrar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripCerrar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripCerrar.Image")));
-            this.toolStripCerrar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripCerrar.Name = "toolStripCerrar";
-            this.toolStripCerrar.Size = new System.Drawing.Size(23, 22);
-            this.toolStripCerrar.Text = "toolStripButton1";
-            this.toolStripCerrar.Click += new System.EventHandler(this.toolStripCerrar_Click);
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.txbId);
             this.panel1.Controls.Add(this.lblId);
-            this.panel1.Location = new System.Drawing.Point(250, 91);
+            this.panel1.Location = new System.Drawing.Point(14, 90);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(422, 44);
             this.panel1.TabIndex = 6;
@@ -108,7 +89,7 @@
             // 
             this.panel2.Controls.Add(this.cmbColonia);
             this.panel2.Controls.Add(this.lblColonia);
-            this.panel2.Location = new System.Drawing.Point(250, 157);
+            this.panel2.Location = new System.Drawing.Point(14, 156);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(422, 44);
             this.panel2.TabIndex = 7;
@@ -137,7 +118,7 @@
             // 
             this.panel3.Controls.Add(this.cmbCuota);
             this.panel3.Controls.Add(this.label1);
-            this.panel3.Location = new System.Drawing.Point(247, 226);
+            this.panel3.Location = new System.Drawing.Point(11, 225);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(422, 44);
             this.panel3.TabIndex = 8;
@@ -166,7 +147,7 @@
             // 
             this.panel4.Controls.Add(this.cmbEstado);
             this.panel4.Controls.Add(this.label2);
-            this.panel4.Location = new System.Drawing.Point(247, 290);
+            this.panel4.Location = new System.Drawing.Point(11, 289);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(422, 44);
             this.panel4.TabIndex = 8;
@@ -195,7 +176,7 @@
             // 
             this.panel5.Controls.Add(this.txbComentario);
             this.panel5.Controls.Add(this.label3);
-            this.panel5.Location = new System.Drawing.Point(247, 357);
+            this.panel5.Location = new System.Drawing.Point(11, 356);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(422, 44);
             this.panel5.TabIndex = 9;
@@ -209,7 +190,7 @@
             this.txbComentario.Name = "txbComentario";
             this.txbComentario.Size = new System.Drawing.Size(422, 24);
             this.txbComentario.TabIndex = 1;
-            this.txbComentario.Text = "Comentario}";
+            this.txbComentario.Text = "Comentario";
             // 
             // label3
             // 
@@ -221,23 +202,69 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Comentario: ";
             // 
+            // pnlBoton
+            // 
+            this.pnlBoton.Controls.Add(this.btnCancelar);
+            this.pnlBoton.Controls.Add(this.btnAgregar);
+            this.pnlBoton.Location = new System.Drawing.Point(78, 430);
+            this.pnlBoton.Name = "pnlBoton";
+            this.pnlBoton.Size = new System.Drawing.Size(266, 55);
+            this.pnlBoton.TabIndex = 10;
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnCancelar.FlatAppearance.BorderSize = 0;
+            this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnCancelar.Location = new System.Drawing.Point(142, 3);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(121, 46);
+            this.btnCancelar.TabIndex = 2;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnAgregar.FlatAppearance.BorderSize = 0;
+            this.btnAgregar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnAgregar.Location = new System.Drawing.Point(3, 3);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(121, 46);
+            this.btnAgregar.TabIndex = 1;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = false;
+            // 
+            // pnlPrincipal
+            // 
+            this.pnlPrincipal.Controls.Add(this.panel1);
+            this.pnlPrincipal.Controls.Add(this.panel3);
+            this.pnlPrincipal.Controls.Add(this.panel2);
+            this.pnlPrincipal.Controls.Add(this.panel4);
+            this.pnlPrincipal.Controls.Add(this.panel5);
+            this.pnlPrincipal.Controls.Add(this.pnlBoton);
+            this.pnlPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlPrincipal.Location = new System.Drawing.Point(0, 0);
+            this.pnlPrincipal.Name = "pnlPrincipal";
+            this.pnlPrincipal.Size = new System.Drawing.Size(872, 569);
+            this.pnlPrincipal.TabIndex = 11;
+            // 
             // frmGestionConsumo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(872, 548);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel5);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.toolStrip1);
+            this.ClientSize = new System.Drawing.Size(872, 569);
+            this.Controls.Add(this.pnlPrincipal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmGestionConsumo";
             this.Text = "frmGestionConsumo";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -248,15 +275,13 @@
             this.panel4.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            this.pnlBoton.ResumeLayout(false);
+            this.pnlPrincipal.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton toolStripCerrar;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblId;
         private System.Windows.Forms.Panel panel2;
@@ -272,5 +297,9 @@
         public System.Windows.Forms.ComboBox cmbCuota;
         public System.Windows.Forms.ComboBox cmbEstado;
         public System.Windows.Forms.TextBox txbComentario;
+        private System.Windows.Forms.Panel pnlBoton;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Panel pnlPrincipal;
     }
 }
