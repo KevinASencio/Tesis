@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
@@ -17,10 +18,12 @@ namespace GUI.FormsGestion
         BindingSource ListaClientes = new BindingSource();
         frmGestionClientes _frmGestionClientes;
         frmVistaServicios _frmVistaServicios;
+        public static frmVistaClientes frmvc;
 
         public frmVistaClientes()
         {
             InitializeComponent();
+            frmvc = this;
         }
 
         private void frmVistaClientes_Load(object sender, EventArgs e)
@@ -43,7 +46,11 @@ namespace GUI.FormsGestion
             _frmGestionClientes.txbDui.Text = dtgvClientes.CurrentRow.Cells["dui"].Value.ToString();
             _frmGestionClientes.txbTelefono.Text = dtgvClientes.CurrentRow.Cells["telefono"].Value.ToString();
             _frmGestionClientes.cmbEstado.SelectedItem = dtgvClientes.CurrentRow.Cells["estado"].Value.ToString();
-            OrganizadorObj.abrirFormularioHijo(this,_frmGestionClientes);
+            //OrganizadorObj.abrirFormularioHijo(this,_frmGestionClientes);
+           
+            _frmGestionClientes.StartPosition = FormStartPosition.CenterParent;
+            _frmGestionClientes.ShowDialog();
+            CargarDatos();
         }
 
         private void dtgvClientes_SelectionChanged(object sender, EventArgs e)
@@ -71,9 +78,9 @@ namespace GUI.FormsGestion
         private void frmVistaClientes_ControlRemoved(object sender, ControlEventArgs e)
         {
             CargarDatos();
-            OrganizadorObj.ocuktar(frmPrincipal.fr.pnlMenus, frmPrincipal.fr.pnlMenuInicio);
+            OrganizadorObj.ocultar(frmPrincipal.fr.pnlMenus, frmPrincipal.fr.pnlMenuInicio);
             OrganizadorObj.mostrar(frmPrincipal.fr.pnlMenus, frmPrincipal.fr.pnlMenuDetalles);
-            OrganizadorObj.ocuktar(frmPrincipal.fr.pnlMenus, frmPrincipal.fr.pnlAcciones);
+            OrganizadorObj.ocultar(frmPrincipal.fr.pnlMenus, frmPrincipal.fr.pnlAcciones);
         }
 
         public void CargarDatos() 
@@ -86,9 +93,9 @@ namespace GUI.FormsGestion
         public void Servicios() 
         {
             _frmVistaServicios = new frmVistaServicios();
-            OrganizadorObj.ocuktar(frmPrincipal.fr.pnlMenus, frmPrincipal.fr.pnlMenuInicio);
-            OrganizadorObj.ocuktar(frmPrincipal.fr.pnlMenus, frmPrincipal.fr.pnlMenuDetalles);
-            OrganizadorObj.mostrar(frmPrincipal.fr.pnlMenus, frmPrincipal.fr.pnlAcciones);
+           // OrganizadorObj.ocultar(frmPrincipal.fr.pnlMenus, frmPrincipal.fr.pnlMenuInicio);
+           // OrganizadorObj.ocultar(frmPrincipal.fr.pnlMenus, frmPrincipal.fr.pnlMenuDetalles);
+            OrganizadorObj.ocultar(frmPrincipal.fr.pnlMenus, frmPrincipal.fr.pnlAcciones);
             _frmVistaServicios.CargarDatos(Convert.ToInt32(dtgvClientes.CurrentRow.Cells["idcliente"].Value.ToString()));
             /*this.AddOwnedForm(_frmVistaServicios);
             _frmVistaServicios.TopLevel = false;

@@ -24,7 +24,7 @@ namespace GUI.FormsGestion
         private void frmGestionClientes_Load(object sender, EventArgs e)
         {
             frmgc = this;
-            Clases.OrganizadorObj.Organizar(1, 7, this, pnlApellidos.GetType());
+            Clases.OrganizadorObj.Organizar(1, 8, this.pnlPrincipal, pnlApellidos.GetType());
         }
 
         public void cerrar()
@@ -38,7 +38,7 @@ namespace GUI.FormsGestion
             {
                 ClientesNeg cliente = new ClientesNeg(int.Parse(txbId.Text.ToString()), txbNombres.Text.ToString(), txbApellidos.Text.ToString(),
                                                           txbDirreccion.Text.ToString(), txbDui.Text.ToString(), txbTelefono.Text.ToString(), cmbEstado.SelectedItem.ToString());
-
+                if(txbDui.TextLength == 0){ cliente.setDui(null); }
                 if (txbId.Text != null)
                 {
                     if (cliente.Actualizar())
@@ -65,5 +65,11 @@ namespace GUI.FormsGestion
             }
         }
 
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            procesar();
+            this.Close();
+            frmVistaClientes.frmvc.CargarDatos();
+        }
     }
 }

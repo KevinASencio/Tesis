@@ -104,6 +104,7 @@
             this.prbCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.prbCerrar.TabIndex = 5;
             this.prbCerrar.TabStop = false;
+            this.prbCerrar.Click += new System.EventHandler(this.prbCerrar_Click);
             // 
             // lblError
             // 

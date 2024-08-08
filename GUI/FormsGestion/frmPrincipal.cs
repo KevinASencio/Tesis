@@ -45,8 +45,8 @@ namespace GUI.FormsGestion
             lblUsuario.Text = _useractivo.nombres();
             lblRol.Text = _useractivo.rol();
             OrganizadorObj.Organizar(4, 2, pnlBotones, btnClientes.GetType());
-            OrganizadorObj.ocuktar(pnlMenus, pnlMenuDetalles);
-            OrganizadorObj.ocuktar(pnlMenus, pnlAcciones);
+            OrganizadorObj.ocultar(pnlMenus, pnlMenuDetalles);
+            OrganizadorObj.ocultar(pnlMenus, pnlAcciones);
             OrganizadorObj.mostrar(pnlMenus, pnlMenuInicio);
             OrganizadorObj.Organizar(1, 8, pnlMenuInicio, btnUsuarios.GetType());
         }
@@ -102,8 +102,8 @@ namespace GUI.FormsGestion
             _frmVistaCliente = new frmVistaClientes();
             formCall = "clientes";
             OrganizadorObj.abrirCont(_frmVistaCliente);
-            OrganizadorObj.ocuktar(pnlMenus, pnlMenuInicio);
-            OrganizadorObj.ocuktar(pnlMenus, pnlAcciones);
+            OrganizadorObj.ocultar(pnlMenus, pnlMenuInicio);
+            OrganizadorObj.ocultar(pnlMenus, pnlAcciones);
             OrganizadorObj.mostrar(pnlMenus, pnlMenuDetalles);
         }
 
@@ -162,9 +162,9 @@ namespace GUI.FormsGestion
             {
                 case "clientes":
                     _frmVistaCliente.Editar();
-                    OrganizadorObj.ocuktar(pnlMenus, pnlMenuInicio);
-                    OrganizadorObj.ocuktar(pnlMenus, pnlMenuDetalles);
-                    OrganizadorObj.mostrar(pnlMenus, pnlAcciones);
+                    /*OrganizadorObj.ocultar(pnlMenus, pnlMenuInicio);
+                    OrganizadorObj.ocultar(pnlMenus, pnlMenuDetalles);
+                    OrganizadorObj.mostrar(pnlMenus, pnlAcciones);*/
                     break;
                 default: break;
             }

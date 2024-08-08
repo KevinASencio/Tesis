@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGestionClientes));
             this.pnlNombres = new System.Windows.Forms.Panel();
             this.txbNombres = new System.Windows.Forms.TextBox();
             this.lblNombres = new System.Windows.Forms.Label();
@@ -49,6 +50,11 @@
             this.lblId = new System.Windows.Forms.Label();
             this.txbId = new System.Windows.Forms.TextBox();
             this.pnlId = new System.Windows.Forms.Panel();
+            this.pnlTop = new System.Windows.Forms.Panel();
+            this.prbCerrar = new System.Windows.Forms.PictureBox();
+            this.pnlPrincipal = new System.Windows.Forms.Panel();
+            this.pnlBoton = new System.Windows.Forms.Panel();
+            this.btnAgregar = new System.Windows.Forms.Button();
             this.pnlNombres.SuspendLayout();
             this.pnlApellidos.SuspendLayout();
             this.pnlDirreccion.SuspendLayout();
@@ -56,13 +62,18 @@
             this.pnlTelefono.SuspendLayout();
             this.pnlEstado.SuspendLayout();
             this.pnlId.SuspendLayout();
+            this.pnlTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.prbCerrar)).BeginInit();
+            this.pnlPrincipal.SuspendLayout();
+            this.pnlBoton.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlNombres
             // 
+            this.pnlNombres.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.pnlNombres.Controls.Add(this.txbNombres);
             this.pnlNombres.Controls.Add(this.lblNombres);
-            this.pnlNombres.Location = new System.Drawing.Point(21, 93);
+            this.pnlNombres.Location = new System.Drawing.Point(3, 75);
             this.pnlNombres.Name = "pnlNombres";
             this.pnlNombres.Size = new System.Drawing.Size(394, 43);
             this.pnlNombres.TabIndex = 1;
@@ -87,9 +98,10 @@
             // 
             // pnlApellidos
             // 
+            this.pnlApellidos.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.pnlApellidos.Controls.Add(this.txbApellidos);
             this.pnlApellidos.Controls.Add(this.lblApellidos);
-            this.pnlApellidos.Location = new System.Drawing.Point(21, 156);
+            this.pnlApellidos.Location = new System.Drawing.Point(3, 138);
             this.pnlApellidos.Name = "pnlApellidos";
             this.pnlApellidos.Size = new System.Drawing.Size(394, 43);
             this.pnlApellidos.TabIndex = 2;
@@ -114,9 +126,10 @@
             // 
             // pnlDirreccion
             // 
+            this.pnlDirreccion.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.pnlDirreccion.Controls.Add(this.txbDirreccion);
             this.pnlDirreccion.Controls.Add(this.lblDirreccion);
-            this.pnlDirreccion.Location = new System.Drawing.Point(21, 219);
+            this.pnlDirreccion.Location = new System.Drawing.Point(3, 201);
             this.pnlDirreccion.Name = "pnlDirreccion";
             this.pnlDirreccion.Size = new System.Drawing.Size(394, 43);
             this.pnlDirreccion.TabIndex = 2;
@@ -141,9 +154,10 @@
             // 
             // pnlDui
             // 
+            this.pnlDui.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.pnlDui.Controls.Add(this.txbDui);
             this.pnlDui.Controls.Add(this.lblDui);
-            this.pnlDui.Location = new System.Drawing.Point(21, 278);
+            this.pnlDui.Location = new System.Drawing.Point(3, 260);
             this.pnlDui.Name = "pnlDui";
             this.pnlDui.Size = new System.Drawing.Size(394, 43);
             this.pnlDui.TabIndex = 3;
@@ -168,9 +182,10 @@
             // 
             // pnlTelefono
             // 
+            this.pnlTelefono.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.pnlTelefono.Controls.Add(this.txbTelefono);
             this.pnlTelefono.Controls.Add(this.label6);
-            this.pnlTelefono.Location = new System.Drawing.Point(21, 344);
+            this.pnlTelefono.Location = new System.Drawing.Point(3, 326);
             this.pnlTelefono.Name = "pnlTelefono";
             this.pnlTelefono.Size = new System.Drawing.Size(394, 43);
             this.pnlTelefono.TabIndex = 4;
@@ -195,9 +210,10 @@
             // 
             // pnlEstado
             // 
+            this.pnlEstado.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.pnlEstado.Controls.Add(this.cmbEstado);
             this.pnlEstado.Controls.Add(this.lblEstado);
-            this.pnlEstado.Location = new System.Drawing.Point(21, 26);
+            this.pnlEstado.Location = new System.Drawing.Point(3, 8);
             this.pnlEstado.Name = "pnlEstado";
             this.pnlEstado.Size = new System.Drawing.Size(394, 46);
             this.pnlEstado.TabIndex = 5;
@@ -245,29 +261,85 @@
             // 
             // pnlId
             // 
+            this.pnlId.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.pnlId.Controls.Add(this.txbId);
             this.pnlId.Controls.Add(this.lblId);
-            this.pnlId.Location = new System.Drawing.Point(21, 403);
+            this.pnlId.Location = new System.Drawing.Point(3, 385);
             this.pnlId.Name = "pnlId";
             this.pnlId.Size = new System.Drawing.Size(394, 43);
             this.pnlId.TabIndex = 0;
+            // 
+            // pnlTop
+            // 
+            this.pnlTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pnlTop.Controls.Add(this.prbCerrar);
+            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTop.Location = new System.Drawing.Point(0, 0);
+            this.pnlTop.Name = "pnlTop";
+            this.pnlTop.Size = new System.Drawing.Size(762, 25);
+            this.pnlTop.TabIndex = 15;
+            // 
+            // prbCerrar
+            // 
+            this.prbCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.prbCerrar.Image = ((System.Drawing.Image)(resources.GetObject("prbCerrar.Image")));
+            this.prbCerrar.Location = new System.Drawing.Point(738, 1);
+            this.prbCerrar.Name = "prbCerrar";
+            this.prbCerrar.Size = new System.Drawing.Size(25, 25);
+            this.prbCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.prbCerrar.TabIndex = 0;
+            this.prbCerrar.TabStop = false;
+            // 
+            // pnlPrincipal
+            // 
+            this.pnlPrincipal.Controls.Add(this.pnlId);
+            this.pnlPrincipal.Controls.Add(this.pnlNombres);
+            this.pnlPrincipal.Controls.Add(this.pnlApellidos);
+            this.pnlPrincipal.Controls.Add(this.pnlTelefono);
+            this.pnlPrincipal.Controls.Add(this.pnlDui);
+            this.pnlPrincipal.Controls.Add(this.pnlEstado);
+            this.pnlPrincipal.Controls.Add(this.pnlDirreccion);
+            this.pnlPrincipal.Controls.Add(this.pnlBoton);
+            this.pnlPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlPrincipal.Location = new System.Drawing.Point(0, 25);
+            this.pnlPrincipal.Name = "pnlPrincipal";
+            this.pnlPrincipal.Size = new System.Drawing.Size(762, 509);
+            this.pnlPrincipal.TabIndex = 16;
+            // 
+            // pnlBoton
+            // 
+            this.pnlBoton.Controls.Add(this.btnAgregar);
+            this.pnlBoton.Location = new System.Drawing.Point(42, 434);
+            this.pnlBoton.Name = "pnlBoton";
+            this.pnlBoton.Size = new System.Drawing.Size(266, 55);
+            this.pnlBoton.TabIndex = 6;
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnAgregar.FlatAppearance.BorderSize = 0;
+            this.btnAgregar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnAgregar.Location = new System.Drawing.Point(74, 4);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(121, 46);
+            this.btnAgregar.TabIndex = 1;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = false;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // frmGestionClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(848, 476);
-            this.Controls.Add(this.pnlId);
-            this.Controls.Add(this.pnlNombres);
-            this.Controls.Add(this.pnlApellidos);
-            this.Controls.Add(this.pnlDui);
-            this.Controls.Add(this.pnlTelefono);
-            this.Controls.Add(this.pnlDirreccion);
-            this.Controls.Add(this.pnlEstado);
+            this.ClientSize = new System.Drawing.Size(762, 534);
+            this.Controls.Add(this.pnlPrincipal);
+            this.Controls.Add(this.pnlTop);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmGestionClientes";
             this.Text = "frmGestionClientes";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmGestionClientes_Load);
             this.pnlNombres.ResumeLayout(false);
             this.pnlNombres.PerformLayout();
@@ -283,6 +355,10 @@
             this.pnlEstado.PerformLayout();
             this.pnlId.ResumeLayout(false);
             this.pnlId.PerformLayout();
+            this.pnlTop.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.prbCerrar)).EndInit();
+            this.pnlPrincipal.ResumeLayout(false);
+            this.pnlBoton.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -309,5 +385,10 @@
         internal System.Windows.Forms.TextBox txbTelefono;
         internal System.Windows.Forms.TextBox txbId;
         public System.Windows.Forms.ComboBox cmbEstado;
+        private System.Windows.Forms.Panel pnlTop;
+        private System.Windows.Forms.PictureBox prbCerrar;
+        private System.Windows.Forms.Panel pnlPrincipal;
+        private System.Windows.Forms.Panel pnlBoton;
+        private System.Windows.Forms.Button btnAgregar;
     }
 }

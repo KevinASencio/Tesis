@@ -71,7 +71,7 @@ namespace GUI.Clases
             contenedor.Update();
         }
 
-        public static void ocuktar(System.Windows.Forms.Control contenedor, System.Windows.Forms.Control control)
+        public static void ocultar(System.Windows.Forms.Control contenedor, System.Windows.Forms.Control control)
         {
             contenedor.Controls.Remove(control);
             control.Enabled = false;

@@ -18,17 +18,20 @@ namespace CapaNegocio
             this.cl.Nombres = nombres;
             this.cl.Apellidos = apellidos;
             this.cl.Direecion = direccion;
-            this.cl.Dui= dui;
+            this.cl.Dui = dui;
             this.cl.Telefono = telefono;
             this.cl.Estado = estado;
         }
-        public ClientesNeg(int idcliente, string estado) 
+        public ClientesNeg(int idcliente, string estado)
         {
             this.cl = new Clientes();
             this.cl.IdCliente = idcliente;
             this.cl.Estado = estado;
         }
-
+        public void setDui(string i)
+        {
+            this.cl.Dui = i;
+        }
         public Boolean guardar()
         {
             return this.cl.Guardar();
@@ -39,9 +42,9 @@ namespace CapaNegocio
             return this.cl.Actualizar();
         }
 
-        public Boolean CambiarEstado() 
+        public Boolean CambiarEstado()
         {
-           return this.cl.CambiarEstado();
+            return this.cl.CambiarEstado();
         }
 
 

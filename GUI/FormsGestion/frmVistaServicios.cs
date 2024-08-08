@@ -18,6 +18,7 @@ namespace GUI.FormsGestion
         ServiciosNeg servicio = new ServiciosNeg();
         frmGestionConsumo _frmGestionConsumo;
         ServiciosConsumoNeg aa = new ServiciosConsumoNeg();
+        bool agregando = false;
         public frmVistaServicios()
         {
             InitializeComponent();
@@ -71,8 +72,23 @@ namespace GUI.FormsGestion
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             _frmGestionConsumo = new frmGestionConsumo();
-            OrganizadorObj.abrirCont(this.pnlPrincipal, _frmGestionConsumo);
-            
+            pnlPrincipal.Controls.Clear();
+            _frmGestionConsumo.TopLevel = false;
+            pnlPrincipal.Controls.Add(_frmGestionConsumo);
+           // _frmGestionConsumo.Size= new Size(pnlPrincipal.Width,pnlPrincipal.Height);
+            _frmGestionConsumo.BringToFront();
+            agregando = true;
+            _frmGestionConsumo.Show();
+        }
+
+        private void pnlPrincipal_ControlRemoved(object sender, ControlEventArgs e)
+        {
+            if (agregando)
+            {
+                pnlPrincipal.Controls.Add(panel1);
+                pnlPrincipal.Controls.Add(panel2);
+                agregando = false;
+            }
         }
     }
 }

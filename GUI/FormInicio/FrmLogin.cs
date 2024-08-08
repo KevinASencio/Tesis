@@ -33,5 +33,10 @@ namespace GUI.FormsGestion
             else { lblError.Text= "¡CREDENCIALES ERRONEAS!"; lblError.ForeColor = Color.Red; }
 
         }
+
+        private void prbCerrar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
