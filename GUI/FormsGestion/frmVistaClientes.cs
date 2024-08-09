@@ -95,7 +95,8 @@ namespace GUI.FormsGestion
            // OrganizadorObj.ocultar(frmPrincipal.fr.pnlMenus, frmPrincipal.fr.pnlMenuInicio);
            // OrganizadorObj.ocultar(frmPrincipal.fr.pnlMenus, frmPrincipal.fr.pnlMenuDetalles);
             OrganizadorObj.ocultar(frmPrincipal.fr.pnlMenus, frmPrincipal.fr.pnlAcciones);
-            _frmVistaServicios.CargarDatos(Convert.ToInt32(dtgvClientes.CurrentRow.Cells["idcliente"].Value.ToString()));
+            _frmVistaServicios.servicio.setIdCliente(Convert.ToInt32(dtgvClientes.CurrentRow.Cells["idcliente"].Value.ToString()));
+            //_frmVistaServicios.CargarDatos(Convert.ToInt32(dtgvClientes.CurrentRow.Cells["idcliente"].Value.ToString()));
             /*this.AddOwnedForm(_frmVistaServicios);
             _frmVistaServicios.TopLevel = false;
             this.Controls.Add(_frmVistaServicios);

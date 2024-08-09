@@ -125,6 +125,7 @@
             // 
             // cmbCuota
             // 
+            this.cmbCuota.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cmbCuota.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.cmbCuota.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCuota.FormattingEnabled = true;
@@ -157,6 +158,9 @@
             this.cmbEstado.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.cmbEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEstado.FormattingEnabled = true;
+            this.cmbEstado.Items.AddRange(new object[] {
+            "Activo",
+            "de baja"});
             this.cmbEstado.Location = new System.Drawing.Point(0, 18);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(422, 26);
@@ -184,13 +188,11 @@
             // txbComentario
             // 
             this.txbComentario.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.txbComentario.Enabled = false;
             this.txbComentario.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbComentario.Location = new System.Drawing.Point(0, 20);
             this.txbComentario.Name = "txbComentario";
             this.txbComentario.Size = new System.Drawing.Size(422, 24);
             this.txbComentario.TabIndex = 1;
-            this.txbComentario.Text = "Comentario";
             // 
             // label3
             // 
@@ -240,6 +242,7 @@
             this.btnAgregar.TabIndex = 1;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = false;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // pnlPrincipal
             // 

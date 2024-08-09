@@ -15,7 +15,7 @@ namespace GUI.FormsGestion
     {
         BindingSource _datosConsumo = new BindingSource();
         BindingSource _datosAcometida = new BindingSource();
-        ServiciosNeg servicio = new ServiciosNeg();
+        public ServiciosNeg servicio = new ServiciosNeg();
         frmGestionConsumo _frmGestionConsumo;
         ServiciosConsumoNeg aa = new ServiciosConsumoNeg();
         bool agregando = false;
@@ -25,7 +25,7 @@ namespace GUI.FormsGestion
         }
         private void frmVistaServicios_Load(object sender, EventArgs e)
         {
-            //CargarDatos(0);
+            CargarDatos(this.servicio.getIdCliente());
             OrganizadorObj.Organizar(1, 1, this.pnlTitulo1, lblConsumo.GetType());
             OrganizadorObj.Organizar(1, 1, this.pnlTitulo2, lblAcometida.GetType());
             

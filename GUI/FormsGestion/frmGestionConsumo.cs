@@ -14,11 +14,14 @@ namespace GUI.FormsGestion
 {
     public partial class frmGestionConsumo : Form
     {
-        CuotasNeg cuota = new CuotasNeg();
-        BindingSource cuotasConsumo = new BindingSource();  
+        ServiciosNeg _servicio;
+        ServiciosConsumoNeg _consumo;
+        BindingSource cuotasConsumo = new BindingSource();
         public frmGestionConsumo()
         {
             InitializeComponent();
+            _consumo = new ServiciosConsumoNeg();
+            _servicio = new ServiciosNeg();
             CargarDatos();
             OrganizadorObj.Organizar(1, 7, pnlPrincipal, panel1.GetType());
         }
@@ -27,13 +30,70 @@ namespace GUI.FormsGestion
         {
             this.Close();
         }
-    
-        private void CargarDatos() 
+
+        private void CargarDatos()
         {
-            this.cmbCuota.DataSource= CuotasNeg.consultarCuotasConsumo();
+            this.cmbColonia.DataSource = ColoniasNeg.consultar();
+
+            this.cmbCuota.DataSource = CuotasNeg.consultarCuotasConsumo();
+            cmbColonia.ValueMember = "idcolonia";
+            cmbColonia.DisplayMember = "colonia";
+            cmbColonia.SelectedIndex = -1;
+            //cmbCuota.AutoCompleteSource;
+
             cmbCuota.DisplayMember = "monto";
             cmbCuota.ValueMember = "idcuotaconsumo";
             cmbCuota.SelectedIndex = -1;
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            if (!esVacio())
+            {
+               
+                _consumo.insertar(int.Parse(cmbCuota.SelectedValue.ToString()));
+                _servicio.setIdConsumo(_consumo.getIdServicioConsumo());
+                _servicio.setIdColonia(int.Parse(cmbColonia.SelectedValue.ToString()));
+                _servicio.setEstado(cmbEstado.SelectedText.ToString());
+                _servicio.setComentario(txbComentario.Text.ToString());
+                if (_servicio.insertarConsumo()) 
+                {
+                    MessageBox.Show("Regsitro guardado con Exito", "¡Exito!", MessageBoxButtons.OK);
+                }
+
+            }
+        }
+
+        public Boolean esVacio()
+        {
+            try
+            {
+                foreach (System.Windows.Forms.Control item in this.pnlPrincipal.Controls)
+                {
+                    foreach (System.Windows.Forms.Control aux in item.Controls)
+                    {
+                        try
+                        {
+                            if (aux.Text.Length <= 0 && aux.Name != "txbId")
+                            {
+                                MessageBox.Show("el elemento " + aux.Name.ToString() + "esta vacio!");
+                                return true;
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message.ToString() + " no se completo la validación en el bucle");
+                            return true;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString() + " no se completo la validación desde el inicio");
+                return true;
+            }
+            return false;
         }
     }
 }

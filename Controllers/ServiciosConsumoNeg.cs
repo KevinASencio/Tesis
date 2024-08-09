@@ -13,10 +13,19 @@ namespace Controllers
 
         public ServiciosConsumoNeg() { }
 
-        public int insertar(int idcuota) 
+        public int insertar(int idcuota)
         {
             this.servicio = new ServiciosConsumo(idcuota);
             this.servicio.insertar();
+            return this.servicio.IdServicioConsumo;
+        }
+
+        public void setIdServicioConsumo(int id)
+        {
+            this.servicio.IdServicioConsumo = id;
+        }
+        public int getIdServicioConsumo() 
+        {
             return this.servicio.IdServicioConsumo;
         }
     }
