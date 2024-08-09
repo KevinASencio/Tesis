@@ -29,36 +29,24 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVistaServicios));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlTop = new System.Windows.Forms.Panel();
             this.prbCerrar = new System.Windows.Forms.PictureBox();
             this.pnlPrincipal = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlConsumo = new System.Windows.Forms.Panel();
             this.dtgvServiciosConsumo = new System.Windows.Forms.DataGridView();
-            this.idservicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idcuota = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idconsumo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idcliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idcolonia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fecha_apertura = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cuotas__ant = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colonia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cuota = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.comentario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlBtnConsumo = new System.Windows.Forms.Panel();
             this.btnCambiarEstado = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.pnlTitulo1 = new System.Windows.Forms.Panel();
             this.lblConsumo = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.pnlAcometida = new System.Windows.Forms.Panel();
             this.dtgvServiciosAcometida = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,14 +67,26 @@
             this.button3 = new System.Windows.Forms.Button();
             this.pnlTitulo2 = new System.Windows.Forms.Panel();
             this.lblAcometida = new System.Windows.Forms.Label();
+            this.idservicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idcuota = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idconsumo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idcliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idcolonia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fecha_apertura = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuotas__ant = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colonia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuota = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.comentario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.prbCerrar)).BeginInit();
             this.pnlPrincipal.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.pnlConsumo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvServiciosConsumo)).BeginInit();
             this.pnlBtnConsumo.SuspendLayout();
             this.pnlTitulo1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.pnlAcometida.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvServiciosAcometida)).BeginInit();
             this.panel3.SuspendLayout();
             this.pnlTitulo2.SuspendLayout();
@@ -116,8 +116,8 @@
             // 
             // pnlPrincipal
             // 
-            this.pnlPrincipal.Controls.Add(this.panel1);
-            this.pnlPrincipal.Controls.Add(this.panel2);
+            this.pnlPrincipal.Controls.Add(this.pnlConsumo);
+            this.pnlPrincipal.Controls.Add(this.pnlAcometida);
             this.pnlPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlPrincipal.Location = new System.Drawing.Point(0, 25);
             this.pnlPrincipal.Name = "pnlPrincipal";
@@ -125,15 +125,15 @@
             this.pnlPrincipal.TabIndex = 16;
             this.pnlPrincipal.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.pnlPrincipal_ControlRemoved);
             // 
-            // panel1
+            // pnlConsumo
             // 
-            this.panel1.Controls.Add(this.dtgvServiciosConsumo);
-            this.panel1.Controls.Add(this.pnlBtnConsumo);
-            this.panel1.Controls.Add(this.pnlTitulo1);
-            this.panel1.Location = new System.Drawing.Point(0, 25);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(878, 214);
-            this.panel1.TabIndex = 12;
+            this.pnlConsumo.Controls.Add(this.dtgvServiciosConsumo);
+            this.pnlConsumo.Controls.Add(this.pnlBtnConsumo);
+            this.pnlConsumo.Controls.Add(this.pnlTitulo1);
+            this.pnlConsumo.Location = new System.Drawing.Point(0, 25);
+            this.pnlConsumo.Name = "pnlConsumo";
+            this.pnlConsumo.Size = new System.Drawing.Size(878, 214);
+            this.pnlConsumo.TabIndex = 12;
             // 
             // dtgvServiciosConsumo
             // 
@@ -146,15 +146,15 @@
             this.dtgvServiciosConsumo.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dtgvServiciosConsumo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dtgvServiciosConsumo.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle19.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvServiciosConsumo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvServiciosConsumo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgvServiciosConsumo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvServiciosConsumo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idservicio,
@@ -176,112 +176,25 @@
             this.dtgvServiciosConsumo.MultiSelect = false;
             this.dtgvServiciosConsumo.Name = "dtgvServiciosConsumo";
             this.dtgvServiciosConsumo.ReadOnly = true;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvServiciosConsumo.RowHeadersDefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvServiciosConsumo.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dtgvServiciosConsumo.RowHeadersVisible = false;
-            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle21.Padding = new System.Windows.Forms.Padding(3);
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvServiciosConsumo.RowsDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(3);
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvServiciosConsumo.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dtgvServiciosConsumo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgvServiciosConsumo.ShowCellToolTips = false;
             this.dtgvServiciosConsumo.Size = new System.Drawing.Size(751, 184);
             this.dtgvServiciosConsumo.TabIndex = 14;
-            // 
-            // idservicio
-            // 
-            this.idservicio.DataPropertyName = "idservicio";
-            this.idservicio.HeaderText = "Id Servicio";
-            this.idservicio.Name = "idservicio";
-            this.idservicio.ReadOnly = true;
-            // 
-            // idcuota
-            // 
-            this.idcuota.DataPropertyName = "idcuota";
-            this.idcuota.HeaderText = "Id Cuota";
-            this.idcuota.Name = "idcuota";
-            this.idcuota.ReadOnly = true;
-            this.idcuota.Visible = false;
-            // 
-            // cliente
-            // 
-            this.cliente.DataPropertyName = "cliente";
-            this.cliente.HeaderText = "Cliente";
-            this.cliente.Name = "cliente";
-            this.cliente.ReadOnly = true;
-            // 
-            // idconsumo
-            // 
-            this.idconsumo.HeaderText = "Column1";
-            this.idconsumo.Name = "idconsumo";
-            this.idconsumo.ReadOnly = true;
-            this.idconsumo.Visible = false;
-            // 
-            // idcliente
-            // 
-            this.idcliente.DataPropertyName = "idcliente";
-            this.idcliente.HeaderText = "idcliente";
-            this.idcliente.Name = "idcliente";
-            this.idcliente.ReadOnly = true;
-            this.idcliente.Visible = false;
-            // 
-            // idcolonia
-            // 
-            this.idcolonia.DataPropertyName = "idcolonia";
-            this.idcolonia.HeaderText = "idcolonia";
-            this.idcolonia.Name = "idcolonia";
-            this.idcolonia.ReadOnly = true;
-            this.idcolonia.Visible = false;
-            // 
-            // fecha_apertura
-            // 
-            this.fecha_apertura.DataPropertyName = "fecha_apertura";
-            this.fecha_apertura.HeaderText = "Fecha Apertura";
-            this.fecha_apertura.Name = "fecha_apertura";
-            this.fecha_apertura.ReadOnly = true;
-            // 
-            // cuotas__ant
-            // 
-            this.cuotas__ant.DataPropertyName = "cuotas_anticipadas";
-            this.cuotas__ant.HeaderText = "Cuotas Anticipadas";
-            this.cuotas__ant.Name = "cuotas__ant";
-            this.cuotas__ant.ReadOnly = true;
-            // 
-            // colonia
-            // 
-            this.colonia.DataPropertyName = "colonia";
-            this.colonia.HeaderText = "Colonia";
-            this.colonia.Name = "colonia";
-            this.colonia.ReadOnly = true;
-            // 
-            // cuota
-            // 
-            this.cuota.DataPropertyName = "monto";
-            this.cuota.HeaderText = "Cuota";
-            this.cuota.Name = "cuota";
-            this.cuota.ReadOnly = true;
-            // 
-            // estado
-            // 
-            this.estado.DataPropertyName = "estado";
-            this.estado.HeaderText = "Estado";
-            this.estado.Name = "estado";
-            this.estado.ReadOnly = true;
-            // 
-            // comentario
-            // 
-            this.comentario.DataPropertyName = "comentario";
-            this.comentario.HeaderText = "Comentario";
-            this.comentario.Name = "comentario";
-            this.comentario.ReadOnly = true;
             // 
             // pnlBtnConsumo
             // 
@@ -323,6 +236,7 @@
             this.btnEditar.TabIndex = 1;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = false;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnAgregar
             // 
@@ -359,16 +273,16 @@
             this.lblConsumo.TabIndex = 0;
             this.lblConsumo.Text = "Consumo";
             // 
-            // panel2
+            // pnlAcometida
             // 
-            this.panel2.Controls.Add(this.dtgvServiciosAcometida);
-            this.panel2.Controls.Add(this.panel3);
-            this.panel2.Controls.Add(this.pnlTitulo2);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 233);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(881, 245);
-            this.panel2.TabIndex = 13;
+            this.pnlAcometida.Controls.Add(this.dtgvServiciosAcometida);
+            this.pnlAcometida.Controls.Add(this.panel3);
+            this.pnlAcometida.Controls.Add(this.pnlTitulo2);
+            this.pnlAcometida.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlAcometida.Location = new System.Drawing.Point(0, 233);
+            this.pnlAcometida.Name = "pnlAcometida";
+            this.pnlAcometida.Size = new System.Drawing.Size(881, 245);
+            this.pnlAcometida.TabIndex = 13;
             // 
             // dtgvServiciosAcometida
             // 
@@ -381,15 +295,15 @@
             this.dtgvServiciosAcometida.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dtgvServiciosAcometida.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dtgvServiciosAcometida.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle22.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvServiciosAcometida.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvServiciosAcometida.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dtgvServiciosAcometida.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvServiciosAcometida.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -412,21 +326,21 @@
             this.dtgvServiciosAcometida.MultiSelect = false;
             this.dtgvServiciosAcometida.Name = "dtgvServiciosAcometida";
             this.dtgvServiciosAcometida.ReadOnly = true;
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvServiciosAcometida.RowHeadersDefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvServiciosAcometida.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dtgvServiciosAcometida.RowHeadersVisible = false;
-            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle24.Padding = new System.Windows.Forms.Padding(3);
-            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvServiciosAcometida.RowsDefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(3);
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvServiciosAcometida.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dtgvServiciosAcometida.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgvServiciosAcometida.ShowCellToolTips = false;
             this.dtgvServiciosAcometida.Size = new System.Drawing.Size(754, 211);
@@ -601,6 +515,94 @@
             this.lblAcometida.TabIndex = 0;
             this.lblAcometida.Text = "Acometida";
             // 
+            // idservicio
+            // 
+            this.idservicio.DataPropertyName = "idservicio";
+            this.idservicio.HeaderText = "Id Servicio";
+            this.idservicio.Name = "idservicio";
+            this.idservicio.ReadOnly = true;
+            // 
+            // idcuota
+            // 
+            this.idcuota.DataPropertyName = "idcuotaconsumo";
+            this.idcuota.HeaderText = "Id Cuota";
+            this.idcuota.Name = "idcuota";
+            this.idcuota.ReadOnly = true;
+            this.idcuota.Visible = false;
+            // 
+            // cliente
+            // 
+            this.cliente.DataPropertyName = "cliente";
+            this.cliente.HeaderText = "Cliente";
+            this.cliente.Name = "cliente";
+            this.cliente.ReadOnly = true;
+            // 
+            // idconsumo
+            // 
+            this.idconsumo.DataPropertyName = "idconsumo";
+            this.idconsumo.HeaderText = "idconsumo";
+            this.idconsumo.Name = "idconsumo";
+            this.idconsumo.ReadOnly = true;
+            this.idconsumo.Visible = false;
+            // 
+            // idcliente
+            // 
+            this.idcliente.DataPropertyName = "idcliente";
+            this.idcliente.HeaderText = "idcliente";
+            this.idcliente.Name = "idcliente";
+            this.idcliente.ReadOnly = true;
+            // 
+            // idcolonia
+            // 
+            this.idcolonia.DataPropertyName = "idcolonia";
+            this.idcolonia.HeaderText = "idcolonia";
+            this.idcolonia.Name = "idcolonia";
+            this.idcolonia.ReadOnly = true;
+            this.idcolonia.Visible = false;
+            // 
+            // fecha_apertura
+            // 
+            this.fecha_apertura.DataPropertyName = "fecha_apertura";
+            this.fecha_apertura.HeaderText = "Fecha Apertura";
+            this.fecha_apertura.Name = "fecha_apertura";
+            this.fecha_apertura.ReadOnly = true;
+            // 
+            // cuotas__ant
+            // 
+            this.cuotas__ant.DataPropertyName = "cuotas_anticipadas";
+            this.cuotas__ant.HeaderText = "Cuotas Anticipadas";
+            this.cuotas__ant.Name = "cuotas__ant";
+            this.cuotas__ant.ReadOnly = true;
+            // 
+            // colonia
+            // 
+            this.colonia.DataPropertyName = "colonia";
+            this.colonia.HeaderText = "Colonia";
+            this.colonia.Name = "colonia";
+            this.colonia.ReadOnly = true;
+            // 
+            // cuota
+            // 
+            this.cuota.DataPropertyName = "monto";
+            this.cuota.HeaderText = "Cuota";
+            this.cuota.Name = "cuota";
+            this.cuota.ReadOnly = true;
+            // 
+            // estado
+            // 
+            this.estado.DataPropertyName = "estado";
+            this.estado.HeaderText = "Estado";
+            this.estado.Name = "estado";
+            this.estado.ReadOnly = true;
+            // 
+            // comentario
+            // 
+            this.comentario.DataPropertyName = "comentario";
+            this.comentario.HeaderText = "Comentario";
+            this.comentario.Name = "comentario";
+            this.comentario.ReadOnly = true;
+            this.comentario.Visible = false;
+            // 
             // frmVistaServicios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -616,12 +618,12 @@
             this.pnlTop.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.prbCerrar)).EndInit();
             this.pnlPrincipal.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
+            this.pnlConsumo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvServiciosConsumo)).EndInit();
             this.pnlBtnConsumo.ResumeLayout(false);
             this.pnlTitulo1.ResumeLayout(false);
             this.pnlTitulo1.PerformLayout();
-            this.panel2.ResumeLayout(false);
+            this.pnlAcometida.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvServiciosAcometida)).EndInit();
             this.panel3.ResumeLayout(false);
             this.pnlTitulo2.ResumeLayout(false);
@@ -634,27 +636,15 @@
         private System.Windows.Forms.Panel pnlTop;
         private System.Windows.Forms.PictureBox prbCerrar;
         private System.Windows.Forms.Panel pnlPrincipal;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlConsumo;
         private System.Windows.Forms.DataGridView dtgvServiciosConsumo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idservicio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idcuota;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idconsumo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idcliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idcolonia;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fecha_apertura;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cuotas__ant;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colonia;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cuota;
-        private System.Windows.Forms.DataGridViewTextBoxColumn estado;
-        private System.Windows.Forms.DataGridViewTextBoxColumn comentario;
         private System.Windows.Forms.Panel pnlBtnConsumo;
         private System.Windows.Forms.Button btnCambiarEstado;
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Panel pnlTitulo1;
         private System.Windows.Forms.Label lblConsumo;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel pnlAcometida;
         private System.Windows.Forms.DataGridView dtgvServiciosAcometida;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -675,5 +665,17 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Panel pnlTitulo2;
         private System.Windows.Forms.Label lblAcometida;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idservicio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idcuota;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idconsumo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idcliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idcolonia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fecha_apertura;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cuotas__ant;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colonia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cuota;
+        private System.Windows.Forms.DataGridViewTextBoxColumn estado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn comentario;
     }
 }

@@ -15,7 +15,7 @@ namespace GUI.FormsGestion
     {
         BindingSource _datosConsumo = new BindingSource();
         BindingSource _datosAcometida = new BindingSource();
-        ServiciosNeg servicio = new ServiciosNeg();
+        public ServiciosNeg servicio = new ServiciosNeg();
         frmGestionConsumo _frmGestionConsumo;
         ServiciosConsumoNeg aa = new ServiciosConsumoNeg();
         bool agregando = false;
@@ -25,44 +25,31 @@ namespace GUI.FormsGestion
         }
         private void frmVistaServicios_Load(object sender, EventArgs e)
         {
-            //CargarDatos(0);
+            CargarDatos(this.servicio.getIdCliente());
             OrganizadorObj.Organizar(1, 1, this.pnlTitulo1, lblConsumo.GetType());
             OrganizadorObj.Organizar(1, 1, this.pnlTitulo2, lblAcometida.GetType());
-            
-        }
-        public void CargarDatos(int id) 
-        {
-            if (id == 0)
-            {
-                _datosConsumo.DataSource = CapaNegocio.SistemCache.ConsultarServiciosCon();
-                this.dtgvServiciosConsumo.AutoGenerateColumns = false;
-                this.dtgvServiciosConsumo.DataSource = _datosConsumo;
-                this.dtgvServiciosConsumo.Update();
-                _datosAcometida.DataSource= CapaNegocio.SistemCache.ConsultarServiciosAco();
-                this.dtgvServiciosAcometida.AutoGenerateColumns=false;
-                this.dtgvServiciosAcometida.DataSource = _datosAcometida;
-                this.dtgvServiciosAcometida.Update();
 
-            }
-            else
-            {
-                _datosConsumo.DataSource = CapaNegocio.SistemCache.ConsultarServiciosCon(id);
-                this.dtgvServiciosConsumo.AutoGenerateColumns = false;
-                this.dtgvServiciosConsumo.DataSource = _datosConsumo;
-                
-                this.dtgvServiciosConsumo.Update();
-                panel1.Dock = DockStyle.Bottom;
-                panel1.Size = new Size(this.Width, (this.Size.Height/2)-25);
-                panel1.Update();
-                panel2.Dock = DockStyle.Bottom;
-                panel2.Size = new Size(this.Width, this.Size.Height/2);
-                panel2.Update();
-                _datosAcometida.DataSource = CapaNegocio.SistemCache.ConsultarServiciosAco(id);
-                this.dtgvServiciosAcometida.AutoGenerateColumns = false;
-                this.dtgvServiciosAcometida.DataSource = _datosAcometida;
-                this.dtgvServiciosAcometida.Update();
-            }
-            
+        }
+        public void CargarDatos(int id)
+        {
+
+            _datosConsumo.DataSource = CapaNegocio.SistemCache.ConsultarServiciosCon(id);
+            this.dtgvServiciosConsumo.AutoGenerateColumns = false;
+            this.dtgvServiciosConsumo.DataSource = _datosConsumo;
+
+            this.dtgvServiciosConsumo.Update();
+            pnlConsumo.Dock = DockStyle.Bottom;
+            pnlConsumo.Size = new Size(this.Width, (this.Size.Height / 2) - 25);
+            pnlConsumo.Update();
+            pnlAcometida.Dock = DockStyle.Bottom;
+            pnlAcometida.Size = new Size(this.Width, this.Size.Height / 2);
+            pnlAcometida.Update();
+            _datosAcometida.DataSource = CapaNegocio.SistemCache.ConsultarServiciosAco(id);
+            this.dtgvServiciosAcometida.AutoGenerateColumns = false;
+            this.dtgvServiciosAcometida.DataSource = _datosAcometida;
+            this.dtgvServiciosAcometida.Update();
+
+
         }
         private void prbCerrar_Click(object sender, EventArgs e)
         {
@@ -72,12 +59,14 @@ namespace GUI.FormsGestion
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             _frmGestionConsumo = new frmGestionConsumo();
+            this.Controls.RemoveByKey("pnlTop");
             pnlPrincipal.Controls.Clear();
+            pnlPrincipal.BorderStyle = BorderStyle.FixedSingle;
             _frmGestionConsumo.TopLevel = false;
             pnlPrincipal.Controls.Add(_frmGestionConsumo);
-           // _frmGestionConsumo.Size= new Size(pnlPrincipal.Width,pnlPrincipal.Height);
             _frmGestionConsumo.BringToFront();
             agregando = true;
+            _frmGestionConsumo._servicio.setIdCliente(this.servicio.getIdCliente());
             _frmGestionConsumo.Show();
         }
 
@@ -85,10 +74,32 @@ namespace GUI.FormsGestion
         {
             if (agregando)
             {
-                pnlPrincipal.Controls.Add(panel1);
-                pnlPrincipal.Controls.Add(panel2);
+                pnlPrincipal.BorderStyle = BorderStyle.None;
+                this.Controls.Add(pnlTop);
+                pnlPrincipal.Controls.Add(pnlConsumo);
+                pnlPrincipal.Controls.Add(pnlAcometida);
                 agregando = false;
             }
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            _frmGestionConsumo = new frmGestionConsumo();
+            this.Controls.RemoveByKey("pnlTop");
+            pnlPrincipal.Controls.Clear();
+            pnlPrincipal.BorderStyle = BorderStyle.FixedSingle;
+            _frmGestionConsumo.TopLevel = false;
+            pnlPrincipal.Controls.Add(_frmGestionConsumo);
+            _frmGestionConsumo.BringToFront();
+            agregando = true;
+            _frmGestionConsumo._servicio.setIdCliente(this.servicio.getIdCliente());
+            _frmGestionConsumo.txbComentario.Text = dtgvServiciosConsumo.CurrentRow.Cells["comentario"].Value.ToString();
+            _frmGestionConsumo.txbId.Text = dtgvServiciosConsumo.CurrentRow.Cells["idcliente"].Value.ToString();
+            _frmGestionConsumo.cmbColonia.SelectedItem = dtgvServiciosConsumo.CurrentRow.Cells["idcolonia"].Value.ToString();
+            _frmGestionConsumo.cmbCuota.SelectedItem = dtgvServiciosConsumo.CurrentRow.Cells["idcuota"].Value.ToString();
+            _frmGestionConsumo.cmbEstado.Text = dtgvServiciosConsumo.CurrentRow.Cells["estado"].Value.ToString();
+            _frmGestionConsumo._consumo = new ServiciosConsumoNeg(int.Parse(dtgvServiciosConsumo.CurrentRow.Cells["idconsumo"].Value.ToString()), int.Parse(dtgvServiciosConsumo.CurrentRow.Cells["idcuota"].Value.ToString()));
+            _frmGestionConsumo.Show();
         }
     }
 }

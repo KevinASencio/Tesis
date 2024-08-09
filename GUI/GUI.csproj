@@ -73,6 +73,7 @@
   <ItemGroup>
     <Compile Include="Clases\AppManager.cs" />
     <Compile Include="Clases\OrganizadorObj.cs" />
+    <Compile Include="Clases\Validacion.cs" />
     <Compile Include="FormInicio\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>

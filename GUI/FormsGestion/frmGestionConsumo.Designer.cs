@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txbId = new System.Windows.Forms.TextBox();
             this.lblId = new System.Windows.Forms.Label();
@@ -47,6 +48,7 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.pnlPrincipal = new System.Windows.Forms.Panel();
+            this.ErrorNotificador = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -54,6 +56,7 @@
             this.panel5.SuspendLayout();
             this.pnlBoton.SuspendLayout();
             this.pnlPrincipal.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorNotificador)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -62,17 +65,18 @@
             this.panel1.Controls.Add(this.lblId);
             this.panel1.Location = new System.Drawing.Point(14, 90);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(422, 44);
+            this.panel1.Size = new System.Drawing.Size(443, 44);
             this.panel1.TabIndex = 6;
             // 
             // txbId
             // 
-            this.txbId.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.txbId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txbId.Enabled = false;
             this.txbId.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbId.Location = new System.Drawing.Point(0, 20);
             this.txbId.Name = "txbId";
-            this.txbId.Size = new System.Drawing.Size(422, 24);
+            this.txbId.Size = new System.Drawing.Size(419, 24);
             this.txbId.TabIndex = 1;
             // 
             // lblId
@@ -91,17 +95,19 @@
             this.panel2.Controls.Add(this.lblColonia);
             this.panel2.Location = new System.Drawing.Point(14, 156);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(422, 44);
+            this.panel2.Size = new System.Drawing.Size(443, 44);
             this.panel2.TabIndex = 7;
             // 
             // cmbColonia
             // 
-            this.cmbColonia.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.cmbColonia.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbColonia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbColonia.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbColonia.FormattingEnabled = true;
             this.cmbColonia.Location = new System.Drawing.Point(0, 18);
             this.cmbColonia.Name = "cmbColonia";
-            this.cmbColonia.Size = new System.Drawing.Size(422, 26);
+            this.cmbColonia.Size = new System.Drawing.Size(419, 26);
             this.cmbColonia.TabIndex = 1;
             // 
             // lblColonia
@@ -120,12 +126,12 @@
             this.panel3.Controls.Add(this.label1);
             this.panel3.Location = new System.Drawing.Point(11, 225);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(422, 44);
+            this.panel3.Size = new System.Drawing.Size(443, 44);
             this.panel3.TabIndex = 8;
             // 
             // cmbCuota
             // 
-            this.cmbCuota.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.cmbCuota.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCuota.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCuota.FormattingEnabled = true;
             this.cmbCuota.Location = new System.Drawing.Point(0, 18);
@@ -149,14 +155,21 @@
             this.panel4.Controls.Add(this.label2);
             this.panel4.Location = new System.Drawing.Point(11, 289);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(422, 44);
+            this.panel4.Size = new System.Drawing.Size(443, 44);
             this.panel4.TabIndex = 8;
             // 
             // cmbEstado
             // 
-            this.cmbEstado.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.cmbEstado.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbEstado.BackColor = System.Drawing.SystemColors.Control;
+            this.cmbEstado.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEstado.FormattingEnabled = true;
+            this.cmbEstado.Items.AddRange(new object[] {
+            "Activo",
+            "de baja"});
             this.cmbEstado.Location = new System.Drawing.Point(0, 18);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(422, 26);
@@ -178,19 +191,18 @@
             this.panel5.Controls.Add(this.label3);
             this.panel5.Location = new System.Drawing.Point(11, 356);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(422, 44);
+            this.panel5.Size = new System.Drawing.Size(443, 44);
             this.panel5.TabIndex = 9;
             // 
             // txbComentario
             // 
-            this.txbComentario.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.txbComentario.Enabled = false;
+            this.txbComentario.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txbComentario.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbComentario.Location = new System.Drawing.Point(0, 20);
             this.txbComentario.Name = "txbComentario";
             this.txbComentario.Size = new System.Drawing.Size(422, 24);
             this.txbComentario.TabIndex = 1;
-            this.txbComentario.Text = "Comentario";
             // 
             // label3
             // 
@@ -225,6 +237,7 @@
             this.btnCancelar.TabIndex = 2;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnAgregar
             // 
@@ -240,6 +253,7 @@
             this.btnAgregar.TabIndex = 1;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = false;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // pnlPrincipal
             // 
@@ -254,6 +268,10 @@
             this.pnlPrincipal.Name = "pnlPrincipal";
             this.pnlPrincipal.Size = new System.Drawing.Size(872, 569);
             this.pnlPrincipal.TabIndex = 11;
+            // 
+            // ErrorNotificador
+            // 
+            this.ErrorNotificador.ContainerControl = this;
             // 
             // frmGestionConsumo
             // 
@@ -277,6 +295,7 @@
             this.panel5.PerformLayout();
             this.pnlBoton.ResumeLayout(false);
             this.pnlPrincipal.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorNotificador)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -301,5 +320,6 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Panel pnlPrincipal;
+        public System.Windows.Forms.ErrorProvider ErrorNotificador;
     }
 }

@@ -16,6 +16,11 @@ namespace CapaDatos.Entidades
             this.IdCuotaConsumo = IdCuota;
         }
 
+        public ServiciosConsumo(int idservicio, int IdCuota)
+        {
+            this.IdServicioConsumo = idservicio;
+            this.IdCuotaConsumo = IdCuota;
+        }
         public int IdServicioConsumo { get => _IdServicioConsumo; set => _IdServicioConsumo = value; }
         public int IdCuotaConsumo { get => _IdCuotaConsumo; set => _IdCuotaConsumo = value; }
 
@@ -29,7 +34,6 @@ namespace CapaDatos.Entidades
             try
             {
                 resultado = operacion.Insertar(sentencia.ToString());
-                
                 this.IdServicioConsumo= int.Parse(operacion.Consultar("select LAST_INSERT_ID() as \'id\' from serviciosconsumo limit 1").Rows[0][0].ToString());
                 return resultado;
             }
@@ -38,6 +42,16 @@ namespace CapaDatos.Entidades
                 Console.WriteLine(ex.ToString());
                 return false;
             }
+        }
+
+        public Boolean actualizarConsumo() 
+        {
+            DBOperacion operacion= new DBOperacion();
+            StringBuilder sentencia = new StringBuilder();
+            sentencia.Append("update serviciosconsumo set ");
+            sentencia.Append("idcuotaconsumo = " + this.IdCuotaConsumo + " " );
+            sentencia.Append("where idservicioconsumo = " + this.IdServicioConsumo + ";");
+            try { return operacion.Actualizar(sentencia.ToString()); } catch (Exception ex) { return false; }
         }
     }
 }

@@ -30,10 +30,10 @@ namespace CapaDatos.Entidades
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
-            sentencia.Append("select ser.idservicio, concat(cl.nombres,\" \", cl.apellidos)as cliente, ser.idconsumo, cuo.idcuota_consumo, cuo.monto, col.Colonia, ");
+            sentencia.Append("select ser.idservicio, concat(cl.nombres,\" \", cl.apellidos)as cliente,ser.idcliente, ser.idconsumo, cuo.idcuotaconsumo, cuo.monto, col.Colonia, ");
             sentencia.Append(" col.idcolonia, ser.fecha_apertura, ser.estado, ser.comentario, ser.cuotas_anticipadas from servicios ser, clientes cl, colonias col,");
-            sentencia.Append("cuotas_consumo cuo, serviciosconsumo sercon  where ser.idcliente=cl.idcliente and ");
-            sentencia.Append("col.idcolonia=ser.idcolonia and ser.idconsumo = sercon.idserviciosconsumo and sercon.idcuotaconsumo=cuo.idcuota_consumo;");
+            sentencia.Append("cuotasconsumo cuo, serviciosconsumo sercon  where ser.idcliente=cl.idcliente and ");
+            sentencia.Append("col.idcolonia=ser.idcolonia and ser.idconsumo = sercon.idserviciosconsumo and sercon.idcuotaconsumo=cuo.idcuotaconsumo;");
             try
             {
                 return operacion.Consultar(sentencia.ToString());
@@ -49,10 +49,10 @@ namespace CapaDatos.Entidades
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
-            sentencia.Append("select ser.idservicio, concat(cl.nombres,\" \", cl.apellidos)as cliente, ser.idconsumo, cuo.idcuota_consumo, cuo.monto, col.Colonia, ");
+            sentencia.Append("select ser.idservicio, concat(cl.nombres,\" \", cl.apellidos)as cliente,ser.idcliente, ser.idconsumo, cuo.idcuotaconsumo, cuo.monto, col.Colonia, ");
             sentencia.Append(" col.idcolonia, ser.fecha_apertura, ser.estado, ser.comentario, ser.cuotas_anticipadas from servicios ser, clientes cl, colonias col,");
-            sentencia.Append("cuotas_consumo cuo, serviciosconsumo sercon  where ser.idcliente=" + idcliente + " and ser.idcliente=cl.idcliente and ");
-            sentencia.Append("col.idcolonia=ser.idcolonia and ser.idconsumo = sercon.idserviciosconsumo and sercon.idcuotaconsumo=cuo.idcuota_consumo;");
+            sentencia.Append("cuotasconsumo cuo, serviciosconsumo sercon  where ser.idcliente=" + idcliente + " and ser.idcliente=cl.idcliente and ");
+            sentencia.Append("col.idcolonia=ser.idcolonia and ser.idconsumo = sercon.idserviciosconsumo and sercon.idcuotaconsumo=cuo.idcuotaconsumo;");
             try
             {
                 return operacion.Consultar(sentencia.ToString());
@@ -67,10 +67,10 @@ namespace CapaDatos.Entidades
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
-            sentencia.Append("select ser.idservicio, concat(cl.nombres, \" \", cl.apellidos) as cliente, ser.idconsumo, cuo.idcuota_acometida, cuo.monto, col.Colonia, col.idcolonia, ser.fecha_apertura, ser.estado, ser.Comentario, ");
+            sentencia.Append("select ser.idservicio, concat(cl.nombres, \" \", cl.apellidos) as cliente, ser.idconsumo, cuo.idcuotaacometida, cuo.monto, col.Colonia, col.idcolonia, ser.fecha_apertura, ser.estado, ser.Comentario, ");
             sentencia.Append("seraco.saldo, seraco.monto as 'total', (seraco.numerocuotas - seraco.cuotas_pagadas) as cuotas_restantes ");
-            sentencia.Append("from servicios ser, clientes cl, colonias col, cuotas_acometida cuo, serviciosacometida seraco ");
-            sentencia.Append("where ser.idcliente = cl.idcliente and col.idcolonia = ser.idcolonia and ser.idacometida = seraco.idserviciosacometida and seraco.idcuotaacometida = cuo.idcuota_acometida;");
+            sentencia.Append("from servicios ser, clientes cl, colonias col, cuotasacometida cuo, serviciosacometida seraco ");
+            sentencia.Append("where ser.idcliente = cl.idcliente and col.idcolonia = ser.idcolonia and ser.idacometida = seraco.idserviciosacometida and seraco.idcuotaacometida = cuo.idcuotaacometida;");
             try
             {
                 return operacion.Consultar(sentencia.ToString());
@@ -85,10 +85,10 @@ namespace CapaDatos.Entidades
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
-            sentencia.Append("select ser.idservicio, concat(cl.nombres, \" \", cl.apellidos) as cliente, ser.idconsumo, cuo.idcuota_acometida, cuo.monto, col.Colonia, col.idcolonia, ser.fecha_apertura, ser.estado, ser.Comentario, ");
+            sentencia.Append("select ser.idservicio, concat(cl.nombres, \" \", cl.apellidos) as cliente, ser.idconsumo, cuo.idcuotaacometida, cuo.monto, col.Colonia, col.idcolonia, ser.fecha_apertura, ser.estado, ser.Comentario, ");
             sentencia.Append("seraco.saldo, seraco.monto as 'total', (seraco.numerocuotas - seraco.cuotas_pagadas) as cuotas_restantes ");
-            sentencia.Append("from servicios ser, clientes cl, colonias col, cuotas_acometida cuo, serviciosacometida seraco ");
-            sentencia.Append("where ser.idcliente = " + idcliente + " and ser.idcliente = cl.idcliente and col.idcolonia = ser.idcolonia and ser.idacometida = seraco.idserviciosacometida and seraco.idcuotaacometida = cuo.idcuota_acometida;");
+            sentencia.Append("from servicios ser, clientes cl, colonias col, cuotasacometida cuo, serviciosacometida seraco ");
+            sentencia.Append("where ser.idcliente = " + idcliente + " and ser.idcliente = cl.idcliente and col.idcolonia = ser.idcolonia and ser.idacometida = seraco.idserviciosacometida and seraco.idcuotaacometida = cuo.idcuotaacometida;");
             try
             {
                 return operacion.Consultar(sentencia.ToString());
@@ -109,7 +109,7 @@ namespace CapaDatos.Entidades
             sentencia.Append(" '" + this.FechaApertura.ToString("yyyy,MM,dd") + "', ");
             sentencia.Append(" '" + this.Estado + "', ");
             sentencia.Append(" '" + this.Comentario + "', ");
-            sentencia.Append(" (select last_insert_id() from serviciosconsumo limit 1) );");
+            sentencia.Append(" " + this.IdConsumo + " );");
             try
             {
                 return operacion.Insertar(sentencia.ToString());
@@ -119,6 +119,19 @@ namespace CapaDatos.Entidades
                 Console.WriteLine(e.Message.ToString());
                 return false;
             }
+        }
+
+        public Boolean ActualizarConsumo() 
+        {
+            DBOperacion operacion = new DBOperacion();
+            StringBuilder sentencia = new StringBuilder();
+            sentencia.Append("update servicios set ");
+            sentencia.Append("idcolonia = " + this.IdColonia + ", ");
+            sentencia.Append("estado = '" + this.Estado + "', ");
+            sentencia.Append("comentario = " + this.Comentario + ", ");
+            sentencia.Append("idcolonia = " + this.IdColonia + ", ");
+            sentencia.Append("where idservicio= " + this.IdServicio + ";");
+            try{ return operacion.Actualizar(sentencia.ToString()); } catch (Exception e) { return false;}
         }
     }
 }

@@ -93,6 +93,7 @@
     <Compile Include="Entidades\Clientes.cs" />
     <Compile Include="ConexionDB\DBConexion.cs" />
     <Compile Include="ConexionDB\DBOperaciones.cs" />
+    <Compile Include="Entidades\Colonias.cs" />
     <Compile Include="Entidades\Cuotas.cs" />
     <Compile Include="Entidades\Servicios.cs" />
     <Compile Include="Entidades\ServiciosConsumo.cs" />
