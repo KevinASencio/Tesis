@@ -38,6 +38,14 @@ namespace Controllers
         {
             return this._Servicio.InsertConsumo();
         }
-        public Boolean actualizarConsumo() { return this._Servicio.ActualizarConsumo(); }
+        public Boolean insertarAcometida() 
+        {
+            return this._Servicio.InsertAcometida();
+        }
+        public Boolean actualizarServicio() { return this._Servicio.ActualizarServicio(); }
+        public Boolean cambiarEstado() 
+        {
+            return _Servicio.CambiarEstado();
+        }
     }
 }

@@ -25,7 +25,6 @@ namespace CapaDatos.Entidades
         public int IdConsumo { get => _IdConsumo; set => _IdConsumo = value; }
         public int IdAcometida { get => _IdAcometida; set => _IdAcometida = value; }
         public string Estado { get => _Estado; set => _Estado = value; }
-
         public static DataTable ConsultarCon()
         {
             DBOperacion operacion = new DBOperacion();
@@ -86,7 +85,7 @@ namespace CapaDatos.Entidades
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
             sentencia.Append("select ser.idservicio, concat(cl.nombres, \" \", cl.apellidos) as cliente, ser.idconsumo, cuo.idcuotaacometida, cuo.monto, col.Colonia, col.idcolonia, ser.fecha_apertura, ser.estado, ser.Comentario, ");
-            sentencia.Append("seraco.saldo, seraco.monto as 'total', (seraco.numerocuotas - seraco.cuotas_pagadas) as cuotas_restantes ");
+            sentencia.Append("seraco.saldo, seraco.monto as 'total', (seraco.numerocuotas - seraco.cuotas_pagadas) as cuotas_restantes, seraco.idserviciosacometida ");
             sentencia.Append("from servicios ser, clientes cl, colonias col, cuotasacometida cuo, serviciosacometida seraco ");
             sentencia.Append("where ser.idcliente = " + idcliente + " and ser.idcliente = cl.idcliente and col.idcolonia = ser.idcolonia and ser.idacometida = seraco.idserviciosacometida and seraco.idcuotaacometida = cuo.idcuotaacometida;");
             try
@@ -121,17 +120,49 @@ namespace CapaDatos.Entidades
             }
         }
 
-        public Boolean ActualizarConsumo() 
+        public Boolean ActualizarServicio() 
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
             sentencia.Append("update servicios set ");
             sentencia.Append("idcolonia = " + this.IdColonia + ", ");
             sentencia.Append("estado = '" + this.Estado + "', ");
-            sentencia.Append("comentario = " + this.Comentario + ", ");
-            sentencia.Append("idcolonia = " + this.IdColonia + ", ");
+            sentencia.Append("comentario = '" + this.Comentario + "', ");
+            sentencia.Append("idcolonia = " + this.IdColonia + " ");
             sentencia.Append("where idservicio= " + this.IdServicio + ";");
             try{ return operacion.Actualizar(sentencia.ToString()); } catch (Exception e) { return false;}
         }
+
+        public Boolean CambiarEstado()
+        {
+            DBOperacion operacion = new DBOperacion();
+            StringBuilder sentencia = new StringBuilder();
+            sentencia.Append("update servicios set ");
+            sentencia.Append("estado = '" + this.Estado + "' ");
+            sentencia.Append("where idservicio= " + this.IdServicio + ";");
+            try { return operacion.Actualizar(sentencia.ToString()); } catch (Exception e) { return false; }
+        }
+        public Boolean InsertAcometida()
+        {
+            DBOperacion operacion = new DBOperacion();
+            StringBuilder sentencia = new StringBuilder();
+            sentencia.Append("insert into servicios(idcliente,idcolonia,fecha_apertura,estado,comentario, idacometida)");
+            sentencia.Append("Values (" + this.IdCliente + ",");
+            sentencia.Append(" " + this.IdColonia + ", ");
+            sentencia.Append(" '" + this.FechaApertura.ToString("yyyy,MM,dd") + "', ");
+            sentencia.Append(" '" + this.Estado + "', ");
+            sentencia.Append(" '" + this.Comentario + "', ");
+            sentencia.Append(" " + this.IdAcometida + " );");
+            try
+            {
+                return operacion.Insertar(sentencia.ToString());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message.ToString());
+                return false;
+            }
+        }
     }
+
 }

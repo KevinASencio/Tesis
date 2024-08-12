@@ -96,6 +96,7 @@
     <Compile Include="Entidades\Colonias.cs" />
     <Compile Include="Entidades\Cuotas.cs" />
     <Compile Include="Entidades\Servicios.cs" />
+    <Compile Include="Entidades\ServiciosAcometida.cs" />
     <Compile Include="Entidades\ServiciosConsumo.cs" />
     <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

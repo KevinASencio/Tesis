@@ -49,7 +49,8 @@ namespace GUI.FormsGestion
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if (!Validacion.esVacio(this.pnlPrincipal, this.ErrorNotificador))
+            
+            if (Validacion.seguroModificar() && !Validacion.esVacio(this.pnlPrincipal, this.ErrorNotificador))
             {
                 _servicio.setIdColonia(int.Parse(cmbColonia.SelectedValue.ToString()));
                 _servicio.setEstado(cmbEstado.Text.ToString());
@@ -73,11 +74,12 @@ namespace GUI.FormsGestion
                 }
                 else
                 {
+                    _servicio.setIdServicio(int.Parse(txbId.Text.ToString()));
                     _consumo.setIdCuotaConsumo(int.Parse(cmbCuota.SelectedValue.ToString()));
                     if (!_consumo.actualizar()) { MessageBox.Show("¡Error al actualizar la cuota!", "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Error); }
                     else
                     {
-                        if (_servicio.actualizarConsumo()) { MessageBox.Show("Registro actualizado con Exito", "¡Exito!", MessageBoxButtons.OK, MessageBoxIcon.Information); this.Close(); }
+                        if (_servicio.actualizarServicio()) { MessageBox.Show("Registro actualizado con Exito", "¡Exito!", MessageBoxButtons.OK, MessageBoxIcon.Information); this.Close(); }
                     }
                 }
             }

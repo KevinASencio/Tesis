@@ -34,7 +34,7 @@ namespace CapaDatos.Entidades
         public static DataTable consultarCuotasAcometida()
         {
             StringBuilder sentencia = new StringBuilder();
-            sentencia.Append("select idcuotaacometida, monto from cuotasacoemtida;");
+            sentencia.Append("select idcuotaacometida, monto from cuotasacometida;");
             try
             {
                 DBOperacion operacion = new DBOperacion();

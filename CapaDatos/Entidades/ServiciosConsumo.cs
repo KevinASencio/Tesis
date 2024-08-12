@@ -50,7 +50,7 @@ namespace CapaDatos.Entidades
             StringBuilder sentencia = new StringBuilder();
             sentencia.Append("update serviciosconsumo set ");
             sentencia.Append("idcuotaconsumo = " + this.IdCuotaConsumo + " " );
-            sentencia.Append("where idservicioconsumo = " + this.IdServicioConsumo + ";");
+            sentencia.Append("where idserviciosconsumo = " + this.IdServicioConsumo + ";");
             try { return operacion.Actualizar(sentencia.ToString()); } catch (Exception ex) { return false; }
         }
     }

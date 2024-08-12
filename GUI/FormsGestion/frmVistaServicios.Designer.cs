@@ -40,14 +40,32 @@
             this.pnlPrincipal = new System.Windows.Forms.Panel();
             this.pnlConsumo = new System.Windows.Forms.Panel();
             this.dtgvServiciosConsumo = new System.Windows.Forms.DataGridView();
+            this.idservicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idcuota = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idconsumo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idcliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idcolonia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fecha_apertura = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuotas__ant = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colonia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuota = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.comentario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlBtnConsumo = new System.Windows.Forms.Panel();
-            this.btnCambiarEstado = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
-            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnCambiarEstadoCon = new System.Windows.Forms.Button();
+            this.btnEditarCon = new System.Windows.Forms.Button();
+            this.btnAgregarCon = new System.Windows.Forms.Button();
             this.pnlTitulo1 = new System.Windows.Forms.Panel();
             this.lblConsumo = new System.Windows.Forms.Label();
             this.pnlAcometida = new System.Windows.Forms.Panel();
             this.dtgvServiciosAcometida = new System.Windows.Forms.DataGridView();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btnCambiarEstadoAco = new System.Windows.Forms.Button();
+            this.btnEditarAco = new System.Windows.Forms.Button();
+            this.btnAgregarAco = new System.Windows.Forms.Button();
+            this.pnlTitulo2 = new System.Windows.Forms.Panel();
+            this.lblAcometida = new System.Windows.Forms.Label();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,24 +79,7 @@
             this.monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.saldo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cuotas_restantes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.pnlTitulo2 = new System.Windows.Forms.Panel();
-            this.lblAcometida = new System.Windows.Forms.Label();
-            this.idservicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idcuota = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idconsumo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idcliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idcolonia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fecha_apertura = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cuotas__ant = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colonia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cuota = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.comentario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idacometida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.prbCerrar)).BeginInit();
             this.pnlPrincipal.SuspendLayout();
@@ -196,63 +197,152 @@
             this.dtgvServiciosConsumo.Size = new System.Drawing.Size(751, 184);
             this.dtgvServiciosConsumo.TabIndex = 14;
             // 
+            // idservicio
+            // 
+            this.idservicio.DataPropertyName = "idservicio";
+            this.idservicio.HeaderText = "Id Servicio";
+            this.idservicio.Name = "idservicio";
+            this.idservicio.ReadOnly = true;
+            // 
+            // idcuota
+            // 
+            this.idcuota.DataPropertyName = "idcuotaconsumo";
+            this.idcuota.HeaderText = "Id Cuota";
+            this.idcuota.Name = "idcuota";
+            this.idcuota.ReadOnly = true;
+            this.idcuota.Visible = false;
+            // 
+            // cliente
+            // 
+            this.cliente.DataPropertyName = "cliente";
+            this.cliente.HeaderText = "Cliente";
+            this.cliente.Name = "cliente";
+            this.cliente.ReadOnly = true;
+            // 
+            // idconsumo
+            // 
+            this.idconsumo.DataPropertyName = "idconsumo";
+            this.idconsumo.HeaderText = "idconsumo";
+            this.idconsumo.Name = "idconsumo";
+            this.idconsumo.ReadOnly = true;
+            this.idconsumo.Visible = false;
+            // 
+            // idcliente
+            // 
+            this.idcliente.DataPropertyName = "idcliente";
+            this.idcliente.HeaderText = "idcliente";
+            this.idcliente.Name = "idcliente";
+            this.idcliente.ReadOnly = true;
+            // 
+            // idcolonia
+            // 
+            this.idcolonia.DataPropertyName = "idcolonia";
+            this.idcolonia.HeaderText = "idcolonia";
+            this.idcolonia.Name = "idcolonia";
+            this.idcolonia.ReadOnly = true;
+            this.idcolonia.Visible = false;
+            // 
+            // fecha_apertura
+            // 
+            this.fecha_apertura.DataPropertyName = "fecha_apertura";
+            this.fecha_apertura.HeaderText = "Fecha Apertura";
+            this.fecha_apertura.Name = "fecha_apertura";
+            this.fecha_apertura.ReadOnly = true;
+            // 
+            // cuotas__ant
+            // 
+            this.cuotas__ant.DataPropertyName = "cuotas_anticipadas";
+            this.cuotas__ant.HeaderText = "Cuotas Anticipadas";
+            this.cuotas__ant.Name = "cuotas__ant";
+            this.cuotas__ant.ReadOnly = true;
+            // 
+            // colonia
+            // 
+            this.colonia.DataPropertyName = "colonia";
+            this.colonia.HeaderText = "Colonia";
+            this.colonia.Name = "colonia";
+            this.colonia.ReadOnly = true;
+            // 
+            // cuota
+            // 
+            this.cuota.DataPropertyName = "monto";
+            this.cuota.HeaderText = "Cuota";
+            this.cuota.Name = "cuota";
+            this.cuota.ReadOnly = true;
+            // 
+            // estado
+            // 
+            this.estado.DataPropertyName = "estado";
+            this.estado.HeaderText = "Estado";
+            this.estado.Name = "estado";
+            this.estado.ReadOnly = true;
+            // 
+            // comentario
+            // 
+            this.comentario.DataPropertyName = "comentario";
+            this.comentario.HeaderText = "Comentario";
+            this.comentario.Name = "comentario";
+            this.comentario.ReadOnly = true;
+            this.comentario.Visible = false;
+            // 
             // pnlBtnConsumo
             // 
-            this.pnlBtnConsumo.Controls.Add(this.btnCambiarEstado);
-            this.pnlBtnConsumo.Controls.Add(this.btnEditar);
-            this.pnlBtnConsumo.Controls.Add(this.btnAgregar);
+            this.pnlBtnConsumo.Controls.Add(this.btnCambiarEstadoCon);
+            this.pnlBtnConsumo.Controls.Add(this.btnEditarCon);
+            this.pnlBtnConsumo.Controls.Add(this.btnAgregarCon);
             this.pnlBtnConsumo.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnlBtnConsumo.Location = new System.Drawing.Point(751, 30);
             this.pnlBtnConsumo.Name = "pnlBtnConsumo";
             this.pnlBtnConsumo.Size = new System.Drawing.Size(127, 184);
             this.pnlBtnConsumo.TabIndex = 13;
             // 
-            // btnCambiarEstado
+            // btnCambiarEstadoCon
             // 
-            this.btnCambiarEstado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnCambiarEstado.FlatAppearance.BorderSize = 0;
-            this.btnCambiarEstado.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
-            this.btnCambiarEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCambiarEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCambiarEstado.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnCambiarEstado.Location = new System.Drawing.Point(3, 106);
-            this.btnCambiarEstado.Name = "btnCambiarEstado";
-            this.btnCambiarEstado.Size = new System.Drawing.Size(121, 46);
-            this.btnCambiarEstado.TabIndex = 2;
-            this.btnCambiarEstado.Text = "Cambiar Estado";
-            this.btnCambiarEstado.UseVisualStyleBackColor = false;
+            this.btnCambiarEstadoCon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnCambiarEstadoCon.FlatAppearance.BorderSize = 0;
+            this.btnCambiarEstadoCon.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnCambiarEstadoCon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCambiarEstadoCon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCambiarEstadoCon.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnCambiarEstadoCon.Location = new System.Drawing.Point(3, 106);
+            this.btnCambiarEstadoCon.Name = "btnCambiarEstadoCon";
+            this.btnCambiarEstadoCon.Size = new System.Drawing.Size(121, 46);
+            this.btnCambiarEstadoCon.TabIndex = 2;
+            this.btnCambiarEstadoCon.Text = "Cambiar Estado";
+            this.btnCambiarEstadoCon.UseVisualStyleBackColor = false;
+            this.btnCambiarEstadoCon.Click += new System.EventHandler(this.btnCambiarEstado_Click);
             // 
-            // btnEditar
+            // btnEditarCon
             // 
-            this.btnEditar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnEditar.FlatAppearance.BorderSize = 0;
-            this.btnEditar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
-            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditar.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnEditar.Location = new System.Drawing.Point(3, 54);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(121, 46);
-            this.btnEditar.TabIndex = 1;
-            this.btnEditar.Text = "Editar";
-            this.btnEditar.UseVisualStyleBackColor = false;
-            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            this.btnEditarCon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnEditarCon.FlatAppearance.BorderSize = 0;
+            this.btnEditarCon.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnEditarCon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditarCon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditarCon.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnEditarCon.Location = new System.Drawing.Point(3, 54);
+            this.btnEditarCon.Name = "btnEditarCon";
+            this.btnEditarCon.Size = new System.Drawing.Size(121, 46);
+            this.btnEditarCon.TabIndex = 1;
+            this.btnEditarCon.Text = "Editar";
+            this.btnEditarCon.UseVisualStyleBackColor = false;
+            this.btnEditarCon.Click += new System.EventHandler(this.btnEditar_Click);
             // 
-            // btnAgregar
+            // btnAgregarCon
             // 
-            this.btnAgregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnAgregar.FlatAppearance.BorderSize = 0;
-            this.btnAgregar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
-            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregar.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnAgregar.Location = new System.Drawing.Point(3, 1);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(121, 46);
-            this.btnAgregar.TabIndex = 0;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = false;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            this.btnAgregarCon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnAgregarCon.FlatAppearance.BorderSize = 0;
+            this.btnAgregarCon.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnAgregarCon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregarCon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarCon.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnAgregarCon.Location = new System.Drawing.Point(3, 1);
+            this.btnAgregarCon.Name = "btnAgregarCon";
+            this.btnAgregarCon.Size = new System.Drawing.Size(121, 46);
+            this.btnAgregarCon.TabIndex = 0;
+            this.btnAgregarCon.Text = "Agregar";
+            this.btnAgregarCon.UseVisualStyleBackColor = false;
+            this.btnAgregarCon.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // pnlTitulo1
             // 
@@ -318,7 +408,8 @@
             this.dataGridViewTextBoxColumn12,
             this.monto,
             this.saldo,
-            this.cuotas_restantes});
+            this.cuotas_restantes,
+            this.idacometida});
             this.dtgvServiciosAcometida.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtgvServiciosAcometida.EnableHeadersVisualStyles = false;
             this.dtgvServiciosAcometida.GridColor = System.Drawing.SystemColors.Control;
@@ -345,6 +436,83 @@
             this.dtgvServiciosAcometida.ShowCellToolTips = false;
             this.dtgvServiciosAcometida.Size = new System.Drawing.Size(754, 211);
             this.dtgvServiciosAcometida.TabIndex = 17;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.btnCambiarEstadoAco);
+            this.panel3.Controls.Add(this.btnEditarAco);
+            this.panel3.Controls.Add(this.btnAgregarAco);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel3.Location = new System.Drawing.Point(754, 34);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(127, 211);
+            this.panel3.TabIndex = 16;
+            // 
+            // btnCambiarEstadoAco
+            // 
+            this.btnCambiarEstadoAco.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnCambiarEstadoAco.FlatAppearance.BorderSize = 0;
+            this.btnCambiarEstadoAco.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnCambiarEstadoAco.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCambiarEstadoAco.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCambiarEstadoAco.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnCambiarEstadoAco.Location = new System.Drawing.Point(3, 106);
+            this.btnCambiarEstadoAco.Name = "btnCambiarEstadoAco";
+            this.btnCambiarEstadoAco.Size = new System.Drawing.Size(121, 46);
+            this.btnCambiarEstadoAco.TabIndex = 2;
+            this.btnCambiarEstadoAco.Text = "Cambiar Estado";
+            this.btnCambiarEstadoAco.UseVisualStyleBackColor = false;
+            // 
+            // btnEditarAco
+            // 
+            this.btnEditarAco.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnEditarAco.FlatAppearance.BorderSize = 0;
+            this.btnEditarAco.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnEditarAco.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditarAco.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditarAco.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnEditarAco.Location = new System.Drawing.Point(3, 54);
+            this.btnEditarAco.Name = "btnEditarAco";
+            this.btnEditarAco.Size = new System.Drawing.Size(121, 46);
+            this.btnEditarAco.TabIndex = 1;
+            this.btnEditarAco.Text = "Editar";
+            this.btnEditarAco.UseVisualStyleBackColor = false;
+            this.btnEditarAco.Click += new System.EventHandler(this.btnEditarAco_Click);
+            // 
+            // btnAgregarAco
+            // 
+            this.btnAgregarAco.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnAgregarAco.FlatAppearance.BorderSize = 0;
+            this.btnAgregarAco.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnAgregarAco.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregarAco.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarAco.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnAgregarAco.Location = new System.Drawing.Point(3, 1);
+            this.btnAgregarAco.Name = "btnAgregarAco";
+            this.btnAgregarAco.Size = new System.Drawing.Size(121, 46);
+            this.btnAgregarAco.TabIndex = 0;
+            this.btnAgregarAco.Text = "Agregar";
+            this.btnAgregarAco.UseVisualStyleBackColor = false;
+            this.btnAgregarAco.Click += new System.EventHandler(this.btnAgregarAco_Click);
+            // 
+            // pnlTitulo2
+            // 
+            this.pnlTitulo2.Controls.Add(this.lblAcometida);
+            this.pnlTitulo2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTitulo2.Location = new System.Drawing.Point(0, 0);
+            this.pnlTitulo2.Name = "pnlTitulo2";
+            this.pnlTitulo2.Size = new System.Drawing.Size(881, 34);
+            this.pnlTitulo2.TabIndex = 0;
+            // 
+            // lblAcometida
+            // 
+            this.lblAcometida.AutoSize = true;
+            this.lblAcometida.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAcometida.Location = new System.Drawing.Point(419, 8);
+            this.lblAcometida.Name = "lblAcometida";
+            this.lblAcometida.Size = new System.Drawing.Size(94, 20);
+            this.lblAcometida.TabIndex = 0;
+            this.lblAcometida.Text = "Acometida";
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -440,168 +608,13 @@
             this.cuotas_restantes.Name = "cuotas_restantes";
             this.cuotas_restantes.ReadOnly = true;
             // 
-            // panel3
+            // idacometida
             // 
-            this.panel3.Controls.Add(this.button1);
-            this.panel3.Controls.Add(this.button2);
-            this.panel3.Controls.Add(this.button3);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(754, 34);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(127, 211);
-            this.panel3.TabIndex = 16;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.Control;
-            this.button1.Location = new System.Drawing.Point(3, 106);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(121, 46);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Cambiar Estado";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.Control;
-            this.button2.Location = new System.Drawing.Point(3, 54);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(121, 46);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Editar";
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.SystemColors.Control;
-            this.button3.Location = new System.Drawing.Point(3, 1);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(121, 46);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "Agregar";
-            this.button3.UseVisualStyleBackColor = false;
-            // 
-            // pnlTitulo2
-            // 
-            this.pnlTitulo2.Controls.Add(this.lblAcometida);
-            this.pnlTitulo2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlTitulo2.Location = new System.Drawing.Point(0, 0);
-            this.pnlTitulo2.Name = "pnlTitulo2";
-            this.pnlTitulo2.Size = new System.Drawing.Size(881, 34);
-            this.pnlTitulo2.TabIndex = 0;
-            // 
-            // lblAcometida
-            // 
-            this.lblAcometida.AutoSize = true;
-            this.lblAcometida.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAcometida.Location = new System.Drawing.Point(419, 8);
-            this.lblAcometida.Name = "lblAcometida";
-            this.lblAcometida.Size = new System.Drawing.Size(94, 20);
-            this.lblAcometida.TabIndex = 0;
-            this.lblAcometida.Text = "Acometida";
-            // 
-            // idservicio
-            // 
-            this.idservicio.DataPropertyName = "idservicio";
-            this.idservicio.HeaderText = "Id Servicio";
-            this.idservicio.Name = "idservicio";
-            this.idservicio.ReadOnly = true;
-            // 
-            // idcuota
-            // 
-            this.idcuota.DataPropertyName = "idcuotaconsumo";
-            this.idcuota.HeaderText = "Id Cuota";
-            this.idcuota.Name = "idcuota";
-            this.idcuota.ReadOnly = true;
-            this.idcuota.Visible = false;
-            // 
-            // cliente
-            // 
-            this.cliente.DataPropertyName = "cliente";
-            this.cliente.HeaderText = "Cliente";
-            this.cliente.Name = "cliente";
-            this.cliente.ReadOnly = true;
-            // 
-            // idconsumo
-            // 
-            this.idconsumo.DataPropertyName = "idconsumo";
-            this.idconsumo.HeaderText = "idconsumo";
-            this.idconsumo.Name = "idconsumo";
-            this.idconsumo.ReadOnly = true;
-            this.idconsumo.Visible = false;
-            // 
-            // idcliente
-            // 
-            this.idcliente.DataPropertyName = "idcliente";
-            this.idcliente.HeaderText = "idcliente";
-            this.idcliente.Name = "idcliente";
-            this.idcliente.ReadOnly = true;
-            // 
-            // idcolonia
-            // 
-            this.idcolonia.DataPropertyName = "idcolonia";
-            this.idcolonia.HeaderText = "idcolonia";
-            this.idcolonia.Name = "idcolonia";
-            this.idcolonia.ReadOnly = true;
-            this.idcolonia.Visible = false;
-            // 
-            // fecha_apertura
-            // 
-            this.fecha_apertura.DataPropertyName = "fecha_apertura";
-            this.fecha_apertura.HeaderText = "Fecha Apertura";
-            this.fecha_apertura.Name = "fecha_apertura";
-            this.fecha_apertura.ReadOnly = true;
-            // 
-            // cuotas__ant
-            // 
-            this.cuotas__ant.DataPropertyName = "cuotas_anticipadas";
-            this.cuotas__ant.HeaderText = "Cuotas Anticipadas";
-            this.cuotas__ant.Name = "cuotas__ant";
-            this.cuotas__ant.ReadOnly = true;
-            // 
-            // colonia
-            // 
-            this.colonia.DataPropertyName = "colonia";
-            this.colonia.HeaderText = "Colonia";
-            this.colonia.Name = "colonia";
-            this.colonia.ReadOnly = true;
-            // 
-            // cuota
-            // 
-            this.cuota.DataPropertyName = "monto";
-            this.cuota.HeaderText = "Cuota";
-            this.cuota.Name = "cuota";
-            this.cuota.ReadOnly = true;
-            // 
-            // estado
-            // 
-            this.estado.DataPropertyName = "estado";
-            this.estado.HeaderText = "Estado";
-            this.estado.Name = "estado";
-            this.estado.ReadOnly = true;
-            // 
-            // comentario
-            // 
-            this.comentario.DataPropertyName = "comentario";
-            this.comentario.HeaderText = "Comentario";
-            this.comentario.Name = "comentario";
-            this.comentario.ReadOnly = true;
-            this.comentario.Visible = false;
+            this.idacometida.DataPropertyName = "idserviciosacometida";
+            this.idacometida.HeaderText = "idservicio";
+            this.idacometida.Name = "idacometida";
+            this.idacometida.ReadOnly = true;
+            this.idacometida.Visible = false;
             // 
             // frmVistaServicios
             // 
@@ -615,6 +628,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmVistaSeervicios";
             this.Load += new System.EventHandler(this.frmVistaServicios_Load);
+            this.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.frmVistaServicios_ControlAdded);
             this.pnlTop.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.prbCerrar)).EndInit();
             this.pnlPrincipal.ResumeLayout(false);
@@ -639,30 +653,17 @@
         private System.Windows.Forms.Panel pnlConsumo;
         private System.Windows.Forms.DataGridView dtgvServiciosConsumo;
         private System.Windows.Forms.Panel pnlBtnConsumo;
-        private System.Windows.Forms.Button btnCambiarEstado;
-        private System.Windows.Forms.Button btnEditar;
-        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Button btnCambiarEstadoCon;
+        private System.Windows.Forms.Button btnEditarCon;
+        private System.Windows.Forms.Button btnAgregarCon;
         private System.Windows.Forms.Panel pnlTitulo1;
         private System.Windows.Forms.Label lblConsumo;
         private System.Windows.Forms.Panel pnlAcometida;
         private System.Windows.Forms.DataGridView dtgvServiciosAcometida;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn monto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn saldo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cuotas_restantes;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnCambiarEstadoAco;
+        private System.Windows.Forms.Button btnEditarAco;
+        private System.Windows.Forms.Button btnAgregarAco;
         private System.Windows.Forms.Panel pnlTitulo2;
         private System.Windows.Forms.Label lblAcometida;
         private System.Windows.Forms.DataGridViewTextBoxColumn idservicio;
@@ -677,5 +678,19 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cuota;
         private System.Windows.Forms.DataGridViewTextBoxColumn estado;
         private System.Windows.Forms.DataGridViewTextBoxColumn comentario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn monto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn saldo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cuotas_restantes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idacometida;
     }
 }
