@@ -66,16 +66,16 @@
             this.btnAgregarAco = new System.Windows.Forms.Button();
             this.pnlTitulo2 = new System.Windows.Forms.Panel();
             this.lblAcometida = new System.Windows.Forms.Label();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idservicioA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idcuotaA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idclienteA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idcoloniaA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fecha_aperturaA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuotas_anticipadasA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.coloniaA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuotaA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estadoA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.comentarioA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.saldo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cuotas_restantes = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -396,16 +396,16 @@
             this.dtgvServiciosAcometida.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dtgvServiciosAcometida.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvServiciosAcometida.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7,
-            this.dataGridViewTextBoxColumn8,
-            this.dataGridViewTextBoxColumn9,
-            this.dataGridViewTextBoxColumn10,
-            this.dataGridViewTextBoxColumn11,
-            this.dataGridViewTextBoxColumn12,
+            this.idservicioA,
+            this.idcuotaA,
+            this.idclienteA,
+            this.idcoloniaA,
+            this.fecha_aperturaA,
+            this.cuotas_anticipadasA,
+            this.coloniaA,
+            this.cuotaA,
+            this.estadoA,
+            this.comentarioA,
             this.monto,
             this.saldo,
             this.cuotas_restantes,
@@ -514,78 +514,78 @@
             this.lblAcometida.TabIndex = 0;
             this.lblAcometida.Text = "Acometida";
             // 
-            // dataGridViewTextBoxColumn1
+            // idservicioA
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "idservicio";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Id Servicio";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.idservicioA.DataPropertyName = "idservicio";
+            this.idservicioA.HeaderText = "Id Servicio";
+            this.idservicioA.Name = "idservicioA";
+            this.idservicioA.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn2
+            // idcuotaA
             // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "idcuota";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Id Cuota";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Visible = false;
+            this.idcuotaA.DataPropertyName = "idcuota";
+            this.idcuotaA.HeaderText = "Id Cuota";
+            this.idcuotaA.Name = "idcuotaA";
+            this.idcuotaA.ReadOnly = true;
+            this.idcuotaA.Visible = false;
             // 
-            // dataGridViewTextBoxColumn5
+            // idclienteA
             // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "idcliente";
-            this.dataGridViewTextBoxColumn5.HeaderText = "idcliente";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Visible = false;
+            this.idclienteA.DataPropertyName = "idcliente";
+            this.idclienteA.HeaderText = "idcliente";
+            this.idclienteA.Name = "idclienteA";
+            this.idclienteA.ReadOnly = true;
+            this.idclienteA.Visible = false;
             // 
-            // dataGridViewTextBoxColumn6
+            // idcoloniaA
             // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "idcolonia";
-            this.dataGridViewTextBoxColumn6.HeaderText = "idcolonia";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Visible = false;
+            this.idcoloniaA.DataPropertyName = "idcolonia";
+            this.idcoloniaA.HeaderText = "idcolonia";
+            this.idcoloniaA.Name = "idcoloniaA";
+            this.idcoloniaA.ReadOnly = true;
+            this.idcoloniaA.Visible = false;
             // 
-            // dataGridViewTextBoxColumn7
+            // fecha_aperturaA
             // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "fecha_apertura";
-            this.dataGridViewTextBoxColumn7.HeaderText = "Fecha Apertura";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            this.fecha_aperturaA.DataPropertyName = "fecha_apertura";
+            this.fecha_aperturaA.HeaderText = "Fecha Apertura";
+            this.fecha_aperturaA.Name = "fecha_aperturaA";
+            this.fecha_aperturaA.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn8
+            // cuotas_anticipadasA
             // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "cuotas_anticipadas";
-            this.dataGridViewTextBoxColumn8.HeaderText = "Cuotas Anticipadas";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            this.cuotas_anticipadasA.DataPropertyName = "cuotas_anticipadas";
+            this.cuotas_anticipadasA.HeaderText = "Cuotas Anticipadas";
+            this.cuotas_anticipadasA.Name = "cuotas_anticipadasA";
+            this.cuotas_anticipadasA.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn9
+            // coloniaA
             // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "colonia";
-            this.dataGridViewTextBoxColumn9.HeaderText = "Colonia";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            this.coloniaA.DataPropertyName = "colonia";
+            this.coloniaA.HeaderText = "Colonia";
+            this.coloniaA.Name = "coloniaA";
+            this.coloniaA.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn10
+            // cuotaA
             // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "monto";
-            this.dataGridViewTextBoxColumn10.HeaderText = "Cuota";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            this.cuotaA.DataPropertyName = "monto";
+            this.cuotaA.HeaderText = "Cuota";
+            this.cuotaA.Name = "cuotaA";
+            this.cuotaA.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn11
+            // estadoA
             // 
-            this.dataGridViewTextBoxColumn11.DataPropertyName = "estado";
-            this.dataGridViewTextBoxColumn11.HeaderText = "Estado";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            this.dataGridViewTextBoxColumn11.ReadOnly = true;
+            this.estadoA.DataPropertyName = "estado";
+            this.estadoA.HeaderText = "Estado";
+            this.estadoA.Name = "estadoA";
+            this.estadoA.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn12
+            // comentarioA
             // 
-            this.dataGridViewTextBoxColumn12.DataPropertyName = "comentario";
-            this.dataGridViewTextBoxColumn12.HeaderText = "Comentario";
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            this.dataGridViewTextBoxColumn12.ReadOnly = true;
+            this.comentarioA.DataPropertyName = "comentario";
+            this.comentarioA.HeaderText = "Comentario";
+            this.comentarioA.Name = "comentarioA";
+            this.comentarioA.ReadOnly = true;
             // 
             // monto
             // 
@@ -678,16 +678,16 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cuota;
         private System.Windows.Forms.DataGridViewTextBoxColumn estado;
         private System.Windows.Forms.DataGridViewTextBoxColumn comentario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idservicioA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idcuotaA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idclienteA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idcoloniaA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fecha_aperturaA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cuotas_anticipadasA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn coloniaA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cuotaA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn estadoA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn comentarioA;
         private System.Windows.Forms.DataGridViewTextBoxColumn monto;
         private System.Windows.Forms.DataGridViewTextBoxColumn saldo;
         private System.Windows.Forms.DataGridViewTextBoxColumn cuotas_restantes;

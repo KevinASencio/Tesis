@@ -37,10 +37,13 @@ namespace GUI.FormsGestion
                 _servicio.setEstado(cmbEstado.Text.ToString());
                 _servicio.setComentario(txbComentario.Text.ToString());
                 _acometida.setIdcuota(int.Parse(cmbCuota.SelectedValue.ToString()));
+                
+                _acometida.setMonto(float.Parse(txbMonto.Text.ToString()));
                 if (this.txbId.Text.Length <= 0)
                 {
                     //!_acometida.(int.Parse(cmbCuota.SelectedValue.ToString()))) {
-
+                    _acometida.setNCuotas(0);
+                    _acometida.setSaldo(_acometida.getMonto());
                     if (!_acometida.InsertarAcometida()) { MessageBox.Show("¡Error al guardar la cuota!", "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Error); }
                     else
                     {
@@ -93,7 +96,6 @@ namespace GUI.FormsGestion
 
         private void cmbCuota_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // MessageBox.Show("el texto seleccionado es " + cmbCuota.GetItemText(cmbCuota.SelectedItem));
             try
             {
                 txbNCuotas.Text = (float.Parse(txbMonto.Text.ToString()) / float.Parse(cmbCuota.GetItemText(cmbCuota.SelectedItem))).ToString();
@@ -109,11 +111,15 @@ namespace GUI.FormsGestion
 
         private void txbMonto_KeyPress(object sender, KeyPressEventArgs e) 
         {
-
-            punto = Regex.IsMatch(this.txbMonto.Text.ToString(), patronDecimal) ? true : false;
-            //punto = e.KeyChar =='.' ? true :false;
-            Validacion.Decimales(e, punto);
-         
+            try
+            {
+                punto = Regex.IsMatch(this.txbMonto.Text.ToString(), patronDecimal) ? true : false;
+                Validacion.Decimales(e, punto);
+                txbNCuotas.Text = (float.Parse(txbMonto.Text.ToString()) / float.Parse(cmbCuota.GetItemText(cmbCuota.SelectedItem))).ToString();
+                txbNCuotas.Update();
+            }
+            catch (Exception ex) { //Validacion.ErrorBox(ex);
+                                   }
         }
     }
 }

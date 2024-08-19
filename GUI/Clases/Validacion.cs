@@ -59,5 +59,12 @@ namespace GUI.Clases
             else{ v.Handled = true; return false;}
             return true;
         }
+
+        public static void ErrorBox( Exception ex)
+        {
+            MessageBox.Show("Error " + ex.Message, "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
     }
+
+    
 }
