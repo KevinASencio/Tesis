@@ -66,7 +66,7 @@
             this.btnAgregarAco = new System.Windows.Forms.Button();
             this.pnlTitulo2 = new System.Windows.Forms.Panel();
             this.lblAcometida = new System.Windows.Forms.Label();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idservicioo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -396,7 +396,7 @@
             this.dtgvServiciosAcometida.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dtgvServiciosAcometida.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvServiciosAcometida.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
+            this.idservicioo,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6,
@@ -514,12 +514,12 @@
             this.lblAcometida.TabIndex = 0;
             this.lblAcometida.Text = "Acometida";
             // 
-            // dataGridViewTextBoxColumn1
+            // idservicioo
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "idservicio";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Id Servicio";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.idservicioo.DataPropertyName = "idservicio";
+            this.idservicioo.HeaderText = "Id Servicio";
+            this.idservicioo.Name = "idservicioo";
+            this.idservicioo.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -611,7 +611,7 @@
             // idacometida
             // 
             this.idacometida.DataPropertyName = "idserviciosacometida";
-            this.idacometida.HeaderText = "idservicio";
+            this.idacometida.HeaderText = "idacometida";
             this.idacometida.Name = "idacometida";
             this.idacometida.ReadOnly = true;
             this.idacometida.Visible = false;
@@ -678,7 +678,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cuota;
         private System.Windows.Forms.DataGridViewTextBoxColumn estado;
         private System.Windows.Forms.DataGridViewTextBoxColumn comentario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idservicioo;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;

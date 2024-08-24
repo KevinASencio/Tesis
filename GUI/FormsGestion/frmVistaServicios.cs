@@ -151,7 +151,7 @@ namespace GUI.FormsGestion
             agregando = true;
             _frmGestionAcometida._servicio.setIdCliente(this.servicio.getIdCliente());
             _frmGestionAcometida._acometida.setIdAcometida(int.Parse(dtgvServiciosAcometida.CurrentRow.Cells["idacometida"].Value.ToString()));
-            _frmGestionAcometida.txbId.Text = dtgvServiciosAcometida.CurrentRow.Cells["idservicio"].Value.ToString();
+            _frmGestionAcometida.txbId.Text = dtgvServiciosAcometida.CurrentRow.Cells["idservicioo"].Value.ToString();
             _frmGestionAcometida.txbComentario.Text = dtgvServiciosAcometida.CurrentRow.Cells["comentario"].Value.ToString();
             _frmGestionAcometida.txbMonto.Text = dtgvServiciosAcometida.CurrentRow.Cells["monto"].Value.ToString();
             _frmGestionAcometida.cmbCuota.SelectedValue = dtgvServiciosAcometida.CurrentRow.Cells["idcuota"].Value.ToString();
