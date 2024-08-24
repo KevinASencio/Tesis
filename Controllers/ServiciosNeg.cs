@@ -36,11 +36,11 @@ namespace Controllers
         public void setEstado(string estado) { this._Servicio.Estado = estado; }
         public Boolean insertarConsumo() 
         {
-            return this._Servicio.InsertConsumo();
+            return this._Servicio.InsertarServicio("consumo");
         }
         public Boolean insertarAcometida() 
         {
-            return this._Servicio.InsertAcometida();
+            return this._Servicio.InsertarServicio("acometida");
         }
         public Boolean actualizarServicio() { return this._Servicio.ActualizarServicio(); }
         public Boolean cambiarEstado() 

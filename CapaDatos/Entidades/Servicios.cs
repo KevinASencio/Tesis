@@ -98,7 +98,7 @@ namespace CapaDatos.Entidades
                 return null;
             }
         }
-        public Boolean InsertConsumo()
+        public Boolean InsertarServicio(string tipo)
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
@@ -106,9 +106,19 @@ namespace CapaDatos.Entidades
             sentencia.Append("Values (" + this.IdCliente + ",");
             sentencia.Append(" " + this.IdColonia + ", ");
             sentencia.Append(" '" + this.FechaApertura.ToString("yyyy,MM,dd") + "', ");
+            
             sentencia.Append(" '" + this.Estado + "', ");
             sentencia.Append(" '" + this.Comentario + "', ");
-            sentencia.Append(" " + this.IdConsumo + " );");
+            switch (tipo) 
+            {
+                case "consumo":
+                    sentencia.Append(" " + this.IdConsumo + " );");
+                    break;
+                case "acometida":
+                    sentencia.Replace("idconsumo", "idacometida");
+                    sentencia.Append(" " + this.IdAcometida + " );");
+                    break;
+            }
             try
             {
                 return operacion.Insertar(sentencia.ToString());

@@ -361,6 +361,7 @@
             this.txbCuotasPagadas.Name = "txbCuotasPagadas";
             this.txbCuotasPagadas.Size = new System.Drawing.Size(395, 24);
             this.txbCuotasPagadas.TabIndex = 1;
+            this.txbCuotasPagadas.Text = "0";
             // 
             // label6
             // 
