@@ -9,14 +9,14 @@ namespace CapaDatos.Entidades
 {
     public class ServiciosAcometida
     {
-        int _idserciciosacometida;
+        int _idserviciosacometida;
         int _idcuotaacometida;
         float _monto;
         int _cuotaspagadas;
         int _numeredecuotas;
         float _saldo;
 
-        public int Idserciciosacometida { get => _idserciciosacometida; set => _idserciciosacometida = value; }
+        public int Idserviciosacometida { get => _idserviciosacometida; set => _idserviciosacometida = value; }
         public float Monto { get => _monto; set => _monto = value; }
         public int Cuotaspagadas { get => _cuotaspagadas; set => _cuotaspagadas = value; }
         public int Numeredecuotas { get => _numeredecuotas; set => _numeredecuotas = value; }
@@ -37,7 +37,7 @@ namespace CapaDatos.Entidades
             
             try { 
                 resultado = operacion.Insertar(sentencia.ToString());
-                this.Idserciciosacometida = int.Parse(operacion.Consultar("select LAST_INSERT_ID() as \'id\' from serviciosacometida limit 1").Rows[0][0].ToString());
+                this.Idserviciosacometida = int.Parse(operacion.Consultar("select LAST_INSERT_ID() as \'id\' from serviciosacometida limit 1").Rows[0][0].ToString());
                 return resultado;
             }
             catch (Exception ex) { return false; }
@@ -47,9 +47,11 @@ namespace CapaDatos.Entidades
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
-            sentencia.Append("update serviciosacometida set "); 
-            sentencia.Append("idcuotaacometida=" + this.Idcuotaacometida + " ");
-            sentencia.Append("where idserciviosacoemtida =" + this.Idserciciosacometida + "; ");
+            sentencia.Append("update serviciosacometida set ");
+            sentencia.Append("idcuotaacometida=" + this.Idcuotaacometida + ", ");
+            sentencia.Append("saldo = " + this.Saldo + ", ");
+            sentencia.Append("cuotas_pagadas =" + this.Cuotaspagadas + " ");
+            sentencia.Append("where idserviciosacometida =" + this.Idserviciosacometida + "; ");
 
             try { return operacion.Actualizar(sentencia.ToString()); }catch(Exception ex){ return false; }
         }

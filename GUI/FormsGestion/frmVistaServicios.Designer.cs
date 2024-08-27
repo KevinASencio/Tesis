@@ -60,12 +60,6 @@
             this.lblConsumo = new System.Windows.Forms.Label();
             this.pnlAcometida = new System.Windows.Forms.Panel();
             this.dtgvServiciosAcometida = new System.Windows.Forms.DataGridView();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.btnCambiarEstadoAco = new System.Windows.Forms.Button();
-            this.btnEditarAco = new System.Windows.Forms.Button();
-            this.btnAgregarAco = new System.Windows.Forms.Button();
-            this.pnlTitulo2 = new System.Windows.Forms.Panel();
-            this.lblAcometida = new System.Windows.Forms.Label();
             this.idservicioA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idcuotaA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idclienteA = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -80,6 +74,12 @@
             this.saldo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cuotas_restantes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idacometida = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btnCambiarEstadoAco = new System.Windows.Forms.Button();
+            this.btnEditarAco = new System.Windows.Forms.Button();
+            this.btnAgregarAco = new System.Windows.Forms.Button();
+            this.pnlTitulo2 = new System.Windows.Forms.Panel();
+            this.lblAcometida = new System.Windows.Forms.Label();
             this.pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.prbCerrar)).BeginInit();
             this.pnlPrincipal.SuspendLayout();
@@ -437,83 +437,6 @@
             this.dtgvServiciosAcometida.Size = new System.Drawing.Size(754, 211);
             this.dtgvServiciosAcometida.TabIndex = 17;
             // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.btnCambiarEstadoAco);
-            this.panel3.Controls.Add(this.btnEditarAco);
-            this.panel3.Controls.Add(this.btnAgregarAco);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(754, 34);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(127, 211);
-            this.panel3.TabIndex = 16;
-            // 
-            // btnCambiarEstadoAco
-            // 
-            this.btnCambiarEstadoAco.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnCambiarEstadoAco.FlatAppearance.BorderSize = 0;
-            this.btnCambiarEstadoAco.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
-            this.btnCambiarEstadoAco.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCambiarEstadoAco.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCambiarEstadoAco.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnCambiarEstadoAco.Location = new System.Drawing.Point(3, 106);
-            this.btnCambiarEstadoAco.Name = "btnCambiarEstadoAco";
-            this.btnCambiarEstadoAco.Size = new System.Drawing.Size(121, 46);
-            this.btnCambiarEstadoAco.TabIndex = 2;
-            this.btnCambiarEstadoAco.Text = "Cambiar Estado";
-            this.btnCambiarEstadoAco.UseVisualStyleBackColor = false;
-            // 
-            // btnEditarAco
-            // 
-            this.btnEditarAco.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnEditarAco.FlatAppearance.BorderSize = 0;
-            this.btnEditarAco.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
-            this.btnEditarAco.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditarAco.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditarAco.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnEditarAco.Location = new System.Drawing.Point(3, 54);
-            this.btnEditarAco.Name = "btnEditarAco";
-            this.btnEditarAco.Size = new System.Drawing.Size(121, 46);
-            this.btnEditarAco.TabIndex = 1;
-            this.btnEditarAco.Text = "Editar";
-            this.btnEditarAco.UseVisualStyleBackColor = false;
-            this.btnEditarAco.Click += new System.EventHandler(this.btnEditarAco_Click);
-            // 
-            // btnAgregarAco
-            // 
-            this.btnAgregarAco.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnAgregarAco.FlatAppearance.BorderSize = 0;
-            this.btnAgregarAco.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
-            this.btnAgregarAco.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregarAco.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarAco.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnAgregarAco.Location = new System.Drawing.Point(3, 1);
-            this.btnAgregarAco.Name = "btnAgregarAco";
-            this.btnAgregarAco.Size = new System.Drawing.Size(121, 46);
-            this.btnAgregarAco.TabIndex = 0;
-            this.btnAgregarAco.Text = "Agregar";
-            this.btnAgregarAco.UseVisualStyleBackColor = false;
-            this.btnAgregarAco.Click += new System.EventHandler(this.btnAgregarAco_Click);
-            // 
-            // pnlTitulo2
-            // 
-            this.pnlTitulo2.Controls.Add(this.lblAcometida);
-            this.pnlTitulo2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlTitulo2.Location = new System.Drawing.Point(0, 0);
-            this.pnlTitulo2.Name = "pnlTitulo2";
-            this.pnlTitulo2.Size = new System.Drawing.Size(881, 34);
-            this.pnlTitulo2.TabIndex = 0;
-            // 
-            // lblAcometida
-            // 
-            this.lblAcometida.AutoSize = true;
-            this.lblAcometida.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAcometida.Location = new System.Drawing.Point(419, 8);
-            this.lblAcometida.Name = "lblAcometida";
-            this.lblAcometida.Size = new System.Drawing.Size(94, 20);
-            this.lblAcometida.TabIndex = 0;
-            this.lblAcometida.Text = "Acometida";
-            // 
             // idservicioA
             // 
             this.idservicioA.DataPropertyName = "idservicio";
@@ -523,7 +446,7 @@
             // 
             // idcuotaA
             // 
-            this.idcuotaA.DataPropertyName = "idcuota";
+            this.idcuotaA.DataPropertyName = "idcuotaacometida";
             this.idcuotaA.HeaderText = "Id Cuota";
             this.idcuotaA.Name = "idcuotaA";
             this.idcuotaA.ReadOnly = true;
@@ -615,6 +538,84 @@
             this.idacometida.Name = "idacometida";
             this.idacometida.ReadOnly = true;
             this.idacometida.Visible = false;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.btnCambiarEstadoAco);
+            this.panel3.Controls.Add(this.btnEditarAco);
+            this.panel3.Controls.Add(this.btnAgregarAco);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel3.Location = new System.Drawing.Point(754, 34);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(127, 211);
+            this.panel3.TabIndex = 16;
+            // 
+            // btnCambiarEstadoAco
+            // 
+            this.btnCambiarEstadoAco.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnCambiarEstadoAco.FlatAppearance.BorderSize = 0;
+            this.btnCambiarEstadoAco.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnCambiarEstadoAco.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCambiarEstadoAco.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCambiarEstadoAco.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnCambiarEstadoAco.Location = new System.Drawing.Point(3, 106);
+            this.btnCambiarEstadoAco.Name = "btnCambiarEstadoAco";
+            this.btnCambiarEstadoAco.Size = new System.Drawing.Size(121, 46);
+            this.btnCambiarEstadoAco.TabIndex = 2;
+            this.btnCambiarEstadoAco.Text = "Cambiar Estado";
+            this.btnCambiarEstadoAco.UseVisualStyleBackColor = false;
+            this.btnCambiarEstadoAco.Click += new System.EventHandler(this.btnCambiarEstadoAco_Click);
+            // 
+            // btnEditarAco
+            // 
+            this.btnEditarAco.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnEditarAco.FlatAppearance.BorderSize = 0;
+            this.btnEditarAco.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnEditarAco.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditarAco.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditarAco.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnEditarAco.Location = new System.Drawing.Point(3, 54);
+            this.btnEditarAco.Name = "btnEditarAco";
+            this.btnEditarAco.Size = new System.Drawing.Size(121, 46);
+            this.btnEditarAco.TabIndex = 1;
+            this.btnEditarAco.Text = "Editar";
+            this.btnEditarAco.UseVisualStyleBackColor = false;
+            this.btnEditarAco.Click += new System.EventHandler(this.btnEditarAco_Click);
+            // 
+            // btnAgregarAco
+            // 
+            this.btnAgregarAco.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnAgregarAco.FlatAppearance.BorderSize = 0;
+            this.btnAgregarAco.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnAgregarAco.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregarAco.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarAco.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnAgregarAco.Location = new System.Drawing.Point(3, 1);
+            this.btnAgregarAco.Name = "btnAgregarAco";
+            this.btnAgregarAco.Size = new System.Drawing.Size(121, 46);
+            this.btnAgregarAco.TabIndex = 0;
+            this.btnAgregarAco.Text = "Agregar";
+            this.btnAgregarAco.UseVisualStyleBackColor = false;
+            this.btnAgregarAco.Click += new System.EventHandler(this.btnAgregarAco_Click);
+            // 
+            // pnlTitulo2
+            // 
+            this.pnlTitulo2.Controls.Add(this.lblAcometida);
+            this.pnlTitulo2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTitulo2.Location = new System.Drawing.Point(0, 0);
+            this.pnlTitulo2.Name = "pnlTitulo2";
+            this.pnlTitulo2.Size = new System.Drawing.Size(881, 34);
+            this.pnlTitulo2.TabIndex = 0;
+            // 
+            // lblAcometida
+            // 
+            this.lblAcometida.AutoSize = true;
+            this.lblAcometida.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAcometida.Location = new System.Drawing.Point(419, 8);
+            this.lblAcometida.Name = "lblAcometida";
+            this.lblAcometida.Size = new System.Drawing.Size(94, 20);
+            this.lblAcometida.TabIndex = 0;
+            this.lblAcometida.Text = "Acometida";
             // 
             // frmVistaServicios
             // 

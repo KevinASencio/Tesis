@@ -46,7 +46,6 @@ namespace GUI.FormsGestion
             lblRol.Text = _useractivo.rol();
             OrganizadorObj.Organizar(4, 2, pnlBotones, btnClientes.GetType());
             OrganizadorObj.ocultar(pnlMenus, pnlMenuDetalles);
-            OrganizadorObj.ocultar(pnlMenus, pnlAcciones);
             OrganizadorObj.mostrar(pnlMenus, pnlMenuInicio);
             OrganizadorObj.Organizar(1, 8, pnlMenuInicio, btnUsuarios.GetType());
         }
@@ -103,7 +102,6 @@ namespace GUI.FormsGestion
             formCall = "clientes";
             OrganizadorObj.abrirCont(_frmVistaCliente);
             OrganizadorObj.ocultar(pnlMenus, pnlMenuInicio);
-            OrganizadorObj.ocultar(pnlMenus, pnlAcciones);
             OrganizadorObj.mostrar(pnlMenus, pnlMenuDetalles);
         }
 
@@ -129,11 +127,6 @@ namespace GUI.FormsGestion
             abrirFormulariosGestion(formCall);
         }
 
-        private void btnGuardar_Click(object sender, EventArgs e)
-        {
-            frmGestionClientes.frmgc.procesar();
-        }
-
         private void btnCobro_Click(object sender, EventArgs e)
         {
             OrganizadorObj.abrirCont(new frmCobroFacturas());
@@ -144,13 +137,6 @@ namespace GUI.FormsGestion
             _frmVistaUsuarios = new frmVistaUsuarios();
             OrganizadorObj.abrirCont(_frmVistaUsuarios);
         }
-
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            if (frmGestionClientes.frmgc != null) { frmGestionClientes.frmgc.cerrar(); }
-
-        }
-
         private void btnServicios_Click(object sender, EventArgs e)
         {
             _frmVistaCliente.Servicios();
@@ -169,6 +155,12 @@ namespace GUI.FormsGestion
                 default: break;
             }
 
+        }
+
+        private void btnCambiarEstado_Click(object sender, EventArgs e)
+        {
+            frmVistaClientes.frmvc.CambiarEstado();
+            frmVistaClientes.frmvc.CargarDatos();
         }
     }
 }

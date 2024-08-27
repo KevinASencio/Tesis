@@ -50,7 +50,7 @@ namespace GUI.Clases
 
         public static Boolean seguroCambiarEstado()
         {
-            return MessageBox.Show("Realmente desea Cambiar el Estado del Servicio?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes ? true : false;
+            return MessageBox.Show("Realmente desea Cambiar el Estado del Registro?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes ? true : false;
         }
 
         public static bool Decimales(KeyPressEventArgs v, Boolean a)

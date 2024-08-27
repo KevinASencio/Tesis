@@ -37,11 +37,12 @@ namespace GUI.FormsGestion
                 _servicio.setEstado(cmbEstado.Text.ToString());
                 _servicio.setComentario(txbComentario.Text.ToString());
                 _acometida.setIdcuota(int.Parse(cmbCuota.SelectedValue.ToString()));
-                
+                _acometida.setIdcuota(int.Parse(cmbCuota.SelectedValue.ToString()));
                 _acometida.setMonto(float.Parse(txbMonto.Text.ToString()));
+                _acometida.setSaldo(float.Parse(txbSaldo.Text.ToString()));
+                _acometida.setNCuotaspagadas(int.Parse(txbCuotasPagadas.Text.ToString()));
                 if (this.txbId.Text.Length <= 0)
                 {
-                    //!_acometida.(int.Parse(cmbCuota.SelectedValue.ToString()))) {
                     _acometida.setNCuotas(0);
                     _acometida.setSaldo(_acometida.getMonto());
                     if (!_acometida.InsertarAcometida()) { MessageBox.Show("¡Error al guardar la cuota!", "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Error); }
@@ -62,7 +63,6 @@ namespace GUI.FormsGestion
                 else
                 {
                     _servicio.setIdServicio(int.Parse(txbId.Text.ToString()));
-                    _acometida.setIdcuota(int.Parse(cmbCuota.SelectedValue.ToString()));
                     if (!_acometida.ActualizarAcometida()) { MessageBox.Show("¡Error al actualizar la cuota!", "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Error); }
                     else
                     {

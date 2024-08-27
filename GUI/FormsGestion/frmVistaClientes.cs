@@ -18,6 +18,7 @@ namespace GUI.FormsGestion
         BindingSource ListaClientes = new BindingSource();
         frmGestionClientes _frmGestionClientes;
         frmVistaServicios _frmVistaServicios;
+        ClientesNeg cliente;
         public static frmVistaClientes frmvc;
 
         public frmVistaClientes()
@@ -47,66 +48,56 @@ namespace GUI.FormsGestion
             _frmGestionClientes.txbTelefono.Text = dtgvClientes.CurrentRow.Cells["telefono"].Value.ToString();
             _frmGestionClientes.cmbEstado.SelectedItem = dtgvClientes.CurrentRow.Cells["estado"].Value.ToString();
             //OrganizadorObj.abrirFormularioHijo(this,_frmGestionClientes);
-           
+
             _frmGestionClientes.StartPosition = FormStartPosition.CenterParent;
             _frmGestionClientes.ShowDialog();
         }
 
         private void dtgvClientes_SelectionChanged(object sender, EventArgs e)
-            
+
         {
-            
+
             //MessageBox.Show(dtgvClientes.CurrentRow.Cells["apellidos"].Value.ToString());
         }
 
-        public void CambiarEstado() 
-        {
-            ClientesNeg cl = new ClientesNeg(int.Parse(dtgvClientes.CurrentRow.Cells["idcliente"].Value.ToString()),
-                                             dtgvClientes.CurrentRow.Cells["estado"].Value.ToString());
-            if (cl.CambiarEstado() == true)
-            {
-                MessageBox.Show("Erro al Cambiar Estado", "Error", MessageBoxButtons.OK);
-            }
-            else
-            { 
-                //MessageBox.Show()
-            }
-           
-        }
 
         private void frmVistaClientes_ControlRemoved(object sender, ControlEventArgs e)
         {
             CargarDatos();
             OrganizadorObj.ocultar(frmPrincipal.fr.pnlMenus, frmPrincipal.fr.pnlMenuInicio);
             OrganizadorObj.mostrar(frmPrincipal.fr.pnlMenus, frmPrincipal.fr.pnlMenuDetalles);
-            OrganizadorObj.ocultar(frmPrincipal.fr.pnlMenus, frmPrincipal.fr.pnlAcciones);
         }
 
-        public void CargarDatos() 
+        public void CargarDatos()
         {
             ListaClientes.DataSource = CapaNegocio.SistemCache.ConsultarClientes();
             dtgvClientes.AutoGenerateColumns = false;
             dtgvClientes.DataSource = ListaClientes;
-            lblRegistro.Text = ListaClientes.Count.ToString();
+            lblRegistro.Text = ListaClientes.Count.ToString() + " Registros Encontrados";
         }
-        public void Servicios() 
+        public void Servicios()
         {
             _frmVistaServicios = new frmVistaServicios();
-           // OrganizadorObj.ocultar(frmPrincipal.fr.pnlMenus, frmPrincipal.fr.pnlMenuInicio);
-           // OrganizadorObj.ocultar(frmPrincipal.fr.pnlMenus, frmPrincipal.fr.pnlMenuDetalles);
-            OrganizadorObj.ocultar(frmPrincipal.fr.pnlMenus, frmPrincipal.fr.pnlAcciones);
             _frmVistaServicios.servicio.setIdCliente(Convert.ToInt32(dtgvClientes.CurrentRow.Cells["idcliente"].Value.ToString()));
-            //_frmVistaServicios.CargarDatos(Convert.ToInt32(dtgvClientes.CurrentRow.Cells["idcliente"].Value.ToString()));
-            /*this.AddOwnedForm(_frmVistaServicios);
-            _frmVistaServicios.TopLevel = false;
-            this.Controls.Add(_frmVistaServicios);
-            _frmVistaServicios.BringToFront();
-            _frmVistaServicios.Show();
-            _frmVistaServicios.StartPosition= FormStartPosition.CenterParent;
-            _frmVistaServicios.Update();*/
-            //OrganizadorObj.abrirFormularioHijo(this, _frmVistaServicios);
-            _frmVistaServicios.StartPosition= FormStartPosition.CenterParent;
+            _frmVistaServicios.StartPosition = FormStartPosition.CenterParent;
             _frmVistaServicios.ShowDialog();
+        }
+
+        public void CambiarEstado()
+        {
+            if (Validacion.seguroCambiarEstado())
+            {
+                if (dtgvClientes.CurrentRow.Cells["estado"].Value.ToString() == "Activo")
+                {
+                    cliente = new ClientesNeg(int.Parse(dtgvClientes.CurrentRow.Cells["idcliente"].Value.ToString()), "De Baja");
+                }
+                else
+                {
+                    cliente = new ClientesNeg(int.Parse(dtgvClientes.CurrentRow.Cells["idcliente"].Value.ToString()), "Activo");
+                }
+                if (cliente.CambiarEstado()) { MessageBox.Show("Estado Cambiado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+                else { MessageBox.Show("Error al cambiar el Estado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            }
         }
     }
 }

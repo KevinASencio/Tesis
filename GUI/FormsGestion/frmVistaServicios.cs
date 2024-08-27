@@ -4,8 +4,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
+using System.Security.RightsManagement;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Data;
 using System.Windows.Forms;
 using Controllers;
 using GUI.Clases;
@@ -110,16 +113,7 @@ namespace GUI.FormsGestion
 
         private void btnCambiarEstado_Click(object sender, EventArgs e)
         {
-            if (Validacion.seguroCambiarEstado())
-            {
-                servicio.setIdServicio(int.Parse(dtgvServiciosConsumo.CurrentRow.Cells["idservicio"].Value.ToString()));
-                if (dtgvServiciosConsumo.CurrentRow.Cells["estado"].Value.ToString() == "ACTIVO") { servicio.setEstado("DE BAJA"); }
-                else { servicio.setEstado("ACTIVO");}
-
-                if (servicio.cambiarEstado()) { MessageBox.Show("Estado Cambiado","Exito", MessageBoxButtons.OK,MessageBoxIcon.Information); } 
-                else { MessageBox.Show("No se ha podido cambiar el estado!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-
-            }
+            cabiarestado(int.Parse(dtgvServiciosConsumo.CurrentRow.Cells["idservicio"].Value.ToString()), dtgvServiciosConsumo.CurrentRow.Cells["estado"].Value.ToString());
         }
 
         private void btnAgregarAco_Click(object sender, EventArgs e)
@@ -156,8 +150,37 @@ namespace GUI.FormsGestion
             _frmGestionAcometida.txbMonto.Text = dtgvServiciosAcometida.CurrentRow.Cells["monto"].Value.ToString();
             _frmGestionAcometida.cmbCuota.SelectedValue = dtgvServiciosAcometida.CurrentRow.Cells["idcuotaA"].Value.ToString();
             _frmGestionAcometida.cmbColonia.SelectedValue = dtgvServiciosAcometida.CurrentRow.Cells["idcoloniaA"].Value.ToString();
-
+            _frmGestionAcometida.cmbEstado.Text = dtgvServiciosAcometida.CurrentRow.Cells["estadoA"].Value.ToString();
+            _frmGestionAcometida.txbSaldo.Text = dtgvServiciosAcometida.CurrentRow.Cells["saldo"].Value.ToString();
+            _frmGestionAcometida.cmbCuota.Enabled = false;
+            _frmGestionAcometida.txbSaldo.Enabled = false;
+            _frmGestionAcometida.txbMonto.Enabled = false;
+            _frmGestionAcometida.txbNCuotas.Enabled = false;
             _frmGestionAcometida.Show();
+        }
+
+        private void btnCambiarEstadoAco_Click(object sender, EventArgs e)
+        {
+            cabiarestado(int.Parse(dtgvServiciosAcometida.CurrentRow.Cells["idservicioA"].Value.ToString()), dtgvServiciosAcometida.CurrentRow.Cells["estadoA"].Value.ToString());
+        }
+
+        public void cabiarestado(int id, string estado) 
+        {
+            if (Validacion.seguroCambiarEstado())
+            {
+                servicio.setIdServicio(id);
+                if (estado == "ACTIVO") { servicio.setEstado("DE BAJA"); }
+                else { servicio.setEstado("ACTIVO"); }
+
+                if (servicio.cambiarEstado()) { MessageBox.Show("Estado Cambiado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+                else { MessageBox.Show("No se ha podido cambiar el estado!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+
+            }
+            CargarDatos(this.servicio.getIdCliente());
+        }
+
+        public void algo() 
+        {
         }
     }
 }
