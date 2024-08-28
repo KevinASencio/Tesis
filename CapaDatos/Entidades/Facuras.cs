@@ -68,12 +68,22 @@ namespace CapaDatos.Entidades
             }
             catch (Exception ex) { return null; }
         }
-        public DataTable GenerarFacturas() 
+        public DataTable GenerarFacturas(int idcontrol, double mora)
         {
-            DataTable Result=new DataTable();
-            DataTable facturas= new DataTable();
+            DBOperacion operacion = new DBOperacion();
+            StringBuilder sentencia = new StringBuilder();
+            DataTable Result = new DataTable();
+            DataTable facturas = new DataTable();
+            facturas = ConsultarGenrar();
 
-            
+            foreach (DataRow rw in facturas.Rows)
+            {
+                sentencia.Clear();
+                if (rw.ItemArray[4].ToString().ToLower() == "pendiente")
+                {
+                    return Result;
+                }
+            }
             return Result;
         }
 

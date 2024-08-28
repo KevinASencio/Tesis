@@ -34,7 +34,7 @@ namespace CapaDatos.Entidades
             try
             {
                 resultado = operacion.Insertar(sentencia.ToString());
-                this.IdServicioConsumo= int.Parse(operacion.Consultar("select LAST_INSERT_ID() as \'id\' from serviciosconsumo limit 1").Rows[0][0].ToString());
+                this.IdServicioConsumo= int.Parse(operacion.Consultar("select LAST_INSERT_ID() from serviciosconsumo limit 1").Rows[0][0].ToString());
                 return resultado;
             }
             catch (Exception ex) 
