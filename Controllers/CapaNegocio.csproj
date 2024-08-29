@@ -44,7 +44,9 @@
   <ItemGroup>
     <Compile Include="ClientesNeg.cs" />
     <Compile Include="ColoniasNeg.cs" />
+    <Compile Include="ControlFechasNeg.cs" />
     <Compile Include="CuotasNeg.cs" />
+    <Compile Include="FacturasNeg.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiciosAcometidaNeg.cs" />
     <Compile Include="ServiciosConsumoNeg.cs" />

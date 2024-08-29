@@ -1,4 +1,5 @@
 ﻿using CapaNegocio;
+using Controllers;
 using GUI.Clases;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,11 @@ namespace GUI.FormsGestion
         frmGestionClientes _frmGestionClientes;
         frmVistaServicios _frmVistaServicios;
         ClientesNeg cliente;
+
+        //nada mas prueba
+        FacturasNeg fac= new FacturasNeg();
+        ControlFechasNeg fechas=new ControlFechasNeg();
+
         public static frmVistaClientes frmvc;
 
         public frmVistaClientes()
@@ -30,6 +36,8 @@ namespace GUI.FormsGestion
         private void frmVistaClientes_Load(object sender, EventArgs e)
         {
             CargarDatos();
+            fechas.insertar();
+            fac.Generar(fechas.getId(),2.0);
         }
 
         private void toolStripCerrar_Click(object sender, EventArgs e)

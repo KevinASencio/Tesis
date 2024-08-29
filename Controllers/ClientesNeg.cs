@@ -47,7 +47,6 @@ namespace CapaNegocio
             return this.cl.CambiarEstado();
         }
 
-
     }
 }
 

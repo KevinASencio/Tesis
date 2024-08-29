@@ -13,7 +13,7 @@ namespace CapaDatos.Entidades
         DateTime _FechaHasta;//hasta que dia se esta tomando en cuenta para realizar el cobro del consumo
         string _Mes;
         DateTime _FechaGeneracion;
-        ControlFechasFacturas() { this.FechaGeneracion = DateTime.Now; }
+        public ControlFechasFacturas() { this.FechaGeneracion = DateTime.Now; }
         public DateTime FechaVencimiento { get => _FechaVencimiento; set => _FechaVencimiento = value; }
         public DateTime FechaHasta { get => _FechaHasta; set => _FechaHasta = value; }
         public string Mes { get => _Mes; set => _Mes = value; }
@@ -25,12 +25,12 @@ namespace CapaDatos.Entidades
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
             bool resultado = false;
-            sentencia.Append("insert into fecha_control_facturas into(");
+            sentencia.Append("insert into fecha_control_facturas (");
             sentencia.Append("fecha_vencimiento, fecha_hasta, mes, fecha_generacion) Values(");
-            sentencia.Append(this.FechaVencimiento.ToString("yyyy,MM,dd") + ", ");
-            sentencia.Append(this.FechaHasta.ToString("yyy,MM,dd") + ", ");
-            sentencia.Append(this.Mes + ", ");
-            sentencia.Append(this.FechaGeneracion.ToString("yyyy,,dd") + ");");
+            sentencia.Append("'" + this.FechaVencimiento.ToString("yyyy-MM-dd") + "', ");
+            sentencia.Append("'" + this.FechaHasta.ToString("yyy-MM-dd") + "', ");
+            sentencia.Append("'" + this.Mes + "', ");
+            sentencia.Append("'" + this.FechaGeneracion.ToString("yyyy-MM-dd") + "');");
             try
             {
                 resultado = operacion.Insertar(sentencia.ToString());
