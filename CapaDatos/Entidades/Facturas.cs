@@ -1,13 +1,6 @@
-﻿using MySqlX.XDevAPI;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CapaDatos.Entidades
@@ -36,10 +29,10 @@ namespace CapaDatos.Entidades
         public string EstadoPago { get => _EstadoPago; set => _EstadoPago = value; }
         public string Comentario { get => _Comentario; set => _Comentario = value; }
 
-        public DataTable Consultar() 
+        public DataTable Consultar()
         {
-            DBOperacion operacion= new DBOperacion();
-            StringBuilder sentencia= new StringBuilder();
+            DBOperacion operacion = new DBOperacion();
+            StringBuilder sentencia = new StringBuilder();
             sentencia.Append(" select fact.idfactura, fact.saldo,fact.mora, fact.estado, fact.estado_pago, fact.idservicio, ");
             sentencia.Append("fact.cont_pendiente, fact.descuento, fact.idcontrolfecha, fact.comentario, ");
             sentencia.Append("concat(cli.nombres, \" \" , cli.apellidos) as 'cliente' from facturas as fact, servicios as ");
@@ -47,10 +40,11 @@ namespace CapaDatos.Entidades
             sentencia.Append("where fact.idservicio = serv.idservicio and cli.idcliente = serv.idcliente and ");
             sentencia.Append("serv.idconsumo = con.idserviciosconsumo and  ");
             sentencia.Append("fact.idcontrolfecha = (select idcontrol from fecha_control_factura order by idcontrol desc limit 1);");
-            try 
+            try
             {
                 return operacion.Consultar(sentencia.ToString());
-            } catch (Exception ex) { return null; }
+            }
+            catch (Exception ex) { return null; }
         }
         //obtiene las facturas con la informacion necesaria para generar las facturas del mes
         public DataTable ConsultarGenrar()
@@ -70,18 +64,26 @@ namespace CapaDatos.Entidades
             }
             catch (Exception ex) { return null; }
         }
-        public DataTable GenerarFacturas(int idcontrol, double mora)
+
+        public DataTable GenerarFacturasConsumo(int idcontrol, double mora)
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
-            DataTable Result = new DataTable();
-            DataTable facturas = new DataTable();
-            facturas = ConsultarGenrar();
+            /*Datatable, si aparece algun error en tiempo de ejecución se procede a agregar
+            la factura para devolver cono resulatdo la lista de facturas que no fueron posibles crear las siguientes
+            ejemplo: si se esta generando la facturación para el mes de febrero pero una de estas da error se agrega a Result 
+            la factura anterior a la que no se pudo generar en este caso enero
+             */
+            DataTable Resultado = new DataTable();
+            DataTable lista = new DataTable();
+            lista = ConsultarGenrar();
             int cont = 0;
-            foreach (DataRow rw in facturas.Rows)
+            //creacion de facturas, tomando en cuenta la informacion de las facturas de mes vencidos se recorre la lista de facturas pára acceder a la informacion necesaria para la creaciom de la factura
+            //la insercion se hace factura por factura, de esta forma si surge un error con alguno no impide que las demas sean creadas
+            foreach (DataRow rw in lista.Rows)
             {
-
                 sentencia.Clear();
+                //si esta pendiente se genera la nueva factura con los saldos pendientes
                 if (rw.ItemArray[4].ToString().ToLower() == "pendiente")
                 {
                     sentencia.Append("insert into facturas (saldo, mora, estado, estado_pago, idservicio, cont_pendiente, idcontrolfecha)");
@@ -95,16 +97,18 @@ namespace CapaDatos.Entidades
                     sentencia.Append(idcontrol + ")");
                     try
                     {
+                        //si la creacion de la factura es exitosa entonces, se procede a cambiar de estado
+                        //la factura del mes anterior, esto para indicar que la factura anterior no fue pagada y que el saldo de esta fue transferido a la nueva factura 
                         if (operacion.Insertar(sentencia.ToString())) { operacion.Actualizar("update facturas set estado='Transferida' where idfactura= " + rw.ItemArray[0] + ";"); }
-                        else { Result.Rows.CopyTo(rw.ItemArray, cont); cont++; }
+                        else { Resultado.Rows.CopyTo(rw.ItemArray, cont); cont++; }
                     }
                     catch (Exception ex)
                     {
-                        Result.Rows.CopyTo(rw.ItemArray, cont);
+                        Resultado.Rows.CopyTo(rw.ItemArray, cont);
                         cont++;
                     }
-                } 
-                else
+                }
+                else //creacion de la factura si la factura anterior al servicio fue cancelada
                 {
                     sentencia.Append("insert into facturas (saldo, mora, estado, estado_pago, idservicio, cont_pendiente, idcontrolfecha)");
                     sentencia.Append("values (");
@@ -117,16 +121,55 @@ namespace CapaDatos.Entidades
                     sentencia.Append(idcontrol + ")");
                     try
                     {
-                        if (!operacion.Insertar(sentencia.ToString())) { Result.Rows.CopyTo(rw.ItemArray, cont); cont++; }
+                        if (!operacion.Insertar(sentencia.ToString())) { Resultado.Rows.CopyTo(rw.ItemArray, cont); cont++; }
                     }
                     catch (Exception ex)
                     {
-                        Result.Rows.CopyTo(rw.ItemArray, cont);
+                        Resultado.Rows.CopyTo(rw.ItemArray, cont);
                         cont++;
                     }
                 }
             }
-            return Result;
+            //crear faturas de los servicios los cuales aun no cuentan con una factura previa
+
+            lista.Clear();
+
+            lista = operacion.Consultar(@"select serv.idservicio,cuo.monto from servicios serv, cuotasconsumo cuo, serviciosconsumo con 
+                                            where con.idcuotaconsumo=cuo.idcuotaconsumo and serv.idconsumo=con.idserviciosconsumo and serv.idservicio 
+                                            not in(select fac.idservicio from facturas fac where fac.idservicio=serv.idservicio and fac.idcontrolfecha=" + (int)(idcontrol-1) + ");");
+            
+            if (lista.Rows.Count > 0)
+            {
+                foreach (DataRow rw in lista.Rows)
+                {
+                    sentencia.Clear();
+                    sentencia.Append("insert into facturas (saldo, mora, estado, estado_pago, idservicio, cont_pendiente, idcontrolfecha)");
+                    sentencia.Append("values (");
+                    sentencia.Append(double.Parse(rw.ItemArray[1].ToString()) + ", ");
+                    sentencia.Append("0.00, ");
+                    sentencia.Append("'Valida', ");
+                    sentencia.Append("'Pendiente', ");
+                    sentencia.Append(rw.ItemArray[0].ToString() + ", ");
+                    sentencia.Append("0, ");
+                    sentencia.Append(idcontrol + ")");
+                    try
+                    {
+                        if (!operacion.Insertar(sentencia.ToString()))
+                        {
+                            MessageBox.Show("Error al crear facturas para el servicio N°" + rw.ItemArray[0].ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    catch (Exception ex) { MessageBox.Show("Error al crear facturas para el servicio N°" + rw.ItemArray[0].ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+
+
+                }
+            }
+            return Resultado;
+        }
+
+        public DataTable GeneraraFacturasAcom()
+        {
+            return null;
         }
 
 

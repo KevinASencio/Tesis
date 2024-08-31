@@ -15,7 +15,7 @@ namespace Controllers
 
         public DataTable Generar(int idcontrol, double mora) 
         {
-            return fac.GenerarFacturas(idcontrol, mora);
+            return fac.GenerarFacturasConsumo(idcontrol, mora);
         }
 
     }
