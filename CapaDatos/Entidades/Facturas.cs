@@ -47,17 +47,17 @@ namespace CapaDatos.Entidades
             catch (Exception ex) { return null; }
         }
         //obtiene las facturas con la informacion necesaria para generar las facturas del mes
-        public DataTable ConsultarGenrarCon()
+        public DataTable ConsultarGenrarCon(int idcontrol)
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
             sentencia.Append(" select fact.idfactura, fact.saldo,fact.mora, fact.estado, fact.estado_pago, fact.idservicio, ");
-            sentencia.Append("fact.cont_pendiente, fact.descuento, fact.idcontrolfecha, fact.comentario, cuo.monto as cuota ");
+            sentencia.Append("fact.cont_pendiente, fact.descuento, fact.idcontrolfecha, cuo.monto as cuota ");
             sentencia.Append(" from facturas as fact, servicios as ");
             sentencia.Append("serv, clientes as cli, serviciosconsumo as con, cuotasconsumo as cuo ");
             sentencia.Append("where fact.idservicio = serv.idservicio and cli.idcliente = serv.idcliente and ");
             sentencia.Append("serv.idconsumo = con.idserviciosconsumo and cuo.idcuotaconsumo = con.idcuotaconsumo and fact.estado='Valida' and ");
-            sentencia.Append("fact.idcontrolfecha = (select idcontrol from fecha_control_facturas order by idcontrol desc limit 1 offset 1);");
+            sentencia.Append("fact.idcontrolfecha = " + (int)(idcontrol-1)+ ";");
             try
             {
                 return operacion.Consultar(sentencia.ToString());
@@ -65,6 +65,23 @@ namespace CapaDatos.Entidades
             catch (Exception ex) { return null; }
         }
 
+        public DataTable ConsultarGenrarAco(int idcontrol)
+        {
+            DBOperacion operacion = new DBOperacion();
+            StringBuilder sentencia = new StringBuilder();
+            sentencia.Append(" select fact.idfactura, fact.saldo,fact.mora, fact.estado, fact.estado_pago, fact.idservicio, ");
+            sentencia.Append("fact.cont_pendiente, fact.descuento, fact.idcontrolfecha, cuo.monto as cuota");
+            sentencia.Append(" from facturas as fact, servicios as");
+            sentencia.Append("serv, clientes as cli, serviciosacometida as aco, cuotasacometida as cuo ");
+            sentencia.Append("where fact.idservicio = serv.idservicio and cli.idcliente = serv.idcliente and ");
+            sentencia.Append("serv.idacometida = aco.idserviciosacometida and cuo.idcuotaacometida = aco.idcuotaacometida and fact.estado='Valida' and ");
+            sentencia.Append("fact.idcontrolfecha =" + (int)(idcontrol-1) + ";");
+            try
+            {
+                return operacion.Consultar(sentencia.ToString());
+            }
+            catch (Exception ex) { return null; }
+        }
         public DataTable GenerarFacturasConsumo(int idcontrol, double mora)
         {
             DBOperacion operacion = new DBOperacion();
@@ -76,7 +93,7 @@ namespace CapaDatos.Entidades
              */
             DataTable Resultado = new DataTable();
             DataTable lista = new DataTable();
-            lista = ConsultarGenrarCon();
+            lista = ConsultarGenrarCon(idcontrol);
             int cont = 0;
             //creacion de facturas, tomando en cuenta la informacion de las facturas de mes vencidos se recorre la lista de facturas pára acceder a la informacion necesaria para la creaciom de la factura
             //la insercion se hace factura por factura, de esta forma si surge un error con alguno no impide que las demas sean creadas
@@ -88,7 +105,7 @@ namespace CapaDatos.Entidades
                 {
                     sentencia.Append("insert into facturas (saldo, mora, estado, estado_pago, idservicio, cont_pendiente, idcontrolfecha)");
                     sentencia.Append("values (");
-                    sentencia.Append((double.Parse(rw.ItemArray[1].ToString()) + double.Parse(rw.ItemArray[10].ToString())) + ", ");
+                    sentencia.Append((double.Parse(rw.ItemArray[1].ToString()) + double.Parse(rw.ItemArray[9].ToString())) + ", ");
                     sentencia.Append((double.Parse(rw.ItemArray[2].ToString()) + mora) + ", ");
                     sentencia.Append("'Valida', ");
                     sentencia.Append("'Pendiente', ");
@@ -112,7 +129,7 @@ namespace CapaDatos.Entidades
                 {
                     sentencia.Append("insert into facturas (saldo, mora, estado, estado_pago, idservicio, cont_pendiente, idcontrolfecha)");
                     sentencia.Append("values (");
-                    sentencia.Append(double.Parse(rw.ItemArray[10].ToString()) + ", ");
+                    sentencia.Append(double.Parse(rw.ItemArray[9].ToString()) + ", ");
                     sentencia.Append("0.00, ");
                     sentencia.Append("'Valida', ");
                     sentencia.Append("'Pendiente', ");
@@ -133,7 +150,7 @@ namespace CapaDatos.Entidades
             //crear faturas de los servicios los cuales aun no cuentan con una factura previa
 
             lista.Clear();
-
+            //consulta para obtener todos los servicios a los cuales no se les a generado factura
             lista = operacion.Consultar(@"select serv.idservicio,cuo.monto from servicios serv, cuotasconsumo cuo, serviciosconsumo con 
                                             where con.idcuotaconsumo=cuo.idcuotaconsumo and serv.idconsumo=con.idserviciosconsumo and serv.idservicio 
                                             not in(select fac.idservicio from facturas fac where fac.idservicio=serv.idservicio and fac.idcontrolfecha=" + (int)(idcontrol-1) + ");");
@@ -178,7 +195,7 @@ namespace CapaDatos.Entidades
              */
             DataTable Resultado = new DataTable();
             DataTable lista = new DataTable();
-            lista = ConsultarGenrarCon();
+            lista = ConsultarGenrarAco(idcontrol);
             int cont = 0;
             //creacion de facturas, tomando en cuenta la informacion de las facturas de mes vencidos se recorre la lista de facturas pára acceder a la informacion necesaria para la creaciom de la factura
             //la insercion se hace factura por factura, de esta forma si surge un error con alguno no impide que las demas sean creadas
@@ -190,7 +207,7 @@ namespace CapaDatos.Entidades
                 {
                     sentencia.Append("insert into facturas (saldo, mora, estado, estado_pago, idservicio, cont_pendiente, idcontrolfecha)");
                     sentencia.Append("values (");
-                    sentencia.Append((double.Parse(rw.ItemArray[1].ToString()) + double.Parse(rw.ItemArray[10].ToString())) + ", ");
+                    sentencia.Append((double.Parse(rw.ItemArray[1].ToString()) + double.Parse(rw.ItemArray[9].ToString())) + ", ");
                     sentencia.Append((double.Parse(rw.ItemArray[2].ToString()) + mora) + ", ");
                     sentencia.Append("'Valida', ");
                     sentencia.Append("'Pendiente', ");
@@ -214,7 +231,7 @@ namespace CapaDatos.Entidades
                 {
                     sentencia.Append("insert into facturas (saldo, mora, estado, estado_pago, idservicio, cont_pendiente, idcontrolfecha)");
                     sentencia.Append("values (");
-                    sentencia.Append(double.Parse(rw.ItemArray[10].ToString()) + ", ");
+                    sentencia.Append(double.Parse(rw.ItemArray[9].ToString()) + ", ");
                     sentencia.Append("0.00, ");
                     sentencia.Append("'Valida', ");
                     sentencia.Append("'Pendiente', ");
@@ -235,7 +252,7 @@ namespace CapaDatos.Entidades
             //crear faturas de los servicios los cuales aun no cuentan con una factura previa
 
             lista.Clear();
-
+            //consulra para obtener todos los servicios a los cuales no se les ha genedaro factura
             lista = operacion.Consultar(@"select serv.idservicio,cuo.monto from servicios serv, cuotasconsumo cuo, serviciosconsumo con 
                                             where con.idcuotaconsumo=cuo.idcuotaconsumo and serv.idconsumo=con.idserviciosconsumo and serv.idservicio 
                                             not in(select fac.idservicio from facturas fac where fac.idservicio=serv.idservicio and fac.idcontrolfecha=" + (int)(idcontrol - 1) + ");");
