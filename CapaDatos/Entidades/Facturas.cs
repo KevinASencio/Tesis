@@ -47,7 +47,7 @@ namespace CapaDatos.Entidades
             catch (Exception ex) { return null; }
         }
         //obtiene las facturas con la informacion necesaria para generar las facturas del mes
-        public DataTable ConsultarGenrar()
+        public DataTable ConsultarGenrarCon()
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
@@ -76,7 +76,7 @@ namespace CapaDatos.Entidades
              */
             DataTable Resultado = new DataTable();
             DataTable lista = new DataTable();
-            lista = ConsultarGenrar();
+            lista = ConsultarGenrarCon();
             int cont = 0;
             //creacion de facturas, tomando en cuenta la informacion de las facturas de mes vencidos se recorre la lista de facturas pára acceder a la informacion necesaria para la creaciom de la factura
             //la insercion se hace factura por factura, de esta forma si surge un error con alguno no impide que las demas sean creadas
@@ -167,9 +167,106 @@ namespace CapaDatos.Entidades
             return Resultado;
         }
 
-        public DataTable GeneraraFacturasAcom()
+        public DataTable GenerarFacturasAcometida(int idcontrol, double mora)
         {
-            return null;
+            DBOperacion operacion = new DBOperacion();
+            StringBuilder sentencia = new StringBuilder();
+            /*Datatable, si aparece algun error en tiempo de ejecución se procede a agregar
+            la factura para devolver cono resulatdo la lista de facturas que no fueron posibles crear las siguientes
+            ejemplo: si se esta generando la facturación para el mes de febrero pero una de estas da error se agrega a Result 
+            la factura anterior a la que no se pudo generar en este caso enero
+             */
+            DataTable Resultado = new DataTable();
+            DataTable lista = new DataTable();
+            lista = ConsultarGenrarCon();
+            int cont = 0;
+            //creacion de facturas, tomando en cuenta la informacion de las facturas de mes vencidos se recorre la lista de facturas pára acceder a la informacion necesaria para la creaciom de la factura
+            //la insercion se hace factura por factura, de esta forma si surge un error con alguno no impide que las demas sean creadas
+            foreach (DataRow rw in lista.Rows)
+            {
+                sentencia.Clear();
+                //si esta pendiente se genera la nueva factura con los saldos pendientes
+                if (rw.ItemArray[4].ToString().ToLower() == "pendiente")
+                {
+                    sentencia.Append("insert into facturas (saldo, mora, estado, estado_pago, idservicio, cont_pendiente, idcontrolfecha)");
+                    sentencia.Append("values (");
+                    sentencia.Append((double.Parse(rw.ItemArray[1].ToString()) + double.Parse(rw.ItemArray[10].ToString())) + ", ");
+                    sentencia.Append((double.Parse(rw.ItemArray[2].ToString()) + mora) + ", ");
+                    sentencia.Append("'Valida', ");
+                    sentencia.Append("'Pendiente', ");
+                    sentencia.Append(rw.ItemArray[5].ToString() + ", ");
+                    sentencia.Append((int.Parse(rw.ItemArray[6].ToString()) + 1) + ", ");
+                    sentencia.Append(idcontrol + ")");
+                    try
+                    {
+                        //si la creacion de la factura es exitosa entonces, se procede a cambiar de estado
+                        //la factura del mes anterior, esto para indicar que la factura anterior no fue pagada y que el saldo de esta fue transferido a la nueva factura 
+                        if (operacion.Insertar(sentencia.ToString())) { operacion.Actualizar("update facturas set estado='Transferida' where idfactura= " + rw.ItemArray[0] + ";"); }
+                        else { Resultado.Rows.CopyTo(rw.ItemArray, cont); cont++; }
+                    }
+                    catch (Exception ex)
+                    {
+                        Resultado.Rows.CopyTo(rw.ItemArray, cont);
+                        cont++;
+                    }
+                }
+                else //creacion de la factura si la factura anterior al servicio fue cancelada
+                {
+                    sentencia.Append("insert into facturas (saldo, mora, estado, estado_pago, idservicio, cont_pendiente, idcontrolfecha)");
+                    sentencia.Append("values (");
+                    sentencia.Append(double.Parse(rw.ItemArray[10].ToString()) + ", ");
+                    sentencia.Append("0.00, ");
+                    sentencia.Append("'Valida', ");
+                    sentencia.Append("'Pendiente', ");
+                    sentencia.Append(rw.ItemArray[5].ToString() + ", ");
+                    sentencia.Append("0, ");
+                    sentencia.Append(idcontrol + ")");
+                    try
+                    {
+                        if (!operacion.Insertar(sentencia.ToString())) { Resultado.Rows.CopyTo(rw.ItemArray, cont); cont++; }
+                    }
+                    catch (Exception ex)
+                    {
+                        Resultado.Rows.CopyTo(rw.ItemArray, cont);
+                        cont++;
+                    }
+                }
+            }
+            //crear faturas de los servicios los cuales aun no cuentan con una factura previa
+
+            lista.Clear();
+
+            lista = operacion.Consultar(@"select serv.idservicio,cuo.monto from servicios serv, cuotasconsumo cuo, serviciosconsumo con 
+                                            where con.idcuotaconsumo=cuo.idcuotaconsumo and serv.idconsumo=con.idserviciosconsumo and serv.idservicio 
+                                            not in(select fac.idservicio from facturas fac where fac.idservicio=serv.idservicio and fac.idcontrolfecha=" + (int)(idcontrol - 1) + ");");
+
+            if (lista.Rows.Count > 0)
+            {
+                foreach (DataRow rw in lista.Rows)
+                {
+                    sentencia.Clear();
+                    sentencia.Append("insert into facturas (saldo, mora, estado, estado_pago, idservicio, cont_pendiente, idcontrolfecha)");
+                    sentencia.Append("values (");
+                    sentencia.Append(double.Parse(rw.ItemArray[1].ToString()) + ", ");
+                    sentencia.Append("0.00, ");
+                    sentencia.Append("'Valida', ");
+                    sentencia.Append("'Pendiente', ");
+                    sentencia.Append(rw.ItemArray[0].ToString() + ", ");
+                    sentencia.Append("0, ");
+                    sentencia.Append(idcontrol + ")");
+                    try
+                    {
+                        if (!operacion.Insertar(sentencia.ToString()))
+                        {
+                            MessageBox.Show("Error al crear facturas para el servicio N°" + rw.ItemArray[0].ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    catch (Exception ex) { MessageBox.Show("Error al crear facturas para el servicio N°" + rw.ItemArray[0].ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+
+
+                }
+            }
+            return Resultado;
         }
 
 
