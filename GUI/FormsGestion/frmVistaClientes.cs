@@ -38,6 +38,7 @@ namespace GUI.FormsGestion
             CargarDatos();
             fechas.insertar();
             fac.Generar(fechas.getId(),2.0);
+            fac.GenerarAco(fechas.getId(),3.50);
         }
 
         private void toolStripCerrar_Click(object sender, EventArgs e)

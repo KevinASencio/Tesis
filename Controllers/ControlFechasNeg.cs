@@ -15,7 +15,7 @@ namespace Controllers
         {
             crt.FechaHasta = DateTime.Now; 
             crt.FechaVencimiento = DateTime.Now;
-            crt.Mes = "enero";
+            crt.Mes = "diciembre";
             return crt.agregar();
         }
         public int getId() 

@@ -71,7 +71,7 @@ namespace CapaDatos.Entidades
             StringBuilder sentencia = new StringBuilder();
             sentencia.Append(" select fact.idfactura, fact.saldo,fact.mora, fact.estado, fact.estado_pago, fact.idservicio, ");
             sentencia.Append("fact.cont_pendiente, fact.descuento, fact.idcontrolfecha, cuo.monto as cuota");
-            sentencia.Append(" from facturas as fact, servicios as");
+            sentencia.Append(" from facturas as fact, servicios as ");
             sentencia.Append("serv, clientes as cli, serviciosacometida as aco, cuotasacometida as cuo ");
             sentencia.Append("where fact.idservicio = serv.idservicio and cli.idcliente = serv.idcliente and ");
             sentencia.Append("serv.idacometida = aco.idserviciosacometida and cuo.idcuotaacometida = aco.idcuotaacometida and fact.estado='Valida' and ");
@@ -105,7 +105,7 @@ namespace CapaDatos.Entidades
                 {
                     sentencia.Append("insert into facturas (saldo, mora, estado, estado_pago, idservicio, cont_pendiente, idcontrolfecha)");
                     sentencia.Append("values (");
-                    sentencia.Append((double.Parse(rw.ItemArray[1].ToString()) + double.Parse(rw.ItemArray[9].ToString())) + ", ");
+                    sentencia.Append((double.Parse(rw.ItemArray[1].ToString()) + double.Parse(rw.ItemArray[9 ].ToString())) + ", ");
                     sentencia.Append((double.Parse(rw.ItemArray[2].ToString()) + mora) + ", ");
                     sentencia.Append("'Valida', ");
                     sentencia.Append("'Pendiente', ");
@@ -116,7 +116,9 @@ namespace CapaDatos.Entidades
                     {
                         //si la creacion de la factura es exitosa entonces, se procede a cambiar de estado
                         //la factura del mes anterior, esto para indicar que la factura anterior no fue pagada y que el saldo de esta fue transferido a la nueva factura 
-                        if (operacion.Insertar(sentencia.ToString())) { operacion.Actualizar("update facturas set estado='Transferida' where idfactura= " + rw.ItemArray[0] + ";"); }
+                        if (operacion.Insertar(sentencia.ToString())) { 
+                            operacion.Actualizar("update facturas set estado='Transferida' where idfactura= " + rw.ItemArray[0] + ";"); 
+                        }
                         else { Resultado.Rows.CopyTo(rw.ItemArray, cont); cont++; }
                     }
                     catch (Exception ex)
@@ -253,8 +255,8 @@ namespace CapaDatos.Entidades
 
             lista.Clear();
             //consulra para obtener todos los servicios a los cuales no se les ha genedaro factura
-            lista = operacion.Consultar(@"select serv.idservicio,cuo.monto from servicios serv, cuotasconsumo cuo, serviciosconsumo con 
-                                            where con.idcuotaconsumo=cuo.idcuotaconsumo and serv.idconsumo=con.idserviciosconsumo and serv.idservicio 
+            lista = operacion.Consultar(@"select serv.idservicio,cuo.monto from servicios serv, cuotasacometida cuo, serviciosacometida aco
+                                            where serv.idacometida=aco.idserviciosacometida and   aco.idcuotaacometida=cuo.idcuotaacometida and serv.idservicio
                                             not in(select fac.idservicio from facturas fac where fac.idservicio=serv.idservicio and fac.idcontrolfecha=" + (int)(idcontrol - 1) + ");");
 
             if (lista.Rows.Count > 0)

@@ -18,5 +18,10 @@ namespace Controllers
             return fac.GenerarFacturasConsumo(idcontrol, mora);
         }
 
+        public DataTable GenerarAco(int idcontrol, double mora)
+        {
+            return fac.GenerarFacturasAcometida(idcontrol, mora);
+        }
+
     }
 }
