@@ -13,14 +13,17 @@ namespace Controllers
 
         public Boolean insertar() 
         {
-            crt.FechaHasta = DateTime.Now; 
-            crt.FechaVencimiento = DateTime.Now;
-            crt.Mes = "diciembre";
+            
             return crt.agregar();
         }
         public int getId() 
         {
             return crt.IdControl;
         }
+
+        public void setFechaHasta(DateTime dt) { this.crt.FechaHasta = dt; }
+        DateTime getFechaHasta() { return this.crt.FechaHasta; }
+        public void setFechaVencimiento(DateTime dt) { this.crt.FechaVencimiento = dt; }
+        public void setFechaGeneracion() { this.crt.FechaGeneracion = DateTime.Now; }
     }
 }

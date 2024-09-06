@@ -22,8 +22,6 @@ namespace GUI.FormsGestion
         ClientesNeg cliente;
 
         //nada mas prueba
-        FacturasNeg fac= new FacturasNeg();
-        ControlFechasNeg fechas=new ControlFechasNeg();
 
         public static frmVistaClientes frmvc;
 
@@ -36,9 +34,6 @@ namespace GUI.FormsGestion
         private void frmVistaClientes_Load(object sender, EventArgs e)
         {
             CargarDatos();
-            fechas.insertar();
-            fac.Generar(fechas.getId(),2.0);
-            fac.GenerarAco(fechas.getId(),3.50);
         }
 
         private void toolStripCerrar_Click(object sender, EventArgs e)
