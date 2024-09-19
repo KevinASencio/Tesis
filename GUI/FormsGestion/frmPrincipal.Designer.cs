@@ -457,6 +457,7 @@
             this.btnGenerarFac.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnGenerarFac.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnGenerarFac.UseVisualStyleBackColor = true;
+            this.btnGenerarFac.Click += new System.EventHandler(this.btnGenerarFac_Click);
             // 
             // btnCorte
             // 

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,5 +26,6 @@ namespace Controllers
         DateTime getFechaHasta() { return this.crt.FechaHasta; }
         public void setFechaVencimiento(DateTime dt) { this.crt.FechaVencimiento = dt; }
         public void setFechaGeneracion() { this.crt.FechaGeneracion = DateTime.Now; }
+        public void setMes(string mes) { this.crt.Mes = mes; }
     }
 }

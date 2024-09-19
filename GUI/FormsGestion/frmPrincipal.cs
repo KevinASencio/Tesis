@@ -23,6 +23,7 @@ namespace GUI.FormsGestion
         frmGestionClientes _frmGestionClientes;
         frmVistaUsuarios _frmVistaUsuarios;
         frmVistaServicios _frmVistaServicios;
+        FrmCrearFacturas _frmCrearFacturas;
         #endregion
 
         static UsuarioNeg _useractivo = new UsuarioNeg();
@@ -161,6 +162,13 @@ namespace GUI.FormsGestion
         {
             frmVistaClientes.frmvc.CambiarEstado();
             frmVistaClientes.frmvc.CargarDatos();
+        }
+
+        private void btnGenerarFac_Click(object sender, EventArgs e)
+        {
+            _frmCrearFacturas = new FrmCrearFacturas();
+            OrganizadorObj.abrirCont(_frmCrearFacturas);
+            formCall = "crearfacturas";
         }
     }
 }
