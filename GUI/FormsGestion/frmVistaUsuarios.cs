@@ -13,7 +13,8 @@ namespace GUI.FormsGestion
 {
     public partial class frmVistaUsuarios : Form
     {
-        BindingSource _usuarios= new BindingSource();
+        BindingSource _usuarios = new BindingSource();
+        frmGestionUsuarios _frmGestionUsuarios;
         public frmVistaUsuarios()
         {
             InitializeComponent();
@@ -31,5 +32,20 @@ namespace GUI.FormsGestion
         {
             this.Close();
         }
+
+        public void Editar()
+        {
+            _frmGestionUsuarios = new frmGestionUsuarios();
+            _frmGestionUsuarios.txbUsuario.Text = this.dtgvUsuarios.CurrentRow.Cells["usuario"].Value.ToString();
+            _frmGestionUsuarios.txbNombres.Text = this.dtgvUsuarios.CurrentRow.Cells["nombres"].Value.ToString();
+            _frmGestionUsuarios.txbApellidos.Text = this.dtgvUsuarios.CurrentRow.Cells["apellidos"].Value.ToString();
+            _frmGestionUsuarios.cmbEstado.SelectedText = this.dtgvUsuarios.CurrentRow.Cells["estado"].Value.ToString();
+            _frmGestionUsuarios.cmbRol.SelectedValue = this.dtgvUsuarios.CurrentRow.Cells["idrol"].Value.ToString();
+            _frmGestionUsuarios.StartPosition = FormStartPosition.CenterParent;
+            _frmGestionUsuarios.ShowDialog();
+        }
+
+
+ 
     }
 }

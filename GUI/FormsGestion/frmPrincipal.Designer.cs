@@ -34,17 +34,18 @@
             this.ptbMaximizar = new System.Windows.Forms.PictureBox();
             this.ptbMinimizar = new System.Windows.Forms.PictureBox();
             this.prbCerrar = new System.Windows.Forms.PictureBox();
-            this.pnlMenus = new System.Windows.Forms.Panel();
-            this.pnlMenuDetalles = new System.Windows.Forms.Panel();
-            this.btnServicios = new System.Windows.Forms.Button();
-            this.btnLosFacturas = new System.Windows.Forms.Button();
-            this.btnCambiarEstado = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
             this.pnlMenuInicio = new System.Windows.Forms.Panel();
             this.btnParametro = new System.Windows.Forms.Button();
             this.btnCuotas = new System.Windows.Forms.Button();
             this.btnUsuarios = new System.Windows.Forms.Button();
             this.btnFacturas = new System.Windows.Forms.Button();
+            this.pnlMenus = new System.Windows.Forms.Panel();
+            this.pnlMenuDetalles = new System.Windows.Forms.Panel();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnServicios = new System.Windows.Forms.Button();
+            this.btnFacturasU = new System.Windows.Forms.Button();
+            this.btnCambiarEstado = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
             this.pnlUser = new System.Windows.Forms.Panel();
             this.lblRol = new System.Windows.Forms.Label();
             this.lblCerrarSesion = new System.Windows.Forms.Label();
@@ -65,9 +66,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.ptbMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.prbCerrar)).BeginInit();
+            this.pnlMenuInicio.SuspendLayout();
             this.pnlMenus.SuspendLayout();
             this.pnlMenuDetalles.SuspendLayout();
-            this.pnlMenuInicio.SuspendLayout();
             this.pnlUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.PnlPrincipal.SuspendLayout();
@@ -81,6 +82,7 @@
             this.pnlTop.Controls.Add(this.ptbMaximizar);
             this.pnlTop.Controls.Add(this.ptbMinimizar);
             this.pnlTop.Controls.Add(this.prbCerrar);
+            this.pnlTop.Controls.Add(this.pnlMenuInicio);
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTop.Location = new System.Drawing.Point(0, 0);
             this.pnlTop.Name = "pnlTop";
@@ -138,112 +140,6 @@
             this.prbCerrar.TabStop = false;
             this.prbCerrar.Click += new System.EventHandler(this.prbCerrar_Click);
             // 
-            // pnlMenus
-            // 
-            this.pnlMenus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.pnlMenus.Controls.Add(this.pnlMenuDetalles);
-            this.pnlMenus.Controls.Add(this.pnlUser);
-            this.pnlMenus.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlMenus.Location = new System.Drawing.Point(0, 48);
-            this.pnlMenus.Name = "pnlMenus";
-            this.pnlMenus.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.pnlMenus.Size = new System.Drawing.Size(221, 720);
-            this.pnlMenus.TabIndex = 2;
-            // 
-            // pnlMenuDetalles
-            // 
-            this.pnlMenuDetalles.Controls.Add(this.btnServicios);
-            this.pnlMenuDetalles.Controls.Add(this.btnLosFacturas);
-            this.pnlMenuDetalles.Controls.Add(this.btnCambiarEstado);
-            this.pnlMenuDetalles.Controls.Add(this.btnEditar);
-            this.pnlMenuDetalles.Controls.Add(this.pnlMenuInicio);
-            this.pnlMenuDetalles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMenuDetalles.Enabled = false;
-            this.pnlMenuDetalles.Location = new System.Drawing.Point(0, 0);
-            this.pnlMenuDetalles.Name = "pnlMenuDetalles";
-            this.pnlMenuDetalles.Size = new System.Drawing.Size(221, 620);
-            this.pnlMenuDetalles.TabIndex = 27;
-            this.pnlMenuDetalles.Visible = false;
-            // 
-            // btnServicios
-            // 
-            this.btnServicios.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnServicios.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnServicios.FlatAppearance.BorderSize = 0;
-            this.btnServicios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
-            this.btnServicios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnServicios.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnServicios.ForeColor = System.Drawing.Color.White;
-            this.btnServicios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnServicios.Location = new System.Drawing.Point(3, 158);
-            this.btnServicios.Name = "btnServicios";
-            this.btnServicios.Size = new System.Drawing.Size(219, 51);
-            this.btnServicios.TabIndex = 5;
-            this.btnServicios.Text = "Servicios";
-            this.btnServicios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnServicios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnServicios.UseVisualStyleBackColor = true;
-            this.btnServicios.Click += new System.EventHandler(this.btnServicios_Click);
-            // 
-            // btnLosFacturas
-            // 
-            this.btnLosFacturas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLosFacturas.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLosFacturas.FlatAppearance.BorderSize = 0;
-            this.btnLosFacturas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
-            this.btnLosFacturas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLosFacturas.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLosFacturas.ForeColor = System.Drawing.Color.White;
-            this.btnLosFacturas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLosFacturas.Location = new System.Drawing.Point(2, 228);
-            this.btnLosFacturas.Name = "btnLosFacturas";
-            this.btnLosFacturas.Size = new System.Drawing.Size(219, 51);
-            this.btnLosFacturas.TabIndex = 4;
-            this.btnLosFacturas.Text = "Facturas";
-            this.btnLosFacturas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLosFacturas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnLosFacturas.UseVisualStyleBackColor = true;
-            // 
-            // btnCambiarEstado
-            // 
-            this.btnCambiarEstado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCambiarEstado.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCambiarEstado.FlatAppearance.BorderSize = 0;
-            this.btnCambiarEstado.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
-            this.btnCambiarEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCambiarEstado.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCambiarEstado.ForeColor = System.Drawing.Color.White;
-            this.btnCambiarEstado.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCambiarEstado.Location = new System.Drawing.Point(1, 356);
-            this.btnCambiarEstado.Name = "btnCambiarEstado";
-            this.btnCambiarEstado.Size = new System.Drawing.Size(219, 51);
-            this.btnCambiarEstado.TabIndex = 2;
-            this.btnCambiarEstado.Text = "Cambiar Estado";
-            this.btnCambiarEstado.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCambiarEstado.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCambiarEstado.UseVisualStyleBackColor = true;
-            this.btnCambiarEstado.Click += new System.EventHandler(this.btnCambiarEstado_Click);
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEditar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEditar.FlatAppearance.BorderSize = 0;
-            this.btnEditar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
-            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditar.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditar.ForeColor = System.Drawing.Color.White;
-            this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditar.Location = new System.Drawing.Point(1, 288);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(219, 51);
-            this.btnEditar.TabIndex = 1;
-            this.btnEditar.Text = "Editar";
-            this.btnEditar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnEditar.UseVisualStyleBackColor = true;
-            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
-            // 
             // pnlMenuInicio
             // 
             this.pnlMenuInicio.Controls.Add(this.btnParametro);
@@ -251,7 +147,7 @@
             this.pnlMenuInicio.Controls.Add(this.btnUsuarios);
             this.pnlMenuInicio.Controls.Add(this.btnFacturas);
             this.pnlMenuInicio.Enabled = false;
-            this.pnlMenuInicio.Location = new System.Drawing.Point(56, 121);
+            this.pnlMenuInicio.Location = new System.Drawing.Point(153, 48);
             this.pnlMenuInicio.Name = "pnlMenuInicio";
             this.pnlMenuInicio.Size = new System.Drawing.Size(221, 458);
             this.pnlMenuInicio.TabIndex = 3;
@@ -332,6 +228,131 @@
             this.btnFacturas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFacturas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnFacturas.UseVisualStyleBackColor = true;
+            // 
+            // pnlMenus
+            // 
+            this.pnlMenus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.pnlMenus.Controls.Add(this.pnlMenuDetalles);
+            this.pnlMenus.Controls.Add(this.pnlUser);
+            this.pnlMenus.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlMenus.Location = new System.Drawing.Point(0, 48);
+            this.pnlMenus.Name = "pnlMenus";
+            this.pnlMenus.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.pnlMenus.Size = new System.Drawing.Size(221, 720);
+            this.pnlMenus.TabIndex = 2;
+            // 
+            // pnlMenuDetalles
+            // 
+            this.pnlMenuDetalles.Controls.Add(this.btnAgregar);
+            this.pnlMenuDetalles.Controls.Add(this.btnServicios);
+            this.pnlMenuDetalles.Controls.Add(this.btnFacturasU);
+            this.pnlMenuDetalles.Controls.Add(this.btnCambiarEstado);
+            this.pnlMenuDetalles.Controls.Add(this.btnEditar);
+            this.pnlMenuDetalles.Enabled = false;
+            this.pnlMenuDetalles.Location = new System.Drawing.Point(3, 3);
+            this.pnlMenuDetalles.Name = "pnlMenuDetalles";
+            this.pnlMenuDetalles.Size = new System.Drawing.Size(221, 620);
+            this.pnlMenuDetalles.TabIndex = 27;
+            this.pnlMenuDetalles.Visible = false;
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAgregar.FlatAppearance.BorderSize = 0;
+            this.btnAgregar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregar.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.ForeColor = System.Drawing.Color.White;
+            this.btnAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAgregar.Location = new System.Drawing.Point(2, 290);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(219, 51);
+            this.btnAgregar.TabIndex = 6;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAgregar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // btnServicios
+            // 
+            this.btnServicios.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnServicios.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnServicios.FlatAppearance.BorderSize = 0;
+            this.btnServicios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnServicios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnServicios.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnServicios.ForeColor = System.Drawing.Color.White;
+            this.btnServicios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnServicios.Location = new System.Drawing.Point(3, 158);
+            this.btnServicios.Name = "btnServicios";
+            this.btnServicios.Size = new System.Drawing.Size(219, 51);
+            this.btnServicios.TabIndex = 5;
+            this.btnServicios.Text = "Servicios";
+            this.btnServicios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnServicios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnServicios.UseVisualStyleBackColor = true;
+            this.btnServicios.Click += new System.EventHandler(this.btnServicios_Click);
+            // 
+            // btnFacturasU
+            // 
+            this.btnFacturasU.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFacturasU.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFacturasU.FlatAppearance.BorderSize = 0;
+            this.btnFacturasU.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnFacturasU.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFacturasU.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFacturasU.ForeColor = System.Drawing.Color.White;
+            this.btnFacturasU.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFacturasU.Location = new System.Drawing.Point(2, 228);
+            this.btnFacturasU.Name = "btnFacturasU";
+            this.btnFacturasU.Size = new System.Drawing.Size(219, 51);
+            this.btnFacturasU.TabIndex = 4;
+            this.btnFacturasU.Text = "Facturas";
+            this.btnFacturasU.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFacturasU.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnFacturasU.UseVisualStyleBackColor = true;
+            // 
+            // btnCambiarEstado
+            // 
+            this.btnCambiarEstado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCambiarEstado.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCambiarEstado.FlatAppearance.BorderSize = 0;
+            this.btnCambiarEstado.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnCambiarEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCambiarEstado.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCambiarEstado.ForeColor = System.Drawing.Color.White;
+            this.btnCambiarEstado.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCambiarEstado.Location = new System.Drawing.Point(2, 417);
+            this.btnCambiarEstado.Name = "btnCambiarEstado";
+            this.btnCambiarEstado.Size = new System.Drawing.Size(219, 51);
+            this.btnCambiarEstado.TabIndex = 2;
+            this.btnCambiarEstado.Text = "Cambiar Estado";
+            this.btnCambiarEstado.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCambiarEstado.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCambiarEstado.UseVisualStyleBackColor = true;
+            this.btnCambiarEstado.Click += new System.EventHandler(this.btnCambiarEstado_Click);
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEditar.FlatAppearance.BorderSize = 0;
+            this.btnEditar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditar.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditar.ForeColor = System.Drawing.Color.White;
+            this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEditar.Location = new System.Drawing.Point(2, 347);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(219, 51);
+            this.btnEditar.TabIndex = 1;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // pnlUser
             // 
@@ -600,9 +621,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.ptbMaximizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbMinimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.prbCerrar)).EndInit();
+            this.pnlMenuInicio.ResumeLayout(false);
             this.pnlMenus.ResumeLayout(false);
             this.pnlMenuDetalles.ResumeLayout(false);
-            this.pnlMenuInicio.ResumeLayout(false);
             this.pnlUser.ResumeLayout(false);
             this.pnlUser.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -640,10 +661,11 @@
         private System.Windows.Forms.Button btnCuotas;
         private System.Windows.Forms.Button btnUsuarios;
         private System.Windows.Forms.Button btnParametro;
-        private System.Windows.Forms.Button btnLosFacturas;
+        private System.Windows.Forms.Button btnFacturasU;
         private System.Windows.Forms.Button btnServicios;
         public System.Windows.Forms.Panel pnlMenus;
         public System.Windows.Forms.Panel pnlMenuInicio;
         public System.Windows.Forms.Panel pnlMenuDetalles;
+        private System.Windows.Forms.Button btnAgregar;
     }
 }

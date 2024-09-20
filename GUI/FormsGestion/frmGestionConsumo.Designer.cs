@@ -85,9 +85,9 @@
             this.lblId.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblId.Location = new System.Drawing.Point(3, 0);
             this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(84, 18);
+            this.lblId.Size = new System.Drawing.Size(82, 18);
             this.lblId.TabIndex = 0;
-            this.lblId.Text = "Id Servicio: ";
+            this.lblId.Text = "Id servicio: ";
             // 
             // panel2
             // 

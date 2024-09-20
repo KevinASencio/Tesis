@@ -174,6 +174,7 @@
             // 
             // idrol
             // 
+            this.idrol.DataPropertyName = "idrol";
             this.idrol.HeaderText = "idrol";
             this.idrol.Name = "idrol";
             this.idrol.ReadOnly = true;

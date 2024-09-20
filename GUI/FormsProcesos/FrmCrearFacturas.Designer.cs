@@ -48,8 +48,8 @@
             this.pnlBoton = new System.Windows.Forms.Panel();
             this.btnGnerar = new System.Windows.Forms.Button();
             this.gbImprimir = new System.Windows.Forms.GroupBox();
-            this.btnImpimir = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnImpimir = new System.Windows.Forms.Button();
             this.cmbColonia = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -287,6 +287,17 @@
             this.gbImprimir.TabStop = false;
             this.gbImprimir.Text = "Imprimir Facturas";
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.SystemColors.Control;
+            this.panel3.Controls.Add(this.btnImpimir);
+            this.panel3.Controls.Add(this.cmbColonia);
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Location = new System.Drawing.Point(6, 95);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(368, 116);
+            this.panel3.TabIndex = 7;
+            // 
             // btnImpimir
             // 
             this.btnImpimir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -302,17 +313,6 @@
             this.btnImpimir.Text = "Imprimir";
             this.btnImpimir.UseVisualStyleBackColor = false;
             this.btnImpimir.Click += new System.EventHandler(this.btnImpimir_Click);
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.SystemColors.Control;
-            this.panel3.Controls.Add(this.btnImpimir);
-            this.panel3.Controls.Add(this.cmbColonia);
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Location = new System.Drawing.Point(6, 95);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(368, 116);
-            this.panel3.TabIndex = 7;
             // 
             // cmbColonia
             // 

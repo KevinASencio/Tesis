@@ -48,7 +48,7 @@ namespace GUI.FormsGestion
             OrganizadorObj.Organizar(4, 2, pnlBotones, btnClientes.GetType());
             OrganizadorObj.ocultar(pnlMenus, pnlMenuDetalles);
             OrganizadorObj.mostrar(pnlMenus, pnlMenuInicio);
-            OrganizadorObj.Organizar(1, 8, pnlMenuInicio, btnUsuarios.GetType());
+            OrganizadorObj.Organizar(1, 6, pnlMenuInicio, btnUsuarios.GetType());
         }
 
         private void GestionClientes_ResizeBegin(object sender, EventArgs e)
@@ -135,6 +135,13 @@ namespace GUI.FormsGestion
 
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
+            formCall = "usuarios";
+            this.pnlMenuDetalles.Enabled = true;
+            this.pnlMenuDetalles.Controls.Remove(btnServicios);
+            this.pnlMenuDetalles.Controls.Remove(btnFacturasU);
+            OrganizadorObj.ocultar(this.pnlMenus, this.pnlMenuInicio);
+            OrganizadorObj.mostrar(this.pnlMenus, this.pnlMenuDetalles);
+            this.pnlMenuDetalles.Refresh();
             _frmVistaUsuarios = new frmVistaUsuarios();
             OrganizadorObj.abrirCont(_frmVistaUsuarios);
         }
@@ -153,6 +160,11 @@ namespace GUI.FormsGestion
                     OrganizadorObj.ocultar(pnlMenus, pnlMenuDetalles);
                     OrganizadorObj.mostrar(pnlMenus, pnlAcciones);*/
                     break;
+                case "usuarios":
+                    
+                    _frmVistaUsuarios.Editar();
+                    
+                    break;
                 default: break;
             }
 
@@ -169,6 +181,11 @@ namespace GUI.FormsGestion
             _frmCrearFacturas = new FrmCrearFacturas();
             OrganizadorObj.abrirCont(_frmCrearFacturas);
             formCall = "crearfacturas";
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
