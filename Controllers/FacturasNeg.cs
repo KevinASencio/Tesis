@@ -13,9 +13,9 @@ namespace Controllers
     {
         Facturas fac= new Facturas();
 
-        public DataTable Generar(int idcontrol, double mora) 
+        public DataTable Generar(int idcontrol, double mora, ProgressBar psbBar, Label conta) 
         {
-            return fac.GenerarFacturasConsumo(idcontrol, mora);
+            return fac.GenerarFacturasConsumo(idcontrol, mora, psbBar,conta);
         }
 
         public DataTable GenerarAco(int idcontrol, double mora)

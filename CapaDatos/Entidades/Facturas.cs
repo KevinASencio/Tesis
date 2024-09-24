@@ -64,7 +64,15 @@ namespace CapaDatos.Entidades
             }
             catch (Exception ex) { return null; }
         }
+        //consultar lista de servicios que no se ha creado factura previa
+        public DataTable ServiciosSinFac(int idcontrol) 
+        {
+            DBOperacion operacion = new DBOperacion();
+            return operacion.Consultar(@"select serv.idservicio,cuo.monto from servicios serv, cuotasconsumo cuo, serviciosconsumo con 
+                                                where con.idcuotaconsumo=cuo.idcuotaconsumo and serv.idconsumo=con.idserviciosconsumo and serv.idservicio 
+                                                not in(select fac.idservicio from facturas fac where fac.idservicio=serv.idservicio and fac.idcontrolfecha=" + (int)(idcontrol - 1) + ");");
 
+        }
         public DataTable ConsultarGenrarAco(int idcontrol)
         {
             DBOperacion operacion = new DBOperacion();
@@ -82,7 +90,7 @@ namespace CapaDatos.Entidades
             }
             catch (Exception ex) { return null; }
         }
-        public DataTable GenerarFacturasConsumo(int idcontrol, double mora)
+        public DataTable GenerarFacturasConsumo(int idcontrol, double mora,  ProgressBar g, Label conta)
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
@@ -92,12 +100,19 @@ namespace CapaDatos.Entidades
             la factura anterior a la que no se pudo generar en este caso enero
              */
             DataTable Resultado = new DataTable();
-            DataTable lista = new DataTable();
-            lista = ConsultarGenrarCon(idcontrol);
+            DataTable ListaFacturas = new DataTable();
+            DataTable ListaServicios =  new DataTable();
+            ListaFacturas = ConsultarGenrarCon(idcontrol);
+            ListaServicios = ServiciosSinFac(idcontrol);
+            g.Maximum= (ListaFacturas.Rows.Count + ListaServicios.Rows.Count)*5;
+            string aux = "/" + (ListaFacturas.Rows.Count + ListaServicios.Rows.Count).ToString();
+            //control de facturas con error al crearlas 
             int cont = 0;
+            //contador de las facturas que se procesaron con o sin error
+            int i = 0;
             //creacion de facturas, tomando en cuenta la informacion de las facturas de mes vencidos se recorre la lista de facturas pára acceder a la informacion necesaria para la creaciom de la factura
             //la insercion se hace factura por factura, de esta forma si surge un error con alguno no impide que las demas sean creadas
-            foreach (DataRow rw in lista.Rows)
+            foreach (DataRow rw in ListaFacturas.Rows)
             {
                 sentencia.Clear();
                 //si esta pendiente se genera la nueva factura con los saldos pendientes
@@ -148,18 +163,20 @@ namespace CapaDatos.Entidades
                         cont++;
                     }
                 }
+                g.Value += 5;
+                i++;
+                conta.Text=i + aux;
+                conta.Refresh();
             }
+            MessageBox.Show(conta.Text.ToString());
             //crear faturas de los servicios los cuales aun no cuentan con una factura previa
-
-            lista.Clear();
+            ListaFacturas.Clear();
             //consulta para obtener todos los servicios a los cuales no se les a generado factura
-            lista = operacion.Consultar(@"select serv.idservicio,cuo.monto from servicios serv, cuotasconsumo cuo, serviciosconsumo con 
-                                            where con.idcuotaconsumo=cuo.idcuotaconsumo and serv.idconsumo=con.idserviciosconsumo and serv.idservicio 
-                                            not in(select fac.idservicio from facturas fac where fac.idservicio=serv.idservicio and fac.idcontrolfecha=" + (int)(idcontrol-1) + ");");
+
             
-            if (lista.Rows.Count > 0)
+            if (ListaServicios.Rows.Count > 0)
             {
-                foreach (DataRow rw in lista.Rows)
+                foreach (DataRow rw in ListaServicios.Rows)
                 {
                     sentencia.Clear();
                     sentencia.Append("insert into facturas (saldo, mora, estado, estado_pago, idservicio, cont_pendiente, idcontrolfecha)");

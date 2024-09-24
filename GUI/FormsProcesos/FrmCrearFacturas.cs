@@ -16,15 +16,18 @@ namespace GUI.FormsGestion
     {
         FacturasNeg fac = new FacturasNeg(); 
         ControlFechasNeg fecha= new ControlFechasNeg();
+        public static ProgressBar pgsCrear;
         public FrmCrearFacturas()
         {
             InitializeComponent();
+            pgsCrear = pgbCrear;
         }
 
 
         private void prbCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
+           
         }
 
         private void btnGnerar_Click(object sender, EventArgs e)
@@ -35,7 +38,7 @@ namespace GUI.FormsGestion
             fecha.setFechaVencimiento(this.dtpVencimiento.Value);
             fecha.setMes(cmbMes.Text.ToString());
             fecha.insertar();
-            fac.Generar(fecha.getId(),2);
+            fac.Generar(fecha.getId(),2, pgbCrear,lblTotal);
             fac.GenerarAco(fecha.getId(),2);
             MessageBox.Show(cmbMes.Text.ToString());
         }

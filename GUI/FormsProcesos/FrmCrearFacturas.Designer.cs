@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCrearFacturas));
             this.pnlButtom = new System.Windows.Forms.Panel();
+            this.pgbCrear = new System.Windows.Forms.ProgressBar();
             this.pnlTop = new System.Windows.Forms.Panel();
             this.prbCerrar = new System.Windows.Forms.PictureBox();
             this.gbCrear = new System.Windows.Forms.GroupBox();
@@ -54,6 +55,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.lblTotal = new System.Windows.Forms.Label();
+            this.pnlButtom.SuspendLayout();
             this.pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.prbCerrar)).BeginInit();
             this.gbCrear.SuspendLayout();
@@ -70,11 +73,21 @@
             // 
             // pnlButtom
             // 
+            this.pnlButtom.Controls.Add(this.lblTotal);
+            this.pnlButtom.Controls.Add(this.pgbCrear);
             this.pnlButtom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlButtom.Location = new System.Drawing.Point(0, 365);
             this.pnlButtom.Name = "pnlButtom";
             this.pnlButtom.Size = new System.Drawing.Size(802, 90);
             this.pnlButtom.TabIndex = 19;
+            // 
+            // pgbCrear
+            // 
+            this.pgbCrear.Location = new System.Drawing.Point(179, 36);
+            this.pgbCrear.Name = "pgbCrear";
+            this.pgbCrear.Size = new System.Drawing.Size(394, 23);
+            this.pgbCrear.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.pgbCrear.TabIndex = 1;
             // 
             // pnlTop
             // 
@@ -351,6 +364,19 @@
             this.panel7.Size = new System.Drawing.Size(411, 328);
             this.panel7.TabIndex = 21;
             // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoEllipsis = true;
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.BackColor = System.Drawing.Color.Transparent;
+            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lblTotal.Location = new System.Drawing.Point(576, 39);
+            this.lblTotal.Margin = new System.Windows.Forms.Padding(0);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(20, 17);
+            this.lblTotal.TabIndex = 3;
+            this.lblTotal.Text = "/0";
+            // 
             // FrmCrearFacturas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -365,6 +391,8 @@
             this.Text = "FrmCrearFacturas";
             this.Load += new System.EventHandler(this.FrmCrearFacturas_Load);
             this.Resize += new System.EventHandler(this.FrmCrearFacturas_Resize);
+            this.pnlButtom.ResumeLayout(false);
+            this.pnlButtom.PerformLayout();
             this.pnlTop.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.prbCerrar)).EndInit();
             this.gbCrear.ResumeLayout(false);
@@ -413,5 +441,7 @@
         private System.Windows.Forms.ComboBox cmbMes;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.ProgressBar pgbCrear;
+        private System.Windows.Forms.Label lblTotal;
     }
 }
