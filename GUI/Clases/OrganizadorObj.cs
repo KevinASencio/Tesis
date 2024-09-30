@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
+﻿using GUI.FormsGestion;
+using System;
 using System.Windows.Forms;
-using GUI.FormsGestion;
-using System.Windows;
 
 namespace GUI.Clases
 {
@@ -79,7 +73,7 @@ namespace GUI.Clases
             contenedor.Update();
         }
 
-        public static void abrirFormularioHijo(System.Windows.Forms.Form padre, System.Windows.Forms.Form hijo) 
+        public static void abrirFormularioHijo(System.Windows.Forms.Form padre, System.Windows.Forms.Form hijo)
         {
             padre.AddOwnedForm(hijo);
             hijo.FormBorderStyle = FormBorderStyle.None;

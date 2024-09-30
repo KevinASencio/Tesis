@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Reflection;
-using System.Security.RightsManagement;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Data;
-using System.Windows.Forms;
-using Controllers;
+﻿using Controllers;
 using GUI.Clases;
+using System;
+using System.Drawing;
+using System.Windows.Forms;
 namespace GUI.FormsGestion
 {
     public partial class frmVistaServicios : Form
@@ -125,7 +116,7 @@ namespace GUI.FormsGestion
             _frmGestionAcometida.TopLevel = false;
             pnlPrincipal.Controls.Add(_frmGestionAcometida);
             _frmGestionAcometida.BringToFront();
-            _frmGestionAcometida.Size = new Size(this.Width,this.Height);
+            _frmGestionAcometida.Size = new Size(this.Width, this.Height);
             agregando = true;
             _frmGestionAcometida._servicio.setIdCliente(this.servicio.getIdCliente());
             _frmGestionAcometida.Show();
@@ -164,7 +155,7 @@ namespace GUI.FormsGestion
             cabiarestado(int.Parse(dtgvServiciosAcometida.CurrentRow.Cells["idservicioA"].Value.ToString()), dtgvServiciosAcometida.CurrentRow.Cells["estadoA"].Value.ToString());
         }
 
-        public void cabiarestado(int id, string estado) 
+        public void cabiarestado(int id, string estado)
         {
             if (Validacion.seguroCambiarEstado())
             {
@@ -179,7 +170,7 @@ namespace GUI.FormsGestion
             CargarDatos(this.servicio.getIdCliente());
         }
 
-        public void algo() 
+        public void algo()
         {
         }
     }

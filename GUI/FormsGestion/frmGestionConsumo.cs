@@ -1,13 +1,6 @@
 ﻿using Controllers;
 using GUI.Clases;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GUI.FormsGestion
@@ -49,7 +42,7 @@ namespace GUI.FormsGestion
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            
+
             if (Validacion.seguroModificar() && !Validacion.esVacio(this.pnlPrincipal, this.ErrorNotificador))
             {
                 _servicio.setIdColonia(int.Parse(cmbColonia.SelectedValue.ToString()));

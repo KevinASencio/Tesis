@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace CapaDatos.Entidades
 {
@@ -12,17 +9,17 @@ namespace CapaDatos.Entidades
         string _Uusuario;
         string _Apellidos;
         string _Nombres;
-        string _IdRol;
+        int _IdRol;
         string _Estado;
-        string _Password;
+        string _Contraseña;
         string _Rol;
 
         public string Uusuario { get => _Uusuario; set => _Uusuario = value; }
         public string Apellidos { get => _Apellidos; set => _Apellidos = value; }
         public string Nombres { get => _Nombres; set => _Nombres = value; }
-        public string IdRol { get => _IdRol; set => _IdRol = value; }
+        public int IdRol { get => _IdRol; set => _IdRol = value; }
         public string Estado { get => _Estado; set => _Estado = value; }
-        public string Password { get => _Password; set => _Password = value; }
+        public string Contraseña { get => _Contraseña; set => _Contraseña = value; }
         public string Rol { get => _Rol; set => _Rol = value; }
 
         public static DataTable Consultar()
@@ -44,16 +41,16 @@ namespace CapaDatos.Entidades
             }
         }
 
-        public Boolean insert()
+        public Boolean Agregar()
         {
             StringBuilder sentencia = new StringBuilder();
             DBOperacion operacion = new DBOperacion();
-            sentencia.Append("insert into usuarios (usuario, nombres, apellidos, idrol, password, estado) values(");
+            sentencia.Append("Agregar into usuarios (usuario, nombres, apellidos, idrol, contraseña, estado) values(");
             sentencia.Append("'" + _Uusuario + "',");
             sentencia.Append("'" + _Nombres + "',");
             sentencia.Append("'" + _Apellidos + "',");
-            sentencia.Append("'" + _IdRol + "',");
-            sentencia.Append("'" + _Password + "',");
+            sentencia.Append(" " + _IdRol + ",");
+            sentencia.Append("'" + _Contraseña + "',");
             sentencia.Append("'" + _Estado + "');");
             try
             {
@@ -67,17 +64,17 @@ namespace CapaDatos.Entidades
             }
         }
 
-        public Boolean update()
+        public Boolean Actualizar()
         {
             StringBuilder sentencia = new StringBuilder();
             DBOperacion operacion = new DBOperacion();
-            sentencia.Append("Actualizar lcientes set ");
+            sentencia.Append("update usuarios set ");
             sentencia.Append("usuario = '" + _Uusuario + "',");
             sentencia.Append("nombres = '" + _Nombres + "',");
             sentencia.Append("apellidos = '" + _Apellidos + "',");
             sentencia.Append("idrol = " + _IdRol + ",");
-            sentencia.Append("password = '" + _Password + "',");
-            sentencia.Append("estado = '" + _Estado + "') where usuario=" + _Uusuario + ";");
+            sentencia.Append("contraseña = '" + _Contraseña + "',");
+            sentencia.Append("estado = '" + _Estado + "' where usuario='" + _Uusuario + "';");
 
             try
             {
@@ -91,16 +88,19 @@ namespace CapaDatos.Entidades
             }
         }
 
-        public DataTable Validar(string user, string pass) {
+        public DataTable Validar(string user, string pass)
+        {
             StringBuilder sentencia = new StringBuilder();
             DBOperacion operacion = new DBOperacion();
 
-            sentencia.Append("select us.usuario, us.nombres, us.apellidos, us.estado,us.idrol , (select rol from roles as rl where us.idrol=rl.idrol) as rol from usuarios as us where  usuario='" + user + "' and BINARY password='" + pass + "';");
+            sentencia.Append(@"select us.usuario, us.nombres, us.apellidos, us.estado,us.idrol , (select rol from roles as rl where us.idrol=rl.idrol) as rol 
+                              from usuarios as us where  usuario='" + user + "' and BINARY contraseña='" + pass + "';");
 
             try
             {
                 return operacion.Consultar(sentencia.ToString());
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.Error.WriteLine(ex.ToString());
                 return null;
@@ -119,16 +119,18 @@ namespace CapaDatos.Entidades
                 int i = 0;
                 foreach (DataRow row in aux.Rows)
                 {
-                    privilegios[i]= int.Parse(row["idaccion"].ToString());
+                    privilegios[i] = int.Parse(row["idaccion"].ToString());
                     i++;
                 }
                 return privilegios;
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 return null;
             }
         }
     }
 
-   
-    
+
+
 }

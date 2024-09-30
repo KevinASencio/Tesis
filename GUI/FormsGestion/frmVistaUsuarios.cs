@@ -23,9 +23,7 @@ namespace GUI.FormsGestion
 
         private void frmVistaUsuarios_Load(object sender, EventArgs e)
         {
-            _usuarios.DataSource = UsuarioNeg.consultar();
-            dtgvUsuarios.AutoGenerateColumns = false;
-            dtgvUsuarios.DataSource = _usuarios;
+            CargarDatos();
         }
 
         private void toolStripCerrar_Click(object sender, EventArgs e)
@@ -36,16 +34,32 @@ namespace GUI.FormsGestion
         public void Editar()
         {
             _frmGestionUsuarios = new frmGestionUsuarios();
-            _frmGestionUsuarios.txbUsuario.Text = this.dtgvUsuarios.CurrentRow.Cells["usuario"].Value.ToString();
+            _frmGestionUsuarios.accion = "editar";
+            _frmGestionUsuarios.txbId.Text = this.dtgvUsuarios.CurrentRow.Cells["usuario"].Value.ToString();
             _frmGestionUsuarios.txbNombres.Text = this.dtgvUsuarios.CurrentRow.Cells["nombres"].Value.ToString();
             _frmGestionUsuarios.txbApellidos.Text = this.dtgvUsuarios.CurrentRow.Cells["apellidos"].Value.ToString();
-            _frmGestionUsuarios.cmbEstado.SelectedText = this.dtgvUsuarios.CurrentRow.Cells["estado"].Value.ToString();
+            _frmGestionUsuarios.cmbEstado.Text = this.dtgvUsuarios.CurrentRow.Cells["estado"].Value.ToString();
             _frmGestionUsuarios.cmbRol.SelectedValue = this.dtgvUsuarios.CurrentRow.Cells["idrol"].Value.ToString();
+            _frmGestionUsuarios.txbContraseña.Text = this.dtgvUsuarios.CurrentRow.Cells["contraseña"].Value.ToString();
+            _frmGestionUsuarios.StartPosition = FormStartPosition.CenterParent;
+            _frmGestionUsuarios.ShowDialog();
+            this.CargarDatos();
+        }
+
+        public void agregar() 
+        {
+            _frmGestionUsuarios = new frmGestionUsuarios();
+            _frmGestionUsuarios.accion = "editar";
             _frmGestionUsuarios.StartPosition = FormStartPosition.CenterParent;
             _frmGestionUsuarios.ShowDialog();
         }
 
-
+        public void CargarDatos() 
+        {
+            _usuarios.DataSource = UsuarioNeg.consultar();
+            dtgvUsuarios.AutoGenerateColumns = false;
+            dtgvUsuarios.DataSource = _usuarios;
+        }
  
     }
 }

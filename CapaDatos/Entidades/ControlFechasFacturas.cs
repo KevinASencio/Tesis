@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace CapaDatos.Entidades
 {
@@ -25,7 +22,7 @@ namespace CapaDatos.Entidades
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
             bool resultado = false;
-            sentencia.Append("insert into fecha_control_facturas (");
+            sentencia.Append("Agregar into fecha_control_facturas (");
             sentencia.Append("fecha_vencimiento, fecha_hasta, mes, fecha_generacion) Values(");
             sentencia.Append("'" + this.FechaVencimiento.ToString("yyyy-MM-dd") + "', ");
             sentencia.Append("'" + this.FechaHasta.ToString("yyy-MM-dd") + "', ");
@@ -41,7 +38,7 @@ namespace CapaDatos.Entidades
                 }
                 else { return false; }
             }
-            catch(Exception ex) { return false; }
+            catch (Exception ex) { return false; }
         }
     }
 }

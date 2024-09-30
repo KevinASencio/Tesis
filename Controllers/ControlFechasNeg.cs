@@ -1,10 +1,5 @@
 ﻿using CapaDatos.Entidades;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Controllers
 {
@@ -12,12 +7,12 @@ namespace Controllers
     {
         ControlFechasFacturas crt = new ControlFechasFacturas();
 
-        public Boolean insertar() 
+        public Boolean insertar()
         {
-            
+
             return crt.agregar();
         }
-        public int getId() 
+        public int getId()
         {
             return crt.IdControl;
         }

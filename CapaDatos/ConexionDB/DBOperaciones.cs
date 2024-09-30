@@ -1,10 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CapaDatos
 {
@@ -43,7 +39,7 @@ namespace CapaDatos
                 base.Desconectar();
             }
 
-            return FilasAfectadas > 0 ?  true : false;
+            return FilasAfectadas > 0 ? true : false;
         }
         private DataTable EjecutarConsulta(String pConsulta)
         {

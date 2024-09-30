@@ -1,16 +1,6 @@
 ﻿using CapaNegocio;
-using Controllers;
 using GUI.Clases;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Forms;
 namespace GUI.FormsGestion
 {
@@ -40,7 +30,12 @@ namespace GUI.FormsGestion
         {
             this.Close();
         }
-
+        public void agregar() 
+        {
+            _frmGestionClientes = new frmGestionClientes();
+            _frmGestionClientes.StartPosition = FormStartPosition.CenterParent;
+            _frmGestionClientes.ShowDialog();
+        }
         public void Editar()
         {
             _frmGestionClientes = new frmGestionClientes();
@@ -52,7 +47,6 @@ namespace GUI.FormsGestion
             _frmGestionClientes.txbTelefono.Text = dtgvClientes.CurrentRow.Cells["telefono"].Value.ToString();
             _frmGestionClientes.cmbEstado.SelectedItem = dtgvClientes.CurrentRow.Cells["estado"].Value.ToString();
             //OrganizadorObj.abrirFormularioHijo(this,_frmGestionClientes);
-
             _frmGestionClientes.StartPosition = FormStartPosition.CenterParent;
             _frmGestionClientes.ShowDialog();
         }

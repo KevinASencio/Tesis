@@ -136,7 +136,7 @@ namespace CapaDatos.Entidades
                 //si esta pendiente se genera la nueva factura con los saldos pendientes
                 if (rw.ItemArray[4].ToString().ToLower() == "pendiente")
                 {
-                    sentencia.Append("insert into facturas (saldo, mora, estado, estado_pago, idservicio, cont_pendiente, idcontrolfecha)");
+                    sentencia.Append("Agregar into facturas (saldo, mora, estado, estado_pago, idservicio, cont_pendiente, idcontrolfecha)");
                     sentencia.Append("values (");
                     sentencia.Append((double.Parse(rw.ItemArray[1].ToString()) + double.Parse(rw.ItemArray[9].ToString())) + ", ");
                     sentencia.Append((double.Parse(rw.ItemArray[2].ToString()) + mora) + ", ");
@@ -151,7 +151,7 @@ namespace CapaDatos.Entidades
                         //la factura del mes anterior, esto para indicar que la factura anterior no fue pagada y que el saldo de esta fue transferido a la nueva factura 
                         if (operacion.Insertar(sentencia.ToString()))
                         {
-                            operacion.Actualizar("update facturas set estado='Transferida' where idfactura= " + rw.ItemArray[0] + ";");
+                            operacion.Actualizar("Actualizar facturas set estado='Transferida' where idfactura= " + rw.ItemArray[0] + ";");
                         }
                         else { Resultado.Rows.CopyTo(rw.ItemArray, cont); cont++; }
                     }
@@ -163,7 +163,7 @@ namespace CapaDatos.Entidades
                 }
                 else //creacion de la factura si la factura anterior al servicio fue cancelada
                 {
-                    sentencia.Append("insert into facturas (saldo, mora, estado, estado_pago, idservicio, cont_pendiente, idcontrolfecha)");
+                    sentencia.Append("Agregar into facturas (saldo, mora, estado, estado_pago, idservicio, cont_pendiente, idcontrolfecha)");
                     sentencia.Append("values (");
                     sentencia.Append(double.Parse(rw.ItemArray[9].ToString()) + ", ");
                     sentencia.Append("0.00, ");
@@ -182,8 +182,8 @@ namespace CapaDatos.Entidades
                         cont++;
                     }
                 }
-               i++;
-                g.Value =i*5;
+                i++;
+                g.Value = i * 5;
                 conta.Text = i + aux;
                 conta.Refresh();
             }
@@ -199,7 +199,7 @@ namespace CapaDatos.Entidades
                 foreach (DataRow rw in ListaServicios.Rows)
                 {
                     sentencia.Clear();
-                    sentencia.Append("insert into facturas (saldo, mora, estado, estado_pago, idservicio, cont_pendiente, idcontrolfecha)");
+                    sentencia.Append("Agregar into facturas (saldo, mora, estado, estado_pago, idservicio, cont_pendiente, idcontrolfecha)");
                     sentencia.Append("values (");
                     sentencia.Append(double.Parse(rw.ItemArray[1].ToString()) + ", ");
                     sentencia.Append("0.00, ");
@@ -253,7 +253,7 @@ namespace CapaDatos.Entidades
                 //si esta pendiente se genera la nueva factura con los saldos pendientes
                 if (rw.ItemArray[4].ToString().ToLower() == "pendiente")
                 {
-                    sentencia.Append("insert into facturas (saldo, mora, estado, estado_pago, idservicio, cont_pendiente, idcontrolfecha)");
+                    sentencia.Append("Agregar into facturas (saldo, mora, estado, estado_pago, idservicio, cont_pendiente, idcontrolfecha)");
                     sentencia.Append("values (");
                     sentencia.Append((double.Parse(rw.ItemArray[1].ToString()) + double.Parse(rw.ItemArray[9].ToString())) + ", ");
                     sentencia.Append((double.Parse(rw.ItemArray[2].ToString()) + mora) + ", ");
@@ -266,7 +266,7 @@ namespace CapaDatos.Entidades
                     {
                         //si la creacion de la factura es exitosa entonces, se procede a cambiar de estado
                         //la factura del mes anterior, esto para indicar que la factura anterior no fue pagada y que el saldo de esta fue transferido a la nueva factura 
-                        if (operacion.Insertar(sentencia.ToString())) { operacion.Actualizar("update facturas set estado='Transferida' where idfactura= " + rw.ItemArray[0] + ";"); }
+                        if (operacion.Insertar(sentencia.ToString())) { operacion.Actualizar("Actualizar facturas set estado='Transferida' where idfactura= " + rw.ItemArray[0] + ";"); }
                         else { Resultado.Rows.CopyTo(rw.ItemArray, cont); cont++; }
                     }
                     catch (Exception ex)
@@ -277,7 +277,7 @@ namespace CapaDatos.Entidades
                 }
                 else //creacion de la factura si la factura anterior al servicio fue cancelada
                 {
-                    sentencia.Append("insert into facturas (saldo, mora, estado, estado_pago, idservicio, cont_pendiente, idcontrolfecha)");
+                    sentencia.Append("Agregar into facturas (saldo, mora, estado, estado_pago, idservicio, cont_pendiente, idcontrolfecha)");
                     sentencia.Append("values (");
                     sentencia.Append(double.Parse(rw.ItemArray[9].ToString()) + ", ");
                     sentencia.Append("0.00, ");
@@ -298,7 +298,7 @@ namespace CapaDatos.Entidades
                 }
 
                 procesadas++;
-                g.Value =procesadas*5;
+                g.Value = procesadas * 5;
                 conta.Text = procesadas + aux;
                 conta.Refresh();
             }
@@ -309,7 +309,7 @@ namespace CapaDatos.Entidades
                 foreach (DataRow rw in ListaServicios.Rows)
                 {
                     sentencia.Clear();
-                    sentencia.Append("insert into facturas (saldo, mora, estado, estado_pago, idservicio, cont_pendiente, idcontrolfecha)");
+                    sentencia.Append("Agregar into facturas (saldo, mora, estado, estado_pago, idservicio, cont_pendiente, idcontrolfecha)");
                     sentencia.Append("values (");
                     sentencia.Append(double.Parse(rw.ItemArray[1].ToString()) + ", ");
                     sentencia.Append("0.00, ");

@@ -1,11 +1,6 @@
-﻿using CapaDatos;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Data;
-using System.Linq;
-using System.Runtime.Remoting.Messaging;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace CapaDatos.Entidades
 {
@@ -33,17 +28,20 @@ namespace CapaDatos.Entidades
             DBOperacion operacion = new DBOperacion();
             sentencia.Append(@"select * from clientes;");
 
-            try {
+            try
+            {
                 resul = operacion.Consultar(sentencia.ToString());
                 return resul;
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 Console.Error.WriteLine(ex.ToString());
                 return new DataTable();
             }
         }
 
-        public Boolean Guardar() {
+        public Boolean Guardar()
+        {
             StringBuilder sentencia = new StringBuilder();
             DBOperacion operacion = new DBOperacion();
             sentencia.Append("insert into clientes (nombres, apellidos, direccion, dui, estado,telefono) values(");
@@ -53,10 +51,12 @@ namespace CapaDatos.Entidades
             sentencia.Append("'" + _Dui + "',");
             sentencia.Append("'" + _Estado + "',");
             sentencia.Append("'" + _Telefono + "');");
-            try {
+            try
+            {
                 return operacion.Insertar(sentencia.ToString());
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 Console.Error.WriteLine(ex.ToString());
                 return false;
             }
@@ -66,7 +66,7 @@ namespace CapaDatos.Entidades
         {
             StringBuilder sentencia = new StringBuilder();
             DBOperacion operacion = new DBOperacion();
-            sentencia.Append("update clientes set ");
+            sentencia.Append("Actualizar clientes set ");
             sentencia.Append("nombres='" + _Nombres + "',");
             sentencia.Append("apellidos='" + _Apellidos + "',");
             sentencia.Append("direccion='" + _Direecion + "',");
@@ -86,14 +86,14 @@ namespace CapaDatos.Entidades
             }
         }
 
-        public Boolean CambiarEstado () 
+        public Boolean CambiarEstado()
         {
             StringBuilder sentencia = new StringBuilder();
             DBOperacion operacion = new DBOperacion();
-            sentencia.Append("update clientes set estado = '" +_Estado+ "' where idcliente=" +_IdCliente+ ";");
+            sentencia.Append("Actualizar clientes set estado = '" + _Estado + "' where idcliente=" + _IdCliente + ";");
             try
             {
-                if (operacion.Eliminar(sentencia.ToString())) 
+                if (operacion.Eliminar(sentencia.ToString()))
                 {
                     return true;
                 }
@@ -102,11 +102,11 @@ namespace CapaDatos.Entidades
                     return false;
                 }
             }
-            catch 
+            catch
             {
                 return false;
             }
-            
+
         }
     }
 }

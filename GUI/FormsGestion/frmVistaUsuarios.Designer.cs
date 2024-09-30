@@ -39,6 +39,7 @@
             this.txbFiltro = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripCerrar = new System.Windows.Forms.ToolStripButton();
             this.usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contraseña = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombres = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.apellidos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,6 +71,7 @@
             this.dtgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.usuario,
+            this.contraseña,
             this.nombres,
             this.apellidos,
             this.estado,
@@ -129,7 +131,6 @@
             // txbFiltro
             // 
             this.txbFiltro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txbFiltro.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txbFiltro.Name = "txbFiltro";
             this.txbFiltro.Size = new System.Drawing.Size(200, 25);
             // 
@@ -150,6 +151,14 @@
             this.usuario.HeaderText = "Usuario";
             this.usuario.Name = "usuario";
             this.usuario.ReadOnly = true;
+            // 
+            // contraseña
+            // 
+            this.contraseña.DataPropertyName = "contraseña";
+            this.contraseña.HeaderText = "contraseña";
+            this.contraseña.Name = "contraseña";
+            this.contraseña.ReadOnly = true;
+            this.contraseña.Visible = false;
             // 
             // nombres
             // 
@@ -218,6 +227,7 @@
         private System.Windows.Forms.ToolStripButton toolStripCerrar;
         private System.Windows.Forms.DataGridView dtgvUsuarios;
         private System.Windows.Forms.DataGridViewTextBoxColumn usuario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contraseña;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombres;
         private System.Windows.Forms.DataGridViewTextBoxColumn apellidos;
         private System.Windows.Forms.DataGridViewTextBoxColumn estado;

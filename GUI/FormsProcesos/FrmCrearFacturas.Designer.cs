@@ -30,13 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCrearFacturas));
             this.pnlButtom = new System.Windows.Forms.Panel();
+            this.lblTotal = new System.Windows.Forms.Label();
             this.pgbCrear = new System.Windows.Forms.ProgressBar();
             this.pnlTop = new System.Windows.Forms.Panel();
             this.prbCerrar = new System.Windows.Forms.PictureBox();
             this.gbCrear = new System.Windows.Forms.GroupBox();
-            this.pnlFinicio = new System.Windows.Forms.Panel();
-            this.dtpInicioConsumo = new System.Windows.Forms.DateTimePicker();
-            this.lblEstado = new System.Windows.Forms.Label();
             this.pnlFFinal = new System.Windows.Forms.Panel();
             this.dtpFinalConsumo = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
@@ -55,12 +53,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.lblTotal = new System.Windows.Forms.Label();
             this.pnlButtom.SuspendLayout();
             this.pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.prbCerrar)).BeginInit();
             this.gbCrear.SuspendLayout();
-            this.pnlFinicio.SuspendLayout();
             this.pnlFFinal.SuspendLayout();
             this.pnlMes.SuspendLayout();
             this.pnlFVencimiento.SuspendLayout();
@@ -80,6 +76,19 @@
             this.pnlButtom.Name = "pnlButtom";
             this.pnlButtom.Size = new System.Drawing.Size(802, 90);
             this.pnlButtom.TabIndex = 19;
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoEllipsis = true;
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.BackColor = System.Drawing.Color.Transparent;
+            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lblTotal.Location = new System.Drawing.Point(576, 39);
+            this.lblTotal.Margin = new System.Windows.Forms.Padding(0);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(20, 17);
+            this.lblTotal.TabIndex = 3;
+            this.lblTotal.Text = "/0";
             // 
             // pgbCrear
             // 
@@ -114,7 +123,6 @@
             // gbCrear
             // 
             this.gbCrear.BackColor = System.Drawing.Color.Transparent;
-            this.gbCrear.Controls.Add(this.pnlFinicio);
             this.gbCrear.Controls.Add(this.pnlFFinal);
             this.gbCrear.Controls.Add(this.pnlMes);
             this.gbCrear.Controls.Add(this.pnlFVencimiento);
@@ -128,36 +136,6 @@
             this.gbCrear.TabIndex = 17;
             this.gbCrear.TabStop = false;
             this.gbCrear.Text = "Crear Facturas";
-            // 
-            // pnlFinicio
-            // 
-            this.pnlFinicio.BackColor = System.Drawing.SystemColors.Control;
-            this.pnlFinicio.Controls.Add(this.dtpInicioConsumo);
-            this.pnlFinicio.Controls.Add(this.lblEstado);
-            this.pnlFinicio.Location = new System.Drawing.Point(6, 19);
-            this.pnlFinicio.Name = "pnlFinicio";
-            this.pnlFinicio.Size = new System.Drawing.Size(368, 46);
-            this.pnlFinicio.TabIndex = 6;
-            // 
-            // dtpInicioConsumo
-            // 
-            this.dtpInicioConsumo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpInicioConsumo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpInicioConsumo.Location = new System.Drawing.Point(3, 23);
-            this.dtpInicioConsumo.Name = "dtpInicioConsumo";
-            this.dtpInicioConsumo.Size = new System.Drawing.Size(347, 20);
-            this.dtpInicioConsumo.TabIndex = 1;
-            // 
-            // lblEstado
-            // 
-            this.lblEstado.AutoSize = true;
-            this.lblEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEstado.Location = new System.Drawing.Point(4, 4);
-            this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(187, 20);
-            this.lblEstado.TabIndex = 0;
-            this.lblEstado.Text = "Fecha inicial de consumo";
             // 
             // pnlFFinal
             // 
@@ -364,19 +342,6 @@
             this.panel7.Size = new System.Drawing.Size(411, 328);
             this.panel7.TabIndex = 21;
             // 
-            // lblTotal
-            // 
-            this.lblTotal.AutoEllipsis = true;
-            this.lblTotal.AutoSize = true;
-            this.lblTotal.BackColor = System.Drawing.Color.Transparent;
-            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblTotal.Location = new System.Drawing.Point(576, 39);
-            this.lblTotal.Margin = new System.Windows.Forms.Padding(0);
-            this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(20, 17);
-            this.lblTotal.TabIndex = 3;
-            this.lblTotal.Text = "/0";
-            // 
             // FrmCrearFacturas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -396,8 +361,6 @@
             this.pnlTop.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.prbCerrar)).EndInit();
             this.gbCrear.ResumeLayout(false);
-            this.pnlFinicio.ResumeLayout(false);
-            this.pnlFinicio.PerformLayout();
             this.pnlFFinal.ResumeLayout(false);
             this.pnlFFinal.PerformLayout();
             this.pnlMes.ResumeLayout(false);
@@ -420,9 +383,6 @@
         private System.Windows.Forms.PictureBox prbCerrar;
         private System.Windows.Forms.GroupBox gbCrear;
         private System.Windows.Forms.GroupBox gbImprimir;
-        private System.Windows.Forms.Panel pnlFinicio;
-        private System.Windows.Forms.DateTimePicker dtpInicioConsumo;
-        private System.Windows.Forms.Label lblEstado;
         private System.Windows.Forms.Panel pnlFVencimiento;
         private System.Windows.Forms.DateTimePicker dtpVencimiento;
         private System.Windows.Forms.Label label2;

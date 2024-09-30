@@ -1,10 +1,6 @@
-﻿using GUI.FormsGestion;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Diagnostics;
-using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GUI
@@ -19,13 +15,13 @@ namespace GUI
         {
             int a;
             bool nuevaInstancia;
-            using (Mutex mu= new Mutex(true, Process.GetCurrentProcess().ProcessName, out nuevaInstancia))
+            using (Mutex mu = new Mutex(true, Process.GetCurrentProcess().ProcessName, out nuevaInstancia))
             {
                 if (nuevaInstancia)
                 {
                     Application.EnableVisualStyles();
                     Application.SetCompatibleTextRenderingDefault(false);
-                    Application.Run(new Clases.AppManager()) ;
+                    Application.Run(new Clases.AppManager());
 
                 }
                 else

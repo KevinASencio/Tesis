@@ -1,9 +1,5 @@
 ﻿using CapaDatos.Entidades;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Controllers
 {
@@ -11,7 +7,7 @@ namespace Controllers
     {
         ServiciosConsumo servicio;
 
-        public ServiciosConsumoNeg() {}
+        public ServiciosConsumoNeg() { }
         public ServiciosConsumoNeg(int id, int cuota) { servicio = new ServiciosConsumo(id, cuota); }
         public Boolean insertar(int idcuota)
         {
@@ -23,7 +19,7 @@ namespace Controllers
         {
             this.servicio.IdServicioConsumo = id;
         }
-        public int getIdServicioConsumo() 
+        public int getIdServicioConsumo()
         {
             return this.servicio.IdServicioConsumo;
         }

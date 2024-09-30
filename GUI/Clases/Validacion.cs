@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Forms;
 using MessageBox = System.Windows.Forms.MessageBox;
 
@@ -43,9 +38,9 @@ namespace GUI.Clases
             return esVacio;
         }
 
-        public static Boolean seguroModificar() 
+        public static Boolean seguroModificar()
         {
-             return MessageBox.Show("Realmente desea Guardar los Cambios?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes ?  true : false;
+            return MessageBox.Show("Realmente desea Guardar los Cambios?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes ? true : false;
         }
 
         public static Boolean seguroCambiarEstado()
@@ -56,15 +51,15 @@ namespace GUI.Clases
         public static bool Decimales(KeyPressEventArgs v, Boolean a)
         {
             if (char.IsDigit(v.KeyChar) || char.IsControl(v.KeyChar) || (v.KeyChar == '.' && !a)) { v.Handled = false; }
-            else{ v.Handled = true; return false;}
+            else { v.Handled = true; return false; }
             return true;
         }
 
-        public static void ErrorBox( Exception ex)
+        public static void ErrorBox(Exception ex)
         {
             MessageBox.Show("Error " + ex.Message, "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 
-    
+
 }

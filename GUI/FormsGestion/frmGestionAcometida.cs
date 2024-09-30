@@ -1,9 +1,8 @@
 ﻿using Controllers;
 using GUI.Clases;
 using System;
-
-using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace GUI.FormsGestion
 {
@@ -71,7 +70,7 @@ namespace GUI.FormsGestion
                 }
             }
         }
-        public void CargarDatos() 
+        public void CargarDatos()
         {
             this.cmbColonia.DataSource = ColoniasNeg.consultar();
 
@@ -83,15 +82,17 @@ namespace GUI.FormsGestion
 
             cmbCuota.DisplayMember = "monto";
             cmbCuota.ValueMember = "idcuotaacometida";
-            cmbCuota.SelectedIndex = -1; 
+            cmbCuota.SelectedIndex = -1;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            try {
+            try
+            {
                 txbNCuotas.Text = (float.Parse(txbMonto.Text.ToString()) / float.Parse(cmbCuota.GetItemText(cmbCuota.SelectedItem))).ToString();
                 txbNCuotas.Update();
-            }catch(Exception ex){}
+            }
+            catch (Exception ex) { }
         }
 
         private void cmbCuota_SelectedIndexChanged(object sender, EventArgs e)
@@ -109,7 +110,7 @@ namespace GUI.FormsGestion
             this.Close();
         }
 
-        private void txbMonto_KeyPress(object sender, KeyPressEventArgs e) 
+        private void txbMonto_KeyPress(object sender, KeyPressEventArgs e)
         {
             try
             {
@@ -118,8 +119,9 @@ namespace GUI.FormsGestion
                 txbNCuotas.Text = (float.Parse(txbMonto.Text.ToString()) / float.Parse(cmbCuota.GetItemText(cmbCuota.SelectedItem))).ToString();
                 txbNCuotas.Update();
             }
-            catch (Exception ex) { //Validacion.ErrorBox(ex);
-                                   }
+            catch (Exception ex)
+            { //Validacion.ErrorBox(ex);
+            }
         }
     }
 }

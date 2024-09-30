@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGestionUsuarios));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txbUsuario = new System.Windows.Forms.TextBox();
+            this.txbId = new System.Windows.Forms.TextBox();
             this.lblId = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txbNombres = new System.Windows.Forms.TextBox();
@@ -53,6 +54,7 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.pnlPrincipal = new System.Windows.Forms.Panel();
+            this.errorNotificador = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -63,26 +65,27 @@
             ((System.ComponentModel.ISupportInitialize)(this.prbCerrar)).BeginInit();
             this.pnlBoton.SuspendLayout();
             this.pnlPrincipal.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorNotificador)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.txbUsuario);
+            this.panel1.Controls.Add(this.txbId);
             this.panel1.Controls.Add(this.lblId);
             this.panel1.Location = new System.Drawing.Point(26, 33);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(443, 44);
             this.panel1.TabIndex = 7;
             // 
-            // txbUsuario
+            // txbId
             // 
-            this.txbUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txbId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txbUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbUsuario.Location = new System.Drawing.Point(0, 20);
-            this.txbUsuario.Name = "txbUsuario";
-            this.txbUsuario.Size = new System.Drawing.Size(419, 24);
-            this.txbUsuario.TabIndex = 1;
+            this.txbId.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbId.Location = new System.Drawing.Point(0, 20);
+            this.txbId.Name = "txbId";
+            this.txbId.Size = new System.Drawing.Size(419, 24);
+            this.txbId.TabIndex = 1;
             // 
             // lblId
             // 
@@ -168,6 +171,7 @@
             this.txbContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbContraseña.Location = new System.Drawing.Point(0, 20);
             this.txbContraseña.Name = "txbContraseña";
+            this.txbContraseña.PasswordChar = '*';
             this.txbContraseña.Size = new System.Drawing.Size(419, 24);
             this.txbContraseña.TabIndex = 1;
             // 
@@ -300,6 +304,7 @@
             this.btnAgregar.TabIndex = 1;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = false;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // pnlPrincipal
             // 
@@ -315,6 +320,10 @@
             this.pnlPrincipal.Name = "pnlPrincipal";
             this.pnlPrincipal.Size = new System.Drawing.Size(762, 509);
             this.pnlPrincipal.TabIndex = 18;
+            // 
+            // errorNotificador
+            // 
+            this.errorNotificador.ContainerControl = this;
             // 
             // frmGestionUsuarios
             // 
@@ -342,13 +351,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.prbCerrar)).EndInit();
             this.pnlBoton.ResumeLayout(false);
             this.pnlPrincipal.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorNotificador)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.Panel panel1;
-        public System.Windows.Forms.TextBox txbUsuario;
+        public System.Windows.Forms.TextBox txbId;
         private System.Windows.Forms.Label lblId;
         private System.Windows.Forms.Panel panel2;
         public System.Windows.Forms.TextBox txbNombres;
@@ -371,5 +381,6 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Panel pnlPrincipal;
+        private System.Windows.Forms.ErrorProvider errorNotificador;
     }
 }

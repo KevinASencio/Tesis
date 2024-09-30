@@ -125,7 +125,19 @@ namespace GUI.FormsGestion
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            abrirFormulariosGestion(formCall);
+            switch (formCall)
+            {
+                case "clientes":
+                    _frmVistaCliente.Editar();
+                    /*OrganizadorObj.ocultar(pnlMenus, pnlMenuInicio);
+                    OrganizadorObj.ocultar(pnlMenus, pnlMenuDetalles);
+                    OrganizadorObj.mostrar(pnlMenus, pnlAcciones);*/
+                    break;
+                case "usuarios":
+                    _frmVistaUsuarios.Editar();
+                    break;
+                default: break;
+            }
         }
 
         private void btnCobro_Click(object sender, EventArgs e)
@@ -152,21 +164,7 @@ namespace GUI.FormsGestion
 
         public void abrirFormulariosGestion(string form)
         {
-            switch (form)
-            {
-                case "clientes":
-                    _frmVistaCliente.Editar();
-                    /*OrganizadorObj.ocultar(pnlMenus, pnlMenuInicio);
-                    OrganizadorObj.ocultar(pnlMenus, pnlMenuDetalles);
-                    OrganizadorObj.mostrar(pnlMenus, pnlAcciones);*/
-                    break;
-                case "usuarios":
-                    
-                    _frmVistaUsuarios.Editar();
-                    
-                    break;
-                default: break;
-            }
+           
 
         }
 
@@ -185,6 +183,19 @@ namespace GUI.FormsGestion
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+            switch (formCall)
+            {
+                case "clientes":
+                    _frmVistaCliente.agregar();
+                    /*OrganizadorObj.ocultar(pnlMenus, pnlMenuInicio);
+                    OrganizadorObj.ocultar(pnlMenus, pnlMenuDetalles);
+                    OrganizadorObj.mostrar(pnlMenus, pnlAcciones);*/
+                    break;
+                case "usuarios":
+                    _frmVistaUsuarios.Editar();
+                    break;
+                default: break;
+            }
 
         }
     }

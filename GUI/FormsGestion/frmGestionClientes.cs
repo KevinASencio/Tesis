@@ -1,13 +1,5 @@
 ﻿using CapaNegocio;
-using GUI.Clases;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GUI.FormsGestion
@@ -18,7 +10,7 @@ namespace GUI.FormsGestion
         public frmGestionClientes()
         {
             InitializeComponent();
-            
+
         }
 
         private void frmGestionClientes_Load(object sender, EventArgs e)
@@ -30,19 +22,20 @@ namespace GUI.FormsGestion
         public void cerrar()
         {
             this.Close();
-        } 
+        }
 
         public void procesar()
         {
             if (SistemCache.seguro())
             {
-                ClientesNeg cliente = new ClientesNeg(int.Parse(txbId.Text.ToString()), txbNombres.Text.ToString(), txbApellidos.Text.ToString(),
-                                                          txbDirreccion.Text.ToString(), txbDui.Text.ToString(), txbTelefono.Text.ToString(), cmbEstado.SelectedItem.ToString());
-                if(txbDui.TextLength == 0){ cliente.setDui(null); }
-                if (txbId.Text != null)
+                ClientesNeg cliente = new ClientesNeg(txbNombres.Text.ToString(), txbApellidos.Text.ToString(),
+                                                          txbDirreccion.Text.ToString(), txbDui.Text.ToString(), txbTelefono.Text.ToString(), cmbEstado.Text.ToString());
+                if (txbDui.TextLength == 0) { cliente.setDui(null); }
+                if (txbId.TextLength > 0)
                 {
                     if (cliente.Actualizar())
                     {
+                        cliente.SetIdclilente(int.Parse(txbId.Text.ToString()));
                         MessageBox.Show("¡Cambios guardados!", "Exito", MessageBoxButtons.OK);
                         this.Close();
                     }

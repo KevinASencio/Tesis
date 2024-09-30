@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CapaDatos.Entidades
@@ -21,12 +18,13 @@ namespace CapaDatos.Entidades
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
-            try 
+            try
             {
                 sentencia.Append(@"select idrol, rol from roles;");
                 return operacion.Consultar(sentencia.ToString());
-            }catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); return null;}
-            
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); return null; }
+
         }
     }
 }

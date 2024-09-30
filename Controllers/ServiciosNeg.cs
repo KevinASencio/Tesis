@@ -1,12 +1,5 @@
 ﻿using CapaDatos.Entidades;
 using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Controllers
 {
@@ -30,20 +23,20 @@ namespace Controllers
         public void setIdCliente(int id) { this._Servicio.IdCliente = id; }
         public void setIdServicio(int id) { this._Servicio.IdServicio = id; }
         public void setIdColonia(int id) { this._Servicio.IdColonia = id; }
-        public void setIdConsumo (int id) { this._Servicio.IdConsumo = id; }
+        public void setIdConsumo(int id) { this._Servicio.IdConsumo = id; }
         public void setIdAcometida(int id) { this._Servicio.IdAcometida = id; }
         public void setComentario(string comentario) { this._Servicio.Comentario = comentario; }
         public void setEstado(string estado) { this._Servicio.Estado = estado; }
-        public Boolean insertarConsumo() 
+        public Boolean insertarConsumo()
         {
             return this._Servicio.InsertarServicio("consumo");
         }
-        public Boolean insertarAcometida() 
+        public Boolean insertarAcometida()
         {
             return this._Servicio.InsertarServicio("acometida");
         }
         public Boolean actualizarServicio() { return this._Servicio.ActualizarServicio(); }
-        public Boolean cambiarEstado() 
+        public Boolean cambiarEstado()
         {
             return _Servicio.CambiarEstado();
         }

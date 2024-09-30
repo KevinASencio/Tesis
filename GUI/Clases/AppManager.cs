@@ -1,21 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using CapaNegocio.UsuarioNeg;
+﻿using CapaNegocio.UsuarioNeg;
 using GUI.FormsGestion;
+using System;
+using System.Windows.Forms;
 
 namespace GUI.Clases
 {
-     class AppManager:ApplicationContext
+    class AppManager : ApplicationContext
     {
-        public static UsuarioNeg _usuario =new UsuarioNeg();
-        public frmPrincipal FrmPrincipal= new frmPrincipal();
+        public static UsuarioNeg _usuario = new UsuarioNeg();
+        public frmPrincipal FrmPrincipal = new frmPrincipal();
         public pruebainterfas frm = new pruebainterfas();
-        public AppManager() {
+        public AppManager()
+        {
             //ejecutar splash
             /*if (login())
               {
@@ -36,8 +32,9 @@ namespace GUI.Clases
         {
             Application.Exit();
         }
-        Boolean login() {
-            FrmLogin f= new FrmLogin();
+        Boolean login()
+        {
+            FrmLogin f = new FrmLogin();
             f.ShowDialog();
             _usuario = f.UserActivo;
             return f.Autorizado;
