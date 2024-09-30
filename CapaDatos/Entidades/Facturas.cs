@@ -56,8 +56,8 @@ namespace CapaDatos.Entidades
             sentencia.Append(" from facturas as fact, servicios as ");
             sentencia.Append("serv, clientes as cli, serviciosconsumo as con, cuotasconsumo as cuo ");
             sentencia.Append("where fact.idservicio = serv.idservicio and cli.idcliente = serv.idcliente and ");
-            sentencia.Append("serv.idconsumo = con.idserviciosconsumo and cuo.idcuotaconsumo = con.idcuotaconsumo and fact.estado='Valida' and ");
-            sentencia.Append("fact.idcontrolfecha = " + (int)(idcontrol-1)+ ";");
+            sentencia.Append("serv.idconsumo = con.idserviciosconsumo and cuo.idcuotaconsumo = con.idcuotaconsumo and serv.estado='activo' and fact.estado='Valida' and ");
+            sentencia.Append("fact.idcontrolfecha = " + (int)(idcontrol - 1) + ";");
             try
             {
                 return operacion.Consultar(sentencia.ToString());
@@ -65,14 +65,31 @@ namespace CapaDatos.Entidades
             catch (Exception ex) { return null; }
         }
         //consultar lista de servicios que no se ha creado factura previa
-        public DataTable ServiciosSinFac(int idcontrol) 
+        public DataTable ServiciosSinFacCon(int idcontrol)
         {
             DBOperacion operacion = new DBOperacion();
-            return operacion.Consultar(@"select serv.idservicio,cuo.monto from servicios serv, cuotasconsumo cuo, serviciosconsumo con 
-                                                where con.idcuotaconsumo=cuo.idcuotaconsumo and serv.idconsumo=con.idserviciosconsumo and serv.idservicio 
-                                                not in(select fac.idservicio from facturas fac where fac.idservicio=serv.idservicio and fac.idcontrolfecha=" + (int)(idcontrol - 1) + ");");
+            try
+            {
+                return operacion.Consultar(@"select serv.idservicio,cuo.monto from servicios serv, cuotasconsumo cuo, serviciosconsumo con 
+                                           where con.idcuotaconsumo=cuo.idcuotaconsumo and serv.idconsumo=con.idserviciosconsumo and serv.estado='activo' and serv.idservicio 
+                                           not in(select fac.idservicio from facturas fac where fac.idservicio=serv.idservicio and fac.idcontrolfecha=" + (int)(idcontrol - 1) + ");");
+
+            }
+            catch (Exception ex) { return null; }
 
         }
+        public DataTable ServiciosSinFacAco(int idcontrol)
+        {
+            DBOperacion operacion = new DBOperacion();
+            try
+            {
+                return operacion.Consultar(@"select serv.idservicio,cuo.monto from servicios serv, cuotasacometida cuo, serviciosacometida aco
+                                            where serv.idacometida=aco.idserviciosacometida and   aco.idcuotaacometida=cuo.idcuotaacometida and serv.estado='activo' and  serv.idservicio
+                                            not in(select fac.idservicio from facturas fac where fac.idservicio=serv.idservicio and fac.idcontrolfecha=" + (int)(idcontrol - 1) + ");");
+            }
+            catch (Exception ex) { return null; }
+        }
+
         public DataTable ConsultarGenrarAco(int idcontrol)
         {
             DBOperacion operacion = new DBOperacion();
@@ -82,15 +99,15 @@ namespace CapaDatos.Entidades
             sentencia.Append(" from facturas as fact, servicios as ");
             sentencia.Append("serv, clientes as cli, serviciosacometida as aco, cuotasacometida as cuo ");
             sentencia.Append("where fact.idservicio = serv.idservicio and cli.idcliente = serv.idcliente and ");
-            sentencia.Append("serv.idacometida = aco.idserviciosacometida and cuo.idcuotaacometida = aco.idcuotaacometida and fact.estado='Valida' and ");
-            sentencia.Append("fact.idcontrolfecha =" + (int)(idcontrol-1) + ";");
+            sentencia.Append("serv.idacometida = aco.idserviciosacometida and cuo.idcuotaacometida = aco.idcuotaacometida and serv.estado='activo' and  fact.estado='Valida' and ");
+            sentencia.Append("fact.idcontrolfecha =" + (int)(idcontrol - 1) + ";");
             try
             {
                 return operacion.Consultar(sentencia.ToString());
             }
             catch (Exception ex) { return null; }
         }
-        public DataTable GenerarFacturasConsumo(int idcontrol, double mora,  ProgressBar g, Label conta)
+        public DataTable GenerarFacturasConsumo(int idcontrol, double mora, ProgressBar g, Label conta)
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
@@ -101,11 +118,12 @@ namespace CapaDatos.Entidades
              */
             DataTable Resultado = new DataTable();
             DataTable ListaFacturas = new DataTable();
-            DataTable ListaServicios =  new DataTable();
+            DataTable ListaServicios = new DataTable();
             ListaFacturas = ConsultarGenrarCon(idcontrol);
-            ListaServicios = ServiciosSinFac(idcontrol);
-            g.Maximum= (ListaFacturas.Rows.Count + ListaServicios.Rows.Count)*5;
-            string aux = "/" + (ListaFacturas.Rows.Count + ListaServicios.Rows.Count).ToString();
+            ListaServicios = ServiciosSinFacCon(idcontrol);
+            g.Maximum = (Servicios.ConsulTotal()) * 5;
+            MessageBox.Show(Servicios.ConsulTotal().ToString());
+            string aux = "/" + (Servicios.ConsulTotal()).ToString();
             //control de facturas con error al crearlas 
             int cont = 0;
             //contador de las facturas que se procesaron con o sin error
@@ -120,7 +138,7 @@ namespace CapaDatos.Entidades
                 {
                     sentencia.Append("insert into facturas (saldo, mora, estado, estado_pago, idservicio, cont_pendiente, idcontrolfecha)");
                     sentencia.Append("values (");
-                    sentencia.Append((double.Parse(rw.ItemArray[1].ToString()) + double.Parse(rw.ItemArray[9 ].ToString())) + ", ");
+                    sentencia.Append((double.Parse(rw.ItemArray[1].ToString()) + double.Parse(rw.ItemArray[9].ToString())) + ", ");
                     sentencia.Append((double.Parse(rw.ItemArray[2].ToString()) + mora) + ", ");
                     sentencia.Append("'Valida', ");
                     sentencia.Append("'Pendiente', ");
@@ -131,8 +149,9 @@ namespace CapaDatos.Entidades
                     {
                         //si la creacion de la factura es exitosa entonces, se procede a cambiar de estado
                         //la factura del mes anterior, esto para indicar que la factura anterior no fue pagada y que el saldo de esta fue transferido a la nueva factura 
-                        if (operacion.Insertar(sentencia.ToString())) { 
-                            operacion.Actualizar("update facturas set estado='Transferida' where idfactura= " + rw.ItemArray[0] + ";"); 
+                        if (operacion.Insertar(sentencia.ToString()))
+                        {
+                            operacion.Actualizar("update facturas set estado='Transferida' where idfactura= " + rw.ItemArray[0] + ";");
                         }
                         else { Resultado.Rows.CopyTo(rw.ItemArray, cont); cont++; }
                     }
@@ -163,17 +182,18 @@ namespace CapaDatos.Entidades
                         cont++;
                     }
                 }
-                g.Value += 5;
-                i++;
-                conta.Text=i + aux;
+               i++;
+                g.Value =i*5;
+                conta.Text = i + aux;
                 conta.Refresh();
             }
-            MessageBox.Show(conta.Text.ToString());
+
+            MessageBox.Show("aqui han pasado " + i + "facturas");
             //crear faturas de los servicios los cuales aun no cuentan con una factura previa
             ListaFacturas.Clear();
             //consulta para obtener todos los servicios a los cuales no se les a generado factura
 
-            
+
             if (ListaServicios.Rows.Count > 0)
             {
                 foreach (DataRow rw in ListaServicios.Rows)
@@ -196,14 +216,16 @@ namespace CapaDatos.Entidades
                         }
                     }
                     catch (Exception ex) { MessageBox.Show("Error al crear facturas para el servicio N°" + rw.ItemArray[0].ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-
-
+                    i++;
+                    g.Value = i * 5;
+                    conta.Text = i + aux;
+                    conta.Refresh();
                 }
             }
             return Resultado;
         }
 
-        public DataTable GenerarFacturasAcometida(int idcontrol, double mora)
+        public DataTable GenerarFacturasAcometida(int idcontrol, double mora, ProgressBar g, Label conta)
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
@@ -213,12 +235,19 @@ namespace CapaDatos.Entidades
             la factura anterior a la que no se pudo generar en este caso enero
              */
             DataTable Resultado = new DataTable();
-            DataTable lista = new DataTable();
-            lista = ConsultarGenrarAco(idcontrol);
+            DataTable ListaFacturas = new DataTable();
+            DataTable ListaServicios = new DataTable();
+            ListaFacturas = ConsultarGenrarAco(idcontrol);
+            ListaServicios = ServiciosSinFacCon(idcontrol);
             int cont = 0;
+            //variable para controlar el numero de facturas que han sido procesadas, para esto se utiliza el valor de la barra de porgreso entre 5, que nos da como resultado el valor de las facturas procesadas
+            //el valir de g.value= Numero de facturas * 5
+
+            int procesadas = g.Value / 5;
+            string aux = "/" + (g.Maximum / 5).ToString();
             //creacion de facturas, tomando en cuenta la informacion de las facturas de mes vencidos se recorre la lista de facturas pára acceder a la informacion necesaria para la creaciom de la factura
             //la insercion se hace factura por factura, de esta forma si surge un error con alguno no impide que las demas sean creadas
-            foreach (DataRow rw in lista.Rows)
+            foreach (DataRow rw in ListaFacturas.Rows)
             {
                 sentencia.Clear();
                 //si esta pendiente se genera la nueva factura con los saldos pendientes
@@ -267,18 +296,17 @@ namespace CapaDatos.Entidades
                         cont++;
                     }
                 }
+
+                procesadas++;
+                g.Value =procesadas*5;
+                conta.Text = procesadas + aux;
+                conta.Refresh();
             }
+            MessageBox.Show("aqui han pasado " + (g.Value / 5) + "facturas");
             //crear faturas de los servicios los cuales aun no cuentan con una factura previa
-
-            lista.Clear();
-            //consulra para obtener todos los servicios a los cuales no se les ha genedaro factura
-            lista = operacion.Consultar(@"select serv.idservicio,cuo.monto from servicios serv, cuotasacometida cuo, serviciosacometida aco
-                                            where serv.idacometida=aco.idserviciosacometida and   aco.idcuotaacometida=cuo.idcuotaacometida and serv.idservicio
-                                            not in(select fac.idservicio from facturas fac where fac.idservicio=serv.idservicio and fac.idcontrolfecha=" + (int)(idcontrol - 1) + ");");
-
-            if (lista.Rows.Count > 0)
+            if (ListaServicios.Rows.Count > 0)
             {
-                foreach (DataRow rw in lista.Rows)
+                foreach (DataRow rw in ListaServicios.Rows)
                 {
                     sentencia.Clear();
                     sentencia.Append("insert into facturas (saldo, mora, estado, estado_pago, idservicio, cont_pendiente, idcontrolfecha)");
@@ -298,8 +326,10 @@ namespace CapaDatos.Entidades
                         }
                     }
                     catch (Exception ex) { MessageBox.Show("Error al crear facturas para el servicio N°" + rw.ItemArray[0].ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-
-
+                    procesadas++;
+                    g.Value = procesadas * 5;
+                    conta.Text = procesadas + aux;
+                    conta.Refresh();
                 }
             }
             return Resultado;

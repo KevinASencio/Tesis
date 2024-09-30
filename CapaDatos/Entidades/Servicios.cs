@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Microsoft.SqlServer.Server;
+using Mysqlx.Crud;
+using System;
 using System.Data;
 using System.Text;
+using System.Windows.Forms;
 
 namespace CapaDatos.Entidades
 {
@@ -171,6 +174,20 @@ namespace CapaDatos.Entidades
             {
                 Console.WriteLine(e.Message.ToString());
                 return false;
+            }
+        }
+        public static int ConsulTotal()
+        {
+            DBOperacion operacion = new DBOperacion();
+            StringBuilder sentencia= new StringBuilder();
+            sentencia.Append("select count(idservicio) from servicios where estado='Activo' limit 1;");
+            try 
+            {
+                return int.Parse(operacion.Consultar(sentencia.ToString()).Rows[0][0].ToString());
+            } 
+            catch (Exception e) 
+            {
+                return 0;
             }
         }
     }

@@ -39,7 +39,7 @@ namespace GUI.FormsGestion
             fecha.setMes(cmbMes.Text.ToString());
             fecha.insertar();
             fac.Generar(fecha.getId(),2, pgbCrear,lblTotal);
-            fac.GenerarAco(fecha.getId(),2);
+            fac.GenerarAco(fecha.getId(),2, pgbCrear, lblTotal);
             MessageBox.Show(cmbMes.Text.ToString());
         }
 
