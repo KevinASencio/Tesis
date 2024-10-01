@@ -129,9 +129,6 @@ namespace GUI.FormsGestion
             {
                 case "clientes":
                     _frmVistaCliente.Editar();
-                    /*OrganizadorObj.ocultar(pnlMenus, pnlMenuInicio);
-                    OrganizadorObj.ocultar(pnlMenus, pnlMenuDetalles);
-                    OrganizadorObj.mostrar(pnlMenus, pnlAcciones);*/
                     break;
                 case "usuarios":
                     _frmVistaUsuarios.Editar();
@@ -187,12 +184,9 @@ namespace GUI.FormsGestion
             {
                 case "clientes":
                     _frmVistaCliente.agregar();
-                    /*OrganizadorObj.ocultar(pnlMenus, pnlMenuInicio);
-                    OrganizadorObj.ocultar(pnlMenus, pnlMenuDetalles);
-                    OrganizadorObj.mostrar(pnlMenus, pnlAcciones);*/
                     break;
                 case "usuarios":
-                    _frmVistaUsuarios.Editar();
+                    _frmVistaUsuarios.agregar();
                     break;
                 default: break;
             }

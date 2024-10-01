@@ -51,9 +51,9 @@ namespace CapaNegocio.UsuarioNeg
             return user.permisos();
         }
 
-        public Boolean Actualizar()
+        public Boolean Actualizar(string usuario)
         {
-            return user.Actualizar();
+            return user.Actualizar(usuario);
         }
         public Boolean Agregar()
         {

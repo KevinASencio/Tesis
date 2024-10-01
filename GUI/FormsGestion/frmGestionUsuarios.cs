@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Forms;
 
 namespace GUI.FormsGestion
@@ -18,6 +19,8 @@ namespace GUI.FormsGestion
         BindingSource _roles = new BindingSource();
         UsuarioNeg _usuario = new UsuarioNeg();
         public string accion = "";
+        //variable para guardar el usuario orignal en caso que el resgistro este siendo modificado 
+        public string UsuarioAux = "";
         public frmGestionUsuarios()
         {
             InitializeComponent();
@@ -51,13 +54,13 @@ namespace GUI.FormsGestion
                 switch (accion)
                 {
                     case "editar":
-                        if (_usuario.Actualizar()) { MessageBox.Show("Resgistro actualizado!"); }
-                        else { MessageBox.Show("Error al atualizar el registro"); }
+                        if (_usuario.Actualizar(UsuarioAux)) { Validacion.frmMessageBox("¡Cambios Guardados!", "Exito"); }
+                        else { Validacion.frmMessageBox("¡Error al Guardar los Cambios!", "Error"); }
                         this.Close();
                         break;
                     case "agregar":
-                        if (_usuario.Agregar()) { MessageBox.Show("Resgistro gardado!"); }
-                        else { MessageBox.Show("Error al guardar el registro"); }
+                        if (_usuario.Agregar()) { Validacion.frmMessageBox("¡Usuario Guardado!", "Exito"); }
+                        else { Validacion.frmMessageBox("¡Error al Guardar el Usuario!", "Error"); }
                         this.Close();
                         break;
                 }

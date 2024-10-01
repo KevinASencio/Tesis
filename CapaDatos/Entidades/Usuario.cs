@@ -45,7 +45,7 @@ namespace CapaDatos.Entidades
         {
             StringBuilder sentencia = new StringBuilder();
             DBOperacion operacion = new DBOperacion();
-            sentencia.Append("Agregar into usuarios (usuario, nombres, apellidos, idrol, contraseña, estado) values(");
+            sentencia.Append("insert into usuarios (usuario, nombres, apellidos, idrol, contraseña, estado) values(");
             sentencia.Append("'" + _Uusuario + "',");
             sentencia.Append("'" + _Nombres + "',");
             sentencia.Append("'" + _Apellidos + "',");
@@ -64,7 +64,7 @@ namespace CapaDatos.Entidades
             }
         }
 
-        public Boolean Actualizar()
+        public Boolean Actualizar(string usuario)
         {
             StringBuilder sentencia = new StringBuilder();
             DBOperacion operacion = new DBOperacion();
@@ -74,7 +74,7 @@ namespace CapaDatos.Entidades
             sentencia.Append("apellidos = '" + _Apellidos + "',");
             sentencia.Append("idrol = " + _IdRol + ",");
             sentencia.Append("contraseña = '" + _Contraseña + "',");
-            sentencia.Append("estado = '" + _Estado + "' where usuario='" + _Uusuario + "';");
+            sentencia.Append("estado = '" + _Estado + "' where usuario='" + usuario + "';");
 
             try
             {

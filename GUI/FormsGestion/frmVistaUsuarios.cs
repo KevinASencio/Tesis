@@ -35,6 +35,7 @@ namespace GUI.FormsGestion
         {
             _frmGestionUsuarios = new frmGestionUsuarios();
             _frmGestionUsuarios.accion = "editar";
+            _frmGestionUsuarios.UsuarioAux = this.dtgvUsuarios.CurrentRow.Cells["usuario"].Value.ToString();
             _frmGestionUsuarios.txbId.Text = this.dtgvUsuarios.CurrentRow.Cells["usuario"].Value.ToString();
             _frmGestionUsuarios.txbNombres.Text = this.dtgvUsuarios.CurrentRow.Cells["nombres"].Value.ToString();
             _frmGestionUsuarios.txbApellidos.Text = this.dtgvUsuarios.CurrentRow.Cells["apellidos"].Value.ToString();
@@ -49,9 +50,10 @@ namespace GUI.FormsGestion
         public void agregar() 
         {
             _frmGestionUsuarios = new frmGestionUsuarios();
-            _frmGestionUsuarios.accion = "editar";
+            _frmGestionUsuarios.accion = "agregar";
             _frmGestionUsuarios.StartPosition = FormStartPosition.CenterParent;
             _frmGestionUsuarios.ShowDialog();
+            this.CargarDatos();
         }
 
         public void CargarDatos() 

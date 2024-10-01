@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GUI.FormsMessageBox;
+using System;
 using System.Windows.Forms;
 using MessageBox = System.Windows.Forms.MessageBox;
 
@@ -59,7 +60,19 @@ namespace GUI.Clases
         {
             MessageBox.Show("Error " + ex.Message, "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        public static void frmMessageBox(string mensaje, string tipo) 
+        {
+            frmMessageBox frm = new frmMessageBox();
+            frm.lblMensaje.Text = mensaje;
+            frm.lblTitulo.Text = tipo;
+            // padre.AddOwnedForm(frm);  System.Windows.Forms.Form padre,
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.ShowDialog();
+
+            
+        }
     }
 
-
+    
 }
