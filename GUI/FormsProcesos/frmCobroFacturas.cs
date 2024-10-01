@@ -1,5 +1,7 @@
-﻿using GUI.Clases;
+﻿using Controllers;
+using GUI.Clases;
 using System;
+using System.Data;
 using System.Windows.Forms;
 
 namespace GUI.FormsProcesos
@@ -24,6 +26,14 @@ namespace GUI.FormsProcesos
         private void toolStripCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            DataTable factura = new DataTable();
+            factura = FacturasNeg.ConsultarFactura(txbFactura.Text);
+            lblCliente.Text = factura.Rows[0][1].ToString();
+                
         }
     }
 }

@@ -192,5 +192,30 @@ namespace GUI.FormsGestion
             }
 
         }
+
+        private void btnParametro_Click(object sender, EventArgs e)
+        {
+            switch (btnParametro.Text)
+            {
+                case "Parametros":
+                    PnlPrincipal.Controls.Remove(pnlBotones);
+                    PnlPrincipal.Controls.Add(pnlTablasAux);
+                    pnlTablasAux.Visible = true;
+                    pnlTablasAux.Enabled = true;
+                    OrganizadorObj.Organizar(3, 2, pnlTablasAux, btnCuotas.GetType());
+                    pnlTablasAux.Dock = DockStyle.Fill;
+                    btnParametro.Text = "Inicio";
+                    break;
+                case "Inicio":
+                    PnlPrincipal.Controls.Remove(pnlTablasAux);
+                    PnlPrincipal.Controls.Add(pnlBotones);
+                    pnlTablasAux.Visible = false;
+                    pnlTablasAux.Enabled = false;
+                    pnlTablasAux.Dock = DockStyle.Fill;
+                    btnParametro.Text = "Parametros";
+                    break;
+            }
+            
+        }
     }
 }

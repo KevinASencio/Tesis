@@ -18,5 +18,10 @@ namespace Controllers
             return fac.GenerarFacturasAcometida(idcontrol, mora, psbBar, conta);
         }
 
+        public static DataTable ConsultarFactura(string idfactura) 
+        {
+            return Facturas.consultarFactura(idfactura);
+        }
+
     }
 }

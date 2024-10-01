@@ -335,6 +335,25 @@ namespace CapaDatos.Entidades
             return Resultado;
         }
 
+        public static DataTable consultarFactura(string idfactura) 
+        {
+            DBOperacion operacion = new DBOperacion();
+            StringBuilder sentencia = new StringBuilder();
+            sentencia.Append(@"select idFactura, saldo, mora, estado, estado_pago, idservicio, cont_pendiente, descuento, idcontrolfecha, Comentario 
+                            from facturas where idfactura= "+ idfactura +";");
+
+            try 
+            {
+                return operacion.Consultar(sentencia.ToString());
+            } catch (Exception ex) 
+            {
+                return null;
+            }
+        }
+
+        /*select concat(cli.nombres, ' ', cli.apellidos) as 'cliente' ,fac.idFactura, fac.saldo, fac.mora, fac.estado, fac.estado_pago, fac.idservicio, fac.cont_pendiente, fac.descuento, fac.idcontrolfecha, fac.Comentario
+
+        from facturas fac, clientes cli, servicios serv where idfactura = 80547 and cli.idcliente=serv.idcliente and fac.idservicio= serv.idservicio;*/
 
     }
 }

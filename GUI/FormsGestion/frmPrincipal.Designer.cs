@@ -61,6 +61,13 @@
             this.btnTransacciones = new System.Windows.Forms.Button();
             this.btnCobro = new System.Windows.Forms.Button();
             this.btnServiciosMora = new System.Windows.Forms.Button();
+            this.pnlTablasAux = new System.Windows.Forms.Panel();
+            this.btnCuotasConsumno = new System.Windows.Forms.Button();
+            this.btnRoles = new System.Windows.Forms.Button();
+            this.btnControlFechas = new System.Windows.Forms.Button();
+            this.btnParametros = new System.Windows.Forms.Button();
+            this.btnMovimientos = new System.Windows.Forms.Button();
+            this.btnCFacturas = new System.Windows.Forms.Button();
             this.pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbRestaurar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbMaximizar)).BeginInit();
@@ -73,6 +80,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.PnlPrincipal.SuspendLayout();
             this.pnlBotones.SuspendLayout();
+            this.pnlTablasAux.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlTop
@@ -170,6 +178,7 @@
             this.btnParametro.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnParametro.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnParametro.UseVisualStyleBackColor = true;
+            this.btnParametro.Click += new System.EventHandler(this.btnParametro_Click);
             // 
             // btnCuotas
             // 
@@ -249,7 +258,7 @@
             this.pnlMenuDetalles.Controls.Add(this.btnCambiarEstado);
             this.pnlMenuDetalles.Controls.Add(this.btnEditar);
             this.pnlMenuDetalles.Enabled = false;
-            this.pnlMenuDetalles.Location = new System.Drawing.Point(3, 3);
+            this.pnlMenuDetalles.Location = new System.Drawing.Point(3, 0);
             this.pnlMenuDetalles.Name = "pnlMenuDetalles";
             this.pnlMenuDetalles.Size = new System.Drawing.Size(221, 620);
             this.pnlMenuDetalles.TabIndex = 27;
@@ -423,6 +432,7 @@
             // 
             // pnlBotones
             // 
+            this.pnlBotones.Controls.Add(this.pnlTablasAux);
             this.pnlBotones.Controls.Add(this.btnClientes);
             this.pnlBotones.Controls.Add(this.btnGenerarFac);
             this.pnlBotones.Controls.Add(this.btnCorte);
@@ -600,6 +610,141 @@
             this.btnServiciosMora.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnServiciosMora.UseVisualStyleBackColor = true;
             // 
+            // pnlTablasAux
+            // 
+            this.pnlTablasAux.Controls.Add(this.btnCuotasConsumno);
+            this.pnlTablasAux.Controls.Add(this.btnRoles);
+            this.pnlTablasAux.Controls.Add(this.btnControlFechas);
+            this.pnlTablasAux.Controls.Add(this.btnParametros);
+            this.pnlTablasAux.Controls.Add(this.btnMovimientos);
+            this.pnlTablasAux.Controls.Add(this.btnCFacturas);
+            this.pnlTablasAux.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlTablasAux.Enabled = false;
+            this.pnlTablasAux.Location = new System.Drawing.Point(0, 0);
+            this.pnlTablasAux.Name = "pnlTablasAux";
+            this.pnlTablasAux.Size = new System.Drawing.Size(803, 720);
+            this.pnlTablasAux.TabIndex = 69;
+            this.pnlTablasAux.Visible = false;
+            // 
+            // btnCuotasConsumno
+            // 
+            this.btnCuotasConsumno.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCuotasConsumno.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCuotasConsumno.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(198)))));
+            this.btnCuotasConsumno.FlatAppearance.BorderSize = 0;
+            this.btnCuotasConsumno.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnCuotasConsumno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCuotasConsumno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCuotasConsumno.ForeColor = System.Drawing.Color.Black;
+            this.btnCuotasConsumno.Image = ((System.Drawing.Image)(resources.GetObject("btnCuotasConsumno.Image")));
+            this.btnCuotasConsumno.Location = new System.Drawing.Point(40, 47);
+            this.btnCuotasConsumno.Name = "btnCuotasConsumno";
+            this.btnCuotasConsumno.Size = new System.Drawing.Size(170, 150);
+            this.btnCuotasConsumno.TabIndex = 61;
+            this.btnCuotasConsumno.Text = "Cuotas ";
+            this.btnCuotasConsumno.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCuotasConsumno.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnCuotasConsumno.UseVisualStyleBackColor = true;
+            // 
+            // btnRoles
+            // 
+            this.btnRoles.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnRoles.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRoles.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(198)))));
+            this.btnRoles.FlatAppearance.BorderSize = 0;
+            this.btnRoles.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnRoles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRoles.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRoles.ForeColor = System.Drawing.Color.Black;
+            this.btnRoles.Image = ((System.Drawing.Image)(resources.GetObject("btnRoles.Image")));
+            this.btnRoles.Location = new System.Drawing.Point(266, 47);
+            this.btnRoles.Name = "btnRoles";
+            this.btnRoles.Size = new System.Drawing.Size(170, 150);
+            this.btnRoles.TabIndex = 61;
+            this.btnRoles.Text = "Roles";
+            this.btnRoles.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnRoles.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnRoles.UseVisualStyleBackColor = true;
+            // 
+            // btnControlFechas
+            // 
+            this.btnControlFechas.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnControlFechas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnControlFechas.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(198)))));
+            this.btnControlFechas.FlatAppearance.BorderSize = 0;
+            this.btnControlFechas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnControlFechas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnControlFechas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnControlFechas.ForeColor = System.Drawing.Color.Black;
+            this.btnControlFechas.Image = ((System.Drawing.Image)(resources.GetObject("btnControlFechas.Image")));
+            this.btnControlFechas.Location = new System.Drawing.Point(40, 261);
+            this.btnControlFechas.Name = "btnControlFechas";
+            this.btnControlFechas.Size = new System.Drawing.Size(170, 150);
+            this.btnControlFechas.TabIndex = 61;
+            this.btnControlFechas.Text = "Control Fechas Facturas";
+            this.btnControlFechas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnControlFechas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnControlFechas.UseVisualStyleBackColor = true;
+            // 
+            // btnParametros
+            // 
+            this.btnParametros.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnParametros.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnParametros.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(198)))));
+            this.btnParametros.FlatAppearance.BorderSize = 0;
+            this.btnParametros.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnParametros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnParametros.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnParametros.ForeColor = System.Drawing.Color.Black;
+            this.btnParametros.Image = ((System.Drawing.Image)(resources.GetObject("btnParametros.Image")));
+            this.btnParametros.Location = new System.Drawing.Point(503, 47);
+            this.btnParametros.Name = "btnParametros";
+            this.btnParametros.Size = new System.Drawing.Size(170, 150);
+            this.btnParametros.TabIndex = 61;
+            this.btnParametros.Text = "Parametros";
+            this.btnParametros.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnParametros.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnParametros.UseVisualStyleBackColor = true;
+            // 
+            // btnMovimientos
+            // 
+            this.btnMovimientos.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnMovimientos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMovimientos.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(198)))));
+            this.btnMovimientos.FlatAppearance.BorderSize = 0;
+            this.btnMovimientos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnMovimientos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMovimientos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMovimientos.ForeColor = System.Drawing.Color.Black;
+            this.btnMovimientos.Image = ((System.Drawing.Image)(resources.GetObject("btnMovimientos.Image")));
+            this.btnMovimientos.Location = new System.Drawing.Point(503, 264);
+            this.btnMovimientos.Name = "btnMovimientos";
+            this.btnMovimientos.Size = new System.Drawing.Size(170, 150);
+            this.btnMovimientos.TabIndex = 61;
+            this.btnMovimientos.Text = "Detalle Caja";
+            this.btnMovimientos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnMovimientos.UseVisualStyleBackColor = true;
+            // 
+            // btnCFacturas
+            // 
+            this.btnCFacturas.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCFacturas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCFacturas.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(198)))));
+            this.btnCFacturas.FlatAppearance.BorderSize = 0;
+            this.btnCFacturas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnCFacturas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCFacturas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCFacturas.ForeColor = System.Drawing.Color.Black;
+            this.btnCFacturas.Image = ((System.Drawing.Image)(resources.GetObject("btnCFacturas.Image")));
+            this.btnCFacturas.Location = new System.Drawing.Point(266, 263);
+            this.btnCFacturas.Name = "btnCFacturas";
+            this.btnCFacturas.Size = new System.Drawing.Size(170, 150);
+            this.btnCFacturas.TabIndex = 61;
+            this.btnCFacturas.Text = "Facturas";
+            this.btnCFacturas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCFacturas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnCFacturas.UseVisualStyleBackColor = true;
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -629,6 +774,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.PnlPrincipal.ResumeLayout(false);
             this.pnlBotones.ResumeLayout(false);
+            this.pnlTablasAux.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -667,5 +813,12 @@
         public System.Windows.Forms.Panel pnlMenuInicio;
         public System.Windows.Forms.Panel pnlMenuDetalles;
         private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Panel pnlTablasAux;
+        private System.Windows.Forms.Button btnCuotasConsumno;
+        private System.Windows.Forms.Button btnRoles;
+        private System.Windows.Forms.Button btnControlFechas;
+        private System.Windows.Forms.Button btnParametros;
+        private System.Windows.Forms.Button btnMovimientos;
+        private System.Windows.Forms.Button btnCFacturas;
     }
 }
