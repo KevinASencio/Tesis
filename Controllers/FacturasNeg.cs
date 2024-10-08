@@ -80,5 +80,20 @@ namespace Controllers
             
             return aux.ToString().Remove(0,2);
         }
+
+        public Boolean PagoCompleto(double descuento) 
+        {
+            if (fac.Mora > 0)
+            {
+                fac.Comentario = fac.Comentario + "Se cobro $ " + fac.Mora + " por pago tardio; ";
+            }
+            if (descuento > 0 ) 
+            {
+                fac.Comentario += "se le desconto el valor de $ " + descuento;
+            }
+            fac.EstadoPago = "Cancelado";
+
+            return fac.Actualzar();
+        }
     }
 }

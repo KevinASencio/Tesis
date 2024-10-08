@@ -366,5 +366,21 @@ namespace CapaDatos.Entidades
 
         from facturas fac, clientes cli, servicios serv where idfactura = 80547 and cli.idcliente=serv.idcliente and fac.idservicio= serv.idservicio;*/
 
+        public Boolean Actualzar()
+        {
+            DBOperacion operacion = new DBOperacion();
+            StringBuilder sentencia = new StringBuilder();
+            sentencia.Append("update facturas set ");
+            sentencia.Append("comentario = '" + this.Comentario + "', ");
+            sentencia.Append("descuento = " + this.Descuento + ", ");
+            sentencia.Append("estado_pago='" + this.EstadoPago + "' ");
+            sentencia.Append("where idfactura=" + this.IdFactura + ";");
+
+            try
+            {
+                return operacion.Actualizar(sentencia.ToString());
+            }
+            catch (Exception ex) { return false; }
+        }
     }
 }

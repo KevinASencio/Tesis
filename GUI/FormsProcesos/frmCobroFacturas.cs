@@ -1,6 +1,7 @@
 ﻿using CapaNegocio;
 using Controllers;
 using GUI.Clases;
+using GUI.FormsMessageBox;
 using System;
 using System.Data;
 using System.Windows.Forms;
@@ -38,7 +39,7 @@ namespace GUI.FormsProcesos
 
         private void btnProcesar_Click(object sender, EventArgs e)
         {
-            
+            if (factura.PagoCompleto(double.Parse(txbDescuento.Text.ToString().Remove(0,2)))) { Validacion.frmMessageBox("¡Cobro realizado!","Exito");  }
         }
     }
 }
