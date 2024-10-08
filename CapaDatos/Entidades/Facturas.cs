@@ -17,7 +17,6 @@ namespace CapaDatos.Entidades
         string _Estado;
         string _EstadoPago;
         string _Comentario;
-
         public int IdFactura { get => _IdFactura; set => _IdFactura = value; }
         public int IdServicio { get => _IdServicio; set => _IdServicio = value; }
         public int ContPendientes { get => _ContPendientes; set => _ContPendientes = value; }
@@ -335,22 +334,34 @@ namespace CapaDatos.Entidades
             return Resultado;
         }
 
-        public static DataTable consultarFactura(string idfactura) 
+        public static Facturas consultarFactura(string idfactura)
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
-            sentencia.Append(@"select idFactura, saldo, mora, estado, estado_pago, idservicio, cont_pendiente, descuento, idcontrolfecha, Comentario 
-                            from facturas where idfactura= "+ idfactura +";");
+            sentencia.Append(@"SELECT idfactura, saldo, mora, estado, estado_pago, idservicio, cont_pendiente, descuento, idcontrolfecha, comentario 
+                                FROM db_acacuvan.facturas where idfactura= " + idfactura + ";");
 
-            try 
+            try
             {
-                return operacion.Consultar(sentencia.ToString());
-            } catch (Exception ex) 
+                DataRow rw = operacion.Consultar(sentencia.ToString()).Rows[0];
+                Facturas factura = new Facturas();
+                factura.IdFactura = int.Parse(rw.ItemArray[0].ToString());
+                factura.Saldo = double.Parse(rw.ItemArray[1].ToString());
+                factura.Mora = double.Parse(rw.ItemArray[2].ToString());
+                factura.Estado = rw.ItemArray[3].ToString();
+                factura.EstadoPago = rw.ItemArray[4].ToString();
+                factura.IdServicio = int.Parse(rw.ItemArray[5].ToString());
+                factura.ContPendientes = int.Parse(rw.ItemArray[6].ToString());
+                factura.Descuento = double.Parse(rw.ItemArray[7].ToString());
+                factura.IdControlFecha = int.Parse(rw.ItemArray[8].ToString());
+                factura.Comentario = rw.ItemArray[9].ToString();
+                return factura;
+            }
+            catch (Exception ex)
             {
                 return null;
             }
         }
-
         /*select concat(cli.nombres, ' ', cli.apellidos) as 'cliente' ,fac.idFactura, fac.saldo, fac.mora, fac.estado, fac.estado_pago, fac.idservicio, fac.cont_pendiente, fac.descuento, fac.idcontrolfecha, fac.Comentario
 
         from facturas fac, clientes cli, servicios serv where idfactura = 80547 and cli.idcliente=serv.idcliente and fac.idservicio= serv.idservicio;*/

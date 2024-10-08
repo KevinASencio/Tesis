@@ -12,5 +12,10 @@ namespace Controllers
             return Cuotas.consultarCuotasConsumo();
         }
         public static DataTable consultarCuotasAcometida() { return Cuotas.consultarCuotasAcometida(); }
+
+        public static double ConCuota(int id) 
+        {
+            return Cuotas.ConsultarCuotaConsumo(id);
+        }
     }
 }

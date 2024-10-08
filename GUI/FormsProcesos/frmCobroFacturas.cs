@@ -1,4 +1,5 @@
-﻿using Controllers;
+﻿using CapaNegocio;
+using Controllers;
 using GUI.Clases;
 using System;
 using System.Data;
@@ -8,6 +9,8 @@ namespace GUI.FormsProcesos
 {
     public partial class frmCobroFacturas : Form
     {
+        FacturasNeg factura = new FacturasNeg();
+        ClientesNeg cliente= new ClientesNeg();
         public frmCobroFacturas()
         {
             InitializeComponent();
@@ -30,10 +33,12 @@ namespace GUI.FormsProcesos
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            DataTable factura = new DataTable();
-            factura = FacturasNeg.ConsultarFactura(txbFactura.Text);
-            lblCliente.Text = factura.Rows[0][1].ToString();
-                
+            factura.ConsultarFactura(txbFactura.Text, this);
+        }
+
+        private void btnProcesar_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

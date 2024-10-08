@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace CapaDatos.Entidades
@@ -39,6 +41,30 @@ namespace CapaDatos.Entidades
                 else { return false; }
             }
             catch (Exception ex) { return false; }
+        }
+
+        public static ControlFechasFacturas ConsultarControlFecha(int idcontrol) 
+        {
+            DBOperacion operacion = new DBOperacion();
+            StringBuilder sentencia = new StringBuilder();
+            sentencia.Append("select idcontrol, fecha_vencimiento, fecha_hasta, mes, fecha_generacion from fecha_control_facturas where idcontrol= " + idcontrol + ";");
+
+            try 
+            {
+                ControlFechasFacturas ct = new ControlFechasFacturas();
+                DataRow rw = operacion.Consultar(sentencia.ToString()).Rows[0];
+                if (rw.ItemArray.Length > 0)
+                {
+                    ct.IdControl = int.Parse(rw.ItemArray[0].ToString());
+                    ct.FechaVencimiento = DateTime.Parse(rw.ItemArray[1].ToString());
+                    ct.FechaHasta = DateTime.Parse(rw.ItemArray[2].ToString());
+                    ct.Mes = rw.ItemArray[3].ToString();
+                    ct.FechaGeneracion = DateTime.Parse(rw.ItemArray[4].ToString());
+                    return ct;
+                }
+                else { return null; }
+            }
+            catch (Exception ex) { return null; }
         }
     }
 }

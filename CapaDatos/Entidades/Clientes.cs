@@ -108,5 +108,32 @@ namespace CapaDatos.Entidades
             }
 
         }
+
+        public static Clientes ConsultarCliente(int idcliente) 
+        {
+            
+            StringBuilder sentencia = new StringBuilder();
+            DBOperacion operacion = new DBOperacion();
+            sentencia.Append(@"select idcliente, nombres, apellidos, direccion, dui, estado, telefono from clientes where idcliente=" + idcliente + ";");
+
+            try
+            {
+                DataRow rw = operacion.Consultar(sentencia.ToString()).Rows[0];
+                Clientes cliente = new Clientes();
+                cliente.IdCliente = int.Parse(rw.ItemArray[0].ToString());
+                cliente.Nombres = rw.ItemArray[1].ToString();
+                cliente.Apellidos = rw.ItemArray[2].ToString();
+                cliente.Direecion = rw.ItemArray[3].ToString();
+                cliente.Dui= rw.ItemArray[4].ToString();
+                cliente.Estado = rw.ItemArray[5].ToString();
+                cliente.Telefono = rw.ItemArray[6].ToString();
+                return cliente;
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine(ex.ToString());
+                return null;
+            }
+        }
     }
 }

@@ -253,6 +253,7 @@
             // 
             // panel6
             // 
+            this.panel6.AutoSize = true;
             this.panel6.Controls.Add(this.lblMesesPen);
             this.panel6.Controls.Add(this.label10);
             this.panel6.Location = new System.Drawing.Point(177, 370);
@@ -263,8 +264,8 @@
             // 
             // lblMesesPen
             // 
+            this.lblMesesPen.AutoEllipsis = true;
             this.lblMesesPen.AutoSize = true;
-            this.lblMesesPen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblMesesPen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMesesPen.Location = new System.Drawing.Point(151, 3);
             this.lblMesesPen.Name = "lblMesesPen";
@@ -363,6 +364,7 @@
             this.btnProcesar.TabIndex = 6;
             this.btnProcesar.Text = "Procesar";
             this.btnProcesar.UseVisualStyleBackColor = false;
+            this.btnProcesar.Click += new System.EventHandler(this.btnProcesar_Click);
             // 
             // panel9
             // 
@@ -459,32 +461,32 @@
         private System.Windows.Forms.Label lblIdFactura;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnBuscar;
-        private System.Windows.Forms.TextBox txbFactura;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label lblCliente;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label lblMonto;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label lblMora;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Label lblMes;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Label lblMesesPen;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.TextBox txbTotalPagar;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.TextBox txbDescuento;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button btnProcesar;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripCerrar;
+        public System.Windows.Forms.TextBox txbFactura;
+        public System.Windows.Forms.Label lblCliente;
+        public System.Windows.Forms.Label lblMonto;
+        public System.Windows.Forms.Label lblMora;
+        public System.Windows.Forms.Label lblMes;
+        public System.Windows.Forms.TextBox txbTotalPagar;
+        public System.Windows.Forms.TextBox txbDescuento;
+        public System.Windows.Forms.Label lblMesesPen;
     }
 }

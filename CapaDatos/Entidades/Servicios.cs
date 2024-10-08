@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Text;
+using System.Windows.Forms;
 
 namespace CapaDatos.Entidades
 {
@@ -186,6 +187,35 @@ namespace CapaDatos.Entidades
             {
                 return 0;
             }
+        }
+
+        public static Servicios ConsultarServicio(int id) 
+        {
+            DBOperacion operacion = new DBOperacion();
+            StringBuilder sentencia= new StringBuilder();
+            sentencia.Append(@"select idservicio, idcliente, idcolonia, fecha_apertura, cuotas_anticipadas, estado, comentario, ifnull(idacometida,0) as 'idacometida', 
+                            ifnull(idconsumo,0) as 'idconsumo' from servicios where idservicio=" + id + "");
+
+            try 
+            {
+                Servicios servicio= new Servicios();
+                DataRow rw = operacion.Consultar(sentencia.ToString()).Rows[0] ;
+                if (rw.ItemArray.Length > 0)
+                {
+                    servicio.IdServicio = int.Parse(rw.ItemArray[0].ToString());
+                    servicio.IdCliente = int.Parse(rw.ItemArray[1].ToString());
+                    servicio.IdColonia = int.Parse(rw.ItemArray[2].ToString());
+                    servicio.FechaApertura = DateTime.Parse(rw.ItemArray[3].ToString());
+                    servicio.CuotasAnticipadas = int.Parse(rw.ItemArray[4].ToString());
+                    servicio.Estado = rw.ItemArray[5].ToString();
+                    servicio.Comentario = rw.ItemArray[6].ToString();
+                    servicio.IdConsumo = int.Parse(rw.ItemArray[7].ToString());
+                    servicio.IdAcometida = int.Parse(rw.ItemArray[8].ToString());
+                    return servicio;
+                }
+                else { return null; }
+            }
+            catch (Exception e) { return null; }
         }
     }
 

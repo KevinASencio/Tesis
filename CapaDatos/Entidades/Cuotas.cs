@@ -44,5 +44,16 @@ namespace CapaDatos.Entidades
             }
         }
 
+        public static double ConsultarCuotaConsumo(int id) 
+        {
+            DBOperacion operacion= new DBOperacion();
+            StringBuilder sentencia= new StringBuilder();
+            sentencia.Append("select cuota from cuotasconsumo where idcuotaconsumo= " + id + ";");
+            try 
+            {
+                return double.Parse(operacion.Consultar(sentencia.ToString()).Rows[0][0].ToString());
+            }catch (Exception ex) { return 0; Console.WriteLine(ex.Message); }
+        }
+
     }
 }
