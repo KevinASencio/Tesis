@@ -44,16 +44,44 @@ namespace CapaDatos.Entidades
             }
         }
 
-        public static double ConsultarCuotaConsumo(int id) 
+        public static double ConsultarCuotaConsumo(int id)
         {
-            DBOperacion operacion= new DBOperacion();
-            StringBuilder sentencia= new StringBuilder();
+            DBOperacion operacion = new DBOperacion();
+            StringBuilder sentencia = new StringBuilder();
             sentencia.Append("select cuota from cuotasconsumo where idcuotaconsumo= " + id + ";");
-            try 
+            try
             {
                 return double.Parse(operacion.Consultar(sentencia.ToString()).Rows[0][0].ToString());
-            }catch (Exception ex) { return 0; Console.WriteLine(ex.Message); }
+            }
+            catch (Exception ex) { return 0; Console.WriteLine(ex.Message); }
         }
 
+        public static double ConsultarCuota(int idconsumo, int idacometida)
+        {
+            DBOperacion operacion = new DBOperacion();
+            StringBuilder sentencia = new StringBuilder();
+            if (idconsumo > 0)
+            {
+                sentencia.Append("select cuo.monto from cuotasconsumo as cuo, serviciosconsumo as serv where serv.idserviciosconsumo=" + idconsumo + " and serv.idcuotaconsumo=cuo.idcuotaconsumo;");
+            }
+            else 
+            {
+                sentencia.Append("select cuo.monto from cuotasacometida as cuo, serviciosacometida as serv where serv.idserviciosacometida=" + idacometida + " and serv.idcuotaacometida=cuo.idcuotaacometida;");
+            }
+            try { double.Parse(operacion.Consultar(sentencia.ToString()).Rows[0][0].ToString()); } catch (Exception ex){ }
+            return 0;
+            }
+
+            public static double ConsultarCuotaAcometida(int id)
+            {
+                DBOperacion operacion = new DBOperacion();
+                StringBuilder sentencia = new StringBuilder();
+                sentencia.Append("select cuota from cuotasconsumo where idcuotaconsumo= " + id + ";");
+                try
+                {
+                    return double.Parse(operacion.Consultar(sentencia.ToString()).Rows[0][0].ToString());
+                }
+                catch (Exception ex) { return 0; Console.WriteLine(ex.Message); }
+            }
+        }
     }
-}

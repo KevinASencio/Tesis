@@ -15,6 +15,7 @@ namespace Controllers
         Clientes cliente = new Clientes();
         Servicios servicio = new Servicios();
         ControlFechasFacturas fechacontrol = new ControlFechasFacturas();
+        Cuotas cuotas = new Cuotas();
 
         public DataTable Generar(int idcontrol, double mora, ProgressBar psbBar, Label conta)
         {
@@ -32,6 +33,7 @@ namespace Controllers
             servicio = Servicios.ConsultarServicio(fac.IdServicio);
             cliente = Clientes.ConsultarCliente(servicio.IdCliente);
             fechacontrol = ControlFechasFacturas.ConsultarControlFecha(fac.IdControlFecha);
+            
 
             contenedor.Controls.Find("lblcliente", true)[0].Text = cliente.Nombres + ", " + cliente.Apellidos;
             contenedor.Controls.Find("lblMora", true)[0].Text = fac.Mora.ToString("$ 00.00");
@@ -94,6 +96,28 @@ namespace Controllers
             fac.EstadoPago = "Cancelado";
 
             return fac.Actualzar();
+        }
+
+        public Boolean PagoParcial(double pagado) 
+        {
+            Facturas facParcial= new Facturas();
+            Facturas cancelada= new Facturas();
+            int facpagadas = FacturasPagadas(pagado);
+            cancelada.Saldo = facpagadas * ;
+
+           
+        }
+
+        private int FacturasPagadas(double Pagado) 
+        {
+            double cuota= Cuotas.ConsultarCuota(servicio.IdConsumo, servicio.IdAcometida);
+            int aux = 0;
+            while (Pagado >= cuota)
+            {
+                Pagado = Pagado - cuota;
+                aux++;
+            }
+            return aux;
         }
     }
 }
