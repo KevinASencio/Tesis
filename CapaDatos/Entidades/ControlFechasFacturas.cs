@@ -66,5 +66,14 @@ namespace CapaDatos.Entidades
             }
             catch (Exception ex) { return null; }
         }
+
+        public static int ConsultarUltimoCtr() 
+        {
+            DBOperacion operacion = new DBOperacion();
+            StringBuilder sentencia = new StringBuilder();
+            sentencia.Append("select idcontrol from fecha_control_facturas order by idcontrol desc limit 1;");
+            try { return int.Parse(operacion.Consultar(sentencia.ToString()).Rows[0][0].ToString()); }
+            catch (Exception ex) { return 0; }
+        }
     }
 }
