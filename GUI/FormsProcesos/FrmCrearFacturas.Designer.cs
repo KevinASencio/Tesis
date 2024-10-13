@@ -258,7 +258,7 @@
             this.btnGnerar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGnerar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGnerar.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnGnerar.Location = new System.Drawing.Point(121, 6);
+            this.btnGnerar.Location = new System.Drawing.Point(121, 11);
             this.btnGnerar.Name = "btnGnerar";
             this.btnGnerar.Size = new System.Drawing.Size(121, 46);
             this.btnGnerar.TabIndex = 1;

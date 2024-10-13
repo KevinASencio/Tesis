@@ -1,9 +1,11 @@
 ﻿using CapaDatos.Entidades;
 using System;
+using System.ComponentModel.Design;
 using System.Data;
 using System.Data.Odbc;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Security.Policy;
 using System.Text;
 using System.Windows.Forms;
 
@@ -30,7 +32,7 @@ namespace Controllers
 
         public void ConsultarFactura(string idfactura, Form contenedor)
         {
-            fac = Facturas.consultarFactura(idfactura);
+            fac.consultarFactura(idfactura);
             servicio = Servicios.ConsultarServicio(fac.IdServicio);
             cliente = Clientes.ConsultarCliente(servicio.IdCliente);
             fechacontrol = ControlFechasFacturas.ConsultarControlFecha(fac.IdControlFecha);
@@ -85,11 +87,15 @@ namespace Controllers
             return aux.ToString().Remove(0, 2);
         }
 
-        public Boolean PagoCompleto(double descuento)
+        public Boolean PagoCompleto(double pagado, double descuento, string empleado
         {
-            if (fac.Mora > 0)
+            if (fechacontrol.FechaVencimiento < DateTime.Now)
             {
-                fac.Comentario = fac.Comentario + "Se cobro $ " + fac.Mora + " por pago tardio; ";
+                if (MessageBox.Show("Desea cobrar mora por pago tardio?", "Ojo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    if (servicio.IdConsumo == 0) { fac.Comentario = fac.Comentario + "Se cobro $ " + parametros.MoraConsumo + " por pago tardio"; }
+                    else { fac.Comentario = fac.Comentario + "Se cobro $ " + parametros.MoraAcometida + " por pago tardio;"; }
+                }
             }
             if (descuento > 0)
             {
@@ -97,7 +103,25 @@ namespace Controllers
             }
             fac.EstadoPago = "Cancelado";
 
-            return fac.Actualzar();
+            if (fac.Actualzar()) 
+            {
+                Movimientos movimientos = new Movimientos();
+                ControlMensualCaja ct = new ControlMensualCaja();
+                ct.Consultar();
+                movimientos.IdFactura = fac.IdFactura;
+                movimientos.IdControlCaja = ct.IdControlCaja;
+                movimientos.Concepto = "CANCELACION POR SUMINISTRO DE AGUA SEGUN RECIBOS";
+                movimientos.IdControlCaja= ct.IdControlCaja;
+                movimientos.Doc = fac.IdFactura.ToString();
+                movimientos.IdFactura= fac.IdFactura;
+                movimientos.Empleado = empleado;
+                movimientos.IdControlBanco = 0;
+                movimientos.IdCliente = servicio.IdCliente;
+                movimientos.Fecha = DateTime.Now;
+            }
+
+
+            return false;
         }
 
         public Boolean PagoParcial(double pagado, double descuento)
@@ -116,15 +140,62 @@ namespace Controllers
             if (servicio.IdConsumo > 0) { cancelada.Mora = cuopagadas * parametros.MoraConsumo; } else { cancelada.Mora = cuopagadas + parametros.MoraAcometida; };
             cancelada.Descuento = descuento;
 
-            try 
+            try
             {
-                if (cancelada.Insertar() == true) 
+                if (cancelada.Insertar() == true)
                 {
                     //insertar movimiento
+                    //generar factura con saldo pendeinte
+                    facParcial.Saldo = fac.Saldo - cancelada.Saldo;
+                    facParcial.Mora = fac.Mora - cancelada.Mora;
+                    facParcial.EstadoPago = "pendiente";
+                    facParcial.Estado = "valida";
+                    facParcial.Descuento = 0;
+                    facParcial.IdServicio = fac.IdServicio;
+                    facParcial.ContPendientes = fac.ContPendientes - cuopagadas;
+                    facParcial.IdControlFecha = ControlFechasFacturas.ConsultarUltimoCtr();
+                    facParcial.Comentario = "Esta factura se genero con el saldo pendiente por el pago parcial de la factura N°" + fac.IdFactura;
+                    return facParcial.Insertar();
                 }
-                
-            }catch (Exception ex) { MessageBox.Show("Error "+ ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error); }
+
+                return true;
+
+            }
+            catch (Exception ex) { MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return false; }
             #endregion
+
+        }
+
+        public Boolean PagoAdelantado(double pagado, double descuento)
+        {
+            Facturas adelantada = new Facturas();
+            int facturaspagadas = FacturasPagadas(pagado - (fac.Saldo + fac.Mora));
+
+            fac.EstadoPago = "cancelado";
+            if (descuento > 0) { fac.Descuento = descuento; fac.Comentario = fac.Comentario + " se le aplico un descuento de $" + descuento; }
+
+            adelantada.Saldo = pagado - (fac.Saldo + fac.Mora);
+            adelantada.Mora = 0;
+            adelantada.Estado = "valida";
+            adelantada.EstadoPago = "cancelado";
+            servicio.CuotasAnticipadas = facturaspagadas;
+            adelantada.IdControlFecha = ControlFechasFacturas.ConsultarUltimoCtr();
+            adelantada.IdServicio = servicio.IdServicio;
+            adelantada.Descuento = 0;
+            adelantada.Comentario = "Esta factura se genero por el pago adelantado de " + facturaspagadas + " cuotas de la factura n°" + fac.IdFactura;
+
+            try
+            {
+                if (fac.Actualzar())
+                {
+                    //ingresar movimiento
+
+
+                    return adelantada.Insertar();
+                }
+                return false;
+            }
+            catch (Exception ex) { return false; }
 
         }
 

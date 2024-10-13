@@ -56,7 +56,7 @@ namespace CapaDatos.Entidades
             sentencia.Append("serv, clientes as cli, serviciosconsumo as con, cuotasconsumo as cuo ");
             sentencia.Append("where fact.idservicio = serv.idservicio and cli.idcliente = serv.idcliente and ");
             sentencia.Append("serv.idconsumo = con.idserviciosconsumo and cuo.idcuotaconsumo = con.idcuotaconsumo and serv.estado='activo' and fact.estado='Valida' and ");
-            sentencia.Append("fact.idcontrolfecha = " + (int)(idcontrol - 1) + ";");
+            sentencia.Append("fact.estado_pago='pendiente';");
             try
             {
                 return operacion.Consultar(sentencia.ToString());
@@ -71,7 +71,7 @@ namespace CapaDatos.Entidades
             {
                 return operacion.Consultar(@"select serv.idservicio,cuo.monto from servicios serv, cuotasconsumo cuo, serviciosconsumo con 
                                            where con.idcuotaconsumo=cuo.idcuotaconsumo and serv.idconsumo=con.idserviciosconsumo and serv.estado='activo' and serv.idservicio 
-                                           not in(select fac.idservicio from facturas fac where fac.idservicio=serv.idservicio and fac.idcontrolfecha=" + (int)(idcontrol - 1) + ");");
+                                           not in(select fac.idservicio from facturas fac where fac.idservicio=serv.idservicio);");
 
             }
             catch (Exception ex) { return null; }
@@ -84,7 +84,7 @@ namespace CapaDatos.Entidades
             {
                 return operacion.Consultar(@"select serv.idservicio,cuo.monto from servicios serv, cuotasacometida cuo, serviciosacometida aco
                                             where serv.idacometida=aco.idserviciosacometida and   aco.idcuotaacometida=cuo.idcuotaacometida and serv.estado='activo' and  serv.idservicio
-                                            not in(select fac.idservicio from facturas fac where fac.idservicio=serv.idservicio and fac.idcontrolfecha=" + (int)(idcontrol - 1) + ");");
+                                            not in(select fac.idservicio from facturas fac where fac.idservicio=serv.idservicio);");
             }
             catch (Exception ex) { return null; }
         }
@@ -99,7 +99,7 @@ namespace CapaDatos.Entidades
             sentencia.Append("serv, clientes as cli, serviciosacometida as aco, cuotasacometida as cuo ");
             sentencia.Append("where fact.idservicio = serv.idservicio and cli.idcliente = serv.idcliente and ");
             sentencia.Append("serv.idacometida = aco.idserviciosacometida and cuo.idcuotaacometida = aco.idcuotaacometida and serv.estado='activo' and  fact.estado='Valida' and ");
-            sentencia.Append("fact.idcontrolfecha =" + (int)(idcontrol - 1) + ";");
+            sentencia.Append("fact.estado_pago='pendiente';");
             try
             {
                 return operacion.Consultar(sentencia.ToString());
@@ -198,7 +198,7 @@ namespace CapaDatos.Entidades
                 foreach (DataRow rw in ListaServicios.Rows)
                 {
                     sentencia.Clear();
-                    sentencia.Append("Agregar into facturas (saldo, mora, estado, estado_pago, idservicio, cont_pendiente, idcontrolfecha)");
+                    sentencia.Append("insert into facturas (saldo, mora, estado, estado_pago, idservicio, cont_pendiente, idcontrolfecha)");
                     sentencia.Append("values (");
                     sentencia.Append(double.Parse(rw.ItemArray[1].ToString()) + ", ");
                     sentencia.Append("0.00, ");
@@ -237,7 +237,7 @@ namespace CapaDatos.Entidades
             DataTable ListaFacturas = new DataTable();
             DataTable ListaServicios = new DataTable();
             ListaFacturas = ConsultarGenrarAco(idcontrol);
-            ListaServicios = ServiciosSinFacCon(idcontrol);
+            ListaServicios = ServiciosSinFacAco(idcontrol);
             int cont = 0;
             //variable para controlar el numero de facturas que han sido procesadas, para esto se utiliza el valor de la barra de porgreso entre 5, que nos da como resultado el valor de las facturas procesadas
             //el valir de g.value= Numero de facturas * 5
@@ -334,7 +334,7 @@ namespace CapaDatos.Entidades
             return Resultado;
         }
 
-        public static Facturas consultarFactura(string idfactura)
+        public  Facturas consultarFactura(string idfactura)
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
@@ -345,16 +345,16 @@ namespace CapaDatos.Entidades
             {
                 DataRow rw = operacion.Consultar(sentencia.ToString()).Rows[0];
                 Facturas factura = new Facturas();
-                factura.IdFactura = int.Parse(rw.ItemArray[0].ToString());
-                factura.Saldo = double.Parse(rw.ItemArray[1].ToString());
-                factura.Mora = double.Parse(rw.ItemArray[2].ToString());
-                factura.Estado = rw.ItemArray[3].ToString();
-                factura.EstadoPago = rw.ItemArray[4].ToString();
-                factura.IdServicio = int.Parse(rw.ItemArray[5].ToString());
-                factura.ContPendientes = int.Parse(rw.ItemArray[6].ToString());
-                factura.Descuento = double.Parse(rw.ItemArray[7].ToString());
-                factura.IdControlFecha = int.Parse(rw.ItemArray[8].ToString());
-                factura.Comentario = rw.ItemArray[9].ToString();
+                this.IdFactura = int.Parse(rw.ItemArray[0].ToString());
+                this.Saldo = double.Parse(rw.ItemArray[1].ToString());
+                this.Mora = double.Parse(rw.ItemArray[2].ToString());
+                this.Estado = rw.ItemArray[3].ToString();
+                this.EstadoPago = rw.ItemArray[4].ToString();
+                this.IdServicio = int.Parse(rw.ItemArray[5].ToString());
+                this.ContPendientes = int.Parse(rw.ItemArray[6].ToString());
+                this.Descuento = double.Parse(rw.ItemArray[7].ToString());
+                this.IdControlFecha = int.Parse(rw.ItemArray[8].ToString());
+                this.Comentario = rw.ItemArray[9].ToString();
                 return factura;
             }
             catch (Exception ex)
