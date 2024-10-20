@@ -71,6 +71,7 @@ namespace GUI.FormsGestion
             ListaClientes.DataSource = CapaNegocio.SistemCache.ConsultarClientes();
             dtgvClientes.AutoGenerateColumns = false;
             dtgvClientes.DataSource = ListaClientes;
+            dtgvClientes.Refresh();
             lblRegistro.Text = ListaClientes.Count.ToString() + " Registros Encontrados";
         }
         public void Servicios()
@@ -85,7 +86,7 @@ namespace GUI.FormsGestion
         {
             if (Validacion.seguroCambiarEstado())
             {
-                if (dtgvClientes.CurrentRow.Cells["estado"].Value.ToString() == "Activo")
+                if (dtgvClientes.CurrentRow.Cells["estado"].Value.ToString() == "activo")
                 {
                     cliente = new ClientesNeg(int.Parse(dtgvClientes.CurrentRow.Cells["idcliente"].Value.ToString()), "De Baja");
                 }
@@ -95,6 +96,7 @@ namespace GUI.FormsGestion
                 }
                 if (cliente.CambiarEstado()) { MessageBox.Show("Estado Cambiado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information); }
                 else { MessageBox.Show("Error al cambiar el Estado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                CargarDatos();
             }
         }
     }

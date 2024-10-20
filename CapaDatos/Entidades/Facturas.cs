@@ -186,8 +186,6 @@ namespace CapaDatos.Entidades
                 conta.Text = i + aux;
                 conta.Refresh();
             }
-
-            MessageBox.Show("aqui han pasado " + i + "facturas");
             //crear faturas de los servicios los cuales aun no cuentan con una factura previa
             ListaFacturas.Clear();
             //consulta para obtener todos los servicios a los cuales no se les a generado factura
@@ -301,7 +299,6 @@ namespace CapaDatos.Entidades
                 conta.Text = procesadas + aux;
                 conta.Refresh();
             }
-            MessageBox.Show("aqui han pasado " + (g.Value / 5) + "facturas");
             //crear faturas de los servicios los cuales aun no cuentan con una factura previa
             if (ListaServicios.Rows.Count > 0)
             {
@@ -383,19 +380,30 @@ namespace CapaDatos.Entidades
             catch (Exception ex) { return false; }
         }
 
-        public Boolean Insertar() 
+        public Boolean Insertar()
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
-            sentencia.Append("insert into facturas values (");
+            sentencia.Append("insert into facturas (saldo,mora,estado,estado_pago, idservicio, cont_pendiente, descuento,idcontrolfecha,comentario) values (");
             sentencia.Append(" " + this.Saldo + ", ");
             sentencia.Append(" " + this.Mora + ", ");
             sentencia.Append(" '" + this.Estado + "', ");
             sentencia.Append(" '" + this.EstadoPago + "', ");
             sentencia.Append(" " + this.IdServicio + ", ");
             sentencia.Append(" " + this.ContPendientes + ", ");
-            sentencia.Append(" " + this.Descuento + ");");
-            try { return operacion.Insertar(sentencia.ToString()); }catch (Exception ex) { return false; }
+            sentencia.Append(" " + this.Descuento + ",");
+            sentencia.Append(" " + this.IdControlFecha + ", ");
+            sentencia.Append(" '" + Comentario + "');");
+            try
+            {
+                //si la insertcion es un exito se ocnsulta el id de la factura que se acaba de ingresar y la asignamos al objeto que telaizao la insericon
+                if (operacion.Insertar(sentencia.ToString())) 
+                {
+                    this.IdFactura = int.Parse(operacion.Consultar("select LAST_INSERT_ID() from facturas limit 1").Rows[0][0].ToString());
+                    return true;
+                }
+                return false;
+            }catch (Exception ex) { return false; }
         }
     }
 }

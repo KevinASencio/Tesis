@@ -90,7 +90,7 @@ namespace CapaDatos.Entidades
         {
             StringBuilder sentencia = new StringBuilder();
             DBOperacion operacion = new DBOperacion();
-            sentencia.Append("Actualizar clientes set estado = '" + _Estado + "' where idcliente=" + _IdCliente + ";");
+            sentencia.Append("update clientes set estado = '" + _Estado + "' where idcliente=" + _IdCliente + ";");
             try
             {
                 if (operacion.Eliminar(sentencia.ToString()))

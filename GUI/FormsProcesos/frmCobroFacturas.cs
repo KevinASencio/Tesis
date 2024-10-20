@@ -1,6 +1,7 @@
 ﻿using CapaNegocio;
 using Controllers;
 using GUI.Clases;
+using GUI.FormsGestion;
 using GUI.FormsMessageBox;
 using System;
 using System.Data;
@@ -11,7 +12,7 @@ namespace GUI.FormsProcesos
     public partial class frmCobroFacturas : Form
     {
         FacturasNeg factura = new FacturasNeg();
-        ClientesNeg cliente= new ClientesNeg();
+        ClientesNeg cliente = new ClientesNeg();
         public frmCobroFacturas()
         {
             InitializeComponent();
@@ -39,21 +40,7 @@ namespace GUI.FormsProcesos
 
         private void btnProcesar_Click(object sender, EventArgs e)
         {
-            double pagado = double.Parse(txbTotalPagar.Text.ToString().Remove(0, 2));
-            double aux = (double.Parse(lblMonto.Text.ToString().Remove(0, 2)) + double.Parse(lblMora.Text.ToString().Remove(0, 2)));
-            double descuento = double.Parse(txbDescuento.Text.ToString().Remove(0, 2));
-            if (pagado == aux)
-            {
-                if (factura.PagoCompleto(pagado,descuento)) { Validacion.frmMessageBox("¡Cobro realizado!", "Exito"); }
-            }
-            else if (pagado < aux)
-            {
-                if (factura.PagoParcial(pagado, descuento)) { Validacion.frmMessageBox("¡Cobro realizado!", "Exito"); }
-            }
-            else 
-            {
-                if (factura.PagoAdelantado(pagado, descuento)) { Validacion.frmMessageBox("¡Cobro realizado!", "Exito"); }
-            }
+            if (factura.procesar(double.Parse(txbTotalPagar.Text.ToString()), double.Parse(txbDescuento.Text.ToString()), frmPrincipal.useractivo.usuario())) { Validacion.frmMessageBox("¡Cobro realizado!", "Exito"); }
         }
     }
 }

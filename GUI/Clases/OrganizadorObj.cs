@@ -84,5 +84,33 @@ namespace GUI.Clases
             hijo.BringToFront();
             hijo.Show();
         }
+        public static void LimpiarControles(System.Windows.Forms.Control contenedor)
+        {
+            try
+            {
+                foreach (System.Windows.Forms.Control item in contenedor.Controls)
+                {
+                    foreach (System.Windows.Forms.Control aux in item.Controls)
+                    {
+                        try
+                        {
+                            if (aux is TextBox | aux is ComboBox)
+                            {
+                                aux.Text = null;
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message.ToString());
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
+
     }
 }

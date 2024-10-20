@@ -13,7 +13,7 @@ namespace GUI.Clases
         public AppManager()
         {
             //ejecutar splash
-            /*if (login())
+            if (login())
               {
                   frmPrincipal.useractivo = _usuario;
                   FrmPrincipal.ShowDialog();
@@ -22,7 +22,7 @@ namespace GUI.Clases
               else 
               {
                   Application.Exit();
-              }*/
+              }
 
             FrmPrincipal.ShowDialog();
             Application.Exit();

@@ -39,20 +39,22 @@ namespace CapaDatos.Entidades
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
 
-            sentencia.Append("insert into movimientos(fecha, tipo, concepto, idcliente, monto, idcontrol_banco,");
-            sentencia.Append("  idcontrol_caja, doc, idfactura, empleado, emisor) values( ");
-            sentencia.Append("'" + this.Fecha.ToString("yyyy-MM-dd") + "', ");
+            sentencia.Append("insert into movimientos(fecha, tipo, concepto, idcliente, monto,");
+            sentencia.Append(" doc, idfactura, empleado, emisor, idcontrol_banco, idcontrol_caja) values( ");
+            sentencia.Append("'" + this.Fecha.ToString("yyyy-MM-dd hh:mm:ss") + "', ");
             sentencia.Append("'" + this.Tipo + "', ");
             sentencia.Append("'" + this.Concepto + "', ");
-            sentencia.Append(IdCliente + ", ");
+            //valida si el valor es 0 puesto que esto generaria un error al hacer referencia a un registro con id=0 el cual no existe
+            if (IdCliente == 0) { sentencia.Append("null, "); } else { sentencia.Append(IdCliente + ", "); };
             sentencia.Append(this.Monto + ", ");
-            sentencia.Append(this.IdControlBanco + ", ");
-            sentencia.Append(this.IdControlCaja + ", ");
             sentencia.Append("' " + this.Doc + "', ");
-            sentencia.Append(this._IdFactura + ", ");
+            //valida si el valor es 0 puesto que esto generaria un error al hacer referencia a un registro con id=0 el cual no existe
+            if (IdFactura == 0) { sentencia.Append("null, "); } else { sentencia.Append(this._IdFactura + ", ");}
             sentencia.Append("'"+this.Empleado + "', ");
-            sentencia.Append("'" + this.emisor + "');");
-
+            sentencia.Append("'" + this.emisor + "',");
+            //valida si el valor es 0 puesto que esto generaria un error al hacer referencia a un registro con id=0 el cual no existe
+            if (IdControlBanco == 0) { sentencia.Append("null , " + this.IdControlCaja + ");"); }
+            else { sentencia.Append("" + this.IdControlBanco + ", null);"); }
             try 
             {
                 return operacion.Insertar(sentencia.ToString());
@@ -64,7 +66,6 @@ namespace CapaDatos.Entidades
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
-
             sentencia.Append("update movimientos set ");
             sentencia.Append("fecha = '" + this.Fecha.ToString("yyyy-MM-dd hh:mm:ss") + "', ");
             sentencia.Append("tipo = '" + this.Tipo + "', ");

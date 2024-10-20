@@ -209,8 +209,8 @@ namespace CapaDatos.Entidades
                     servicio.CuotasAnticipadas = int.Parse(rw.ItemArray[4].ToString());
                     servicio.Estado = rw.ItemArray[5].ToString();
                     servicio.Comentario = rw.ItemArray[6].ToString();
-                    servicio.IdConsumo = int.Parse(rw.ItemArray[7].ToString());
-                    servicio.IdAcometida = int.Parse(rw.ItemArray[8].ToString());
+                    servicio.IdConsumo = int.Parse(rw.ItemArray[8].ToString());
+                    servicio.IdAcometida = int.Parse(rw.ItemArray[7].ToString());
                     return servicio;
                 }
                 else { return null; }

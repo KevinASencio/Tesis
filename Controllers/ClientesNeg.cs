@@ -32,7 +32,6 @@ namespace CapaNegocio
         {
             return this.cl.Guardar();
         }
-
         public Boolean Actualizar()
         {
             return this.cl.Actualizar();

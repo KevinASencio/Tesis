@@ -24,6 +24,7 @@ namespace GUI.FormsGestion
         frmVistaUsuarios _frmVistaUsuarios;
         frmVistaServicios _frmVistaServicios;
         FrmCrearFacturas _frmCrearFacturas;
+        frmMovimientos _frmMovimientos;
         #endregion
 
         static UsuarioNeg _useractivo = new UsuarioNeg();
@@ -216,6 +217,12 @@ namespace GUI.FormsGestion
                     break;
             }
             
+        }
+
+        private void btnTransacciones_Click(object sender, EventArgs e)
+        {
+            _frmMovimientos = new frmMovimientos();
+            OrganizadorObj.abrirCont(_frmMovimientos);
         }
     }
 }
