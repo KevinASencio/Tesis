@@ -244,9 +244,9 @@
             this.lblLugarPago.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLugarPago.Location = new System.Drawing.Point(3, 0);
             this.lblLugarPago.Name = "lblLugarPago";
-            this.lblLugarPago.Size = new System.Drawing.Size(37, 18);
+            this.lblLugarPago.Size = new System.Drawing.Size(49, 18);
             this.lblLugarPago.TabIndex = 0;
-            this.lblLugarPago.Text = "Tipo";
+            this.lblLugarPago.Text = "Lugar ";
             // 
             // panel6
             // 

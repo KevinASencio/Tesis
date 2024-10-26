@@ -50,13 +50,10 @@ namespace CapaDatos.Entidades
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
-            sentencia.Append(" select fact.idfactura, fact.saldo,fact.mora, fact.estado, fact.estado_pago, fact.idservicio, ");
-            sentencia.Append("fact.cont_pendiente, fact.descuento, fact.idcontrolfecha, cuo.monto as cuota ");
-            sentencia.Append(" from facturas as fact, servicios as ");
-            sentencia.Append("serv, clientes as cli, serviciosconsumo as con, cuotasconsumo as cuo ");
-            sentencia.Append("where fact.idservicio = serv.idservicio and cli.idcliente = serv.idcliente and ");
-            sentencia.Append("serv.idconsumo = con.idserviciosconsumo and cuo.idcuotaconsumo = con.idcuotaconsumo and serv.estado='activo' and fact.estado='Valida' and ");
-            sentencia.Append("fact.estado_pago='pendiente';");
+            sentencia.Append("select ser.idservicio, ser.estado, ser.cuotas_anticipadas, cuo.monto, cl.idcliente ");
+            sentencia.Append("from servicios ser, clientes cl, cuotasconsumo cuo, serviciosconsumo sercon ");
+            sentencia.Append(" where ser.idcliente=cl.idcliente and ser.idconsumo = sercon.idserviciosconsumo and ");
+            sentencia.Append(" sercon.idcuotaconsumo=cuo.idcuotaconsumo and ser.estado='Activo'; ");
             try
             {
                 return operacion.Consultar(sentencia.ToString());
@@ -116,108 +113,75 @@ namespace CapaDatos.Entidades
             la factura anterior a la que no se pudo generar en este caso enero
              */
             DataTable Resultado = new DataTable();
-            DataTable ListaFacturas = new DataTable();
             DataTable ListaServicios = new DataTable();
-            ListaFacturas = ConsultarGenrarCon(idcontrol);
-            ListaServicios = ServiciosSinFacCon(idcontrol);
+            ListaServicios = ConsultarGenrarCon(idcontrol);
             g.Maximum = (Servicios.ConsulTotal()) * 5;
             MessageBox.Show(Servicios.ConsulTotal().ToString());
             string aux = "/" + (Servicios.ConsulTotal()).ToString();
-            //control de facturas con error al crearlas 
+            //contador de control de facturas con error al crearlas 
             int cont = 0;
             //contador de las facturas que se procesaron con o sin error
             int i = 0;
-            //creacion de facturas, tomando en cuenta la informacion de las facturas de mes vencidos se recorre la lista de facturas pára acceder a la informacion necesaria para la creaciom de la factura
-            //la insercion se hace factura por factura, de esta forma si surge un error con alguno no impide que las demas sean creadas
-            foreach (DataRow rw in ListaFacturas.Rows)
+            //creacion de facturas, se consulta la ultima factura para los servicios que se encuentran activos 
+            foreach (DataRow rw in ListaServicios.Rows)
             {
-                sentencia.Clear();
-                //si esta pendiente se genera la nueva factura con los saldos pendientes
-                if (rw.ItemArray[4].ToString().ToLower() == "pendiente")
+                //si el servicio no cueta con facturas pagadas de forma adelantada 
+                if (int.Parse(rw.ItemArray[2].ToString()) == 0)
                 {
-                    sentencia.Append("insert into facturas (saldo, mora, estado, estado_pago, idservicio, cont_pendiente, idcontrolfecha)");
-                    sentencia.Append("values (");
-                    sentencia.Append((double.Parse(rw.ItemArray[1].ToString()) + double.Parse(rw.ItemArray[9].ToString())) + ", ");
-                    sentencia.Append((double.Parse(rw.ItemArray[2].ToString()) + mora) + ", ");
-                    sentencia.Append("'Valida', ");
-                    sentencia.Append("'Pendiente', ");
-                    sentencia.Append(rw.ItemArray[5].ToString() + ", ");
-                    sentencia.Append((int.Parse(rw.ItemArray[6].ToString()) + 1) + ", ");
-                    sentencia.Append(idcontrol + ")");
-                    try
+                    Facturas Fac = consultarFacturaServicio(rw.ItemArray[0].ToString());
+                    //generar factura nueva si la factura anterior ya fue cancelada
+                    if (Fac.EstadoPago.Equals("Cancelado") || Fac == null)
                     {
-                        //si la creacion de la factura es exitosa entonces, se procede a cambiar de estado
-                        //la factura del mes anterior, esto para indicar que la factura anterior no fue pagada y que el saldo de esta fue transferido a la nueva factura 
-                        if (operacion.Insertar(sentencia.ToString()))
+                        Fac = new Facturas();
+                        Fac.Saldo = double.Parse(rw.ItemArray[3].ToString());
+                        Fac.Mora = 0;
+                        Fac.IdControlFecha = idcontrol;
+                        Fac.ContPendientes = 0;
+                        Fac.Comentario = "";
+                        Fac.IdServicio = int.Parse(rw.ItemArray[0].ToString());
+                        Fac.Estado = "Valida";
+                        Fac.EstadoPago = "Pendiente";
+                        try
                         {
-                            operacion.Actualizar("update facturas set estado='Transferida' where idfactura= " + rw.ItemArray[0] + ";");
+                            if (!Fac.Insertar()) { Resultado.Rows.CopyTo(rw.ItemArray, cont); cont++; }
                         }
-                        else { Resultado.Rows.CopyTo(rw.ItemArray, cont); cont++; }
+                        catch
+                        {
+                            Resultado.Rows.CopyTo(rw.ItemArray, cont); cont++;
+                        }
                     }
-                    catch (Exception ex)
+                    else //generar factura si la factura anterior no fue cancelada
                     {
-                        Resultado.Rows.CopyTo(rw.ItemArray, cont);
-                        cont++;
+                        Fac.Estado = "Transferida";
+                        if (Fac.Actualzar())
+                        {
+                            Fac.Saldo = Saldo + double.Parse(rw.ItemArray[3].ToString());
+                            Fac.Mora += mora;
+                            Fac.ContPendientes += 1;
+                            Fac.IdControlFecha = idcontrol;
+                            Fac.Estado = "Valida";
+                            Fac.EstadoPago = "Pendiente";
+                            try
+                            {
+                                if (!Fac.Insertar()) { Resultado.Rows.CopyTo(rw.ItemArray, cont); cont++; }
+                            }
+                            catch
+                            {
+                                Resultado.Rows.CopyTo(rw.ItemArray, cont); cont++;
+                            }
+                        }
                     }
                 }
-                else //creacion de la factura si la factura anterior al servicio fue cancelada
+                else //si el servicio tiene facturas adelantadas canceladas
                 {
-                    sentencia.Append("insert into facturas (saldo, mora, estado, estado_pago, idservicio, cont_pendiente, idcontrolfecha)");
-                    sentencia.Append("values (");
-                    sentencia.Append(double.Parse(rw.ItemArray[9].ToString()) + ", ");
-                    sentencia.Append("0.00, ");
-                    sentencia.Append("'Valida', ");
-                    sentencia.Append("'Pendiente', ");
-                    sentencia.Append(rw.ItemArray[5].ToString() + ", ");
-                    sentencia.Append("0, ");
-                    sentencia.Append(idcontrol + ")");
-                    try
-                    {
-                        if (!operacion.Insertar(sentencia.ToString())) { Resultado.Rows.CopyTo(rw.ItemArray, cont); cont++; }
-                    }
-                    catch (Exception ex)
-                    {
-                        Resultado.Rows.CopyTo(rw.ItemArray, cont);
-                        cont++;
-                    }
-                }
+                   Servicios servicio = new Servicios();
+                    servicio.IdServicio = int.Parse(rw.ItemArray[0].ToString());
+                    servicio.ActualizarContAdelantadas();
+                }               
                 i++;
                 g.Value = i * 5;
                 conta.Text = i + aux;
                 conta.Refresh();
-            }
-            //crear faturas de los servicios los cuales aun no cuentan con una factura previa
-            ListaFacturas.Clear();
-            //consulta para obtener todos los servicios a los cuales no se les a generado factura
-
-
-            if (ListaServicios.Rows.Count > 0)
-            {
-                foreach (DataRow rw in ListaServicios.Rows)
-                {
-                    sentencia.Clear();
-                    sentencia.Append("insert into facturas (saldo, mora, estado, estado_pago, idservicio, cont_pendiente, idcontrolfecha)");
-                    sentencia.Append("values (");
-                    sentencia.Append(double.Parse(rw.ItemArray[1].ToString()) + ", ");
-                    sentencia.Append("0.00, ");
-                    sentencia.Append("'Valida', ");
-                    sentencia.Append("'Pendiente', ");
-                    sentencia.Append(rw.ItemArray[0].ToString() + ", ");
-                    sentencia.Append("0, ");
-                    sentencia.Append(idcontrol + ")");
-                    try
-                    {
-                        if (!operacion.Insertar(sentencia.ToString()))
-                        {
-                            MessageBox.Show("Error al crear facturas para el servicio N°" + rw.ItemArray[0].ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                    catch (Exception ex) { MessageBox.Show("Error al crear facturas para el servicio N°" + rw.ItemArray[0].ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-                    i++;
-                    g.Value = i * 5;
-                    conta.Text = i + aux;
-                    conta.Refresh();
-                }
             }
             return Resultado;
         }
@@ -352,6 +316,35 @@ namespace CapaDatos.Entidades
                 this.Descuento = double.Parse(rw.ItemArray[7].ToString());
                 this.IdControlFecha = int.Parse(rw.ItemArray[8].ToString());
                 this.Comentario = rw.ItemArray[9].ToString();
+                return factura;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public Facturas consultarFacturaServicio(string idservicio)
+        {
+            DBOperacion operacion = new DBOperacion();
+            StringBuilder sentencia = new StringBuilder();
+            sentencia.Append(@"SELECT idfactura, saldo, mora, estado, estado_pago, idservicio, cont_pendiente, descuento, idcontrolfecha, comentario 
+                                FROM db_acacuvan.facturas where idservicio= " + idservicio + "  order  by idfactura desc limit 1;");
+
+            try
+            {
+                DataRow rw = operacion.Consultar(sentencia.ToString()).Rows[0];
+                Facturas factura = new Facturas();
+                factura.IdFactura = int.Parse(rw.ItemArray[0].ToString());
+                factura.Saldo = double.Parse(rw.ItemArray[1].ToString());
+                factura.Mora = double.Parse(rw.ItemArray[2].ToString());
+                factura.Estado = rw.ItemArray[3].ToString();
+                factura.EstadoPago = rw.ItemArray[4].ToString();
+                factura.IdServicio = int.Parse(rw.ItemArray[5].ToString());
+                factura.ContPendientes = int.Parse(rw.ItemArray[6].ToString());
+                factura.Descuento = double.Parse(rw.ItemArray[7].ToString());
+                factura.IdControlFecha = int.Parse(rw.ItemArray[8].ToString());
+                factura.Comentario = rw.ItemArray[9].ToString();
                 return factura;
             }
             catch (Exception ex)

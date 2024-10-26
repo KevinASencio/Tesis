@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows.Forms;
 
@@ -216,6 +217,22 @@ namespace CapaDatos.Entidades
                 else { return null; }
             }
             catch (Exception e) { return null; }
+        }
+
+        public  bool ActualizarContAdelantadas() 
+        {
+            DBOperacion operacion = new DBOperacion();
+            StringBuilder sentencia = new StringBuilder();
+            sentencia.Append("update servicios set cuotas_anticipadas=cuotas_anticipadas-1 where idservicio= " + this.IdServicio);
+            try
+            {
+                return operacion.Actualizar(sentencia.ToString());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message.ToString());
+                return false;
+            }
         }
     }
 
