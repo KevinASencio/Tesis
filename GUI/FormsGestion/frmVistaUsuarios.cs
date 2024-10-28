@@ -1,4 +1,5 @@
 ﻿using CapaNegocio.UsuarioNeg;
+using GUI.Clases;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +16,7 @@ namespace GUI.FormsGestion
     {
         BindingSource _usuarios = new BindingSource();
         frmGestionUsuarios _frmGestionUsuarios;
+        UsuarioNeg user= new UsuarioNeg();
         public frmVistaUsuarios()
         {
             InitializeComponent();
@@ -47,7 +49,7 @@ namespace GUI.FormsGestion
             this.CargarDatos();
         }
 
-        public void agregar() 
+        public void agregar()
         {
             _frmGestionUsuarios = new frmGestionUsuarios();
             _frmGestionUsuarios.accion = "agregar";
@@ -56,12 +58,40 @@ namespace GUI.FormsGestion
             this.CargarDatos();
         }
 
-        public void CargarDatos() 
+        public void CargarDatos()
         {
             _usuarios.DataSource = UsuarioNeg.consultar();
             dtgvUsuarios.AutoGenerateColumns = false;
             dtgvUsuarios.DataSource = _usuarios;
         }
- 
+
+        public void filtrar()
+        {
+            if (!string.IsNullOrEmpty(txbFiltro.Text))
+            {
+                _usuarios.Filter = String.Format("usuario LIKE '%{0}%' OR nombres LIKE '%{0}%' OR apellidos LIKE '%{0}%' or estado LIKE '%{0}%'", txbFiltro.Text);
+            }
+            else
+            {
+                _usuarios.RemoveFilter();
+            }
+        }
+
+        private void txbFiltro_TextChanged(object sender, EventArgs e)
+        {
+            filtrar();
+        }
+
+        public void CambiarEstado() 
+        {
+            if (user.CambiarEstado(dtgvUsuarios.CurrentRow.Cells["estado"].Value.ToString()))
+            {
+                Validacion.frmMessageBox("EStado Cambiado", "Exito");
+            }
+            else 
+            {
+                Validacion.frmMessageBox("Error al Cambiar Estado", "Error");
+            }
+        }
     }
 }

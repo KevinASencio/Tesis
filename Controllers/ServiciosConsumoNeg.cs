@@ -15,10 +15,6 @@ namespace Controllers
             return this.servicio.insertar();
         }
 
-        public void setIdServicioConsumo(int id)
-        {
-            this.servicio.IdServicioConsumo = id;
-        }
         public int getIdServicioConsumo()
         {
             return this.servicio.IdServicioConsumo;
@@ -31,6 +27,10 @@ namespace Controllers
         {
             return this.servicio.IdCuotaConsumo;
         }
-        public Boolean actualizar() { return servicio.actualizarConsumo(); }
+        public Boolean actualizar(int idcuota) 
+        {
+            servicio = new ServiciosConsumo(idcuota);
+            return servicio.actualizarConsumo(); 
+        }
     }
 }

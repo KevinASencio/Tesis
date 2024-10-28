@@ -26,7 +26,7 @@ namespace CapaDatos.Entidades
             Boolean resultado = false;
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
-            sentencia.Append("Agregar into serviciosconsumo(idcuotaconsumo) ");
+            sentencia.Append("insert into serviciosconsumo(idcuotaconsumo) ");
             sentencia.Append("Values ( " + IdCuotaConsumo + ");");
             try
             {
@@ -45,7 +45,7 @@ namespace CapaDatos.Entidades
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
-            sentencia.Append("Actualizar serviciosconsumo set ");
+            sentencia.Append("update serviciosconsumo set ");
             sentencia.Append("idcuotaconsumo = " + this.IdCuotaConsumo + " ");
             sentencia.Append("where idserviciosconsumo = " + this.IdServicioConsumo + ";");
             try { return operacion.Actualizar(sentencia.ToString()); } catch (Exception ex) { return false; }

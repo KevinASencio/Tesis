@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGestionAcometida));
             this.pnlID = new System.Windows.Forms.Panel();
             this.txbId = new System.Windows.Forms.TextBox();
             this.lblId = new System.Windows.Forms.Label();
@@ -62,6 +63,8 @@
             this.pnlBotones = new System.Windows.Forms.Panel();
             this.pnlPrincipal = new System.Windows.Forms.Panel();
             this.ErrorNotificador = new System.Windows.Forms.ErrorProvider(this.components);
+            this.pnlTop = new System.Windows.Forms.Panel();
+            this.prbCerrar = new System.Windows.Forms.PictureBox();
             this.pnlID.SuspendLayout();
             this.pnlCuotas.SuspendLayout();
             this.pnlColonias.SuspendLayout();
@@ -75,6 +78,8 @@
             this.pnlBotones.SuspendLayout();
             this.pnlPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorNotificador)).BeginInit();
+            this.pnlTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.prbCerrar)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlID
@@ -408,9 +413,9 @@
             this.pnlBotones.BackColor = System.Drawing.SystemColors.Control;
             this.pnlBotones.Controls.Add(this.pnlBoton);
             this.pnlBotones.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlBotones.Location = new System.Drawing.Point(0, 347);
+            this.pnlBotones.Location = new System.Drawing.Point(0, 352);
             this.pnlBotones.Name = "pnlBotones";
-            this.pnlBotones.Size = new System.Drawing.Size(891, 109);
+            this.pnlBotones.Size = new System.Drawing.Size(891, 104);
             this.pnlBotones.TabIndex = 21;
             // 
             // pnlPrincipal
@@ -426,15 +431,37 @@
             this.pnlPrincipal.Controls.Add(this.pnlEstado);
             this.pnlPrincipal.Controls.Add(this.pnlComentario);
             this.pnlPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlPrincipal.Location = new System.Drawing.Point(0, 0);
+            this.pnlPrincipal.Location = new System.Drawing.Point(0, 25);
             this.pnlPrincipal.Margin = new System.Windows.Forms.Padding(0);
             this.pnlPrincipal.Name = "pnlPrincipal";
-            this.pnlPrincipal.Size = new System.Drawing.Size(891, 347);
+            this.pnlPrincipal.Size = new System.Drawing.Size(891, 327);
             this.pnlPrincipal.TabIndex = 22;
             // 
             // ErrorNotificador
             // 
             this.ErrorNotificador.ContainerControl = this;
+            // 
+            // pnlTop
+            // 
+            this.pnlTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pnlTop.Controls.Add(this.prbCerrar);
+            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTop.Location = new System.Drawing.Point(0, 0);
+            this.pnlTop.Name = "pnlTop";
+            this.pnlTop.Size = new System.Drawing.Size(891, 25);
+            this.pnlTop.TabIndex = 23;
+            // 
+            // prbCerrar
+            // 
+            this.prbCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.prbCerrar.Image = ((System.Drawing.Image)(resources.GetObject("prbCerrar.Image")));
+            this.prbCerrar.Location = new System.Drawing.Point(868, -2);
+            this.prbCerrar.Name = "prbCerrar";
+            this.prbCerrar.Size = new System.Drawing.Size(25, 25);
+            this.prbCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.prbCerrar.TabIndex = 0;
+            this.prbCerrar.TabStop = false;
+            this.prbCerrar.Click += new System.EventHandler(this.prbCerrar_Click);
             // 
             // frmGestionAcometida
             // 
@@ -442,6 +469,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(891, 456);
             this.Controls.Add(this.pnlPrincipal);
+            this.Controls.Add(this.pnlTop);
             this.Controls.Add(this.pnlBotones);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmGestionAcometida";
@@ -469,6 +497,8 @@
             this.pnlBotones.ResumeLayout(false);
             this.pnlPrincipal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ErrorNotificador)).EndInit();
+            this.pnlTop.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.prbCerrar)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -508,5 +538,7 @@
         private System.Windows.Forms.Panel pnlBotones;
         private System.Windows.Forms.Panel pnlPrincipal;
         private System.Windows.Forms.ErrorProvider ErrorNotificador;
+        private System.Windows.Forms.Panel pnlTop;
+        private System.Windows.Forms.PictureBox prbCerrar;
     }
 }

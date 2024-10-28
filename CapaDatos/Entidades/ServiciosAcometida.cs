@@ -19,12 +19,12 @@ namespace CapaDatos.Entidades
         public float Saldo { get => _saldo; set => _saldo = value; }
         public int Idcuotaacometida { get => _idcuotaacometida; set => _idcuotaacometida = value; }
 
-        public Boolean agregar()
+        public Boolean Insertar()
         {
             bool resultado = false;
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
-            sentencia.Append("Agregar into serviciosacometida (idcuotaacometida, monto,cuotas_pagadas,numerocuotas,saldo)");
+            sentencia.Append("insert into serviciosacometida (idcuotaacometida, monto,cuotas_pagadas,numerocuotas,saldo)");
             sentencia.Append("Values (" + this.Idcuotaacometida + ", ");
             sentencia.Append(" " + this.Monto + ", ");
             sentencia.Append(" " + this.Cuotaspagadas + ", ");
@@ -44,7 +44,7 @@ namespace CapaDatos.Entidades
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
-            sentencia.Append("Actualizar serviciosacometida set ");
+            sentencia.Append("update serviciosacometida set ");
             sentencia.Append("idcuotaacometida=" + this.Idcuotaacometida + ", ");
             sentencia.Append("saldo = " + this.Saldo + ", ");
             sentencia.Append("cuotas_pagadas =" + this.Cuotaspagadas + " ");

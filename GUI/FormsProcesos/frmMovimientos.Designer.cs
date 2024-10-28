@@ -92,6 +92,7 @@
             this.toolStripCerrar.Name = "toolStripCerrar";
             this.toolStripCerrar.Size = new System.Drawing.Size(23, 22);
             this.toolStripCerrar.Text = "toolStripButton1";
+            this.toolStripCerrar.Click += new System.EventHandler(this.toolStripCerrar_Click);
             // 
             // lblId
             // 
@@ -299,6 +300,7 @@
             this.btnCancelar.TabIndex = 2;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.toolStripCerrar_Click);
             // 
             // btnAgregar
             // 

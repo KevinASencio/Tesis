@@ -80,11 +80,29 @@
     <Compile Include="FormInicio\FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormsGestion\frmGestionCuotas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsGestion\frmGestionCuotas.Designer.cs">
+      <DependentUpon>frmGestionCuotas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsGestion\frmGestionRolesPermisos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsGestion\frmGestionRolesPermisos.Designer.cs">
+      <DependentUpon>frmGestionRolesPermisos.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormsGestion\frmGestionUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormsGestion\frmGestionUsuarios.Designer.cs">
       <DependentUpon>frmGestionUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsGestion\frmVerFacturasCli.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsGestion\frmVerFacturasCli.Designer.cs">
+      <DependentUpon>frmVerFacturasCli.cs</DependentUpon>
     </Compile>
     <Compile Include="FormsMessageBox\frmMessageBox.cs">
       <SubType>Form</SubType>
@@ -163,8 +181,17 @@
     <EmbeddedResource Include="FormInicio\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormsGestion\frmGestionCuotas.resx">
+      <DependentUpon>frmGestionCuotas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsGestion\frmGestionRolesPermisos.resx">
+      <DependentUpon>frmGestionRolesPermisos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormsGestion\frmGestionUsuarios.resx">
       <DependentUpon>frmGestionUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsGestion\frmVerFacturasCli.resx">
+      <DependentUpon>frmVerFacturasCli.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormsMessageBox\frmMessageBox.resx">
       <DependentUpon>frmMessageBox.cs</DependentUpon>

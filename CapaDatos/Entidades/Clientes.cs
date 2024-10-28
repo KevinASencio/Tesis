@@ -40,7 +40,7 @@ namespace CapaDatos.Entidades
             }
         }
 
-        public Boolean Guardar()
+        public Boolean Insertar()
         {
             StringBuilder sentencia = new StringBuilder();
             DBOperacion operacion = new DBOperacion();
@@ -66,7 +66,7 @@ namespace CapaDatos.Entidades
         {
             StringBuilder sentencia = new StringBuilder();
             DBOperacion operacion = new DBOperacion();
-            sentencia.Append("Actualizar clientes set ");
+            sentencia.Append("update clientes set ");
             sentencia.Append("nombres='" + _Nombres + "',");
             sentencia.Append("apellidos='" + _Apellidos + "',");
             sentencia.Append("direccion='" + _Direecion + "',");

@@ -118,6 +118,7 @@ namespace GUI.FormsGestion
             _frmGestionAcometida.BringToFront();
             _frmGestionAcometida.Size = new Size(this.Width, this.Height);
             agregando = true;
+            _frmGestionAcometida._acometida.setIdAcometida(0);
             _frmGestionAcometida._servicio.setIdCliente(this.servicio.getIdCliente());
             _frmGestionAcometida.Show();
         }

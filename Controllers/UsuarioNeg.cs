@@ -1,6 +1,8 @@
 ﻿using CapaDatos.Entidades;
 using System;
 using System.Data;
+using System.Globalization;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace CapaNegocio.UsuarioNeg
 {
@@ -8,14 +10,13 @@ namespace CapaNegocio.UsuarioNeg
     {
 
         private Usuario user = new Usuario();
-        public Usuario User { get => user; set => user = value; }
 
         public static DataTable consultar() { return Usuario.Consultar(); }
 
         public Boolean Iniciar(string usuario, string pass)
         {
             DataTable result = new DataTable();
-            result = User.Validar(usuario, pass);
+            result = user.Validar(usuario, pass);
             if (result.Rows.Count > 0)
             {
                 user.Nombres = result.Rows[0]["nombres"].ToString();
@@ -31,34 +32,47 @@ namespace CapaNegocio.UsuarioNeg
 
         public string usuario() { return user.Uusuario; }
         public string nombres() { return user.Nombres; }
-        public string apellidos() { return user.Apellidos; }
-        public string estado() { return user.Estado; }
         public string rol() { return user.Rol; }
-
-        public void Setusuario(string usuario) { user.Uusuario = usuario; }
-        public void Setcontraseña(string contraseña) { user.Contraseña = contraseña; }
-
-        public void Setnombres(string nombres) { user.Nombres = nombres; }
-        public void Setapellidos(string apellidos) { user.Apellidos = apellidos; }
-        public void Setestado(string apellidos) { user.Estado = apellidos; }
-
-        public void Setrol(string rol) { user.Rol = rol; }
-        public void Setidrol(int idrol) { user.IdRol = idrol; }
-
-
         public int[] Permisos()
         {
             return user.permisos();
         }
 
-        public Boolean Actualizar(string usuario)
+
+        //se pasa como parametro el usuario y oldusuario el cual puede 
+        public Boolean Procesar(string usuario, string nombres, string apellidos, int idrol, string contraseña, string estado, string accion)
         {
-            return user.Actualizar(usuario);
+            user.Uusuario = usuario;
+            user.Nombres = nombres;
+            user.Apellidos = apellidos;
+            user.IdRol = idrol;
+            user.Contraseña = contraseña;
+            user.Estado = estado;
+            switch (accion)
+            {
+                case "agregar":
+                    return user.Insertar();
+
+                case "editar":
+                    return user.Actualizar();
+
+            }
+            return false;
         }
-        public Boolean Agregar()
+
+        public Boolean CambiarEstado(string estado)
         {
-            return user.Agregar();
+            if (estado == "Activo")
+            {
+                user.Estado = "De Bajaa";
+            }
+            else
+            {
+                user.Estado = "Activo";
+            }
+            return user.CambiarEstado();
         }
+
 
     }
 }

@@ -24,7 +24,7 @@ namespace GUI.Clases
                   Application.Exit();
               }
 
-            FrmPrincipal.ShowDialog();
+              FrmPrincipal.ShowDialog();
             Application.Exit();
         }
 

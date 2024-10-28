@@ -17,29 +17,42 @@ namespace CapaNegocio
             this.cl.Telefono = telefono;
             this.cl.Estado = estado;
         }
-        public ClientesNeg(int idcliente, string estado)
+        public ClientesNeg(int idcliente)
         {
             this.cl = new Clientes();
             this.cl.IdCliente = idcliente;
-            this.cl.Estado = estado;
         }
         public void setDui(string i)
         {
             this.cl.Dui = i;
         }
         public void SetIdclilente(int idcliente) { this.cl.IdCliente = idcliente; }
-        public Boolean guardar()
+
+        public Boolean Procesar(int idcliente) 
         {
-            return this.cl.Guardar();
-        }
-        public Boolean Actualizar()
-        {
-            return this.cl.Actualizar();
+            if (idcliente == 0)
+            {
+                return cl.Insertar();
+            }
+            else 
+            {
+                cl.IdCliente = idcliente;
+                return cl.Actualizar();
+            }
         }
 
-        public Boolean CambiarEstado()
+        public Boolean CambiarEstado(string estado)
         {
-            return this.cl.CambiarEstado();
+            if (estado == "activo")
+            {
+                cl.Estado = "De Baja";
+            }
+            else
+            {
+                cl.Estado = "activo";
+            }
+            return cl.CambiarEstado();
+
         }
 
 

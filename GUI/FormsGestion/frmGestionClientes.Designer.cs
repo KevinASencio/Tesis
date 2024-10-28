@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGestionClientes));
             this.pnlNombres = new System.Windows.Forms.Panel();
             this.txbNombres = new System.Windows.Forms.TextBox();
@@ -54,8 +55,9 @@
             this.prbCerrar = new System.Windows.Forms.PictureBox();
             this.pnlPrincipal = new System.Windows.Forms.Panel();
             this.pnlBoton = new System.Windows.Forms.Panel();
-            this.btnAgregar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.ErrorNotificador = new System.Windows.Forms.ErrorProvider(this.components);
             this.pnlNombres.SuspendLayout();
             this.pnlApellidos.SuspendLayout();
             this.pnlDirreccion.SuspendLayout();
@@ -67,6 +69,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.prbCerrar)).BeginInit();
             this.pnlPrincipal.SuspendLayout();
             this.pnlBoton.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorNotificador)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlNombres
@@ -222,6 +225,7 @@
             // cmbEstado
             // 
             this.cmbEstado.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.cmbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEstado.FormattingEnabled = true;
             this.cmbEstado.Items.AddRange(new object[] {
             "Activo",
@@ -290,6 +294,7 @@
             this.prbCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.prbCerrar.TabIndex = 0;
             this.prbCerrar.TabStop = false;
+            this.prbCerrar.Click += new System.EventHandler(this.prbCerrar_Click);
             // 
             // pnlPrincipal
             // 
@@ -316,6 +321,22 @@
             this.pnlBoton.Size = new System.Drawing.Size(266, 55);
             this.pnlBoton.TabIndex = 6;
             // 
+            // btnCancelar
+            // 
+            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnCancelar.FlatAppearance.BorderSize = 0;
+            this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnCancelar.Location = new System.Drawing.Point(142, 3);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(121, 46);
+            this.btnCancelar.TabIndex = 2;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
             // btnAgregar
             // 
             this.btnAgregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -332,21 +353,9 @@
             this.btnAgregar.UseVisualStyleBackColor = false;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
-            // btnCancelar
+            // ErrorNotificador
             // 
-            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnCancelar.FlatAppearance.BorderSize = 0;
-            this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
-            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnCancelar.Location = new System.Drawing.Point(142, 3);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(121, 46);
-            this.btnCancelar.TabIndex = 2;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = false;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            this.ErrorNotificador.ContainerControl = this;
             // 
             // frmGestionClientes
             // 
@@ -377,6 +386,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.prbCerrar)).EndInit();
             this.pnlPrincipal.ResumeLayout(false);
             this.pnlBoton.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorNotificador)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -409,5 +419,6 @@
         private System.Windows.Forms.Panel pnlBoton;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.ErrorProvider ErrorNotificador;
     }
 }

@@ -19,7 +19,7 @@ namespace GUI.Clases
                     {
                         try
                         {
-                            if (aux.Text.Length <= 0 && aux.Name != "txbId" && aux.Name != "txbComentario")
+                            if (String.IsNullOrEmpty(aux.Text) && !aux.Name.Equals("txbId")  && !aux.Name.Equals("txbComentario"))
                             {
                                 notificador.SetError(aux, "Este campo no puede queda vacío");
                                 esVacio = true;

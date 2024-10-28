@@ -6,7 +6,7 @@ namespace CapaDatos.Entidades
 {
     public class Usuario
     {
-        string _Uusuario;
+        string _Usuario;
         string _Apellidos;
         string _Nombres;
         int _IdRol;
@@ -14,7 +14,7 @@ namespace CapaDatos.Entidades
         string _Contraseña;
         string _Rol;
 
-        public string Uusuario { get => _Uusuario; set => _Uusuario = value; }
+        public string Uusuario { get => _Usuario; set => _Usuario = value; }
         public string Apellidos { get => _Apellidos; set => _Apellidos = value; }
         public string Nombres { get => _Nombres; set => _Nombres = value; }
         public int IdRol { get => _IdRol; set => _IdRol = value; }
@@ -41,12 +41,12 @@ namespace CapaDatos.Entidades
             }
         }
 
-        public Boolean Agregar()
+        public Boolean Insertar()
         {
             StringBuilder sentencia = new StringBuilder();
             DBOperacion operacion = new DBOperacion();
             sentencia.Append("insert into usuarios (usuario, nombres, apellidos, idrol, contraseña, estado) values(");
-            sentencia.Append("'" + _Uusuario + "',");
+            sentencia.Append("'" + _Usuario + "',");
             sentencia.Append("'" + _Nombres + "',");
             sentencia.Append("'" + _Apellidos + "',");
             sentencia.Append(" " + _IdRol + ",");
@@ -64,17 +64,16 @@ namespace CapaDatos.Entidades
             }
         }
 
-        public Boolean Actualizar(string usuario)
+        public Boolean Actualizar()
         {
             StringBuilder sentencia = new StringBuilder();
             DBOperacion operacion = new DBOperacion();
             sentencia.Append("update usuarios set ");
-            sentencia.Append("usuario = '" + _Uusuario + "',");
             sentencia.Append("nombres = '" + _Nombres + "',");
             sentencia.Append("apellidos = '" + _Apellidos + "',");
             sentencia.Append("idrol = " + _IdRol + ",");
             sentencia.Append("contraseña = '" + _Contraseña + "',");
-            sentencia.Append("estado = '" + _Estado + "' where usuario='" + usuario + "';");
+            sentencia.Append("estado = '" + _Estado + "' where usuario='" + _Usuario + "';");
 
             try
             {
@@ -128,6 +127,18 @@ namespace CapaDatos.Entidades
             {
                 return null;
             }
+        }
+
+        public Boolean CambiarEstado() 
+        {
+            DBOperacion operacion= new DBOperacion();
+            StringBuilder sentencia=new StringBuilder();
+            sentencia.Append("update usuarios set estado = '" + Estado + "' where usuario= '"+ Uusuario + "';");
+            try
+            {
+                return operacion.Actualizar(sentencia.ToString());
+            }
+            catch (Exception ex) { return false; }
         }
     }
 

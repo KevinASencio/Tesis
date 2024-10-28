@@ -35,12 +35,35 @@ namespace GUI.FormsProcesos
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            factura.ConsultarFactura(txbFactura.Text, this);
+            buscar(txbFactura.Text.ToString());
         }
 
         private void btnProcesar_Click(object sender, EventArgs e)
         {
-            if (factura.procesar(double.Parse(txbTotalPagar.Text.ToString()), double.Parse(txbDescuento.Text.ToString()), frmPrincipal.useractivo.usuario())) { Validacion.frmMessageBox("¡Cobro realizado!", "Exito"); }
+            if (factura.procesar(double.Parse(txbTotalPagar.Text.ToString()), double.Parse(txbDescuento.Text.ToString()), frmPrincipal.useractivo.usuario())) 
+            { 
+                Validacion.frmMessageBox("¡Cobro realizado!", "Exito");
+                LimpiarInf();
+            }
         }
+
+        public void buscar(string idfactura) 
+        {
+            factura.ConsultarFactura(idfactura, this);
+        }
+        public void LimpiarInf() 
+        {
+            lblMes.Text = string.Empty;
+            lblCliente.Text = string.Empty;
+            lblMesesPen.Text = string.Empty;
+            lblIdFactura.Text = string.Empty;
+            lblMonto.Text = string.Empty;
+            lblMora.Text = string.Empty;
+            txbDescuento.Clear();
+            txbFactura.Clear();
+            txbTotalPagar.Clear();
+        }
+    
     }
+
 }

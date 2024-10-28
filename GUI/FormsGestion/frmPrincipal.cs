@@ -51,20 +51,6 @@ namespace GUI.FormsGestion
             OrganizadorObj.mostrar(pnlMenus, pnlMenuInicio);
             OrganizadorObj.Organizar(1, 6, pnlMenuInicio, btnUsuarios.GetType());
         }
-
-        private void GestionClientes_ResizeBegin(object sender, EventArgs e)
-        {
-        }
-
-        private void GestionClientes_ResizeEnd(object sender, EventArgs e)
-        {
-
-        }
-
-        private void GestionClientes_SizeChanged(object sender, EventArgs e)
-        {
-            OrganizadorObj.Organizar(4, 2, pnlBotones, btnClientes.GetType());
-        }
         #region funciones de los botones para el control de la ventana
         private void prbCerrar_Click(object sender, EventArgs e)
         {
@@ -77,6 +63,8 @@ namespace GUI.FormsGestion
             this.Location = new Point(posicionX, posicionY);
             ptbMaximizar.Visible = true;
             ptbRestaurar.Visible = false;
+            OrganizadorObj.Organizar(4, 2, pnlBotones, btnClientes.GetType());
+            pnlBotones.Refresh();
         }
 
         private void ptbMaximizar_Click(object sender, EventArgs e)
@@ -159,17 +147,20 @@ namespace GUI.FormsGestion
         {
             _frmVistaCliente.Servicios();
         }
-
-        public void abrirFormulariosGestion(string form)
-        {
-           
-
-        }
-
         private void btnCambiarEstado_Click(object sender, EventArgs e)
         {
-            frmVistaClientes.frmvc.CambiarEstado();
-            frmVistaClientes.frmvc.CargarDatos();
+
+            switch (formCall)
+            {
+                case "clientes":
+                    _frmVistaCliente.CambiarEstado();
+                    _frmVistaCliente.CargarDatos();
+                    break;
+                case "usuarios":
+                    //_frmVistaUsuarios.();
+                    break;
+                default: break;
+            }
         }
 
         private void btnGenerarFac_Click(object sender, EventArgs e)
@@ -223,6 +214,23 @@ namespace GUI.FormsGestion
         {
             _frmMovimientos = new frmMovimientos();
             OrganizadorObj.abrirCont(_frmMovimientos);
+        }
+
+        private void btnFacturasU_Click(object sender, EventArgs e)
+        {
+            _frmVistaCliente.AbrirFactuasCliente();
+        }
+
+        private void btnCuotasConsumno_Click(object sender, EventArgs e)
+        {
+            frmGestionCuotas frm = new frmGestionCuotas();
+            OrganizadorObj.abrirCont(frm);
+        }
+
+        private void frmPrincipal_Resize(object sender, EventArgs e)
+        {
+            OrganizadorObj.Organizar(4, 2, pnlBotones, btnClientes.GetType());
+            OrganizadorObj.Organizar(3, 2, pnlTablasAux, btnCuotas.GetType());
         }
     }
 }

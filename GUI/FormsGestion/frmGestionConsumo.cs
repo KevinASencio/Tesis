@@ -17,7 +17,7 @@ namespace GUI.FormsGestion
             _consumo = new ServiciosConsumoNeg();
             _servicio = new ServiciosNeg();
             CargarDatos();
-            OrganizadorObj.Organizar(1, 7, pnlPrincipal, panel1.GetType());
+            OrganizadorObj.Organizar(1, 8, pnlPrincipal, panel1.GetType());
         }
 
         private void toolStripCerrar_Click(object sender, EventArgs e)
@@ -42,44 +42,24 @@ namespace GUI.FormsGestion
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-
             if (Validacion.seguroModificar() && !Validacion.esVacio(this.pnlPrincipal, this.ErrorNotificador))
             {
-                _servicio.setIdColonia(int.Parse(cmbColonia.SelectedValue.ToString()));
-                _servicio.setEstado(cmbEstado.Text.ToString());
-                _servicio.setComentario(txbComentario.Text.ToString());
-                if (this.txbId.Text.Length <= 0)
+                if (String.IsNullOrEmpty(txbId.Text)) { txbId.Text = "0";}
+                if (_servicio.InsertarConsumo(int.Parse(txbId.Text.ToString()), int.Parse(cmbCuota.SelectedValue.ToString()),
+                   txbComentario.Text.ToString(), cmbEstado.Text.ToString(), int.Parse(cmbColonia.SelectedValue.ToString()))) 
                 {
-                    if (!_consumo.insertar(int.Parse(cmbCuota.SelectedValue.ToString()))) { MessageBox.Show("¡Error al guardar la cuota!", "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-                    else
-                    {
-                        _servicio.setIdConsumo(_consumo.getIdServicioConsumo());
-                        if (_servicio.insertarConsumo())
-                        {
-                            MessageBox.Show("Registro guardado con Exito", "¡Exito!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            this.Close();
-                        }
-                        else
-                        {
-                            MessageBox.Show("¡Error al guardar el registro!", "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                }
-                else
-                {
-                    _servicio.setIdServicio(int.Parse(txbId.Text.ToString()));
-                    _consumo.setIdCuotaConsumo(int.Parse(cmbCuota.SelectedValue.ToString()));
-                    if (!_consumo.actualizar()) { MessageBox.Show("¡Error al actualizar la cuota!", "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-                    else
-                    {
-                        if (_servicio.actualizarServicio()) { MessageBox.Show("Registro actualizado con Exito", "¡Exito!", MessageBoxButtons.OK, MessageBoxIcon.Information); this.Close(); }
-                    }
+                    Validacion.frmMessageBox("¡Regsitro Guardado!", "Exito");
+                    this.Close();
                 }
             }
-
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void prbCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
         }

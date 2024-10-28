@@ -103,7 +103,6 @@
             this.txbFactura.Name = "txbFactura";
             this.txbFactura.Size = new System.Drawing.Size(422, 24);
             this.txbFactura.TabIndex = 3;
-            this.txbFactura.Text = "102258";
             this.txbFactura.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
             // btnBuscar
@@ -140,9 +139,8 @@
             this.lblCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCliente.Location = new System.Drawing.Point(69, 3);
             this.lblCliente.Name = "lblCliente";
-            this.lblCliente.Size = new System.Drawing.Size(289, 20);
+            this.lblCliente.Size = new System.Drawing.Size(0, 20);
             this.lblCliente.TabIndex = 1;
-            this.lblCliente.Text = "aqui aparecerá el nombre de la persona";
             // 
             // label1
             // 
@@ -172,9 +170,8 @@
             this.lblMonto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMonto.Location = new System.Drawing.Point(65, 3);
             this.lblMonto.Name = "lblMonto";
-            this.lblMonto.Size = new System.Drawing.Size(62, 20);
+            this.lblMonto.Size = new System.Drawing.Size(0, 20);
             this.lblMonto.TabIndex = 1;
-            this.lblMonto.Text = "$ 25.50";
             // 
             // label4
             // 
@@ -204,9 +201,8 @@
             this.lblMora.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMora.Location = new System.Drawing.Point(68, 3);
             this.lblMora.Name = "lblMora";
-            this.lblMora.Size = new System.Drawing.Size(53, 20);
+            this.lblMora.Size = new System.Drawing.Size(0, 20);
             this.lblMora.TabIndex = 1;
-            this.lblMora.Text = "$ 1.00";
             // 
             // label6
             // 
@@ -236,9 +232,8 @@
             this.lblMes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMes.Location = new System.Drawing.Point(127, 3);
             this.lblMes.Name = "lblMes";
-            this.lblMes.Size = new System.Drawing.Size(80, 20);
+            this.lblMes.Size = new System.Drawing.Size(0, 20);
             this.lblMes.TabIndex = 1;
-            this.lblMes.Text = "Diciembre";
             // 
             // label8
             // 
@@ -269,9 +264,8 @@
             this.lblMesesPen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMesesPen.Location = new System.Drawing.Point(151, 3);
             this.lblMesesPen.Name = "lblMesesPen";
-            this.lblMesesPen.Size = new System.Drawing.Size(149, 20);
+            this.lblMesesPen.Size = new System.Drawing.Size(0, 20);
             this.lblMesesPen.TabIndex = 1;
-            this.lblMesesPen.Text = "Octubre, Noviembre";
             // 
             // label10
             // 
@@ -304,7 +298,6 @@
             this.txbTotalPagar.Name = "txbTotalPagar";
             this.txbTotalPagar.Size = new System.Drawing.Size(483, 24);
             this.txbTotalPagar.TabIndex = 3;
-            this.txbTotalPagar.Text = "25.0";
             // 
             // label11
             // 
@@ -337,7 +330,6 @@
             this.txbDescuento.Name = "txbDescuento";
             this.txbDescuento.Size = new System.Drawing.Size(482, 24);
             this.txbDescuento.TabIndex = 3;
-            this.txbDescuento.Text = "0.00";
             // 
             // label12
             // 
@@ -396,7 +388,7 @@
             this.toolStripCerrar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(892, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(881, 25);
             this.toolStrip1.TabIndex = 8;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -415,7 +407,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(892, 766);
+            this.ClientSize = new System.Drawing.Size(881, 550);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);

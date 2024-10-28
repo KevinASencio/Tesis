@@ -21,13 +21,10 @@ namespace Controllers
         Cuotas cuotas = new Cuotas();
         Parametros parametros = Parametros.Consultar();
         ControlMensualCaja ct = new ControlMensualCaja();
-
-
         public DataTable Generar(int idcontrol, ProgressBar psbBar, Label conta)
         {
             return fac.GenerarFacturasConsumo(idcontrol, parametros.MoraConsumo, psbBar, conta);
         }
-
         public DataTable GenerarAco(int idcontrol, ProgressBar psbBar, Label conta)
         {
             return fac.GenerarFacturasAcometida(idcontrol, parametros.MoraAcometida, psbBar, conta);
@@ -54,7 +51,10 @@ namespace Controllers
         }
         //funcion a llamar en el formalario de pago;
         public bool procesar(double pagado, double descuento, string empleado)
-        { //validamos la fecha, esto para cobrar o no el dolar por pago despues de la fecha de vencimiento
+        {
+            //variable para calcular la mora que se esta pagando en caso de ser pago parcial
+            Double MoraParcial = 0;
+            //validamos la fecha, esto para cobrar o no el dolar por pago despues de la fecha de vencimiento
             if (fechacontrol.FechaVencimiento < DateTime.Now)
             {
                 if (MessageBox.Show("Desea cobrar mora por pago tardio?", "Ojo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -62,19 +62,24 @@ namespace Controllers
                     if (servicio.IdConsumo == 0) { fac.Comentario = fac.Comentario + "Se cobro $ " + parametros.MoraConsumo + " por pago tardio"; fac.Mora = fac.Mora + parametros.MoraConsumo; }
                     else { fac.Comentario = fac.Comentario + "Se cobro $ " + parametros.MoraAcometida + " por pago tardio;"; fac.Mora = fac.Mora + parametros.MoraAcometida; }
                 }
+            }
+            
+
+            
+            double aux = fac.Saldo + fac.Mora;
+            if (pagado < aux)
+            {
+                return PagoParcial(pagado, descuento, empleado);
+            }
+            else if (pagado > aux)
+            {
                 //validamos si el monto que esta pagando es por cuotas enteras 
                 if ((pagado - fac.Mora) % Cuotas.ConsultarCuota(servicio.IdConsumo, servicio.IdAcometida) == 0)
                 {
-                    double aux = fac.Saldo + fac.Mora;
-
-                    if (pagado < aux)
-                    {
-                        PagoParcial(pagado, descuento, empleado);
-                    }
-                    else if (pagado > aux) { PagoAdelantado(pagado, descuento, empleado); }
-                    else { PagoCompleto(pagado, descuento, empleado); }
+                    return PagoAdelantado(pagado, descuento, empleado);
                 }
             }
+            else { return PagoCompleto(pagado, descuento, empleado); }
             return false;
         }
         public string getMes()
@@ -91,7 +96,7 @@ namespace Controllers
             //acceder al indice del mes que se esta cobrando en la factura para recorrer desde ahi el arreglo 
             int cont = Array.IndexOf(meses, mes);
 
-            do
+            while(pendiente > 0)
             {
                 cont++;
                 if (cont >= 11)
@@ -104,7 +109,7 @@ namespace Controllers
                     aux.Append(", " + meses[cont]);
                 }
                 pendiente--;
-            } while (pendiente > 0);
+            };
             return aux.ToString().Remove(0, 2);
         }
         public Boolean PagoCompleto(double pagado, double descuento, string empleado)
@@ -122,7 +127,7 @@ namespace Controllers
                 movimientos.IdFactura = fac.IdFactura;
                 movimientos.IdControlCaja = ct.IdControlCaja;
                 movimientos.Concepto = "CANCELACION POR SUMINISTRO DE AGUA SEGUN RECIBOS";
-                movimientos.Tipo = "Ingerso";
+                movimientos.Tipo = "Ingreso";
                 movimientos.IdControlCaja = ct.IdControlCaja;
                 movimientos.Doc = fac.IdFactura.ToString();
                 movimientos.IdFactura = fac.IdFactura;
@@ -140,9 +145,9 @@ namespace Controllers
             Facturas facParcial = new Facturas();
             Facturas cancelada = new Facturas();
             int cuopagadas = FacturasPagadas(pagado);
-
             #region creacion y procesamiento de factura con la infromacion de las cuotas pagaas
-            cancelada.Saldo = pagado - (parametros.MoraConsumo * cuopagadas);
+            if (servicio.IdConsumo > 0) { cancelada.Saldo = pagado - (parametros.MoraConsumo * cuopagadas); }
+            else { cancelada.Saldo = pagado - (parametros.MoraAcometida * cuopagadas); }
             cancelada.Estado = "Valida";
             cancelada.EstadoPago = "Cancelado";
             cancelada.Comentario = "Se generó esta factura por pago parcial de la factura: " + fac.IdFactura + ";";
@@ -150,47 +155,51 @@ namespace Controllers
             cancelada.IdControlFecha = fechacontrol.IdControl;
             if (servicio.IdConsumo > 0) { cancelada.Mora = cuopagadas * parametros.MoraConsumo; } else { cancelada.Mora = cuopagadas * parametros.MoraAcometida; };
             cancelada.Descuento = descuento;
-
-            try
+            if (cancelada.Saldo % Cuotas.ConsultarCuota(servicio.IdConsumo, servicio.IdAcometida) == 0)
             {
-                //se cambia el estado de la factura ya que cono resultado de esta operacion se generan dos facturas mas, una con el monto cancelado y otra con el monto pendiente
-                fac.Estado = "Nula";
-                if (fac.Actualzar())
+                try
                 {
-                    if (cancelada.Insertar())
+                    //se cambia el estado de la factura ya que cono resultado de esta operacion se generan dos facturas mas, una con el monto cancelado y otra con el monto pendiente
+                    fac.Estado = "Nula";
+                    if (fac.Actualzar())
                     {
-                        //insertar movimiento de la factura cancelada
-                        Movimientos movimiento = new Movimientos();
-                        movimiento.IdFactura = cancelada.IdFactura;
-                        movimiento.IdControlCaja = ct.IdControlCaja;
-                        movimiento.Concepto = "CANCELACION POR SUMINISTRO DE AGUA SEGUN RECIBOS";
-                        movimiento.Tipo = "Ingreso";
+                        if (cancelada.Insertar())
+                        {
+                            //insertar movimiento de la factura cancelada
+                            Movimientos movimiento = new Movimientos();
+                            movimiento.IdFactura = cancelada.IdFactura;
+                            movimiento.IdControlCaja = ct.IdControlCaja;
+                            movimiento.Concepto = "CANCELACION POR SUMINISTRO DE AGUA SEGUN RECIBOS";
+                            movimiento.Tipo = "Ingreso";
 
-                        movimiento.IdControlCaja = ct.IdControlCaja;
-                        movimiento.Doc = cancelada.IdFactura.ToString();
-                        movimiento.IdFactura = cancelada.IdFactura;
-                        movimiento.Empleado = empleado;
-                        movimiento.IdControlBanco = 0;
-                        movimiento.IdCliente = servicio.IdCliente;
-                        movimiento.Fecha = DateTime.Now;
-                        movimiento.Monto = pagado;
-                        movimiento.Insertar();
-                        //generar factura con saldo pendeinte
-                        facParcial.Saldo = fac.Saldo - cancelada.Saldo;
-                        facParcial.Mora = fac.Mora - cancelada.Mora;
-                        facParcial.EstadoPago = "pendiente";
-                        facParcial.Estado = "valida";
-                        facParcial.Descuento = 0;
-                        facParcial.IdServicio = fac.IdServicio;
-                        facParcial.ContPendientes = fac.ContPendientes - cuopagadas;
-                        facParcial.IdControlFecha = fechacontrol.IdControl;
-                        facParcial.Comentario = "Esta factura se genero con el saldo pendiente por el pago parcial de la factura N°" + fac.IdFactura;
-                        return facParcial.Insertar();
+                            movimiento.IdControlCaja = ct.IdControlCaja;
+                            movimiento.Doc = cancelada.IdFactura.ToString();
+                            movimiento.IdFactura = cancelada.IdFactura;
+                            movimiento.Empleado = empleado;
+                            movimiento.IdControlBanco = 0;
+                            movimiento.IdCliente = servicio.IdCliente;
+                            movimiento.Fecha = DateTime.Now;
+                            movimiento.Monto = pagado;
+                            movimiento.Insertar();
+                            //generar factura con saldo pendeinte
+                            facParcial.Saldo = fac.Saldo - cancelada.Saldo;
+                            facParcial.Mora = fac.Mora - cancelada.Mora;
+                            facParcial.EstadoPago = "pendiente";
+                            facParcial.Estado = "valida";
+                            facParcial.Descuento = 0;
+                            facParcial.IdServicio = fac.IdServicio;
+                            facParcial.ContPendientes = fac.ContPendientes - cuopagadas;
+                            facParcial.IdControlFecha = fechacontrol.IdControl;
+                            facParcial.Comentario = "Esta factura se genero con el saldo pendiente por el pago parcial de la factura N°" + fac.IdFactura;
+                            return facParcial.Insertar();
+                        }
                     }
+                    return true;
                 }
-                return true;
+                catch (Exception ex) { MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return false; }
             }
-            catch (Exception ex) { MessageBox.Show("Error " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return false; }
+            else { MessageBox.Show("nomas completas wey"); return false; }
+
             #endregion
 
         }
@@ -198,11 +207,8 @@ namespace Controllers
         {
             Facturas adelantada = new Facturas();
             int facturaspagadas = FacturasPagadas(pagado - (fac.Saldo + fac.Mora));
-
-
             fac.EstadoPago = "cancelado";
             if (descuento > 0) { fac.Descuento = descuento; fac.Comentario = fac.Comentario + " se le aplico un descuento de $" + descuento; }
-
             adelantada.Saldo = pagado - ((fac.Saldo + fac.Mora) - fac.Descuento);
             adelantada.Mora = 0;
             adelantada.Estado = "valida";
@@ -216,7 +222,7 @@ namespace Controllers
             {
                 if (fac.Actualzar() && servicio.ActualizarServicio())
                 {
-                    //ingresar movimiento de la factura que pendiente
+                    //ingresar movimiento de la factura que esta pendiente
                     Movimientos movimiento = new Movimientos();
                     movimiento.IdFactura = fac.IdFactura;
                     movimiento.IdControlCaja = ct.IdControlCaja;
@@ -228,7 +234,7 @@ namespace Controllers
                     movimiento.IdControlBanco = 0;
                     movimiento.IdCliente = servicio.IdCliente;
                     movimiento.Fecha = DateTime.Now;
-                    movimiento.Monto = pagado;
+                    movimiento.Monto = pagado - adelantada.Saldo;
                     movimiento.Insertar();
                     //insertar factura con el monto de las cuotas a delantadas que se esta cancelando
                     if (adelantada.Insertar())
@@ -252,7 +258,6 @@ namespace Controllers
                 return true;
             }
             catch (Exception ex) { return false; }
-
         }
         private int FacturasPagadas(double Pagado)
         {
@@ -265,5 +270,11 @@ namespace Controllers
             }
             return aux;
         }
+
+        public static DataTable ConsultarFactuServ(int idcliente) 
+        {
+            return Facturas.ConsultarFacServ(idcliente);
+        }
     }
+
 }

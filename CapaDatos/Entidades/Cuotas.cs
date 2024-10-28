@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Text;
+using System.Windows.Forms;
 
 namespace CapaDatos.Entidades
 {
@@ -64,24 +65,44 @@ namespace CapaDatos.Entidades
             {
                 sentencia.Append("select cuo.monto from cuotasconsumo as cuo, serviciosconsumo as serv where serv.idserviciosconsumo=" + idconsumo + " and serv.idcuotaconsumo=cuo.idcuotaconsumo;");
             }
-            else 
+            else
             {
                 sentencia.Append("select cuo.monto from cuotasacometida as cuo, serviciosacometida as serv where serv.idserviciosacometida=" + idacometida + " and serv.idcuotaacometida=cuo.idcuotaacometida;");
             }
-            try { return double.Parse(operacion.Consultar(sentencia.ToString()).Rows[0][0].ToString()); } catch (Exception ex){ }
+            try { return double.Parse(operacion.Consultar(sentencia.ToString()).Rows[0][0].ToString()); } catch (Exception ex) { }
             return 0;
-            }
+        }
 
-            public static double ConsultarCuotaAcometida(int id)
-            {
-                DBOperacion operacion = new DBOperacion();
-                StringBuilder sentencia = new StringBuilder();
-                sentencia.Append("select cuota from cuotasconsumo where idcuotaconsumo= " + id + ";");
-                try
-                {
-                    return double.Parse(operacion.Consultar(sentencia.ToString()).Rows[0][0].ToString());
-                }
-                catch (Exception ex) { return 0; Console.WriteLine(ex.Message); }
-            }
+        public bool InsertarCuotaCon()
+        {
+            DBOperacion operacion = new DBOperacion();
+            StringBuilder sentencia = new StringBuilder();
+            sentencia.Append("insert into cuotasconsumo into (monto) values (" + this.Monto + ")");
+            try { return operacion.Insertar(sentencia.ToString()); } catch (Exception ex) { MessageBox.Show(ex.Message); return false; }
+        }
+
+        public bool InsertarCuotaAcometida()
+        {
+            DBOperacion operacion = new DBOperacion();
+            StringBuilder sentencia = new StringBuilder();
+            sentencia.Append("insert into cuotasacometida  (monto) values (" + this.Monto + ")");
+            try { return operacion.Insertar(sentencia.ToString()); } catch (Exception ex) { MessageBox.Show(ex.Message); return false; }
+        }
+
+        public bool ActualizarCuotaCon()
+        {
+            DBOperacion operacion = new DBOperacion();
+            StringBuilder sentencia = new StringBuilder();
+            sentencia.Append("update cuotasconsumo set monto= " + this.Monto + " where idcuotaconsumo = " + this.IdCuota + ";");
+            try { return operacion.Insertar(sentencia.ToString()); } catch (Exception ex) { MessageBox.Show(ex.Message); return false; }
+        }
+
+        public bool ActualizarCuotaAco()
+        {
+            DBOperacion operacion = new DBOperacion();
+            StringBuilder sentencia = new StringBuilder();
+            sentencia.Append("update cuotasacometida set monto= " + this.Monto + " where idcuotaacometida = " + this.IdCuota + ";");
+            try { return operacion.Insertar(sentencia.ToString()); } catch (Exception ex) { MessageBox.Show(ex.Message); return false; }
         }
     }
+}

@@ -102,6 +102,7 @@
     <Compile Include="Entidades\Facturas.cs" />
     <Compile Include="Entidades\Movimientos.cs" />
     <Compile Include="Entidades\Parametros.cs" />
+    <Compile Include="Entidades\Permisos.cs" />
     <Compile Include="Entidades\Roles.cs" />
     <Compile Include="Entidades\Servicios.cs" />
     <Compile Include="Entidades\ServiciosAcometida.cs" />

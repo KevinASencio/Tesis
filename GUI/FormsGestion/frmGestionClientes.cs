@@ -1,4 +1,5 @@
 ﻿using CapaNegocio;
+using GUI.Clases;
 using System;
 using System.Windows.Forms;
 
@@ -25,34 +26,18 @@ namespace GUI.FormsGestion
 
         public void procesar()
         {
-            if (SistemCache.seguro())
+            if (Validacion.seguroModificar() && !Validacion.esVacio(pnlPrincipal, ErrorNotificador))
             {
+                if (string.IsNullOrEmpty(txbId.Text)) { txbId.Text = "0"; }
                 ClientesNeg cliente = new ClientesNeg(txbNombres.Text.ToString(), txbApellidos.Text.ToString(),
                                                           txbDirreccion.Text.ToString(), txbDui.Text.ToString(), txbTelefono.Text.ToString(), cmbEstado.Text.ToString());
-                if (txbDui.TextLength == 0) { cliente.setDui(null); }
-                if (txbId.TextLength > 0)
+                if (cliente.Procesar(int.Parse(txbId.Text.ToString())))
                 {
-                    if (cliente.Actualizar())
-                    {
-                        cliente.SetIdclilente(int.Parse(txbId.Text.ToString()));
-                        MessageBox.Show("¡Cambios guardados!", "Exito", MessageBoxButtons.OK);
-                        this.Close();
-                    }
-                    else
-                    {
-                        MessageBox.Show("¡Error al guardar!", "Error", MessageBoxButtons.OK);
-                    }
+                    Validacion.frmMessageBox("Registro Guardado", "Exito");
                 }
-                else
+                else 
                 {
-                    if (cliente.guardar())
-                    {
-                        MessageBox.Show("¡Registro guardado!", "Exito", MessageBoxButtons.OK);
-                    }
-                    else
-                    {
-                        MessageBox.Show("¡Error al guardar!", "Error", MessageBoxButtons.OK);
-                    }
+                    Validacion.frmMessageBox("Error la Guardar","Error");
                 }
             }
         }
@@ -65,6 +50,11 @@ namespace GUI.FormsGestion
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void prbCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
         }

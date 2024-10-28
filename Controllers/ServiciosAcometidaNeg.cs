@@ -25,10 +25,34 @@ namespace Controllers
         public int getNCuotaspagadas() { return _Acometida.Cuotaspagadas; }
         public int getNCuotas() { return _Acometida.Numeredecuotas; }
 
-        public Boolean InsertarAcometida()
+        public Boolean Procesar( float monto, float saldo, int cuotaspagadas, int Ncuotas, int idcuota)
         {
-            return _Acometida.agregar();
+            _Acometida.Idcuotaacometida = idcuota;
+            _Acometida.Saldo = saldo;
+            _Acometida.Monto = monto;
+            _Acometida.Cuotaspagadas = cuotaspagadas;
+            _Acometida.Numeredecuotas = Ncuotas;
+            try
+            {
+                if (_Acometida.Idserviciosacometida == 0)
+                {
+                    return _Acometida.Insertar();
+                }
+                else 
+                {
+                    return _Acometida.Actualizar();
+                }
+            }
+            catch (Exception e) 
+            {
+                Console.WriteLine(e.ToString());
+            }
+            return _Acometida.Insertar();
         }
-        public Boolean ActualizarAcometida() { return _Acometida.Actualizar(); }
+        public Boolean ActualizarAcometida() 
+        { 
+            
+            return _Acometida.Actualizar();
+        }
     }
 }

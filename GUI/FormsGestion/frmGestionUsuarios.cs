@@ -45,27 +45,19 @@ namespace GUI.FormsGestion
         {
             if (!Validacion.esVacio(this.pnlPrincipal, errorNotificador)) 
             {
-                _usuario.Setusuario(txbId.Text.ToString());
-                _usuario.Setnombres(txbNombres.Text.ToString());
-                _usuario.Setapellidos(txbApellidos.Text.ToString());
-                _usuario.Setidrol(int.Parse(cmbRol.SelectedValue.ToString()));
-                _usuario.Setcontraseña(txbContraseña.Text.ToString());
-                _usuario.Setestado(cmbEstado.Text.ToString());
-                switch (accion)
+                if (_usuario.Procesar(txbId.Text.ToString(), txbNombres.Text.ToString(), txbApellidos.Text.ToString(),
+                                      int.Parse(cmbRol.SelectedValue.ToString()), txbContraseña.Text.ToString(), cmbEstado.Text.ToString(), accion))
                 {
-                    case "editar":
-                        if (_usuario.Actualizar(UsuarioAux)) { Validacion.frmMessageBox("¡Cambios Guardados!", "Exito"); }
-                        else { Validacion.frmMessageBox("¡Error al Guardar los Cambios!", "Error"); }
-                        this.Close();
-                        break;
-                    case "agregar":
-                        if (_usuario.Agregar()) { Validacion.frmMessageBox("¡Usuario Guardado!", "Exito"); }
-                        else { Validacion.frmMessageBox("¡Error al Guardar el Usuario!", "Error"); }
-                        this.Close();
-                        break;
+                    Validacion.frmMessageBox("Registro Guardado", "¡Exito!");
+                    this.Close();
                 }
-                
+                else 
+                {
+                    Validacion.frmMessageBox("Error al Guardar", "¡Error!");
+                }
             }
         }
+
+      
     }
 }

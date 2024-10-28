@@ -32,12 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVistaUsuarios));
             this.dtgvUsuarios = new System.Windows.Forms.DataGridView();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.lblRegistro = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.txbFiltro = new System.Windows.Forms.ToolStripTextBox();
-            this.toolStripCerrar = new System.Windows.Forms.ToolStripButton();
             this.usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contraseña = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombres = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,6 +39,12 @@
             this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idrol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.lblRegistro = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.txbFiltro = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripCerrar = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvUsuarios)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -93,57 +93,6 @@
             this.dtgvUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgvUsuarios.Size = new System.Drawing.Size(800, 403);
             this.dtgvUsuarios.TabIndex = 9;
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lblRegistro});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 428);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(800, 22);
-            this.statusStrip1.TabIndex = 8;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // lblRegistro
-            // 
-            this.lblRegistro.Name = "lblRegistro";
-            this.lblRegistro.Size = new System.Drawing.Size(133, 17);
-            this.lblRegistro.Text = "0 Registros encontrados";
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripLabel1,
-            this.txbFiltro,
-            this.toolStripCerrar});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 25);
-            this.toolStrip1.TabIndex = 7;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // toolStripLabel1
-            // 
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(37, 22);
-            this.toolStripLabel1.Text = "Filtrar";
-            // 
-            // txbFiltro
-            // 
-            this.txbFiltro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txbFiltro.Name = "txbFiltro";
-            this.txbFiltro.Size = new System.Drawing.Size(200, 25);
-            // 
-            // toolStripCerrar
-            // 
-            this.toolStripCerrar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripCerrar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripCerrar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripCerrar.Image")));
-            this.toolStripCerrar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripCerrar.Name = "toolStripCerrar";
-            this.toolStripCerrar.Size = new System.Drawing.Size(23, 22);
-            this.toolStripCerrar.Text = "toolStripButton1";
-            this.toolStripCerrar.Click += new System.EventHandler(this.toolStripCerrar_Click);
             // 
             // usuario
             // 
@@ -195,6 +144,59 @@
             this.rol.HeaderText = "Rol";
             this.rol.Name = "rol";
             this.rol.ReadOnly = true;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblRegistro});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 428);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(800, 22);
+            this.statusStrip1.TabIndex = 8;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // lblRegistro
+            // 
+            this.lblRegistro.Name = "lblRegistro";
+            this.lblRegistro.Size = new System.Drawing.Size(133, 17);
+            this.lblRegistro.Text = "0 Registros encontrados";
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel1,
+            this.txbFiltro,
+            this.toolStripCerrar});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(800, 25);
+            this.toolStrip1.TabIndex = 7;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(37, 22);
+            this.toolStripLabel1.Text = "Filtrar";
+            // 
+            // txbFiltro
+            // 
+            this.txbFiltro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txbFiltro.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txbFiltro.Name = "txbFiltro";
+            this.txbFiltro.Size = new System.Drawing.Size(200, 25);
+            this.txbFiltro.TextChanged += new System.EventHandler(this.txbFiltro_TextChanged);
+            // 
+            // toolStripCerrar
+            // 
+            this.toolStripCerrar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripCerrar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripCerrar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripCerrar.Image")));
+            this.toolStripCerrar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripCerrar.Name = "toolStripCerrar";
+            this.toolStripCerrar.Size = new System.Drawing.Size(23, 22);
+            this.toolStripCerrar.Text = "toolStripButton1";
+            this.toolStripCerrar.Click += new System.EventHandler(this.toolStripCerrar_Click);
             // 
             // frmVistaUsuarios
             // 

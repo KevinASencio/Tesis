@@ -26,7 +26,7 @@ namespace GUI.FormsProcesos
 
         private void frmMovimientos_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -51,7 +51,11 @@ namespace GUI.FormsProcesos
             }
             catch
             {}
-            
+        }
+
+        private void toolStripCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -322,6 +322,7 @@
             this.btnFacturasU.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFacturasU.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnFacturasU.UseVisualStyleBackColor = true;
+            this.btnFacturasU.Click += new System.EventHandler(this.btnFacturasU_Click);
             // 
             // btnCambiarEstado
             // 
@@ -432,6 +433,8 @@
             // 
             // pnlBotones
             // 
+            this.pnlBotones.BackColor = System.Drawing.SystemColors.Control;
+            this.pnlBotones.Controls.Add(this.pnlTablasAux);
             this.pnlBotones.Controls.Add(this.btnClientes);
             this.pnlBotones.Controls.Add(this.btnGenerarFac);
             this.pnlBotones.Controls.Add(this.btnCorte);
@@ -440,7 +443,6 @@
             this.pnlBotones.Controls.Add(this.btnTransacciones);
             this.pnlBotones.Controls.Add(this.btnCobro);
             this.pnlBotones.Controls.Add(this.btnServiciosMora);
-            this.pnlBotones.Controls.Add(this.pnlTablasAux);
             this.pnlBotones.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlBotones.Location = new System.Drawing.Point(0, 0);
             this.pnlBotones.Name = "pnlBotones";
@@ -450,13 +452,14 @@
             // 
             // pnlTablasAux
             // 
+            this.pnlTablasAux.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlTablasAux.BackColor = System.Drawing.SystemColors.Control;
             this.pnlTablasAux.Controls.Add(this.btnCuotasConsumno);
             this.pnlTablasAux.Controls.Add(this.btnRoles);
             this.pnlTablasAux.Controls.Add(this.btnControlFechas);
             this.pnlTablasAux.Controls.Add(this.btnParametros);
             this.pnlTablasAux.Controls.Add(this.btnMovimientos);
             this.pnlTablasAux.Controls.Add(this.btnCFacturas);
-            this.pnlTablasAux.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlTablasAux.Enabled = false;
             this.pnlTablasAux.Location = new System.Drawing.Point(0, 0);
             this.pnlTablasAux.Name = "pnlTablasAux";
@@ -483,6 +486,7 @@
             this.btnCuotasConsumno.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCuotasConsumno.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCuotasConsumno.UseVisualStyleBackColor = true;
+            this.btnCuotasConsumno.Click += new System.EventHandler(this.btnCuotasConsumno_Click);
             // 
             // btnRoles
             // 
@@ -499,7 +503,7 @@
             this.btnRoles.Name = "btnRoles";
             this.btnRoles.Size = new System.Drawing.Size(170, 150);
             this.btnRoles.TabIndex = 61;
-            this.btnRoles.Text = "Roles";
+            this.btnRoles.Text = "Roles y Permisos";
             this.btnRoles.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnRoles.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnRoles.UseVisualStyleBackColor = true;
@@ -759,9 +763,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clientes";
             this.Load += new System.EventHandler(this.GestionClientes_Load);
-            this.ResizeBegin += new System.EventHandler(this.GestionClientes_ResizeBegin);
-            this.ResizeEnd += new System.EventHandler(this.GestionClientes_ResizeEnd);
-            this.SizeChanged += new System.EventHandler(this.GestionClientes_SizeChanged);
+            this.Resize += new System.EventHandler(this.frmPrincipal_Resize);
             this.pnlTop.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ptbRestaurar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbMaximizar)).EndInit();

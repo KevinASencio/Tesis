@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGestionConsumo));
             this.panel1 = new System.Windows.Forms.Panel();
             this.txbId = new System.Windows.Forms.TextBox();
             this.lblId = new System.Windows.Forms.Label();
@@ -49,6 +50,8 @@
             this.btnAgregar = new System.Windows.Forms.Button();
             this.pnlPrincipal = new System.Windows.Forms.Panel();
             this.ErrorNotificador = new System.Windows.Forms.ErrorProvider(this.components);
+            this.pnlTop = new System.Windows.Forms.Panel();
+            this.prbCerrar = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -57,6 +60,8 @@
             this.pnlBoton.SuspendLayout();
             this.pnlPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorNotificador)).BeginInit();
+            this.pnlTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.prbCerrar)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -263,15 +268,35 @@
             this.pnlPrincipal.Controls.Add(this.panel4);
             this.pnlPrincipal.Controls.Add(this.panel5);
             this.pnlPrincipal.Controls.Add(this.pnlBoton);
-            this.pnlPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlPrincipal.Location = new System.Drawing.Point(0, 0);
+            this.pnlPrincipal.Location = new System.Drawing.Point(0, 41);
             this.pnlPrincipal.Name = "pnlPrincipal";
-            this.pnlPrincipal.Size = new System.Drawing.Size(872, 569);
+            this.pnlPrincipal.Size = new System.Drawing.Size(872, 528);
             this.pnlPrincipal.TabIndex = 11;
             // 
             // ErrorNotificador
             // 
             this.ErrorNotificador.ContainerControl = this;
+            // 
+            // pnlTop
+            // 
+            this.pnlTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pnlTop.Controls.Add(this.prbCerrar);
+            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTop.Location = new System.Drawing.Point(0, 0);
+            this.pnlTop.Name = "pnlTop";
+            this.pnlTop.Size = new System.Drawing.Size(872, 25);
+            this.pnlTop.TabIndex = 17;
+            // 
+            // prbCerrar
+            // 
+            this.prbCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.prbCerrar.Image = ((System.Drawing.Image)(resources.GetObject("prbCerrar.Image")));
+            this.prbCerrar.Location = new System.Drawing.Point(848, 1);
+            this.prbCerrar.Name = "prbCerrar";
+            this.prbCerrar.Size = new System.Drawing.Size(25, 25);
+            this.prbCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.prbCerrar.TabIndex = 0;
+            this.prbCerrar.TabStop = false;
             // 
             // frmGestionConsumo
             // 
@@ -279,6 +304,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(872, 569);
             this.Controls.Add(this.pnlPrincipal);
+            this.Controls.Add(this.pnlTop);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmGestionConsumo";
             this.Text = "frmGestionConsumo";
@@ -296,6 +322,8 @@
             this.pnlBoton.ResumeLayout(false);
             this.pnlPrincipal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ErrorNotificador)).EndInit();
+            this.pnlTop.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.prbCerrar)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -321,5 +349,7 @@
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Panel pnlPrincipal;
         public System.Windows.Forms.ErrorProvider ErrorNotificador;
+        private System.Windows.Forms.Panel pnlTop;
+        private System.Windows.Forms.PictureBox prbCerrar;
     }
 }
