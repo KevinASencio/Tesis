@@ -40,11 +40,10 @@ namespace CapaDatos.Entidades
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
-
             sentencia.Append("SELECT acc.accion, acc.idaccion ");
             sentencia.Append("FROM acciones acc ");
             sentencia.Append("WHERE NOT EXISTS(");
-            sentencia.Append("SELECT idpermiso ");
+            sentencia.Append("SELECT idaccion  ");
             sentencia.Append("FROM permisos per ");
             sentencia.Append("JOIN roles rol ON per.idrol = rol.idrol ");
             sentencia.Append("WHERE rol.idrol = " + IdRol + " AND per.idaccion = acc.idaccion);");
@@ -59,6 +58,24 @@ namespace CapaDatos.Entidades
                 Console.WriteLine("Error: " + ex.Message);
                 return new DataTable();
             }
+        }
+
+        public Boolean Insertar() 
+        {
+            DBOperacion operacion = new DBOperacion();
+            StringBuilder sentencia= new StringBuilder();
+            sentencia.Append("insert into permisos (idrol,idaccion) values(");
+            sentencia.Append(" " + IdRol + ",");
+            sentencia.Append(" " + IdAccion + ");");
+            try { return operacion.Insertar(sentencia.ToString()); }catch { return false; }
+        }
+
+        public Boolean Eliminar() 
+        {
+            DBOperacion operacion = new DBOperacion();
+            StringBuilder sentencia = new StringBuilder();
+            sentencia.Append("delete from permisos where idpermiso= " + IdPermiso + ";");
+            try { return operacion.Eliminar(sentencia.ToString()); } catch { return false; }
         }
 
     }

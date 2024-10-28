@@ -232,5 +232,11 @@ namespace GUI.FormsGestion
             OrganizadorObj.Organizar(4, 2, pnlBotones, btnClientes.GetType());
             OrganizadorObj.Organizar(3, 2, pnlTablasAux, btnCuotas.GetType());
         }
+
+        private void btnRoles_Click(object sender, EventArgs e)
+        {
+            frmGestionRolesPermisos frmpermisos= new frmGestionRolesPermisos();
+            OrganizadorObj.abrirCont(frmpermisos);
+        }
     }
 }

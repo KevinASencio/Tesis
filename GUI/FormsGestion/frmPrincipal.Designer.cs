@@ -507,6 +507,7 @@
             this.btnRoles.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnRoles.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnRoles.UseVisualStyleBackColor = true;
+            this.btnRoles.Click += new System.EventHandler(this.btnRoles_Click);
             // 
             // btnControlFechas
             // 

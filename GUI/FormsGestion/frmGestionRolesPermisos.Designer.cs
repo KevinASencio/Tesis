@@ -40,19 +40,19 @@
             this.pnlPrincipal = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.dgtvPermisosDen = new System.Windows.Forms.DataGridView();
+            this.dtgvPermisosDen = new System.Windows.Forms.DataGridView();
+            this.acciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtgvPermisosCon = new System.Windows.Forms.DataGridView();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.accion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idpermiso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idaccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cmbRoles = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.acciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.accion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idpermiso = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idaccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ptbAgregar = new System.Windows.Forms.PictureBox();
+            this.ptbQuitar = new System.Windows.Forms.PictureBox();
             this.toolStrip1.SuspendLayout();
             this.pnlPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -60,9 +60,11 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgtvPermisosDen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvPermisosDen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvPermisosCon)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbAgregar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbQuitar)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -116,24 +118,24 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.dgtvPermisosDen);
+            this.panel2.Controls.Add(this.ptbQuitar);
+            this.panel2.Controls.Add(this.ptbAgregar);
+            this.panel2.Controls.Add(this.dtgvPermisosDen);
             this.panel2.Controls.Add(this.dtgvPermisosCon);
-            this.panel2.Controls.Add(this.button2);
-            this.panel2.Controls.Add(this.button1);
             this.panel2.Location = new System.Drawing.Point(23, 126);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(368, 253);
             this.panel2.TabIndex = 2;
             // 
-            // dgtvPermisosDen
+            // dtgvPermisosDen
             // 
-            this.dgtvPermisosDen.AllowUserToAddRows = false;
-            this.dgtvPermisosDen.AllowUserToDeleteRows = false;
-            this.dgtvPermisosDen.AllowUserToResizeColumns = false;
-            this.dgtvPermisosDen.AllowUserToResizeRows = false;
-            this.dgtvPermisosDen.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgtvPermisosDen.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgtvPermisosDen.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dtgvPermisosDen.AllowUserToAddRows = false;
+            this.dtgvPermisosDen.AllowUserToDeleteRows = false;
+            this.dtgvPermisosDen.AllowUserToResizeColumns = false;
+            this.dtgvPermisosDen.AllowUserToResizeRows = false;
+            this.dtgvPermisosDen.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgvPermisosDen.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dtgvPermisosDen.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -142,17 +144,17 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgtvPermisosDen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgtvPermisosDen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgtvPermisosDen.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dtgvPermisosDen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dtgvPermisosDen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvPermisosDen.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.acciones});
-            this.dgtvPermisosDen.Dock = System.Windows.Forms.DockStyle.Right;
-            this.dgtvPermisosDen.EnableHeadersVisualStyles = false;
-            this.dgtvPermisosDen.GridColor = System.Drawing.SystemColors.Control;
-            this.dgtvPermisosDen.Location = new System.Drawing.Point(216, 0);
-            this.dgtvPermisosDen.MultiSelect = false;
-            this.dgtvPermisosDen.Name = "dgtvPermisosDen";
-            this.dgtvPermisosDen.ReadOnly = true;
+            this.dtgvPermisosDen.Dock = System.Windows.Forms.DockStyle.Right;
+            this.dtgvPermisosDen.EnableHeadersVisualStyles = false;
+            this.dtgvPermisosDen.GridColor = System.Drawing.SystemColors.Control;
+            this.dtgvPermisosDen.Location = new System.Drawing.Point(216, 0);
+            this.dtgvPermisosDen.MultiSelect = false;
+            this.dtgvPermisosDen.Name = "dtgvPermisosDen";
+            this.dtgvPermisosDen.ReadOnly = true;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -160,17 +162,24 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Silver;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgtvPermisosDen.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgtvPermisosDen.RowHeadersVisible = false;
+            this.dtgvPermisosDen.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dtgvPermisosDen.RowHeadersVisible = false;
             dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(3);
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Silver;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgtvPermisosDen.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgtvPermisosDen.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgtvPermisosDen.ShowCellToolTips = false;
-            this.dgtvPermisosDen.Size = new System.Drawing.Size(152, 253);
-            this.dgtvPermisosDen.TabIndex = 8;
+            this.dtgvPermisosDen.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dtgvPermisosDen.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgvPermisosDen.ShowCellToolTips = false;
+            this.dtgvPermisosDen.Size = new System.Drawing.Size(152, 253);
+            this.dtgvPermisosDen.TabIndex = 8;
+            // 
+            // acciones
+            // 
+            this.acciones.DataPropertyName = "accion";
+            this.acciones.HeaderText = "Permisos Sin Conceder";
+            this.acciones.Name = "acciones";
+            this.acciones.ReadOnly = true;
             // 
             // dtgvPermisosCon
             // 
@@ -221,23 +230,28 @@
             this.dtgvPermisosCon.Size = new System.Drawing.Size(150, 253);
             this.dtgvPermisosCon.TabIndex = 7;
             // 
-            // button2
+            // accion
             // 
-            this.button2.Location = new System.Drawing.Point(156, 99);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(54, 28);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.accion.DataPropertyName = "accion";
+            this.accion.HeaderText = "Permisos Concedidos";
+            this.accion.Name = "accion";
+            this.accion.ReadOnly = true;
             // 
-            // button1
+            // idpermiso
             // 
-            this.button1.Location = new System.Drawing.Point(156, 49);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(54, 28);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.idpermiso.DataPropertyName = "idpermiso";
+            this.idpermiso.HeaderText = "idpermiso";
+            this.idpermiso.Name = "idpermiso";
+            this.idpermiso.ReadOnly = true;
+            this.idpermiso.Visible = false;
+            // 
+            // idaccion
+            // 
+            this.idaccion.DataPropertyName = "idaccion";
+            this.idaccion.HeaderText = "idaccion";
+            this.idaccion.Name = "idaccion";
+            this.idaccion.ReadOnly = true;
+            this.idaccion.Visible = false;
             // 
             // panel1
             // 
@@ -257,6 +271,7 @@
             this.cmbRoles.Name = "cmbRoles";
             this.cmbRoles.Size = new System.Drawing.Size(182, 28);
             this.cmbRoles.TabIndex = 1;
+            this.cmbRoles.SelectedIndexChanged += new System.EventHandler(this.cmbRoles_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -288,35 +303,26 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Roles";
             // 
-            // acciones
+            // ptbAgregar
             // 
-            this.acciones.DataPropertyName = "accion";
-            this.acciones.HeaderText = "Permisos Sin Conceder";
-            this.acciones.Name = "acciones";
-            this.acciones.ReadOnly = true;
+            this.ptbAgregar.Image = ((System.Drawing.Image)(resources.GetObject("ptbAgregar.Image")));
+            this.ptbAgregar.Location = new System.Drawing.Point(167, 49);
+            this.ptbAgregar.Name = "ptbAgregar";
+            this.ptbAgregar.Size = new System.Drawing.Size(32, 32);
+            this.ptbAgregar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ptbAgregar.TabIndex = 11;
+            this.ptbAgregar.TabStop = false;
+            this.ptbAgregar.Click += new System.EventHandler(this.ptbAgregar_Click);
             // 
-            // accion
+            // ptbQuitar
             // 
-            this.accion.DataPropertyName = "accion";
-            this.accion.HeaderText = "Permisos Concedidos";
-            this.accion.Name = "accion";
-            this.accion.ReadOnly = true;
-            // 
-            // idpermiso
-            // 
-            this.idpermiso.DataPropertyName = "idpermiso";
-            this.idpermiso.HeaderText = "idpermiso";
-            this.idpermiso.Name = "idpermiso";
-            this.idpermiso.ReadOnly = true;
-            this.idpermiso.Visible = false;
-            // 
-            // idaccion
-            // 
-            this.idaccion.DataPropertyName = "idaccion";
-            this.idaccion.HeaderText = "idaccion";
-            this.idaccion.Name = "idaccion";
-            this.idaccion.ReadOnly = true;
-            this.idaccion.Visible = false;
+            this.ptbQuitar.Image = ((System.Drawing.Image)(resources.GetObject("ptbQuitar.Image")));
+            this.ptbQuitar.Location = new System.Drawing.Point(167, 87);
+            this.ptbQuitar.Name = "ptbQuitar";
+            this.ptbQuitar.Size = new System.Drawing.Size(32, 32);
+            this.ptbQuitar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ptbQuitar.TabIndex = 12;
+            this.ptbQuitar.TabStop = false;
             // 
             // frmGestionRolesPermisos
             // 
@@ -338,10 +344,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgtvPermisosDen)).EndInit();
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvPermisosDen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvPermisosCon)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbAgregar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbQuitar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -360,12 +369,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         public System.Windows.Forms.DataGridView dtgvPermisosCon;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        public System.Windows.Forms.DataGridView dgtvPermisosDen;
+        public System.Windows.Forms.DataGridView dtgvPermisosDen;
         private System.Windows.Forms.DataGridViewTextBoxColumn acciones;
         private System.Windows.Forms.DataGridViewTextBoxColumn accion;
         private System.Windows.Forms.DataGridViewTextBoxColumn idpermiso;
         private System.Windows.Forms.DataGridViewTextBoxColumn idaccion;
+        private System.Windows.Forms.PictureBox ptbAgregar;
+        private System.Windows.Forms.PictureBox ptbQuitar;
     }
 }
