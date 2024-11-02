@@ -28,18 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGestionRolesPermisos));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripCerrar = new System.Windows.Forms.ToolStripButton();
             this.pnlPrincipal = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.ptbQuitar = new System.Windows.Forms.PictureBox();
+            this.ptbAgregar = new System.Windows.Forms.PictureBox();
             this.dtgvPermisosDen = new System.Windows.Forms.DataGridView();
             this.acciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtgvPermisosCon = new System.Windows.Forms.DataGridView();
@@ -51,8 +54,16 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.ptbAgregar = new System.Windows.Forms.PictureBox();
-            this.ptbQuitar = new System.Windows.Forms.PictureBox();
+            this.pnlDirreccion = new System.Windows.Forms.Panel();
+            this.txbRol = new System.Windows.Forms.TextBox();
+            this.lblDirreccion = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.txbIdRol = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.pnlBoton = new System.Windows.Forms.Panel();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.errorNotificador = new System.Windows.Forms.ErrorProvider(this.components);
             this.toolStrip1.SuspendLayout();
             this.pnlPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -60,11 +71,15 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbQuitar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbAgregar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvPermisosDen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvPermisosCon)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbAgregar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbQuitar)).BeginInit();
+            this.pnlDirreccion.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.pnlBoton.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorNotificador)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -111,6 +126,9 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.pnlBoton);
+            this.splitContainer1.Panel2.Controls.Add(this.panel3);
+            this.splitContainer1.Panel2.Controls.Add(this.pnlDirreccion);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
             this.splitContainer1.Size = new System.Drawing.Size(800, 425);
             this.splitContainer1.SplitterDistance = 408;
@@ -127,6 +145,28 @@
             this.panel2.Size = new System.Drawing.Size(368, 253);
             this.panel2.TabIndex = 2;
             // 
+            // ptbQuitar
+            // 
+            this.ptbQuitar.Image = ((System.Drawing.Image)(resources.GetObject("ptbQuitar.Image")));
+            this.ptbQuitar.Location = new System.Drawing.Point(167, 87);
+            this.ptbQuitar.Name = "ptbQuitar";
+            this.ptbQuitar.Size = new System.Drawing.Size(32, 32);
+            this.ptbQuitar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ptbQuitar.TabIndex = 12;
+            this.ptbQuitar.TabStop = false;
+            this.ptbQuitar.Click += new System.EventHandler(this.ptbQuitar_Click);
+            // 
+            // ptbAgregar
+            // 
+            this.ptbAgregar.Image = ((System.Drawing.Image)(resources.GetObject("ptbAgregar.Image")));
+            this.ptbAgregar.Location = new System.Drawing.Point(167, 49);
+            this.ptbAgregar.Name = "ptbAgregar";
+            this.ptbAgregar.Size = new System.Drawing.Size(32, 32);
+            this.ptbAgregar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ptbAgregar.TabIndex = 11;
+            this.ptbAgregar.TabStop = false;
+            this.ptbAgregar.Click += new System.EventHandler(this.ptbAgregar_Click);
+            // 
             // dtgvPermisosDen
             // 
             this.dtgvPermisosDen.AllowUserToAddRows = false;
@@ -136,15 +176,15 @@
             this.dtgvPermisosDen.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvPermisosDen.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtgvPermisosDen.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvPermisosDen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvPermisosDen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dtgvPermisosDen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvPermisosDen.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.acciones});
@@ -155,20 +195,20 @@
             this.dtgvPermisosDen.MultiSelect = false;
             this.dtgvPermisosDen.Name = "dtgvPermisosDen";
             this.dtgvPermisosDen.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvPermisosDen.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvPermisosDen.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dtgvPermisosDen.RowHeadersVisible = false;
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(3);
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvPermisosDen.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Padding = new System.Windows.Forms.Padding(3);
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvPermisosDen.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dtgvPermisosDen.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgvPermisosDen.ShowCellToolTips = false;
             this.dtgvPermisosDen.Size = new System.Drawing.Size(152, 253);
@@ -190,15 +230,15 @@
             this.dtgvPermisosCon.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvPermisosCon.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtgvPermisosCon.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvPermisosCon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvPermisosCon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dtgvPermisosCon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvPermisosCon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.accion,
@@ -211,20 +251,20 @@
             this.dtgvPermisosCon.MultiSelect = false;
             this.dtgvPermisosCon.Name = "dtgvPermisosCon";
             this.dtgvPermisosCon.ReadOnly = true;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvPermisosCon.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvPermisosCon.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.dtgvPermisosCon.RowHeadersVisible = false;
-            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(3);
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvPermisosCon.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.Padding = new System.Windows.Forms.Padding(3);
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvPermisosCon.RowsDefaultCellStyle = dataGridViewCellStyle12;
             this.dtgvPermisosCon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgvPermisosCon.ShowCellToolTips = false;
             this.dtgvPermisosCon.Size = new System.Drawing.Size(150, 253);
@@ -303,26 +343,104 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Roles";
             // 
-            // ptbAgregar
+            // pnlDirreccion
             // 
-            this.ptbAgregar.Image = ((System.Drawing.Image)(resources.GetObject("ptbAgregar.Image")));
-            this.ptbAgregar.Location = new System.Drawing.Point(167, 49);
-            this.ptbAgregar.Name = "ptbAgregar";
-            this.ptbAgregar.Size = new System.Drawing.Size(32, 32);
-            this.ptbAgregar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.ptbAgregar.TabIndex = 11;
-            this.ptbAgregar.TabStop = false;
-            this.ptbAgregar.Click += new System.EventHandler(this.ptbAgregar_Click);
+            this.pnlDirreccion.BackColor = System.Drawing.SystemColors.Control;
+            this.pnlDirreccion.Controls.Add(this.txbRol);
+            this.pnlDirreccion.Controls.Add(this.lblDirreccion);
+            this.pnlDirreccion.Location = new System.Drawing.Point(9, 193);
+            this.pnlDirreccion.Name = "pnlDirreccion";
+            this.pnlDirreccion.Size = new System.Drawing.Size(372, 43);
+            this.pnlDirreccion.TabIndex = 3;
             // 
-            // ptbQuitar
+            // txbRol
             // 
-            this.ptbQuitar.Image = ((System.Drawing.Image)(resources.GetObject("ptbQuitar.Image")));
-            this.ptbQuitar.Location = new System.Drawing.Point(167, 87);
-            this.ptbQuitar.Name = "ptbQuitar";
-            this.ptbQuitar.Size = new System.Drawing.Size(32, 32);
-            this.ptbQuitar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.ptbQuitar.TabIndex = 12;
-            this.ptbQuitar.TabStop = false;
+            this.txbRol.Location = new System.Drawing.Point(0, 23);
+            this.txbRol.Name = "txbRol";
+            this.txbRol.Size = new System.Drawing.Size(350, 20);
+            this.txbRol.TabIndex = 1;
+            // 
+            // lblDirreccion
+            // 
+            this.lblDirreccion.AutoSize = true;
+            this.lblDirreccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDirreccion.Location = new System.Drawing.Point(4, 4);
+            this.lblDirreccion.Name = "lblDirreccion";
+            this.lblDirreccion.Size = new System.Drawing.Size(33, 20);
+            this.lblDirreccion.TabIndex = 0;
+            this.lblDirreccion.Text = "Rol";
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.SystemColors.Control;
+            this.panel3.Controls.Add(this.txbIdRol);
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Location = new System.Drawing.Point(11, 104);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(366, 43);
+            this.panel3.TabIndex = 3;
+            // 
+            // txbIdRol
+            // 
+            this.txbIdRol.Enabled = false;
+            this.txbIdRol.Location = new System.Drawing.Point(0, 23);
+            this.txbIdRol.Name = "txbIdRol";
+            this.txbIdRol.Size = new System.Drawing.Size(344, 20);
+            this.txbIdRol.TabIndex = 1;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(4, 4);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(51, 20);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Id Rol";
+            // 
+            // pnlBoton
+            // 
+            this.pnlBoton.Controls.Add(this.btnCancelar);
+            this.pnlBoton.Controls.Add(this.btnAgregar);
+            this.pnlBoton.Location = new System.Drawing.Point(61, 259);
+            this.pnlBoton.Name = "pnlBoton";
+            this.pnlBoton.Size = new System.Drawing.Size(266, 43);
+            this.pnlBoton.TabIndex = 7;
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnCancelar.FlatAppearance.BorderSize = 0;
+            this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnCancelar.Location = new System.Drawing.Point(142, 1);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(121, 46);
+            this.btnCancelar.TabIndex = 2;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnAgregar.FlatAppearance.BorderSize = 0;
+            this.btnAgregar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnAgregar.Location = new System.Drawing.Point(3, -1);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(121, 46);
+            this.btnAgregar.TabIndex = 1;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = false;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // errorNotificador
+            // 
+            this.errorNotificador.ContainerControl = this;
             // 
             // frmGestionRolesPermisos
             // 
@@ -345,12 +463,18 @@
             this.splitContainer1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbQuitar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbAgregar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvPermisosDen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvPermisosCon)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbAgregar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbQuitar)).EndInit();
+            this.pnlDirreccion.ResumeLayout(false);
+            this.pnlDirreccion.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.pnlBoton.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorNotificador)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -376,5 +500,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idaccion;
         private System.Windows.Forms.PictureBox ptbAgregar;
         private System.Windows.Forms.PictureBox ptbQuitar;
+        private System.Windows.Forms.Panel panel3;
+        internal System.Windows.Forms.TextBox txbIdRol;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel pnlDirreccion;
+        internal System.Windows.Forms.TextBox txbRol;
+        private System.Windows.Forms.Label lblDirreccion;
+        private System.Windows.Forms.Panel pnlBoton;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.ErrorProvider errorNotificador;
     }
 }

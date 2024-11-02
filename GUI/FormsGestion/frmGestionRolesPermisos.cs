@@ -1,4 +1,5 @@
 ﻿using Controllers;
+using GUI.Clases;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,8 +14,8 @@ namespace GUI.FormsGestion
 {
     public partial class frmGestionRolesPermisos : Form
     {
-        RolesNeg rol=new RolesNeg();
-        PermisosNeg permiso;
+        RolesNeg rol = new RolesNeg();
+        PermisosNeg permiso= new PermisosNeg();
         public frmGestionRolesPermisos()
         {
             InitializeComponent();
@@ -25,28 +26,64 @@ namespace GUI.FormsGestion
         {
             this.Close();
         }
-        private void CargarDatos() 
+        private void CargarDatos()
         {
             cmbRoles.DataSource = RolesNeg.consultar();
             cmbRoles.DisplayMember = "rol";
             cmbRoles.ValueMember = "idrol";
-            //cmbRoles.SelectedIndex = -1;
+            cmbRoles.SelectedIndex = -1;
         }
-
+        public void CargarPermisos() 
+        {
+            dtgvPermisosCon.DataSource = permiso.ConsultarPermisosCon();
+            dtgvPermisosDen.DataSource = permiso.ConsultarPErmisosden();
+        }
         private void cmbRoles_SelectedIndexChanged(object sender, EventArgs e)
         {
-            /*try
-            {*/
-                permiso = new PermisosNeg(int.Parse(cmbRoles.SelectedValue.ToString()));
-                dtgvPermisosCon.DataSource = permiso.ConsultarPermisosCon();
-                dtgvPermisosDen.DataSource = permiso.ConsultarPErmisosden();
-          /*  }
-            catch { }*/
+            try
+            {
+            permiso = new PermisosNeg(int.Parse(cmbRoles.SelectedValue.ToString()));
+            dtgvPermisosCon.DataSource = permiso.ConsultarPermisosCon();
+            dtgvPermisosDen.DataSource = permiso.ConsultarPErmisosden();
+             }
+              catch { }
         }
 
         private void ptbAgregar_Click(object sender, EventArgs e)
         {
-            permiso
+            try
+            {
+                permiso.AgregarPermiso(int.Parse(cmbRoles.SelectedValue.ToString()), int.Parse(dtgvPermisosDen.CurrentRow.Cells["idaccion"].Value.ToString()));
+                CargarPermisos();
+            }
+            catch { Validacion.frmMessageBox("Error!", "Error"); }
+            
+        }
+
+        private void ptbQuitar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                permiso.EliminarPermisos(int.Parse(dtgvPermisosCon.CurrentRow.Cells["idpermiso"].Value.ToString()));
+                CargarPermisos();
+                CargarPermisos();
+            }
+            catch { Validacion.frmMessageBox("Error!", "Error"); }
+
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txbIdRol.Text)) { txbIdRol.Text = "0"; }
+            if (!Validacion.esVacio(splitContainer1.Panel2, errorNotificador) && Validacion.seguroModificar())
+            {
+                if (rol.Procesar(int.Parse(txbIdRol.Text.ToString()), txbRol.Text.ToString())) { Validacion.frmMessageBox("Registro Guardado", "¡Exito!"); }
+                else { Validacion.frmMessageBox("Error al guardar el resgistro", "¡Error!"); }
+                OrganizadorObj.LimpiarControles(splitContainer1.Panel2);
+                CargarDatos();
+                dtgvPermisosCon.DataSource = new DataTable();
+                dtgvPermisosDen.DataSource = new DataTable();
+            }
         }
     }
 }

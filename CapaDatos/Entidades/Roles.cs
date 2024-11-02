@@ -26,5 +26,23 @@ namespace CapaDatos.Entidades
             catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); return null; }
 
         }
+
+        public Boolean AgregarRol()
+        {
+            DBOperacion operacion = new DBOperacion();
+            StringBuilder sentencia = new StringBuilder();
+            sentencia.Append("insert into roles (rol) Values ( '" + Rol + "')");
+            try { return operacion.Insertar(sentencia.ToString()); }
+            catch { return false; }
+        }
+
+        public Boolean Actualizar()
+        {
+            DBOperacion operacion = new DBOperacion();
+            StringBuilder sentencia = new StringBuilder();
+            sentencia.Append("update roles set rol='" + Rol + "' where idrol=;" + IdRol + ";");
+            try { return operacion.Actualizar(sentencia.ToString()); } catch { return false; }
+
+        }
     }
 }

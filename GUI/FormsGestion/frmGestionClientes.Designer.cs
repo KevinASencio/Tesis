@@ -84,10 +84,9 @@
             // 
             // txbNombres
             // 
-            this.txbNombres.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.txbNombres.Location = new System.Drawing.Point(0, 23);
             this.txbNombres.Name = "txbNombres";
-            this.txbNombres.Size = new System.Drawing.Size(394, 20);
+            this.txbNombres.Size = new System.Drawing.Size(372, 20);
             this.txbNombres.TabIndex = 1;
             // 
             // lblNombres
@@ -112,10 +111,9 @@
             // 
             // txbApellidos
             // 
-            this.txbApellidos.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.txbApellidos.Location = new System.Drawing.Point(0, 23);
             this.txbApellidos.Name = "txbApellidos";
-            this.txbApellidos.Size = new System.Drawing.Size(394, 20);
+            this.txbApellidos.Size = new System.Drawing.Size(372, 20);
             this.txbApellidos.TabIndex = 1;
             // 
             // lblApellidos
@@ -140,10 +138,9 @@
             // 
             // txbDirreccion
             // 
-            this.txbDirreccion.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.txbDirreccion.Location = new System.Drawing.Point(0, 23);
             this.txbDirreccion.Name = "txbDirreccion";
-            this.txbDirreccion.Size = new System.Drawing.Size(394, 20);
+            this.txbDirreccion.Size = new System.Drawing.Size(372, 20);
             this.txbDirreccion.TabIndex = 1;
             // 
             // lblDirreccion
@@ -168,10 +165,9 @@
             // 
             // txbDui
             // 
-            this.txbDui.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.txbDui.Location = new System.Drawing.Point(0, 23);
             this.txbDui.Name = "txbDui";
-            this.txbDui.Size = new System.Drawing.Size(394, 20);
+            this.txbDui.Size = new System.Drawing.Size(372, 20);
             this.txbDui.TabIndex = 1;
             // 
             // lblDui
@@ -196,10 +192,9 @@
             // 
             // txbTelefono
             // 
-            this.txbTelefono.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.txbTelefono.Location = new System.Drawing.Point(0, 23);
             this.txbTelefono.Name = "txbTelefono";
-            this.txbTelefono.Size = new System.Drawing.Size(394, 20);
+            this.txbTelefono.Size = new System.Drawing.Size(372, 20);
             this.txbTelefono.TabIndex = 1;
             // 
             // label6
@@ -224,7 +219,6 @@
             // 
             // cmbEstado
             // 
-            this.cmbEstado.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.cmbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEstado.FormattingEnabled = true;
             this.cmbEstado.Items.AddRange(new object[] {
@@ -232,7 +226,7 @@
             "De Baja"});
             this.cmbEstado.Location = new System.Drawing.Point(0, 25);
             this.cmbEstado.Name = "cmbEstado";
-            this.cmbEstado.Size = new System.Drawing.Size(394, 21);
+            this.cmbEstado.Size = new System.Drawing.Size(372, 21);
             this.cmbEstado.TabIndex = 1;
             // 
             // lblEstado
@@ -257,11 +251,10 @@
             // 
             // txbId
             // 
-            this.txbId.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.txbId.Enabled = false;
             this.txbId.Location = new System.Drawing.Point(0, 23);
             this.txbId.Name = "txbId";
-            this.txbId.Size = new System.Drawing.Size(394, 20);
+            this.txbId.Size = new System.Drawing.Size(372, 20);
             this.txbId.TabIndex = 1;
             // 
             // pnlId

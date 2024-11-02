@@ -26,7 +26,7 @@ namespace GUI.FormsGestion
 
         public void procesar()
         {
-            if (Validacion.seguroModificar() && !Validacion.esVacio(pnlPrincipal, ErrorNotificador))
+            if (!Validacion.esVacio(pnlPrincipal, ErrorNotificador) && Validacion.seguroModificar())
             {
                 if (string.IsNullOrEmpty(txbId.Text)) { txbId.Text = "0"; }
                 ClientesNeg cliente = new ClientesNeg(txbNombres.Text.ToString(), txbApellidos.Text.ToString(),
@@ -34,6 +34,7 @@ namespace GUI.FormsGestion
                 if (cliente.Procesar(int.Parse(txbId.Text.ToString())))
                 {
                     Validacion.frmMessageBox("Registro Guardado", "Exito");
+                    this.Close();
                 }
                 else 
                 {
@@ -45,7 +46,6 @@ namespace GUI.FormsGestion
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             procesar();
-            this.Close();
             frmVistaClientes.frmvc.CargarDatos();
         }
 

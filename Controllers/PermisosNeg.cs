@@ -12,6 +12,10 @@ namespace Controllers
     {
         Roles Rol;
         Permisos Permiso;
+
+        public PermisosNeg() 
+        {
+        }
         public PermisosNeg(int idrol) 
         {
             Permiso = new Permisos();
@@ -30,6 +34,13 @@ namespace Controllers
         public Boolean EliminarPermisos(int idpermiso) {
             Permiso.IdPermiso = idpermiso;
             return Permiso.Eliminar();
+        }
+
+        public Boolean AgregarPermiso(int idrol, int idaccion) 
+        {
+            Permiso.IdRol = idrol;
+            Permiso.IdAccion = idaccion;
+            return Permiso.Insertar();
         }
         
 
