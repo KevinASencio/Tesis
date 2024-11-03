@@ -106,12 +106,14 @@ namespace CapaDatos.Entidades
             DBOperacion operacion = new DBOperacion();
 
             sentencia.Append("select us.usuario, us.nombres, us.apellidos, us.estado,us.idrol , (select rol from roles as rl where us.idrol=rl.idrol) as rol");
-            sentencia.Append(" from usuarios as us where  usuario='" +_Usuario + "'");
-            sentencia.AppendFormat(" and BINARY contraseña=sha1('{0}');", pass);               
-
+            sentencia.Append(" from usuarios as us where  usuario=@usuario");
+            sentencia.Append(" and BINARY contraseña=sha1(@contraseña);");          
+            Dictionary<string,object> dic = new Dictionary<string,object>();
+            dic.Add("usuario", Uusuario);
+            dic.Add("contraseña", Contraseña);
             try
             {
-                return operacion.Consultar(sentencia.ToString());
+                return operacion.Consultar(sentencia.ToString(),dic);
             }
             catch (Exception ex)
             {
@@ -124,11 +126,13 @@ namespace CapaDatos.Entidades
         {
             int[] privilegios = new int[7];
             DataTable aux = new DataTable();
-            string consulta = "SELECT idaccion FROM db_acacuvan.permisos where idrol=" + _IdRol + ";";
+            string consulta = "SELECT idaccion FROM db_acacuvan.permisos where idrol=@idrol;";
+            Dictionary<string,object> dic = new Dictionary<string,object>();
+            dic.Add("idrol",IdRol);
             DBOperacion operacion = new DBOperacion();
             try
             {
-                aux = operacion.Consultar(consulta);
+                aux = operacion.Consultar(consulta,dic);
                 int i = 0;
                 foreach (DataRow row in aux.Rows)
                 {
@@ -147,15 +151,15 @@ namespace CapaDatos.Entidades
         {
             DBOperacion operacion= new DBOperacion();
             StringBuilder sentencia=new StringBuilder();
-            sentencia.Append("update usuarios set estado = '" + Estado + "' where usuario= '"+ Uusuario + "';");
+            sentencia.Append("update usuarios set estado = @estado where usuario= @usuario;");
+            Dictionary<string,object> dic=new Dictionary<string,object>();
+            dic.Add("estado", Estado);
+            dic.Add("usuario", Uusuario);
             try
             {
-                return operacion.Actualizar(sentencia.ToString());
+                return operacion.Actualizar(sentencia.ToString(),dic);
             }
             catch (Exception ex) { return false; }
         }
     }
-
-
-
 }

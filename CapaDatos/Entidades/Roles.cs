@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
@@ -31,8 +32,10 @@ namespace CapaDatos.Entidades
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
-            sentencia.Append("insert into roles (rol) Values ( '" + Rol + "')");
-            try { return operacion.Insertar(sentencia.ToString()); }
+            sentencia.Append("insert into roles (rol) Values ( @rol)");
+            Dictionary<string,object> dic = new Dictionary<string,object>();
+            dic.Add("rol", Rol);
+            try { return operacion.Insertar(sentencia.ToString(), dic); }
             catch { return false; }
         }
 
@@ -40,8 +43,11 @@ namespace CapaDatos.Entidades
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
-            sentencia.Append("update roles set rol='" + Rol + "' where idrol=;" + IdRol + ";");
-            try { return operacion.Actualizar(sentencia.ToString()); } catch { return false; }
+            sentencia.Append("update roles set rol=@rol where idrol=@idrol;");
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            dic.Add("rol", Rol);
+            dic.Add("idrol", IdRol);
+            try { return operacion.Actualizar(sentencia.ToString(), dic); } catch { return false; }
 
         }
     }

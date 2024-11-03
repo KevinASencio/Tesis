@@ -5,7 +5,7 @@ namespace Controllers
 {
     public class CuotasNeg
     {
-        Cuotas cuota;
+        Cuotas cuota=new Cuotas();
 
         public static DataTable consultarCuotasConsumo()
         {
@@ -13,9 +13,9 @@ namespace Controllers
         }
         public static DataTable consultarCuotasAcometida() { return Cuotas.consultarCuotasAcometida(); }
 
-        public static double ConCuota(int id) 
+        public double ConCuota(int id) 
         {
-            return Cuotas.ConsultarCuotaConsumo(id);
+            return cuota.ConsultarCuotaConsumo(id);
         }
 
         public bool ProcesarCuotaConsumo(int id, float monto) 

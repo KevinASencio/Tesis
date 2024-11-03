@@ -1,5 +1,6 @@
 ﻿using CapaDatos.Entidades;
 using System;
+using System.Data;
 namespace CapaNegocio
 {
     public class ClientesNeg
@@ -53,6 +54,11 @@ namespace CapaNegocio
             }
             return cl.CambiarEstado();
 
+        }
+
+        public DataTable ConsultarClientes() 
+        {
+            return cl.Consultar();
         }
 
 

@@ -10,7 +10,7 @@ namespace GUI.FormsGestion
         BindingSource ListaClientes = new BindingSource();
         frmGestionClientes _frmGestionClientes;
         frmVistaServicios _frmVistaServicios;
-        ClientesNeg cliente;
+        ClientesNeg cliente= new ClientesNeg();
 
         //nada mas prueba
 
@@ -69,7 +69,7 @@ namespace GUI.FormsGestion
 
         public void CargarDatos()
         {
-            ListaClientes.DataSource = CapaNegocio.SistemCache.ConsultarClientes();
+            ListaClientes.DataSource =cliente.ConsultarClientes();
             dtgvClientes.AutoGenerateColumns = false;
             dtgvClientes.DataSource = ListaClientes;
             dtgvClientes.Refresh();

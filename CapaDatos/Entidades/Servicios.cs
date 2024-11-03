@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -46,14 +47,16 @@ namespace CapaDatos.Entidades
             }
         }
 
-        public static DataTable ConsultarCon(int idcliente)
+        public DataTable ConsultarCon(int idcliente)
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
             sentencia.Append("select ser.idservicio, concat(cl.nombres,\" \", cl.apellidos)as cliente,ser.idcliente, ser.idconsumo, cuo.idcuotaconsumo, cuo.monto, col.Colonia, ");
             sentencia.Append(" col.idcolonia, ser.fecha_apertura, ser.estado, ser.comentario, ser.cuotas_anticipadas from servicios ser, clientes cl, colonias col,");
-            sentencia.Append("cuotasconsumo cuo, serviciosconsumo sercon  where ser.idcliente=" + idcliente + " and ser.idcliente=cl.idcliente and ");
+            sentencia.Append("cuotasconsumo cuo, serviciosconsumo sercon  where ser.idcliente=@idcliente and ser.idcliente=cl.idcliente and ");
             sentencia.Append("col.idcolonia=ser.idcolonia and ser.idconsumo = sercon.idserviciosconsumo and sercon.idcuotaconsumo=cuo.idcuotaconsumo;");
+            Dictionary <string,object> dic = new Dictionary<string,object>();
+            dic.Add("idcliente", idcliente);
             try
             {
                 return operacion.Consultar(sentencia.ToString());
@@ -82,17 +85,19 @@ namespace CapaDatos.Entidades
                 return null;
             }
         }
-        public static DataTable ConsultarAco(int idcliente)
+        public DataTable ConsultarAco(int idcliente)
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
             sentencia.Append("select ser.idservicio, concat(cl.nombres, \" \", cl.apellidos) as cliente, ser.idacometida, cuo.idcuotaacometida, cuo.monto, col.Colonia, col.idcolonia, ser.fecha_apertura, ser.estado, ser.Comentario, ");
             sentencia.Append("seraco.saldo, seraco.monto as 'total', (seraco.numerocuotas - seraco.cuotas_pagadas) as cuotas_restantes, seraco.idserviciosacometida ");
             sentencia.Append("from servicios ser, clientes cl, colonias col, cuotasacometida cuo, serviciosacometida seraco ");
-            sentencia.Append("where ser.idcliente = " + idcliente + " and ser.idcliente = cl.idcliente and col.idcolonia = ser.idcolonia and ser.idacometida = seraco.idserviciosacometida and seraco.idcuotaacometida = cuo.idcuotaacometida;");
+            sentencia.Append("where ser.idcliente = @idcliente and ser.idcliente = cl.idcliente and col.idcolonia = ser.idcolonia and ser.idacometida = seraco.idserviciosacometida and seraco.idcuotaacometida = cuo.idcuotaacometida;");
+            Dictionary<string,object> dic= new Dictionary<string,object>();
+            dic.Add("idcliente", idcliente);
             try
             {
-                return operacion.Consultar(sentencia.ToString());
+                return operacion.Consultar(sentencia.ToString(),dic);
             }
             catch (Exception e)
             {
@@ -104,26 +109,33 @@ namespace CapaDatos.Entidades
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
+            Dictionary<string,object> dic= new Dictionary<string,object>();
             sentencia.Append("insert into servicios(idcliente,idcolonia,fecha_apertura,estado,comentario, idconsumo)");
-            sentencia.Append("Values (" + this.IdCliente + ",");
-            sentencia.Append(" " + this.IdColonia + ", ");
-            sentencia.Append(" '" + DateTime.Now.ToString("yyyy,MM,dd") + "', ");
-
-            sentencia.Append(" '" + this.Estado + "', ");
-            sentencia.Append(" '" + this.Comentario + "', ");
+            sentencia.Append("Values (@idcliente,");
+            sentencia.Append(" @idcolonia, ");
+            sentencia.Append(" @fecha, ");
+            sentencia.Append(" @estado, ");
+            sentencia.Append(" @comentario, ");
             switch (tipo)
             {
                 case "consumo":
-                    sentencia.Append(" " + this.IdConsumo + " );");
+                    sentencia.Append(" @idconsumo );");
+                    dic.Add("idconsumo", IdConsumo);
                     break;
                 case "acometida":
                     sentencia.Replace("idconsumo", "idacometida");
-                    sentencia.Append(" " + this.IdAcometida + " );");
+                    sentencia.Append(" @idacometida );");
+                    dic.Add("idacometida", IdAcometida);
                     break;
             }
+            dic.Add("fecha", FechaApertura);
+            dic.Add("comentario",Comentario);
+            dic.Add("estado",Estado);
+            dic.Add("idcolonia", IdColonia);
+            dic.Add("idcliente", IdCliente);
             try
             {
-                return operacion.Insertar(sentencia.ToString());
+                return operacion.Insertar(sentencia.ToString(),dic);
             }
             catch (Exception e)
             {
@@ -137,13 +149,19 @@ namespace CapaDatos.Entidades
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
             sentencia.Append("update servicios set ");
-            sentencia.Append("idcolonia = " + this.IdColonia + ", ");
-            sentencia.Append("estado = '" + this.Estado + "', ");
-            sentencia.Append("comentario = '" + this.Comentario + "', ");
-            sentencia.Append("idcolonia = " + this.IdColonia + ", ");
-            sentencia.Append("cuotas_anticipadas = " + this.CuotasAnticipadas + " ");
-            sentencia.Append("where idservicio= " + this.IdServicio + ";");
-            try { return operacion.Actualizar(sentencia.ToString()); } catch (Exception e) { return false; }
+            sentencia.Append("idcolonia =@idcolonia, ");
+            sentencia.Append("estado = @estado, ");
+            sentencia.Append("comentario = @comentario, ");
+            sentencia.Append("idcolonia = @idcolonia, ");
+            sentencia.Append("cuotas_anticipadas =@cuotas_anticipadas ");
+            sentencia.Append("where idservicio= @idservicio;");
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            dic.Add("fecha", FechaApertura);
+            dic.Add("comentario", Comentario);
+            dic.Add("estado", Estado);
+            dic.Add("idcolonia", IdColonia);
+            dic.Add("idcliente", IdCliente);
+            try { return operacion.Actualizar(sentencia.ToString(), dic); } catch (Exception e) { return false; }
         }
 
         public Boolean CambiarEstado()
@@ -151,24 +169,34 @@ namespace CapaDatos.Entidades
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
             sentencia.Append("update servicios set ");
-            sentencia.Append("estado = '" + this.Estado + "' ");
-            sentencia.Append("where idservicio= " + this.IdServicio + ";");
-            try { return operacion.Actualizar(sentencia.ToString()); } catch (Exception e) { return false; }
+            sentencia.Append("estado = @estado ");
+            sentencia.Append("where idservicio= @idservicio;");
+            Dictionary <string,object> dic= new Dictionary<string,object>();
+            dic.Add("estado", Estado);
+            dic.Add("idservicio", IdServicio);
+            try { return operacion.Actualizar(sentencia.ToString(), dic); } catch (Exception e) { return false; }
         }
         public Boolean InsertAcometida()
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
             sentencia.Append("insert into servicios(idcliente,idcolonia,fecha_apertura,estado,comentario, idacometida)");
-            sentencia.Append("Values (" + this.IdCliente + ",");
-            sentencia.Append(" " + this.IdColonia + ", ");
-            sentencia.Append(" '" + this.FechaApertura.ToString("yyyy,MM,dd") + "', ");
-            sentencia.Append(" '" + this.Estado + "', ");
-            sentencia.Append(" '" + this.Comentario + "', ");
-            sentencia.Append(" " + this.IdAcometida + " );");
+            sentencia.Append("Values (@idcliente,");
+            sentencia.Append(" @idcolonia, ");
+            sentencia.Append(" @fecha, ");
+            sentencia.Append(" @estado, ");
+            sentencia.Append(" @comentario, ");
+            sentencia.Append(" @idacometida );");
+            Dictionary <string,object> dic = new Dictionary<string,object>();
+            dic.Add("idcliente", IdCliente);
+            dic.Add("fecha", FechaApertura);
+            dic.Add("idcolonia", IdColonia);
+            dic.Add("estado", Estado);
+            dic.Add("comentario", Comentario);
+            dic.Add("idacometida", IdAcometida);
             try
             {
-                return operacion.Insertar(sentencia.ToString());
+                return operacion.Insertar(sentencia.ToString(),dic);
             }
             catch (Exception e)
             {
@@ -191,13 +219,14 @@ namespace CapaDatos.Entidades
             }
         }
 
-        public static Servicios ConsultarServicio(int id) 
+        public Servicios ConsultarServicio() 
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia= new StringBuilder();
             sentencia.Append(@"select idservicio, idcliente, idcolonia, fecha_apertura, cuotas_anticipadas, estado, comentario, ifnull(idacometida,0) as 'idacometida', 
-                            ifnull(idconsumo,0) as 'idconsumo' from servicios where idservicio=" + id + "");
-
+                            ifnull(idconsumo,0) as 'idconsumo' from servicios where idservicio=@idservicio");
+            Dictionary <string,object> dic = new Dictionary<string,object>();
+            dic.Add("idservicio", IdServicio);
             try 
             {
                 Servicios servicio= new Servicios();
@@ -226,10 +255,12 @@ namespace CapaDatos.Entidades
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
-            sentencia.Append("update servicios set cuotas_anticipadas=cuotas_anticipadas-1 where idservicio= " + this.IdServicio);
+            sentencia.Append("update servicios set cuotas_anticipadas=cuotas_anticipadas-1 where idservicio=@idservicio;");
+            Dictionary<string,object> dic = new Dictionary<string,object>();
+            dic.Add("idservicio", IdServicio);
             try
             {
-                return operacion.Actualizar(sentencia.ToString());
+                return operacion.Actualizar(sentencia.ToString(),dic);
             }
             catch (Exception e)
             {

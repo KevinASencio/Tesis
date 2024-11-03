@@ -34,54 +34,76 @@ namespace CapaDatos.Entidades
         public string Empleado { get => _Empleado; set => _Empleado = value; }
         public string Emisor { get => emisor; set => emisor = value; }
 
-        public bool Insertar() 
+        public bool Insertar()
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
+            Dictionary<string, object> dic = new Dictionary<string, object>();
 
             sentencia.Append("insert into movimientos(fecha, tipo, concepto, idcliente, monto,");
             sentencia.Append(" doc, idfactura, empleado, emisor, idcontrol_banco, idcontrol_caja) values( ");
-            sentencia.Append("'" + this.Fecha.ToString("yyyy-MM-dd hh:mm:ss") + "', ");
-            sentencia.Append("'" + this.Tipo + "', ");
-            sentencia.Append("'" + this.Concepto + "', ");
+            sentencia.Append("@fecha, ");
+            sentencia.Append("@tipo, ");
+            sentencia.Append("@concepto, ");
             //valida si el valor es 0 puesto que esto generaria un error al hacer referencia a un registro con id=0 el cual no existe
-            if (IdCliente == 0) { sentencia.Append("null, "); } else { sentencia.Append(IdCliente + ", "); };
-            sentencia.Append(this.Monto + ", ");
-            sentencia.Append("' " + this.Doc + "', ");
+            if (IdCliente == 0) { sentencia.Append("null, "); } else { sentencia.Append("@idcliente, "); dic.Add("idcliente", IdCliente); };
+            sentencia.Append("@monto, ");
+            sentencia.Append("@doc, ");
             //valida si el valor es 0 puesto que esto generaria un error al hacer referencia a un registro con id=0 el cual no existe
-            if (IdFactura == 0) { sentencia.Append("null, "); } else { sentencia.Append(this._IdFactura + ", ");}
-            sentencia.Append("'"+this.Empleado + "', ");
-            sentencia.Append("'" + this.emisor + "',");
+            if (IdFactura == 0) { sentencia.Append("null, "); } else { sentencia.Append("@idfactura, "); dic.Add("idfactura", IdFactura); }
+            sentencia.Append("@empleado, ");
+            sentencia.Append("@emisor,");
             //valida si el valor es 0 puesto que esto generaria un error al hacer referencia a un registro con id=0 el cual no existe
-            if (IdControlBanco == 0) { sentencia.Append("null , " + this.IdControlCaja + ");"); }
-            else { sentencia.Append("" + this.IdControlBanco + ", null);"); }
-            try 
+            if (IdControlBanco == 0) { sentencia.Append("null , @idcontrolcaja);");dic.Add("idcontrolcaja", IdControlCaja); }
+            else { sentencia.Append("@idcontrolbanco, null);"); dic.Add("idcontrolbanco", IdControlBanco); }
+            dic.Add("fecha", Fecha);
+            dic.Add("tipo", Tipo);
+            dic.Add("concepto", Concepto);
+            dic.Add("monto", Monto);
+            dic.Add("doc", Doc);
+            dic.Add("empleado", Empleado);
+            dic.Add("emisor", Emisor);
+
+            try
             {
-                return operacion.Insertar(sentencia.ToString());
+                return operacion.Insertar(sentencia.ToString(),dic);
             }
-            catch(Exception ex) { return false; }
+            catch (Exception ex) { return false; }
         }
 
-        public bool Actualizar() 
+        public bool Actualizar()
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
             sentencia.Append("update movimientos set ");
-            sentencia.Append("fecha = '" + this.Fecha.ToString("yyyy-MM-dd hh:mm:ss") + "', ");
-            sentencia.Append("tipo = '" + this.Tipo + "', ");
-            sentencia.Append("concepto = '" + this.Concepto + "', ");
-            sentencia.Append("idcliente = " + IdCliente + ", ");
-            sentencia.Append("monto = " + this.Monto + ", ");
-            sentencia.Append("idcontrol_banco =" + this.IdControlBanco + ", ");
-            sentencia.Append("idcontrol_caja = " + this.IdControlCaja + ", ");
-            sentencia.Append("doc = '" + this.Doc + "', ");
-            sentencia.Append("idfactura = " + this._IdFactura + ", ");
-            sentencia.Append("empleado = '" + this.Empleado + "', ");
-            sentencia.Append("emisor = '" + this.emisor + "' where idmovimiento=" + this.IdMovimiento + ";");
+            sentencia.Append("fecha = @fecha, ");
+            sentencia.Append("tipo = @tipo', ");
+            sentencia.Append("concepto =@concepto, ");
+            sentencia.Append("idcliente = @idcliente, ");
+            sentencia.Append("monto = @monto, ");
+            sentencia.Append("idcontrol_banco =@idcaja, ");
+            sentencia.Append("idcontrol_caja =@idbanco, ");
+            sentencia.Append("doc = @doc, ");
+            sentencia.Append("idfactura = @idfactura, ");
+            sentencia.Append("empleado =@empleado, ");
+            sentencia.Append("emisor = @emisor where idmovimiento=@idmovimiento;");
+            Dictionary<string, object> dic = new Dictionary<string, object>();
 
+            dic.Add("fecha", Fecha);
+            dic.Add("tipo", Tipo);
+            dic.Add("concepto", Concepto);
+            dic.Add("monto", Monto);
+            dic.Add("doc", Doc);
+            dic.Add("empleado", Empleado);
+            dic.Add("emisor", Emisor);
+            dic.Add("idcliente", IdCliente);
+            dic.Add("idcaja", IdControlCaja);
+            dic.Add("idbanco", IdControlBanco);
+            dic.Add("idfactura", IdFactura);
+            dic.Add("idmovimiento", IdMovimiento);
             try
             {
-                return operacion.Actualizar(sentencia.ToString());
+                return operacion.Actualizar(sentencia.ToString(),dic);
             }
             catch (Exception ex) { return false; }
         }

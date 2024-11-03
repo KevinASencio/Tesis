@@ -19,7 +19,7 @@ namespace Controllers
         Servicios servicio = new Servicios();
         ControlFechasFacturas fechacontrol = new ControlFechasFacturas();
         Cuotas cuotas = new Cuotas();
-        Parametros parametros = Parametros.Consultar();
+        Parametros parametros = new Parametros();
         ControlMensualCaja ct = new ControlMensualCaja();
         public DataTable Generar(int idcontrol, ProgressBar psbBar, Label conta)
         {
@@ -32,11 +32,13 @@ namespace Controllers
         //cosultar a la base de datos y rellenar informacion del formulario
         public void ConsultarFactura(string idfactura, Form contenedor)
         {
+            parametros=parametros.Consultar();
             fac.consultarFactura(idfactura);
-            servicio = Servicios.ConsultarServicio(fac.IdServicio);
+            servicio.IdServicio=fac.IdServicio;
+            servicio = servicio.ConsultarServicio();
             cliente.IdCliente = servicio.IdCliente;
             cliente = cliente.ConsultarCliente();
-            fechacontrol = ControlFechasFacturas.ConsultarControlFecha(fac.IdControlFecha);
+            fechacontrol = fechacontrol.ConsultarControlFecha(fac.IdControlFecha);
             ct.Consultar();
             contenedor.Controls.Find("lblcliente", true)[0].Text = cliente.Nombres + ", " + cliente.Apellidos;
             contenedor.Controls.Find("lblMora", true)[0].Text = fac.Mora.ToString("$ 00.00");
@@ -44,7 +46,7 @@ namespace Controllers
             contenedor.Controls.Find("txbTotalPagar", true)[0].Text = (fac.Saldo + fac.Mora).ToString("00.00");
             contenedor.Controls.Find("txbDescuento", true)[0].Text = fac.Descuento.ToString("00.00");
             contenedor.Controls.Find("lblMes", true)[0].Text = fechacontrol.Mes;
-            contenedor.Controls.Find("lblMesesPen", true)[0].Text = GetMesesPendientes(fechacontrol.Mes);
+            contenedor.Controls.Find("lblMesesPen", true)[0].Text = GetMesesPendientes(fechacontrol.Mes, fac.ContPendientes);
         }
         public string GetNomCLiente()
         {
@@ -75,7 +77,7 @@ namespace Controllers
             else if (pagado > aux)
             {
                 //validamos si el monto que esta pagando es por cuotas enteras 
-                if ((pagado - fac.Mora) % Cuotas.ConsultarCuota(servicio.IdConsumo, servicio.IdAcometida) == 0)
+                if ((pagado - fac.Mora) % cuotas.ConsultarCuota(servicio.IdConsumo, servicio.IdAcometida) == 0)
                 {
                     return PagoAdelantado(pagado, descuento, empleado);
                 }
@@ -87,17 +89,17 @@ namespace Controllers
         {
             return fechacontrol.Mes;
         }
-        public string GetMesesPendientes(string mes)
+        
+        public string GetMesesPendientes(string mes, int pendiente)
         {
             // arreglo para crear la cedena de meses pendientes 
             string[] meses = { "diciembre", "noviembre", "octubre", "septiembre", "agosto", "julio", "junio", "mayo", "abril", "marzo", "febrero", "enero" };
             StringBuilder aux = new StringBuilder();
             int i = fac.ContPendientes;
-            int pendiente = fac.ContPendientes;
             //acceder al indice del mes que se esta cobrando en la factura para recorrer desde ahi el arreglo 
             int cont = Array.IndexOf(meses, mes);
-
-            while(pendiente > 0)
+            int contPendiente = pendiente;
+            while(contPendiente > 0)
             {
                 cont++;
                 if (cont >= 11)
@@ -109,7 +111,7 @@ namespace Controllers
                 {
                     aux.Append(", " + meses[cont]);
                 }
-                pendiente--;
+                contPendiente--;
             };
             return aux.ToString().Remove(0, 2);
         }
@@ -156,7 +158,7 @@ namespace Controllers
             cancelada.IdControlFecha = fechacontrol.IdControl;
             if (servicio.IdConsumo > 0) { cancelada.Mora = cuopagadas * parametros.MoraConsumo; } else { cancelada.Mora = cuopagadas * parametros.MoraAcometida; };
             cancelada.Descuento = descuento;
-            if (cancelada.Saldo % Cuotas.ConsultarCuota(servicio.IdConsumo, servicio.IdAcometida) == 0)
+            if (cancelada.Saldo % cuotas.ConsultarCuota(servicio.IdConsumo, servicio.IdAcometida) == 0)
             {
                 try
                 {
@@ -262,7 +264,7 @@ namespace Controllers
         }
         private int FacturasPagadas(double Pagado)
         {
-            double cuota = Cuotas.ConsultarCuota(servicio.IdConsumo, servicio.IdAcometida);
+            double cuota = cuotas.ConsultarCuota(servicio.IdConsumo, servicio.IdAcometida);
             int aux = 0;
             while (Pagado >= cuota)
             {
@@ -272,9 +274,21 @@ namespace Controllers
             return aux;
         }
 
-        public static DataTable ConsultarFactuServ(int idcliente) 
+        public  DataTable ConsultarFactuServ(int idcliente) 
         {
-            return Facturas.ConsultarFacServ(idcliente);
+            return fac.ConsultarFacServ(idcliente);
+        }
+
+        public DataTable ConsultarReporteGen(int idcolonia) 
+        {
+            DataTable resultado= new DataTable();
+            resultado= fac.ConsultarReporteGen(fechacontrol.ConsultarUltimoCtr(), idcolonia);
+            resultado.Columns.Add("textmeses");
+            foreach (DataRow row in resultado.Rows) 
+            {
+                row["textmeses"] = GetMesesPendientes(row["mes"].ToString(), int.Parse(row["cont_pendiente"].ToString())).ToUpper();
+            }
+            return resultado;
         }
     }
 

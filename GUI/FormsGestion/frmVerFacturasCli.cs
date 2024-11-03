@@ -17,6 +17,7 @@ namespace GUI.FormsGestion
     {
         public int idcliente;
         BindingSource facturas= new BindingSource();
+        FacturasNeg fac= new FacturasNeg();
         public frmVerFacturasCli()
         {
             InitializeComponent();
@@ -24,7 +25,7 @@ namespace GUI.FormsGestion
 
         public void cargardatos() 
         {
-            facturas.DataSource = FacturasNeg.ConsultarFactuServ(idcliente);
+            facturas.DataSource = fac.ConsultarFactuServ(idcliente);
             dtgvFacturas.AutoGenerateColumns = false;
             dtgvFacturas.DataSource = facturas;
         }

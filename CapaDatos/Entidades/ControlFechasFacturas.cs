@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -19,20 +20,25 @@ namespace CapaDatos.Entidades
         public DateTime FechaGeneracion { get => _FechaGeneracion; set => _FechaGeneracion = value; }
         public int IdControl { get => _IdControl; set => _IdControl = value; }
 
-        public Boolean agregar()
+        public Boolean Agregar()
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
             bool resultado = false;
             sentencia.Append("insert into fecha_control_facturas (");
             sentencia.Append("fecha_vencimiento, fecha_hasta, mes, fecha_generacion) Values(");
-            sentencia.Append("'" + this.FechaVencimiento.ToString("yyyy-MM-dd") + "', ");
-            sentencia.Append("'" + this.FechaHasta.ToString("yyy-MM-dd") + "', ");
-            sentencia.Append("'" + this.Mes + "', ");
-            sentencia.Append("'" + this.FechaGeneracion.ToString("yyyy-MM-dd") + "');");
+            sentencia.Append(" @fecha_vencimiento, ");
+            sentencia.Append(" @fecha_hasta, ");
+            sentencia.Append(" @mes, ");
+            sentencia.Append(" @fecha_generacion);");
+            Dictionary <string,object> dic = new Dictionary<string,object>();
+            dic.Add("fecha_vencimiento", FechaVencimiento);
+            dic.Add("fecha_hasta", FechaHasta);
+            dic.Add("mes", Mes);
+            dic.Add("fecha_generacion", FechaGeneracion);
             try
             {
-                resultado = operacion.Insertar(sentencia.ToString());
+                resultado = operacion.Insertar(sentencia.ToString(), dic);
                 if (resultado == true)
                 {
                     this.IdControl = int.Parse(operacion.Consultar("select LAST_INSERT_ID() from fecha_control_facturas limit 1").Rows[0][0].ToString());
@@ -43,16 +49,17 @@ namespace CapaDatos.Entidades
             catch (Exception ex) { return false; }
         }
 
-        public static ControlFechasFacturas ConsultarControlFecha(int idcontrol) 
+        public  ControlFechasFacturas ConsultarControlFecha(int idcontrol) 
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
-            sentencia.Append("select idcontrol, fecha_vencimiento, fecha_hasta, mes, fecha_generacion from fecha_control_facturas where idcontrol= " + idcontrol + ";");
-
+            sentencia.Append("select idcontrol, fecha_vencimiento, fecha_hasta, mes, fecha_generacion from fecha_control_facturas where idcontrol= @idcontrol;");
+            Dictionary<string,object> dic=new Dictionary<string,object>();
+            dic.Add("idcontrol", idcontrol);
             try 
             {
                 ControlFechasFacturas ct = new ControlFechasFacturas();
-                DataRow rw = operacion.Consultar(sentencia.ToString()).Rows[0];
+                DataRow rw = operacion.Consultar(sentencia.ToString(),dic).Rows[0];
                 if (rw.ItemArray.Length > 0)
                 {
                     ct.IdControl = int.Parse(rw.ItemArray[0].ToString());
@@ -81,7 +88,7 @@ namespace CapaDatos.Entidades
         }
 
 
-        public static int ConsultarUltimoCtr() 
+        public int ConsultarUltimoCtr() 
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
@@ -95,11 +102,22 @@ namespace CapaDatos.Entidades
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
             sentencia.Append("update fecha_control_facturas set ");
-            sentencia.AppendFormat(" fecha_vencimiento='{0}'", FechaVencimiento.ToString("yyyy-MM-dd"));
-            sentencia.AppendFormat(" fecha_hasta = '{0}'",FechaHasta.ToString("yyyy-MM-dd"));
-            sentencia.AppendFormat(" mes='{0}'", Mes);
-            sentencia.AppendFormat(" where idcontro={0};", IdControl);
-            return false;
+            sentencia.Append(" fecha_vencimiento= @fecha_vencimiento");
+            sentencia.Append(" fecha_hasta =  @fecha_hasta");
+            sentencia.Append(" mes=@mes");
+            sentencia.Append(" where idcontro=@idcontrol;");
+
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            dic.Add("fecha_vencimiento", FechaVencimiento);
+            dic.Add("fecha_hasta", FechaHasta);
+            dic.Add("mes", Mes);
+            dic.Add("fecha_generacion", FechaGeneracion);
+            dic.Add("idcontrol", IdControl);
+            try
+            {return operacion.Actualizar(sentencia.ToString(), dic);}
+            catch 
+            {return false; }
+            
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Org.BouncyCastle.Asn1.Misc;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace CapaDatos.Entidades
         public double MoraAcometida { get => _MoraAcometida; set => _MoraAcometida = value; }
         public int CuotasPenMax { get => _CuotasPenMax; set => _CuotasPenMax = value; }
 
-        public static Parametros Consultar() 
+        public Parametros Consultar() 
         {
             DBOperacion operacion= new DBOperacion();
             StringBuilder sentencia= new StringBuilder();
@@ -32,6 +33,22 @@ namespace CapaDatos.Entidades
                 return parametro;
             }
             catch (Exception ex) { return null; }
+        }
+
+        public Boolean Actualizar()
+        {
+            DBOperacion operacion = new DBOperacion();
+            StringBuilder sentencia = new StringBuilder();
+
+            sentencia.Append("update parametros ser");
+            sentencia.Append("MoraConsumo=@moraconsumo");
+            sentencia.Append("MoraAcometida=@moraacometida");
+            sentencia.Append("cuotasPenMax=@contmax");
+            Dictionary<string,object> dic= new Dictionary<string,object>();
+            dic.Add("moraconsumo", MoraConsumo);
+            dic.Add("moraacometida", MoraAcometida);
+            dic.Add("contmax", CuotasPenMax);
+            try { return operacion.Actualizar(sentencia.ToString(), dic); } catch { return false; }            
         }
     }
 }

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using MySqlX.XDevAPI;
+using Org.BouncyCastle.Crmf;
+using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
@@ -310,15 +313,23 @@ namespace CapaDatos.Entidades
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
             sentencia.Append("update facturas set ");
-            sentencia.Append("comentario = '" + this.Comentario + "', ");
-            sentencia.Append("descuento = " + this.Descuento + ", ");
-            sentencia.Append("estado_pago='" + this.EstadoPago + "', ");
-            sentencia.Append("estado='" + this.Estado + "' ");
-            sentencia.Append("where idfactura=" + this.IdFactura + ";");
-
+            sentencia.Append("comentario = @comentario, ");
+            sentencia.Append("descuento = @descuento, ");
+            sentencia.Append("estado_pago=@estadopago, ");
+            sentencia.Append("estado=@estado, ");
+            sentencia.Append("idcontrolfecha=@idcontrol");
+            sentencia.Append("where idfactura=@idfactura;");
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            dic.Add("estado", Estado);
+            dic.Add("estado_pago", EstadoPago);
+            dic.Add("cont_pendiente", ContPendientes);
+            dic.Add("descuento", Descuento);
+            dic.Add("idcontrolfecha", IdControlFecha);
+            dic.Add("comentario", Comentario);
+            dic.Add("idfactura", IdFactura);
             try
             {
-                return operacion.Actualizar(sentencia.ToString());
+                return operacion.Actualizar(sentencia.ToString(),dic);
             }
             catch (Exception ex) { return false; }
         }
@@ -328,19 +339,30 @@ namespace CapaDatos.Entidades
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
             sentencia.Append("insert into facturas (saldo,mora,estado,estado_pago, idservicio, cont_pendiente, descuento,idcontrolfecha,comentario) values (");
-            sentencia.Append(" " + this.Saldo + ", ");
-            sentencia.Append(" " + this.Mora + ", ");
-            sentencia.Append(" '" + this.Estado + "', ");
-            sentencia.Append(" '" + this.EstadoPago + "', ");
-            sentencia.Append(" " + this.IdServicio + ", ");
-            sentencia.Append(" " + this.ContPendientes + ", ");
-            sentencia.Append(" " + this.Descuento + ",");
-            sentencia.Append(" " + this.IdControlFecha + ", ");
-            sentencia.Append(" '" + Comentario + "');");
+            sentencia.Append(" @saldo, ");
+            sentencia.Append(" @mora, ");
+            sentencia.Append(" @estado, ");
+            sentencia.Append(" @estado_pago, ");
+            sentencia.Append(" @idservicio, ");
+            sentencia.Append(" @cont_pendiente, ");
+            sentencia.Append(" @descuento,");
+            sentencia.Append(" @idcontrolfecha, ");
+            sentencia.Append(" @comentario);");
+
+            Dictionary<string,object> dic = new Dictionary<string,object>();
+            dic.Add("saldo",Saldo);
+            dic.Add("mora",Mora);
+            dic.Add("estado",Estado);
+            dic.Add("estado_pago",EstadoPago);
+            dic.Add("idservicio",IdServicio);
+            dic.Add("cont_pendiente",ContPendientes);
+            dic.Add("descuento",Descuento);
+            dic.Add("idcontrolfecha",IdControlFecha);
+            dic.Add("comentario",Comentario);
             try
             {
                 //si la insertcion es un exito se ocnsulta el id de la factura que se acaba de ingresar y la asignamos al objeto que telaizao la insericon
-                if (operacion.Insertar(sentencia.ToString()))
+                if (operacion.Insertar(sentencia.ToString(),dic))
                 {
                     this.IdFactura = int.Parse(operacion.Consultar("select LAST_INSERT_ID() from facturas limit 1").Rows[0][0].ToString());
                     return true;
@@ -350,7 +372,7 @@ namespace CapaDatos.Entidades
             catch (Exception ex) { return false; }
         }
 
-        public static DataTable ConsultarFacServ(int idcliente) 
+        public DataTable ConsultarFacServ(int idcliente) 
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
@@ -358,13 +380,37 @@ namespace CapaDatos.Entidades
             sentencia.Append("fac.idservicio, fac.cont_pendiente, fac.idcontrolfecha, fac.comentario, fecha.fecha_vencimiento, fecha.mes ");
             sentencia.Append("from facturas fac, fecha_control_facturas fecha, servicios serv where ");
             sentencia.Append("fac.idcontrolfecha=fecha.idcontrol and fac.idservicio=serv.idservicio and ");
-            sentencia.Append("serv.idcliente=" + idcliente + " order by idfactura desc;");
+            sentencia.Append("serv.idcliente=@idcliente order by idfactura desc;");
+            Dictionary<string,object> dic = new Dictionary<string,object>();
+            dic.Add("idcliente",idcliente);
             try
             {
-                return operacion.Consultar(sentencia.ToString());
+                return operacion.Consultar(sentencia.ToString(),dic);
             }
             catch (Exception ex) { return null; }
 
+        }
+
+        //consulta que se utilizara para realizar la impresion de reportes
+        public DataTable ConsultarReporteGen(int idcontrol,int idcolonia) 
+        {
+            DBOperacion operacion =new DBOperacion();
+            StringBuilder sentencia = new StringBuilder();
+            sentencia.Append("select fac.idfactura, serv.idcliente, concat(cli.nombres, ', ', cli.apellidos) as 'cliente', ctrl.fecha_hasta,ctrl.fecha_vencimiento, upper(ctrl.mes)as 'mes',(fac.saldo + fac.mora) as 'total', ");
+            sentencia.Append("(fac.saldo / (fac.cont_pendiente + 1)) as 'cuota',fac.mora, fac.saldo, fac.cont_pendiente, col.colonia,fac.idservicio from facturas fac inner join servicios serv on serv.idservicio = fac.idservicio ");
+            sentencia.Append("inner join fecha_control_facturas ctrl on fac.idcontrolfecha = ctrl.idcontrol ");
+            sentencia.Append("inner join colonias col on serv.idcolonia = col.idcolonia ");
+            sentencia.Append("inner join clientes cli on serv.idcliente = cli.idcliente ");
+            sentencia.Append(" where ctrl.idcontrol = @idcontrol and col.idcolonia=@idcolonia;");
+            Dictionary <string,object> dic = new Dictionary<string,object>();
+            dic.Add("idcontrol",idcontrol);
+            dic.Add("idcolonia", idcolonia);
+            try { return operacion.Consultar(sentencia.ToString(), dic); } catch { return new DataTable(); }
+            
+            
+            
+            
+           
         }
     }
 }

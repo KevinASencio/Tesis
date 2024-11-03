@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace CapaDatos.Entidades
@@ -27,10 +28,12 @@ namespace CapaDatos.Entidades
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
             sentencia.Append("insert into serviciosconsumo(idcuotaconsumo) ");
-            sentencia.Append("Values ( " + IdCuotaConsumo + ");");
+            sentencia.Append("Values (@idcuotaconsumo);");
+            Dictionary<string,object> dic = new Dictionary<string,object>();
+            dic.Add("idcuotaconsumo", IdCuotaConsumo);
             try
             {
-                resultado = operacion.Insertar(sentencia.ToString());
+                resultado = operacion.Insertar(sentencia.ToString(), dic);
                 this.IdServicioConsumo = int.Parse(operacion.Consultar("select LAST_INSERT_ID() from serviciosconsumo limit 1").Rows[0][0].ToString());
                 return resultado;
             }
@@ -46,9 +49,12 @@ namespace CapaDatos.Entidades
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
             sentencia.Append("update serviciosconsumo set ");
-            sentencia.Append("idcuotaconsumo = " + this.IdCuotaConsumo + " ");
-            sentencia.Append("where idserviciosconsumo = " + this.IdServicioConsumo + ";");
-            try { return operacion.Actualizar(sentencia.ToString()); } catch (Exception ex) { return false; }
+            sentencia.Append("idcuotaconsumo = @idcuotaconsumo ");
+            sentencia.Append("where idserviciosconsumo =@idservicioconsumo;");
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            dic.Add("idcuotaconsumo", IdCuotaConsumo);
+            dic.Add("idservicioconsumo", IdServicioConsumo);
+            try { return operacion.Actualizar(sentencia.ToString(),dic); } catch (Exception ex) { return false; }
         }
     }
 }

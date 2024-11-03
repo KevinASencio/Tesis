@@ -47,10 +47,14 @@ namespace CapaDatos.Entidades
             StringBuilder sentencia = new StringBuilder();
             sentencia.Append("insert into control_mensual_caja (fecha_inicio, saldoinicial, saldofinal)");
             sentencia.Append("values(");
-            sentencia.Append("'" + this.FechaInicio.ToString("yyyy-MM-dd") + "', ");
-            sentencia.Append(this.SaldoInicial + ", ");
-            sentencia.Append(this.SaldoFinal + ");");
-            try { return operacion.Insertar(sentencia.ToString()); }catch (Exception ex) { return false; }
+            sentencia.Append(" @fecha_inicio, ");
+            sentencia.Append(" @saldoinicial, ");
+            sentencia.Append(" @saldofinal);");
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            dic.Add("fecha_inicio", FechaInicio);
+            dic.Add("saldoinicial", SaldoInicial);
+            dic.Add("saldofinal", SaldoFinal);
+            try { return operacion.Insertar(sentencia.ToString(), dic); }catch (Exception ex) { return false; }
         }
 
         public bool ActualizarSaldoFinal()
@@ -59,9 +63,12 @@ namespace CapaDatos.Entidades
             StringBuilder sentencia = new StringBuilder();
 
             sentencia.Append("update control_mensual_caja set ");
-            sentencia.Append(" saldofinal =" + this.SaldoFinal);
-            sentencia.Append("where idcontrol_caja =" + this.IdControlCaja + ",");
-            try { return operacion.Actualizar(sentencia.ToString()); }catch (Exception ex) { return false; }
+            sentencia.Append(" saldofinal =@saldofinal");
+            sentencia.Append("where idcontrol_caja =@idcontrolcaja;");
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            dic.Add("saldofinal", SaldoFinal);
+            dic.Add("idcontrolbanco", IdControlCaja);
+            try { return operacion.Actualizar(sentencia.ToString(), dic); }catch (Exception ex) { return false; }
         }
     }
 }

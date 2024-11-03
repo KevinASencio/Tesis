@@ -28,7 +28,7 @@ namespace GUI.FormsGestion
         public void CargarDatos(int id)
         {
 
-            _datosConsumo.DataSource = CapaNegocio.SistemCache.ConsultarServiciosCon(id);
+            _datosConsumo.DataSource = servicio.ConsultarCon(id);
             this.dtgvServiciosConsumo.AutoGenerateColumns = false;
             this.dtgvServiciosConsumo.DataSource = _datosConsumo;
 
@@ -39,7 +39,7 @@ namespace GUI.FormsGestion
             pnlAcometida.Dock = DockStyle.Bottom;
             pnlAcometida.Size = new Size(this.Width, this.Size.Height / 2);
             pnlAcometida.Update();
-            _datosAcometida.DataSource = CapaNegocio.SistemCache.ConsultarServiciosAco(id);
+            _datosAcometida.DataSource = servicio.ConsultarAco(id);
             this.dtgvServiciosAcometida.AutoGenerateColumns = false;
             this.dtgvServiciosAcometida.DataSource = _datosAcometida;
             this.dtgvServiciosAcometida.Update();

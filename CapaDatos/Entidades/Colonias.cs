@@ -24,7 +24,6 @@ namespace CapaDatos.Entidades
                 Console.WriteLine(ex.Message.ToString());
                 return null;
             }
-
         }
     }
 }

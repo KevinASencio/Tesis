@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace CapaDatos.Entidades
@@ -25,15 +26,20 @@ namespace CapaDatos.Entidades
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
             sentencia.Append("insert into serviciosacometida (idcuotaacometida, monto,cuotas_pagadas,numerocuotas,saldo)");
-            sentencia.Append("Values (" + this.Idcuotaacometida + ", ");
-            sentencia.Append(" " + this.Monto + ", ");
-            sentencia.Append(" " + this.Cuotaspagadas + ", ");
-            sentencia.Append(" " + this.Numeredecuotas + ", ");
-            sentencia.Append(" " + this.Saldo + ");");
-
+            sentencia.Append("Values (@idcuotaacometida, ");
+            sentencia.Append(" @monto, ");
+            sentencia.Append(" @cuotaspagadas, ");
+            sentencia.Append(" @ncuotas,");
+            sentencia.Append(" @saldo);");
+            Dictionary<string,object>  dic= new Dictionary<string,object>();
+            dic.Add("idcuotaacometida", Idcuotaacometida);
+            dic.Add("monto", Monto);
+            dic.Add("cuotaspagadas", Cuotaspagadas);
+            dic.Add("ncuotas", Numeredecuotas);
+            dic.Add("saldo", Saldo);
             try
             {
-                resultado = operacion.Insertar(sentencia.ToString());
+                resultado = operacion.Insertar(sentencia.ToString(), dic);
                 this.Idserviciosacometida = int.Parse(operacion.Consultar("select LAST_INSERT_ID() as \'id\' from serviciosacometida limit 1").Rows[0][0].ToString());
                 return resultado;
             }
@@ -45,12 +51,19 @@ namespace CapaDatos.Entidades
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
             sentencia.Append("update serviciosacometida set ");
-            sentencia.Append("idcuotaacometida=" + this.Idcuotaacometida + ", ");
-            sentencia.Append("saldo = " + this.Saldo + ", ");
-            sentencia.Append("cuotas_pagadas =" + this.Cuotaspagadas + " ");
-            sentencia.Append("where idserviciosacometida =" + this.Idserviciosacometida + "; ");
+            sentencia.Append("idcuotaacometida=@idcuotaacometida, ");
+            sentencia.Append("saldo = @saldo, ");
+            sentencia.Append("cuotas_pagadas =@cuotas_pagadas ");
+            sentencia.Append("where idserviciosacometida =@idserviciosacometida; ");
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            dic.Add("idcuotaacometida", Idcuotaacometida);
+            dic.Add("monto", Monto);
+            dic.Add("cuotaspagadas", Cuotaspagadas);
+            dic.Add("ncuotas", Numeredecuotas);
+            dic.Add("saldo", Saldo);
+            dic.Add("idserviciosacometida", Idserviciosacometida);
 
-            try { return operacion.Actualizar(sentencia.ToString()); } catch (Exception ex) { return false; }
+            try { return operacion.Actualizar(sentencia.ToString(), dic); } catch (Exception ex) { return false; }
         }
     }
 }

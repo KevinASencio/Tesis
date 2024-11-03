@@ -434,7 +434,6 @@
             // pnlBotones
             // 
             this.pnlBotones.BackColor = System.Drawing.SystemColors.Control;
-            this.pnlBotones.Controls.Add(this.pnlTablasAux);
             this.pnlBotones.Controls.Add(this.btnClientes);
             this.pnlBotones.Controls.Add(this.btnGenerarFac);
             this.pnlBotones.Controls.Add(this.btnCorte);
@@ -443,6 +442,7 @@
             this.pnlBotones.Controls.Add(this.btnTransacciones);
             this.pnlBotones.Controls.Add(this.btnCobro);
             this.pnlBotones.Controls.Add(this.btnServiciosMora);
+            this.pnlBotones.Controls.Add(this.pnlTablasAux);
             this.pnlBotones.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlBotones.Location = new System.Drawing.Point(0, 0);
             this.pnlBotones.Name = "pnlBotones";
@@ -690,6 +690,7 @@
             this.btnReportes.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnReportes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnReportes.UseVisualStyleBackColor = true;
+            this.btnReportes.Click += new System.EventHandler(this.btnReportes_Click);
             // 
             // btnTransacciones
             // 

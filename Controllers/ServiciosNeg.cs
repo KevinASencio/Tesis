@@ -1,5 +1,6 @@
 ﻿using CapaDatos.Entidades;
 using System;
+using System.Data;
 using System.Security.AccessControl;
 using System.Windows.Forms;
 
@@ -109,6 +110,15 @@ namespace Controllers
         public Boolean cambiarEstado()
         {
             return _Servicio.CambiarEstado();
+        }
+        public DataTable ConsultarCon(int idcliente) 
+        {
+            return _Servicio.ConsultarCon(idcliente);
+        }
+
+        public DataTable ConsultarAco(int idcliente) 
+        {
+            return _Servicio.ConsultarAco(idcliente);
         }
     }
 }

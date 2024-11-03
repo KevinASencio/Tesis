@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace GUI.Reportes {
+namespace GUI.Datasets {
     
     
     /// <summary>
@@ -20,9 +20,9 @@ namespace GUI.Reportes {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("dsReportes")]
+    [global::System.Xml.Serialization.XmlRootAttribute("dsfacturas")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class dsReportes : global::System.Data.DataSet {
+    public partial class dsfacturas : global::System.Data.DataSet {
         
         private facturasDataTable tablefacturas;
         
@@ -30,7 +30,7 @@ namespace GUI.Reportes {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public dsReportes() {
+        public dsfacturas() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace GUI.Reportes {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected dsReportes(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected dsfacturas(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -127,7 +127,7 @@ namespace GUI.Reportes {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            dsReportes cln = ((dsReportes)(base.Clone()));
+            dsfacturas cln = ((dsfacturas)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -199,9 +199,9 @@ namespace GUI.Reportes {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "dsReportes";
+            this.DataSetName = "dsfacturas";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/dsReportes.xsd";
+            this.Namespace = "http://tempuri.org/dsfacturas.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tablefacturas = new facturasDataTable();
@@ -225,7 +225,7 @@ namespace GUI.Reportes {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            dsReportes ds = new dsReportes();
+            dsfacturas ds = new dsfacturas();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -299,9 +299,13 @@ namespace GUI.Reportes {
             
             private global::System.Data.DataColumn columncolonia;
             
-            private global::System.Data.DataColumn columnmeses_pendientes;
+            private global::System.Data.DataColumn columncont_pendiente;
             
             private global::System.Data.DataColumn columntotal;
+            
+            private global::System.Data.DataColumn columntextmeses;
+            
+            private global::System.Data.DataColumn columntextsaldo;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -418,9 +422,9 @@ namespace GUI.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn meses_pendientesColumn {
+            public global::System.Data.DataColumn cont_pendienteColumn {
                 get {
-                    return this.columnmeses_pendientes;
+                    return this.columncont_pendiente;
                 }
             }
             
@@ -429,6 +433,22 @@ namespace GUI.Reportes {
             public global::System.Data.DataColumn totalColumn {
                 get {
                     return this.columntotal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn textmesesColumn {
+                get {
+                    return this.columntextmeses;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn textsaldoColumn {
+                get {
+                    return this.columntextsaldo;
                 }
             }
             
@@ -469,7 +489,7 @@ namespace GUI.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public facturasRow AddfacturasRow(string idfactura, string idcliente, string cliente, string fecha_hasta, string fecha_vencimiento, string mora, string saldo, string cuota, string mes, string colonia, string meses_pendientes, string total) {
+            public facturasRow AddfacturasRow(long idfactura, int idcliente, string cliente, System.DateTime fecha_hasta, System.DateTime fecha_vencimiento, decimal mora, decimal saldo, decimal cuota, string mes, string colonia, int cont_pendiente, decimal total, string textmeses, string textsaldo) {
                 facturasRow rowfacturasRow = ((facturasRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         idfactura,
@@ -482,8 +502,10 @@ namespace GUI.Reportes {
                         cuota,
                         mes,
                         colonia,
-                        meses_pendientes,
-                        total};
+                        cont_pendiente,
+                        total,
+                        textmeses,
+                        textsaldo};
                 rowfacturasRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowfacturasRow);
                 return rowfacturasRow;
@@ -516,37 +538,44 @@ namespace GUI.Reportes {
                 this.columncuota = base.Columns["cuota"];
                 this.columnmes = base.Columns["mes"];
                 this.columncolonia = base.Columns["colonia"];
-                this.columnmeses_pendientes = base.Columns["meses_pendientes"];
+                this.columncont_pendiente = base.Columns["cont_pendiente"];
                 this.columntotal = base.Columns["total"];
+                this.columntextmeses = base.Columns["textmeses"];
+                this.columntextsaldo = base.Columns["textsaldo"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
-                this.columnidfactura = new global::System.Data.DataColumn("idfactura", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnidfactura = new global::System.Data.DataColumn("idfactura", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnidfactura);
-                this.columnidcliente = new global::System.Data.DataColumn("idcliente", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnidcliente = new global::System.Data.DataColumn("idcliente", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnidcliente);
                 this.columncliente = new global::System.Data.DataColumn("cliente", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncliente);
-                this.columnfecha_hasta = new global::System.Data.DataColumn("fecha_hasta", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnfecha_hasta = new global::System.Data.DataColumn("fecha_hasta", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnfecha_hasta);
-                this.columnfecha_vencimiento = new global::System.Data.DataColumn("fecha_vencimiento", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnfecha_vencimiento = new global::System.Data.DataColumn("fecha_vencimiento", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnfecha_vencimiento);
-                this.columnmora = new global::System.Data.DataColumn("mora", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnmora = new global::System.Data.DataColumn("mora", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnmora);
-                this.columnsaldo = new global::System.Data.DataColumn("saldo", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnsaldo = new global::System.Data.DataColumn("saldo", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnsaldo);
-                this.columncuota = new global::System.Data.DataColumn("cuota", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columncuota = new global::System.Data.DataColumn("cuota", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncuota);
                 this.columnmes = new global::System.Data.DataColumn("mes", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnmes);
                 this.columncolonia = new global::System.Data.DataColumn("colonia", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncolonia);
-                this.columnmeses_pendientes = new global::System.Data.DataColumn("meses_pendientes", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnmeses_pendientes);
-                this.columntotal = new global::System.Data.DataColumn("total", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columncont_pendiente = new global::System.Data.DataColumn("cont_pendiente", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncont_pendiente);
+                this.columntotal = new global::System.Data.DataColumn("total", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntotal);
+                this.columntextmeses = new global::System.Data.DataColumn("textmeses", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntextmeses);
+                this.columntextsaldo = new global::System.Data.DataColumn("textsaldo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntextsaldo);
+                this.columncont_pendiente.Caption = "meses_pendientes";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -614,7 +643,7 @@ namespace GUI.Reportes {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                dsReportes ds = new dsReportes();
+                dsfacturas ds = new dsfacturas();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -689,10 +718,10 @@ namespace GUI.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string idfactura {
+            public long idfactura {
                 get {
                     try {
-                        return ((string)(this[this.tablefacturas.idfacturaColumn]));
+                        return ((long)(this[this.tablefacturas.idfacturaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'idfactura\' de la tabla \'facturas\' es DBNull.", e);
@@ -705,10 +734,10 @@ namespace GUI.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string idcliente {
+            public int idcliente {
                 get {
                     try {
-                        return ((string)(this[this.tablefacturas.idclienteColumn]));
+                        return ((int)(this[this.tablefacturas.idclienteColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'idcliente\' de la tabla \'facturas\' es DBNull.", e);
@@ -737,10 +766,10 @@ namespace GUI.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string fecha_hasta {
+            public System.DateTime fecha_hasta {
                 get {
                     try {
-                        return ((string)(this[this.tablefacturas.fecha_hastaColumn]));
+                        return ((global::System.DateTime)(this[this.tablefacturas.fecha_hastaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'fecha_hasta\' de la tabla \'facturas\' es DBNull.", e);
@@ -753,10 +782,10 @@ namespace GUI.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string fecha_vencimiento {
+            public System.DateTime fecha_vencimiento {
                 get {
                     try {
-                        return ((string)(this[this.tablefacturas.fecha_vencimientoColumn]));
+                        return ((global::System.DateTime)(this[this.tablefacturas.fecha_vencimientoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'fecha_vencimiento\' de la tabla \'facturas\' es DBNull.", e);
@@ -769,10 +798,10 @@ namespace GUI.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string mora {
+            public decimal mora {
                 get {
                     try {
-                        return ((string)(this[this.tablefacturas.moraColumn]));
+                        return ((decimal)(this[this.tablefacturas.moraColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'mora\' de la tabla \'facturas\' es DBNull.", e);
@@ -785,10 +814,10 @@ namespace GUI.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string saldo {
+            public decimal saldo {
                 get {
                     try {
-                        return ((string)(this[this.tablefacturas.saldoColumn]));
+                        return ((decimal)(this[this.tablefacturas.saldoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'saldo\' de la tabla \'facturas\' es DBNull.", e);
@@ -801,10 +830,10 @@ namespace GUI.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string cuota {
+            public decimal cuota {
                 get {
                     try {
-                        return ((string)(this[this.tablefacturas.cuotaColumn]));
+                        return ((decimal)(this[this.tablefacturas.cuotaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'cuota\' de la tabla \'facturas\' es DBNull.", e);
@@ -849,26 +878,26 @@ namespace GUI.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string meses_pendientes {
+            public int cont_pendiente {
                 get {
                     try {
-                        return ((string)(this[this.tablefacturas.meses_pendientesColumn]));
+                        return ((int)(this[this.tablefacturas.cont_pendienteColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'meses_pendientes\' de la tabla \'facturas\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'cont_pendiente\' de la tabla \'facturas\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablefacturas.meses_pendientesColumn] = value;
+                    this[this.tablefacturas.cont_pendienteColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string total {
+            public decimal total {
                 get {
                     try {
-                        return ((string)(this[this.tablefacturas.totalColumn]));
+                        return ((decimal)(this[this.tablefacturas.totalColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'total\' de la tabla \'facturas\' es DBNull.", e);
@@ -876,6 +905,38 @@ namespace GUI.Reportes {
                 }
                 set {
                     this[this.tablefacturas.totalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string textmeses {
+                get {
+                    try {
+                        return ((string)(this[this.tablefacturas.textmesesColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'textmeses\' de la tabla \'facturas\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablefacturas.textmesesColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string textsaldo {
+                get {
+                    try {
+                        return ((string)(this[this.tablefacturas.textsaldoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'textsaldo\' de la tabla \'facturas\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablefacturas.textsaldoColumn] = value;
                 }
             }
             
@@ -1001,14 +1062,14 @@ namespace GUI.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool Ismeses_pendientesNull() {
-                return this.IsNull(this.tablefacturas.meses_pendientesColumn);
+            public bool Iscont_pendienteNull() {
+                return this.IsNull(this.tablefacturas.cont_pendienteColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Setmeses_pendientesNull() {
-                this[this.tablefacturas.meses_pendientesColumn] = global::System.Convert.DBNull;
+            public void Setcont_pendienteNull() {
+                this[this.tablefacturas.cont_pendienteColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1021,6 +1082,30 @@ namespace GUI.Reportes {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SettotalNull() {
                 this[this.tablefacturas.totalColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IstextmesesNull() {
+                return this.IsNull(this.tablefacturas.textmesesColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SettextmesesNull() {
+                this[this.tablefacturas.textmesesColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IstextsaldoNull() {
+                return this.IsNull(this.tablefacturas.textsaldoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SettextsaldoNull() {
+                this[this.tablefacturas.textsaldoColumn] = global::System.Convert.DBNull;
             }
         }
         

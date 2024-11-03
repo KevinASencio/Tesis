@@ -14,7 +14,7 @@ namespace Controllers
             crt.FechaHasta = fechahasta;
             crt.FechaVencimiento = fechavencimiento;
             crt.FechaGeneracion=DateTime.Now;
-            return crt.agregar();
+            return crt.Agregar();
         }
         public int getId()
         {
@@ -24,6 +24,10 @@ namespace Controllers
         public DataTable ConsultarFechas() 
         {
             return crt.ConsultarControlFecha();
+        }
+        public ControlFechasFacturas ConsultarControl() 
+        {
+            return crt.ConsultarControlFecha(crt.IdControl);
         }
     }
 }

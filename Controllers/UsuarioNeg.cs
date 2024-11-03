@@ -16,6 +16,8 @@ namespace CapaNegocio.UsuarioNeg
         public Boolean Iniciar(string usuario, string pass)
         {
             DataTable result = new DataTable();
+            user.Uusuario = usuario;
+            user.Contraseña= pass;
             result = user.Validar(usuario, pass);
             if (result.Rows.Count > 0)
             {

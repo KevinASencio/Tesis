@@ -54,7 +54,6 @@
     <Compile Include="ServiciosAcometidaNeg.cs" />
     <Compile Include="ServiciosConsumoNeg.cs" />
     <Compile Include="ServiciosNeg.cs" />
-    <Compile Include="SistemCache.cs" />
     <Compile Include="UsuarioNeg.cs" />
   </ItemGroup>
   <ItemGroup>

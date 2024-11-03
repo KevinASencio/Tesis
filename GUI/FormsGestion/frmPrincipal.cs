@@ -13,6 +13,7 @@ using CapaNegocio;
 using CapaNegocio.UsuarioNeg;
 using GUI.Clases;
 using GUI.FormsProcesos;
+using GUI.Reportes;
 namespace GUI.FormsGestion
 {
     public partial class frmPrincipal : Form
@@ -243,6 +244,13 @@ namespace GUI.FormsGestion
         {
             frmVistaControlFechas frm = new frmVistaControlFechas();
             frm.StartPosition = FormStartPosition.CenterParent;
+            frm.ShowDialog();
+        }
+
+        private void btnReportes_Click(object sender, EventArgs e)
+        {
+            frmRepFacturasColonia frm = new frmRepFacturasColonia();
+            frm.StartPosition=FormStartPosition.CenterParent;
             frm.ShowDialog();
         }
     }

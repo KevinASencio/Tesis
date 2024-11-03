@@ -27,10 +27,12 @@ namespace CapaDatos.Entidades
             sentencia.Append("FROM acciones acc ");
             sentencia.Append("JOIN permisos per ON acc.idaccion = per.idaccion ");
             sentencia.Append("JOIN roles rol ON per.idrol = rol.idrol ");
-            sentencia.Append("WHERE rol.idrol = " + IdRol + ";");
+            sentencia.Append("WHERE rol.idrol = @idrol;");
+            Dictionary <string,object> dic = new Dictionary<string,object>();
+            dic.Add("idrol", IdRol);
             try
             {
-                return operaion.Consultar(sentencia.ToString());
+                return operaion.Consultar(sentencia.ToString(),dic);
             }
             catch { return new DataTable(); }
         }
@@ -46,11 +48,12 @@ namespace CapaDatos.Entidades
             sentencia.Append("SELECT idaccion  ");
             sentencia.Append("FROM permisos per ");
             sentencia.Append("JOIN roles rol ON per.idrol = rol.idrol ");
-            sentencia.Append("WHERE rol.idrol = " + IdRol + " AND per.idaccion = acc.idaccion);");
-
+            sentencia.Append("WHERE rol.idrol =@idrol AND per.idaccion = acc.idaccion);");
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            dic.Add("idrol", IdRol);
             try
             {
-                return operacion.Consultar(sentencia.ToString());
+                return operacion.Consultar(sentencia.ToString(),dic);
             }
             catch (Exception ex)
             {
@@ -65,17 +68,22 @@ namespace CapaDatos.Entidades
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia= new StringBuilder();
             sentencia.Append("insert into permisos (idrol,idaccion) values(");
-            sentencia.Append(" " + IdRol + ",");
-            sentencia.Append(" " + IdAccion + ");");
-            try { return operacion.Insertar(sentencia.ToString()); }catch { return false; }
+            sentencia.Append("@idrol,");
+            sentencia.Append(" @idaccion);");
+            Dictionary<string,object> dic = new Dictionary<string,object>();
+            dic.Add("idrol", IdRol);
+            dic.Add("idaccion", IdAccion);
+            try { return operacion.Insertar(sentencia.ToString(), dic); }catch { return false; }
         }
 
         public Boolean Eliminar() 
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
-            sentencia.Append("delete from permisos where idpermiso= " + IdPermiso + ";");
-            try { return operacion.Eliminar(sentencia.ToString()); } catch { return false; }
+            sentencia.Append("delete from permisos where idpermiso=@idpermiso;");
+            Dictionary<string,object> dic= new Dictionary<string,object>();
+            dic.Add("idpermiso", IdPermiso);
+            try { return operacion.Eliminar(sentencia.ToString(), dic); } catch { return false; }
         }
 
     }

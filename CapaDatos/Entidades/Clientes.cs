@@ -22,7 +22,7 @@ namespace CapaDatos.Entidades
         public string Dui { get => _Dui; set => _Dui = value; }
         public string Direecion { get => _Direecion; set => _Direecion = value; }
         public string Estado { get => _Estado; set => _Estado = value; }
-        public static DataTable Consultar()
+        public DataTable Consultar()
         {
             DataTable resul = new DataTable();
             StringBuilder sentencia = new StringBuilder();
