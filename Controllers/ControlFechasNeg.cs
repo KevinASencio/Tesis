@@ -1,5 +1,6 @@
 ﻿using CapaDatos.Entidades;
 using System;
+using System.Data;
 
 namespace Controllers
 {
@@ -7,9 +8,12 @@ namespace Controllers
     {
         ControlFechasFacturas crt = new ControlFechasFacturas();
 
-        public Boolean insertar()
+        public Boolean insertar(string mes, DateTime fechavencimiento,DateTime fechahasta)
         {
-
+            crt.Mes = mes;
+            crt.FechaHasta = fechahasta;
+            crt.FechaVencimiento = fechavencimiento;
+            crt.FechaGeneracion=DateTime.Now;
             return crt.agregar();
         }
         public int getId()
@@ -17,10 +21,9 @@ namespace Controllers
             return crt.IdControl;
         }
 
-        public void setFechaHasta(DateTime dt) { this.crt.FechaHasta = dt; }
-        DateTime getFechaHasta() { return this.crt.FechaHasta; }
-        public void setFechaVencimiento(DateTime dt) { this.crt.FechaVencimiento = dt; }
-        public void setFechaGeneracion() { this.crt.FechaGeneracion = DateTime.Now; }
-        public void setMes(string mes) { this.crt.Mes = mes; }
+        public DataTable ConsultarFechas() 
+        {
+            return crt.ConsultarControlFecha();
+        }
     }
 }

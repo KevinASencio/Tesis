@@ -54,7 +54,7 @@ namespace CapaDatos.Entidades
             {
                 return double.Parse(operacion.Consultar(sentencia.ToString()).Rows[0][0].ToString());
             }
-            catch (Exception ex) { return 0; Console.WriteLine(ex.Message); }
+            catch (Exception ex) { Console.WriteLine(ex.Message); return 0; }
         }
 
         public static double ConsultarCuota(int idconsumo, int idacometida)
@@ -77,7 +77,7 @@ namespace CapaDatos.Entidades
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
-            sentencia.Append("insert into cuotasconsumo into (monto) values (" + this.Monto + ")");
+            sentencia.Append("insert into cuotasconsumo  (monto) values (" + this.Monto + ")");
             try { return operacion.Insertar(sentencia.ToString()); } catch (Exception ex) { MessageBox.Show(ex.Message); return false; }
         }
 

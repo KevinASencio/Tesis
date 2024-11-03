@@ -66,6 +66,20 @@ namespace CapaDatos.Entidades
             }
             catch (Exception ex) { return null; }
         }
+        public  DataTable ConsultarControlFecha()
+        {
+            DBOperacion operacion = new DBOperacion();
+            StringBuilder sentencia = new StringBuilder();
+            sentencia.Append("select idcontrol, fecha_vencimiento, fecha_hasta, mes, fecha_generacion from fecha_control_facturas;");
+
+            try
+            {
+                ControlFechasFacturas ct = new ControlFechasFacturas();
+                return operacion.Consultar(sentencia.ToString());
+            }
+            catch (Exception ex) { return null; }
+        }
+
 
         public static int ConsultarUltimoCtr() 
         {
@@ -74,6 +88,18 @@ namespace CapaDatos.Entidades
             sentencia.Append("select idcontrol from fecha_control_facturas order by idcontrol desc limit 1;");
             try { return int.Parse(operacion.Consultar(sentencia.ToString()).Rows[0][0].ToString()); }
             catch (Exception ex) { return 0; }
+        }
+
+        public Boolean Actualizar() 
+        {
+            DBOperacion operacion = new DBOperacion();
+            StringBuilder sentencia = new StringBuilder();
+            sentencia.Append("update fecha_control_facturas set ");
+            sentencia.AppendFormat(" fecha_vencimiento='{0}'", FechaVencimiento.ToString("yyyy-MM-dd"));
+            sentencia.AppendFormat(" fecha_hasta = '{0}'",FechaHasta.ToString("yyyy-MM-dd"));
+            sentencia.AppendFormat(" mes='{0}'", Mes);
+            sentencia.AppendFormat(" where idcontro={0};", IdControl);
+            return false;
         }
     }
 }

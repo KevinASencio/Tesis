@@ -238,5 +238,12 @@ namespace GUI.FormsGestion
             frmGestionRolesPermisos frmpermisos= new frmGestionRolesPermisos();
             OrganizadorObj.abrirCont(frmpermisos);
         }
+
+        private void btnControlFechas_Click(object sender, EventArgs e)
+        {
+            frmVistaControlFechas frm = new frmVistaControlFechas();
+            frm.StartPosition = FormStartPosition.CenterParent;
+            frm.ShowDialog();
+        }
     }
 }

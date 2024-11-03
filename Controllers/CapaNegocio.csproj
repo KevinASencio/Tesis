@@ -58,6 +58,9 @@
     <Compile Include="UsuarioNeg.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\CapaDatos\CapaDatos.csproj">
       <Project>{10a52413-e119-4d01-a28e-fe1c65788c74}</Project>
       <Name>CapaDatos</Name>

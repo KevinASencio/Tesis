@@ -528,6 +528,7 @@
             this.btnControlFechas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnControlFechas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnControlFechas.UseVisualStyleBackColor = true;
+            this.btnControlFechas.Click += new System.EventHandler(this.btnControlFechas_Click);
             // 
             // btnParametros
             // 

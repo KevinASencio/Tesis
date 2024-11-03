@@ -34,7 +34,8 @@ namespace Controllers
         {
             fac.consultarFactura(idfactura);
             servicio = Servicios.ConsultarServicio(fac.IdServicio);
-            cliente = Clientes.ConsultarCliente(servicio.IdCliente);
+            cliente.IdCliente = servicio.IdCliente;
+            cliente = cliente.ConsultarCliente();
             fechacontrol = ControlFechasFacturas.ConsultarControlFecha(fac.IdControlFecha);
             ct.Consultar();
             contenedor.Controls.Find("lblcliente", true)[0].Text = cliente.Nombres + ", " + cliente.Apellidos;

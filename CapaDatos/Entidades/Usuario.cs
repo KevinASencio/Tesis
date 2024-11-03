@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Text;
 
@@ -46,15 +47,22 @@ namespace CapaDatos.Entidades
             StringBuilder sentencia = new StringBuilder();
             DBOperacion operacion = new DBOperacion();
             sentencia.Append("insert into usuarios (usuario, nombres, apellidos, idrol, contraseña, estado) values(");
-            sentencia.Append("'" + _Usuario + "',");
-            sentencia.Append("'" + _Nombres + "',");
-            sentencia.Append("'" + _Apellidos + "',");
-            sentencia.Append(" " + _IdRol + ",");
-            sentencia.Append("'" + _Contraseña + "',");
-            sentencia.Append("'" + _Estado + "');");
+            sentencia.Append(" @usuario,");
+            sentencia.Append(" @nombres,");
+            sentencia.Append(" @apellidos,");
+            sentencia.Append(" @idrol,");
+            sentencia.Append(" sha1(@contraseña),");
+            sentencia.Append(" @estado);");
+            Dictionary<string,object> dic = new Dictionary<string,object>();
+            dic.Add("usuario", Uusuario);
+            dic.Add("nombres", Nombres);
+            dic.Add("apellidos",Apellidos);
+            dic.Add("idrol", IdRol);
+            dic.Add("contraseña", Contraseña);
+            dic.Add("estado", Estado);
             try
             {
-                return operacion.Insertar(sentencia.ToString());
+                return operacion.Insertar(sentencia.ToString(),dic);
 
             }
             catch (Exception ex)
@@ -69,16 +77,21 @@ namespace CapaDatos.Entidades
             StringBuilder sentencia = new StringBuilder();
             DBOperacion operacion = new DBOperacion();
             sentencia.Append("update usuarios set ");
-            sentencia.Append("nombres = '" + _Nombres + "',");
-            sentencia.Append("apellidos = '" + _Apellidos + "',");
-            sentencia.Append("idrol = " + _IdRol + ",");
-            sentencia.Append("contraseña = '" + _Contraseña + "',");
-            sentencia.Append("estado = '" + _Estado + "' where usuario='" + _Usuario + "';");
-
+            sentencia.Append("nombres = @nombres,");
+            sentencia.Append("apellidos = @apellidos,");
+            sentencia.Append("idrol = @idrol,");
+            sentencia.Append("contraseña = @contraseña,");
+            sentencia.Append("estado = @estado where usuario=@usuario;");
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            dic.Add("usuario", Uusuario);
+            dic.Add("nombres", Nombres);
+            dic.Add("apellidos", Apellidos);
+            dic.Add("idrol", IdRol);
+            dic.Add("contraseña", Contraseña);
+            dic.Add("estado", Estado);
             try
             {
-                return operacion.Actualizar(sentencia.ToString());
-
+                return operacion.Actualizar(sentencia.ToString(), dic);
             }
             catch (Exception ex)
             {
@@ -92,8 +105,9 @@ namespace CapaDatos.Entidades
             StringBuilder sentencia = new StringBuilder();
             DBOperacion operacion = new DBOperacion();
 
-            sentencia.Append(@"select us.usuario, us.nombres, us.apellidos, us.estado,us.idrol , (select rol from roles as rl where us.idrol=rl.idrol) as rol 
-                              from usuarios as us where  usuario='" + user + "' and BINARY contraseña='" + pass + "';");
+            sentencia.Append("select us.usuario, us.nombres, us.apellidos, us.estado,us.idrol , (select rol from roles as rl where us.idrol=rl.idrol) as rol");
+            sentencia.Append(" from usuarios as us where  usuario='" +_Usuario + "'");
+            sentencia.AppendFormat(" and BINARY contraseña=sha1('{0}');", pass);               
 
             try
             {
@@ -102,7 +116,7 @@ namespace CapaDatos.Entidades
             catch (Exception ex)
             {
                 Console.Error.WriteLine(ex.ToString());
-                return null;
+                return new DataTable();
             }
         }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Text;
 
@@ -26,7 +27,7 @@ namespace CapaDatos.Entidades
             DataTable resul = new DataTable();
             StringBuilder sentencia = new StringBuilder();
             DBOperacion operacion = new DBOperacion();
-            sentencia.Append(@"select * from clientes;");
+            sentencia.Append(@"select idcliente, nombres, apellidos, direccion, dui, estado, telefono from clientes;");
 
             try
             {
@@ -45,15 +46,24 @@ namespace CapaDatos.Entidades
             StringBuilder sentencia = new StringBuilder();
             DBOperacion operacion = new DBOperacion();
             sentencia.Append("insert into clientes (nombres, apellidos, direccion, dui, estado,telefono) values(");
-            sentencia.Append("'" + _Nombres + "',");
-            sentencia.Append("'" + _Apellidos + "',");
-            sentencia.Append("'" + _Direecion + "',");
-            sentencia.Append("'" + _Dui + "',");
-            sentencia.Append("'" + _Estado + "',");
-            sentencia.Append("'" + _Telefono + "');");
+            sentencia.Append(" @nombres,");
+            sentencia.Append(" @apellidos,");
+            sentencia.Append(" @direccion,");
+            sentencia.Append(" @dui,");
+            sentencia.Append(" @estado,");
+            sentencia.Append(" @telefono);");
+
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            dic.Add("nombres", Nombres);
+            dic.Add("apellidos", Apellidos);
+            dic.Add("direccion", Direecion);
+            dic.Add("dui", Dui);
+            dic.Add("estado", Estado);
+            dic.Add("telefono", Telefono);
+
             try
             {
-                return operacion.Insertar(sentencia.ToString());
+                return operacion.Insertar(sentencia.ToString(), dic);
             }
             catch (Exception ex)
             {
@@ -67,16 +77,24 @@ namespace CapaDatos.Entidades
             StringBuilder sentencia = new StringBuilder();
             DBOperacion operacion = new DBOperacion();
             sentencia.Append("update clientes set ");
-            sentencia.Append("nombres='" + _Nombres + "',");
-            sentencia.Append("apellidos='" + _Apellidos + "',");
-            sentencia.Append("direccion='" + _Direecion + "',");
-            sentencia.Append("dui='" + _Dui + "',");
-            sentencia.Append("telefono='" + _Telefono + "',");
-            sentencia.Append("estado='" + _Estado + "'");
-            sentencia.Append("where idcliente=" + _IdCliente + ";");
+            sentencia.Append("nombres= @nombres,");
+            sentencia.Append("apellidos=@apellidos,");
+            sentencia.Append("direccion=@direccion,");
+            sentencia.Append("dui=@dui,");
+            sentencia.Append("telefono= @telefono,");
+            sentencia.Append("estado=@estado");
+            sentencia.Append("where idcliente=@idcliente;");
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            dic.Add("nombres", Nombres);
+            dic.Add("apellidos", Apellidos);
+            dic.Add("direccion", Direecion);
+            dic.Add("dui", Dui);
+            dic.Add("estado", Estado);
+            dic.Add("telefono", Telefono);
+            dic.Add("@idcliente", IdCliente);
             try
             {
-                return operacion.Actualizar(sentencia.ToString());
+                return operacion.Actualizar(sentencia.ToString(), dic);
 
             }
             catch (Exception ex)
@@ -90,17 +108,13 @@ namespace CapaDatos.Entidades
         {
             StringBuilder sentencia = new StringBuilder();
             DBOperacion operacion = new DBOperacion();
-            sentencia.Append("update clientes set estado = '" + _Estado + "' where idcliente=" + _IdCliente + ";");
+            sentencia.Append("update clientes set estado = '@estado' where idcliente=@idcliente;");
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            dic.Add("estado", Estado);
+            dic.Add("idcliente", IdCliente);
             try
             {
-                if (operacion.Eliminar(sentencia.ToString()))
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return operacion.Actualizar(sentencia.ToString(), dic);
             }
             catch
             {
@@ -109,13 +123,14 @@ namespace CapaDatos.Entidades
 
         }
 
-        public static Clientes ConsultarCliente(int idcliente) 
+        public  Clientes ConsultarCliente()
         {
-            
+
             StringBuilder sentencia = new StringBuilder();
             DBOperacion operacion = new DBOperacion();
-            sentencia.Append(@"select idcliente, nombres, apellidos, direccion, dui, estado, telefono from clientes where idcliente=" + idcliente + ";");
-
+            sentencia.Append(@"select idcliente, nombres, apellidos, direccion, dui, estado, telefono from clientes where idcliente=@idcliente;");
+            Dictionary<string,object> dic = new Dictionary<string,object>();
+            dic.Add("idcliente",IdCliente);
             try
             {
                 DataRow rw = operacion.Consultar(sentencia.ToString()).Rows[0];
@@ -124,7 +139,7 @@ namespace CapaDatos.Entidades
                 cliente.Nombres = rw.ItemArray[1].ToString();
                 cliente.Apellidos = rw.ItemArray[2].ToString();
                 cliente.Direecion = rw.ItemArray[3].ToString();
-                cliente.Dui= rw.ItemArray[4].ToString();
+                cliente.Dui = rw.ItemArray[4].ToString();
                 cliente.Estado = rw.ItemArray[5].ToString();
                 cliente.Telefono = rw.ItemArray[6].ToString();
                 return cliente;

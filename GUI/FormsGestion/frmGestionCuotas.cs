@@ -70,11 +70,13 @@ namespace GUI.FormsGestion
             }
             else 
             {
+                if (String.IsNullOrEmpty(txbIdCon.Text)) { txbIdCon.Text = "0"; }
                 if (cuota.ProcesarCuotaConsumo(int.Parse(txbIdCon.Text.ToString()), float.Parse(txbCuotaCon.Text.ToString())))
                 {
                     Validacion.frmMessageBox("¡Registro Guardado!", "¡Exito!");
                     txbIdCon.Clear();
                     txbCuotaCon.Clear();
+                    cargardatos();
                 }
             }
         }
@@ -97,7 +99,7 @@ namespace GUI.FormsGestion
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnGuardarAco_Click(object sender, EventArgs e)
         {
             if (txbCuotaAco.Text.Length == 0)
             {
@@ -105,11 +107,13 @@ namespace GUI.FormsGestion
             }
             else
             {
+                if (String.IsNullOrEmpty(txbIdAco.Text)) {txbIdAco.Text = "0"; }
                 if (cuota.ProcesarCuotaConsumo(int.Parse(txbIdAco.Text.ToString()), float.Parse(txbCuotaAco.Text.ToString())))
                 {
                     Validacion.frmMessageBox("¡Registro Guardado!", "¡Exito!");
-                    txbCuotaAco.Text = "";
-                    txbIdAco.Text = "";
+                    txbCuotaAco.Clear();
+                    txbIdAco.Clear();
+                    cargardatos();
                 }
             }
         }

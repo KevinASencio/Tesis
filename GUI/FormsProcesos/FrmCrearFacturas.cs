@@ -27,11 +27,7 @@ namespace GUI.FormsGestion
             {
                 if (dtpVencimiento.Value.Date > DateTime.Now.Date)
                 {
-                    fecha.setFechaGeneracion();
-                    fecha.setFechaHasta(this.dtpFinalConsumo.Value);
-                    fecha.setFechaVencimiento(this.dtpVencimiento.Value);
-                    fecha.setMes(cmbMes.Text.ToString());
-                    fecha.insertar();
+                    fecha.insertar(cmbMes.Text.ToString(), dtpVencimiento.Value, dtpFinalConsumo.Value);
                     fac.Generar(fecha.getId(), pgbCrear, lblTotal);
                     fac.GenerarAco(fecha.getId(), pgbCrear, lblTotal);
                 }
@@ -47,7 +43,6 @@ namespace GUI.FormsGestion
         }
         private void cmbMes_SelectedValueChanged(object sender, EventArgs e)
         {
-            fecha.setMes(cmbMes.Text.ToString());
         }
 
         private void FrmCrearFacturas_SizeChanged(object sender, EventArgs e)
