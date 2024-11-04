@@ -406,11 +406,20 @@ namespace CapaDatos.Entidades
             dic.Add("idcontrol",idcontrol);
             dic.Add("idcolonia", idcolonia);
             try { return operacion.Consultar(sentencia.ToString(), dic); } catch { return new DataTable(); }
-            
-            
-            
-            
-           
+        }
+        public DataTable ConsultarReporteBuscar()
+        {
+            DBOperacion operacion = new DBOperacion();
+            StringBuilder sentencia = new StringBuilder();
+            sentencia.Append("select fac.idfactura, serv.idcliente, concat(cli.nombres, ', ', cli.apellidos) as 'cliente', ctrl.fecha_hasta,ctrl.fecha_vencimiento, upper(ctrl.mes)as 'mes',(fac.saldo + fac.mora) as 'total', ");
+            sentencia.Append("(fac.saldo / (fac.cont_pendiente + 1)) as 'cuota',fac.mora, fac.saldo, fac.cont_pendiente, col.colonia,fac.idservicio from facturas fac inner join servicios serv on serv.idservicio = fac.idservicio ");
+            sentencia.Append("inner join fecha_control_facturas ctrl on fac.idcontrolfecha = ctrl.idcontrol ");
+            sentencia.Append("inner join colonias col on serv.idcolonia = col.idcolonia ");
+            sentencia.Append("inner join clientes cli on serv.idcliente = cli.idcliente ");
+            sentencia.Append(" where fac.idfactura=@idfactura");
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            dic.Add("idfactura", IdFactura);
+            try { return operacion.Consultar(sentencia.ToString(), dic); } catch { return new DataTable(); }
         }
     }
 }

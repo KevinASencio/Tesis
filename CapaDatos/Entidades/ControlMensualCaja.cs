@@ -22,7 +22,7 @@ namespace CapaDatos.Entidades
         public double SaldoInicial { get => _SaldoInicial; set => _SaldoInicial = value; }
         public double SaldoFinal { get => _SaldoFinal; set => _SaldoFinal = value; }
 
-        public void Consultar()
+        public Boolean Consultar()
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
@@ -37,8 +37,9 @@ namespace CapaDatos.Entidades
                 if (rw.ItemArray[2].ToString().Length>0) { this._FechaCierre = DateTime.Parse(rw.ItemArray[2].ToString()); }
                 this.SaldoInicial = double.Parse(rw.ItemArray[3].ToString());
                 this.SaldoFinal = double.Parse(rw.ItemArray[4].ToString());
+                return true;
             }
-            catch (Exception ex) { }
+            catch (Exception ex) { return false; }
         }
 
         public bool insertar()

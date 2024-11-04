@@ -140,4 +140,21 @@
         XFGIvreT+gAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="btnImprimir.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAAG4AAABuASPlPqcAAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwa
+        AAABDElEQVQ4T53TP0oDQRiG8UkpxDpgIaQLqQQvoDcIWNimtMwNAl5AbATTmCN4AAshjaVHEFIkF7AQ
+        NevzLDvjOEjcuPBb5s/3fiyZSaiqqsZziFc4KU1wik6sT7k0COEIeShngzlu8KNJDHfwV4NLPOMiZvIG
+        dt/W4B4nmS7mTTbs4RZ9WNiGtWbMhn2cY7wjM2bDE8pPbstsPfjEFR6a+S7q1wZ3+M/X1K8PTOFxtWGt
+        mdRA1xjAI93GGmtjLg28JJ7xGmcYFVxzzxprU4P3ZhAb+Hss8Fhwzb28gdkwayaxwQrH8GbmXHMvbzCL
+        V7mHA7jpwhIvBdfcs8baXvovRDxDvMHJb9wbfmeq8AWm9+YfVAbCEgAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <metadata name="printreport.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>122, 17</value>
+  </metadata>
+  <metadata name="printDocument1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>233, 17</value>
+  </metadata>
 </root>

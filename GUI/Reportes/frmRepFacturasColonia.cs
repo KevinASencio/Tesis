@@ -28,7 +28,7 @@ namespace GUI.Reportes
             Reportes.RepFacturasColonia facturas= new RepFacturasColonia();
             facturas.SetDataSource(listafacturas);
             crystalReportViewer1.ReportSource = facturas;
-            facturas.PrintToPrinter( new PrinterSettings(), new PageSettings(),false ); 
+            //facturas.PrintToPrinter( new PrinterSettings(), new PageSettings(),false ); 
         }
 
         private void frmRepFacturasColonia_Load(object sender, EventArgs e)

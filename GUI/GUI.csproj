@@ -247,6 +247,12 @@
     <Compile Include="Reportes\frmRepFacturasColonia.Designer.cs">
       <DependentUpon>frmRepFacturasColonia.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\RepFacturaCobrar.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RepFacturaCobrar.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reportes\RepFacturasColonia.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -322,6 +328,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\frmRepFacturasColonia.resx">
       <DependentUpon>frmRepFacturasColonia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\RepFacturaCobrar.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RepFacturaCobrar.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\RepFacturasColonia.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

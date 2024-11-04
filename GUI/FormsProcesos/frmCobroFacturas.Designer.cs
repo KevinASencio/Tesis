@@ -59,6 +59,9 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripCerrar = new System.Windows.Forms.ToolStripButton();
+            this.btnImprimir = new System.Windows.Forms.Button();
+            this.printreport = new System.Windows.Forms.PrintDialog();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -84,6 +87,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnImprimir);
             this.panel1.Controls.Add(this.txbFactura);
             this.panel1.Controls.Add(this.btnBuscar);
             this.panel1.Controls.Add(this.lblIdFactura);
@@ -96,25 +100,23 @@
             // 
             // txbFactura
             // 
-            this.txbFactura.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txbFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.txbFactura.Location = new System.Drawing.Point(99, 3);
             this.txbFactura.Margin = new System.Windows.Forms.Padding(5);
             this.txbFactura.Name = "txbFactura";
-            this.txbFactura.Size = new System.Drawing.Size(422, 24);
+            this.txbFactura.Size = new System.Drawing.Size(363, 24);
             this.txbFactura.TabIndex = 3;
             this.txbFactura.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
             // btnBuscar
             // 
             this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.btnBuscar.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnBuscar.FlatAppearance.BorderSize = 0;
             this.btnBuscar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscar.ForeColor = System.Drawing.Color.White;
-            this.btnBuscar.Location = new System.Drawing.Point(521, 3);
+            this.btnBuscar.Location = new System.Drawing.Point(466, 3);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 24);
             this.btnBuscar.TabIndex = 2;
@@ -403,6 +405,28 @@
             this.toolStripCerrar.Text = "toolStripButton1";
             this.toolStripCerrar.Click += new System.EventHandler(this.toolStripCerrar_Click);
             // 
+            // btnImprimir
+            // 
+            this.btnImprimir.BackColor = System.Drawing.SystemColors.Control;
+            this.btnImprimir.Enabled = false;
+            this.btnImprimir.FlatAppearance.BorderSize = 0;
+            this.btnImprimir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimir.ForeColor = System.Drawing.Color.White;
+            this.btnImprimir.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimir.Image")));
+            this.btnImprimir.Location = new System.Drawing.Point(553, 3);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(41, 24);
+            this.btnImprimir.TabIndex = 4;
+            this.btnImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnImprimir.UseVisualStyleBackColor = false;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
+            // 
+            // printreport
+            // 
+            this.printreport.UseEXDialog = true;
+            // 
             // frmCobroFacturas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -480,5 +504,8 @@
         public System.Windows.Forms.TextBox txbTotalPagar;
         public System.Windows.Forms.TextBox txbDescuento;
         public System.Windows.Forms.Label lblMesesPen;
+        private System.Windows.Forms.Button btnImprimir;
+        private System.Windows.Forms.PrintDialog printreport;
+        private System.Drawing.Printing.PrintDocument printDocument1;
     }
 }

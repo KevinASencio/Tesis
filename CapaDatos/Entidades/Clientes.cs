@@ -133,7 +133,7 @@ namespace CapaDatos.Entidades
             dic.Add("idcliente",IdCliente);
             try
             {
-                DataRow rw = operacion.Consultar(sentencia.ToString()).Rows[0];
+                DataRow rw = operacion.Consultar(sentencia.ToString(),dic).Rows[0];
                 Clientes cliente = new Clientes();
                 cliente.IdCliente = int.Parse(rw.ItemArray[0].ToString());
                 cliente.Nombres = rw.ItemArray[1].ToString();

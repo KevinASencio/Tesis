@@ -30,7 +30,7 @@ namespace Controllers
             return fac.GenerarFacturasAcometida(idcontrol, parametros.MoraAcometida, psbBar, conta);
         }
         //cosultar a la base de datos y rellenar informacion del formulario
-        public void ConsultarFactura(string idfactura, Form contenedor)
+        public Boolean ConsultarFactura(string idfactura, Form contenedor)
         {
             parametros=parametros.Consultar();
             fac.consultarFactura(idfactura);
@@ -39,7 +39,7 @@ namespace Controllers
             cliente.IdCliente = servicio.IdCliente;
             cliente = cliente.ConsultarCliente();
             fechacontrol = fechacontrol.ConsultarControlFecha(fac.IdControlFecha);
-            ct.Consultar();
+            bool encontrado=ct.Consultar();
             contenedor.Controls.Find("lblcliente", true)[0].Text = cliente.Nombres + ", " + cliente.Apellidos;
             contenedor.Controls.Find("lblMora", true)[0].Text = fac.Mora.ToString("$ 00.00");
             contenedor.Controls.Find("lblMonto", true)[0].Text = fac.Saldo.ToString("$ 00.00");
@@ -47,6 +47,7 @@ namespace Controllers
             contenedor.Controls.Find("txbDescuento", true)[0].Text = fac.Descuento.ToString("00.00");
             contenedor.Controls.Find("lblMes", true)[0].Text = fechacontrol.Mes;
             contenedor.Controls.Find("lblMesesPen", true)[0].Text = GetMesesPendientes(fechacontrol.Mes, fac.ContPendientes);
+            return encontrado;
         }
         public string GetNomCLiente()
         {
@@ -66,9 +67,6 @@ namespace Controllers
                     else { fac.Comentario = fac.Comentario + "Se cobro $ " + parametros.MoraAcometida + " por pago tardio;"; fac.Mora = fac.Mora + parametros.MoraAcometida; }
                 }
             }
-            
-
-            
             double aux = fac.Saldo + fac.Mora;
             if (pagado < aux)
             {
@@ -281,15 +279,27 @@ namespace Controllers
 
         public DataTable ConsultarReporteGen(int idcolonia) 
         {
+            //inicializar objeto que contendra el resultado 
             DataTable resultado= new DataTable();
-            resultado= fac.ConsultarReporteGen(fechacontrol.ConsultarUltimoCtr(), idcolonia);
+            //si el id de la colonia es 0 consulta unicamente una factura en base al idfactura buscado
+            if (idcolonia != 0) resultado = fac.ConsultarReporteGen(fechacontrol.ConsultarUltimoCtr(), idcolonia);
+            else resultado = fac.ConsultarReporteBuscar();
             resultado.Columns.Add("textmeses");
+            resultado.Columns.Add("textsaldo");
+            ConvertiraLetras conv= new ConvertiraLetras();
             foreach (DataRow row in resultado.Rows) 
             {
                 row["textmeses"] = GetMesesPendientes(row["mes"].ToString(), int.Parse(row["cont_pendiente"].ToString())).ToUpper();
+                row["textsaldo"] = conv.Convertir(double.Parse(row["total"].ToString()));
             }
             return resultado;
         }
+
+        public DataTable ConsultarReporteBuscar() 
+        {
+            return fac.ConsultarReporteBuscar();
+        }
+
     }
 
 }

@@ -11,6 +11,7 @@ using System.Windows.Controls;
 using System.Windows.Forms;
 using CapaNegocio;
 using CapaNegocio.UsuarioNeg;
+using Controllers;
 using GUI.Clases;
 using GUI.FormsProcesos;
 using GUI.Reportes;
@@ -252,6 +253,12 @@ namespace GUI.FormsGestion
             frmRepFacturasColonia frm = new frmRepFacturasColonia();
             frm.StartPosition=FormStartPosition.CenterParent;
             frm.ShowDialog();
+        }
+
+        private void btnImportar_Click(object sender, EventArgs e)
+        {
+            ConvertiraLetras convert=new ConvertiraLetras();
+            MessageBox.Show(convert.Convertir(235.08));
         }
     }
 }
