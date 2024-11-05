@@ -31,32 +31,32 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGestionFechas));
             this.pnlPrincipal = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txbId = new System.Windows.Forms.TextBox();
             this.lblId = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.dtpFinConsumo = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.dtpVencimiento = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.cmbRol = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.pnlTop = new System.Windows.Forms.Panel();
             this.prbCerrar = new System.Windows.Forms.PictureBox();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnGuardar = new System.Windows.Forms.Button();
-            this.dtpFinConsumo = new System.Windows.Forms.DateTimePicker();
-            this.dtpVencimiento = new System.Windows.Forms.DateTimePicker();
             this.ErrorNotificador = new System.Windows.Forms.ErrorProvider(this.components);
             this.pnlPrincipal.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
             this.pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.prbCerrar)).BeginInit();
-            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorNotificador)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,8 +70,49 @@
             this.pnlPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlPrincipal.Location = new System.Drawing.Point(0, 25);
             this.pnlPrincipal.Name = "pnlPrincipal";
-            this.pnlPrincipal.Size = new System.Drawing.Size(800, 425);
+            this.pnlPrincipal.Size = new System.Drawing.Size(497, 457);
             this.pnlPrincipal.TabIndex = 20;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.btnCancelar);
+            this.panel4.Controls.Add(this.btnGuardar);
+            this.panel4.Location = new System.Drawing.Point(71, 329);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(266, 55);
+            this.panel4.TabIndex = 18;
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnCancelar.FlatAppearance.BorderSize = 0;
+            this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnCancelar.Location = new System.Drawing.Point(142, 3);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(121, 46);
+            this.btnCancelar.TabIndex = 2;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnGuardar.FlatAppearance.BorderSize = 0;
+            this.btnGuardar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnGuardar.Location = new System.Drawing.Point(3, 3);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(121, 46);
+            this.btnGuardar.TabIndex = 1;
+            this.btnGuardar.Text = "Agregar";
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // panel1
             // 
@@ -111,6 +152,14 @@
             this.panel2.Size = new System.Drawing.Size(443, 44);
             this.panel2.TabIndex = 8;
             // 
+            // dtpFinConsumo
+            // 
+            this.dtpFinConsumo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.dtpFinConsumo.Location = new System.Drawing.Point(0, 19);
+            this.dtpFinConsumo.Name = "dtpFinConsumo";
+            this.dtpFinConsumo.Size = new System.Drawing.Size(419, 24);
+            this.dtpFinConsumo.TabIndex = 1;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -129,6 +178,14 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(443, 44);
             this.panel3.TabIndex = 9;
+            // 
+            // dtpVencimiento
+            // 
+            this.dtpVencimiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.dtpVencimiento.Location = new System.Drawing.Point(0, 19);
+            this.dtpVencimiento.Name = "dtpVencimiento";
+            this.dtpVencimiento.Size = new System.Drawing.Size(419, 24);
+            this.dtpVencimiento.TabIndex = 2;
             // 
             // label2
             // 
@@ -188,76 +245,19 @@
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTop.Location = new System.Drawing.Point(0, 0);
             this.pnlTop.Name = "pnlTop";
-            this.pnlTop.Size = new System.Drawing.Size(800, 25);
+            this.pnlTop.Size = new System.Drawing.Size(497, 25);
             this.pnlTop.TabIndex = 19;
             // 
             // prbCerrar
             // 
             this.prbCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.prbCerrar.Image = ((System.Drawing.Image)(resources.GetObject("prbCerrar.Image")));
-            this.prbCerrar.Location = new System.Drawing.Point(776, 1);
+            this.prbCerrar.Location = new System.Drawing.Point(473, 1);
             this.prbCerrar.Name = "prbCerrar";
             this.prbCerrar.Size = new System.Drawing.Size(25, 25);
             this.prbCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.prbCerrar.TabIndex = 0;
             this.prbCerrar.TabStop = false;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.btnCancelar);
-            this.panel4.Controls.Add(this.btnGuardar);
-            this.panel4.Location = new System.Drawing.Point(71, 329);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(266, 55);
-            this.panel4.TabIndex = 18;
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnCancelar.FlatAppearance.BorderSize = 0;
-            this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
-            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnCancelar.Location = new System.Drawing.Point(142, 3);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(121, 46);
-            this.btnCancelar.TabIndex = 2;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = false;
-            this.btnCancelar.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnGuardar.FlatAppearance.BorderSize = 0;
-            this.btnGuardar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
-            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnGuardar.Location = new System.Drawing.Point(3, 3);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(121, 46);
-            this.btnGuardar.TabIndex = 1;
-            this.btnGuardar.Text = "Agregar";
-            this.btnGuardar.UseVisualStyleBackColor = false;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // dtpFinConsumo
-            // 
-            this.dtpFinConsumo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.dtpFinConsumo.Location = new System.Drawing.Point(0, 19);
-            this.dtpFinConsumo.Name = "dtpFinConsumo";
-            this.dtpFinConsumo.Size = new System.Drawing.Size(419, 24);
-            this.dtpFinConsumo.TabIndex = 1;
-            // 
-            // dtpVencimiento
-            // 
-            this.dtpVencimiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.dtpVencimiento.Location = new System.Drawing.Point(0, 19);
-            this.dtpVencimiento.Name = "dtpVencimiento";
-            this.dtpVencimiento.Size = new System.Drawing.Size(419, 24);
-            this.dtpVencimiento.TabIndex = 2;
             // 
             // ErrorNotificador
             // 
@@ -267,13 +267,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(497, 482);
             this.Controls.Add(this.pnlPrincipal);
             this.Controls.Add(this.pnlTop);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmGestionFechas";
             this.Text = "frmGestionFechas";
             this.pnlPrincipal.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -284,7 +285,6 @@
             this.panel5.PerformLayout();
             this.pnlTop.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.prbCerrar)).EndInit();
-            this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ErrorNotificador)).EndInit();
             this.ResumeLayout(false);
 

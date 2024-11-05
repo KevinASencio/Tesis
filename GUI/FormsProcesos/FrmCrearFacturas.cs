@@ -9,7 +9,7 @@ namespace GUI.FormsGestion
     public partial class FrmCrearFacturas : Form
     {
         FacturasNeg fac = new FacturasNeg();
-        ControlFechasNeg fecha = new ControlFechasNeg();
+        ControlFechasNeg fecha;
         public static ProgressBar pgsCrear;
         public FrmCrearFacturas()
         {
@@ -27,7 +27,8 @@ namespace GUI.FormsGestion
             {
                 if (dtpVencimiento.Value.Date > DateTime.Now.Date)
                 {
-                    fecha.insertar(cmbMes.Text.ToString(), dtpVencimiento.Value, dtpFinalConsumo.Value);
+                    fecha= new ControlFechasNeg(cmbMes.Text.ToString(), dtpVencimiento.Value, dtpFinalConsumo.Value);
+                    fecha.insertar();
                     fac.Generar(fecha.getId(), pgbCrear, lblTotal);
                     fac.GenerarAco(fecha.getId(), pgbCrear, lblTotal);
                 }

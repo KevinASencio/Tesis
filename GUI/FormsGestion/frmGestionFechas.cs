@@ -14,7 +14,7 @@ namespace GUI.FormsGestion
 {
     public partial class frmGestionFechas : Form
     {
-        ControlFechasNeg FechaNeg= new ControlFechasNeg();
+        ControlFechasNeg FechaNeg;
         public frmGestionFechas()
         {
             InitializeComponent();
@@ -30,8 +30,13 @@ namespace GUI.FormsGestion
             if (!Validacion.esVacio(pnlPrincipal, ErrorNotificador) && Validacion.seguroModificar()) 
             {
                 if (String.IsNullOrEmpty(txbId.Text)) { txbId.Text = "0"; }
-
+                if (FechaNeg.Procesar()) { Validacion.frmMessageBox("Registro Guardado", "Exito"); }
+                else { Validacion.frmMessageBox("Error al Guardar el Registro","Error"); }
             }
+        }
+        public void CargarDatos(string mes, DateTime fechavencimiento, DateTime fechavencimientohasta) 
+        {
+            FechaNeg = new ControlFechasNeg(mes,fechavencimiento,fechavencimientohasta);
         }
     }
 }

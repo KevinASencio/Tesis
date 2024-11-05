@@ -186,7 +186,6 @@ namespace GUI.FormsGestion
             }
 
         }
-
         private void btnParametro_Click(object sender, EventArgs e)
         {
             switch (btnParametro.Text)
@@ -209,7 +208,6 @@ namespace GUI.FormsGestion
                     btnParametro.Text = "Parametros";
                     break;
             }
-            
         }
 
         private void btnTransacciones_Click(object sender, EventArgs e)
