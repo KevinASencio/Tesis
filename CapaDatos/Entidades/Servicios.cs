@@ -47,6 +47,9 @@ namespace CapaDatos.Entidades
             }
         }
 
+        public Servicios() { }
+
+        public Servicios(int idcliente) { this._IdCliente = idcliente; }
         public DataTable ConsultarCon(int idcliente)
         {
             DBOperacion operacion = new DBOperacion();
@@ -59,7 +62,7 @@ namespace CapaDatos.Entidades
             dic.Add("idcliente", idcliente);
             try
             {
-                return operacion.Consultar(sentencia.ToString());
+                return operacion.Consultar(sentencia.ToString(),dic);
             }
             catch (Exception e)
             {
@@ -156,11 +159,12 @@ namespace CapaDatos.Entidades
             sentencia.Append("cuotas_anticipadas =@cuotas_anticipadas ");
             sentencia.Append("where idservicio= @idservicio;");
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic.Add("fecha", FechaApertura);
             dic.Add("comentario", Comentario);
             dic.Add("estado", Estado);
             dic.Add("idcolonia", IdColonia);
             dic.Add("idcliente", IdCliente);
+            dic.Add("cuotas_anticipadas", CuotasAnticipadas);
+            dic.Add("idservicio", IdServicio);
             try { return operacion.Actualizar(sentencia.ToString(), dic); } catch (Exception e) { return false; }
         }
 

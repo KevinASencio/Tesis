@@ -27,8 +27,8 @@ namespace GUI.FormsGestion
             {
                 if (dtpVencimiento.Value.Date > DateTime.Now.Date)
                 {
-                    fecha= new ControlFechasNeg(cmbMes.Text.ToString(), dtpVencimiento.Value, dtpFinalConsumo.Value);
-                    fecha.insertar();
+                    fecha= new ControlFechasNeg(0,cmbMes.Text.ToString(), dtpVencimiento.Value, dtpFinalConsumo.Value);
+                    fecha.Procesar();
                     fac.Generar(fecha.getId(), pgbCrear, lblTotal);
                     fac.GenerarAco(fecha.getId(), pgbCrear, lblTotal);
                 }

@@ -27,6 +27,7 @@ namespace GUI.FormsGestion
         frmVistaServicios _frmVistaServicios;
         FrmCrearFacturas _frmCrearFacturas;
         frmMovimientos _frmMovimientos;
+        frmVistaControlFechas _frmVistaControlFechas;
         #endregion
 
         static UsuarioNeg _useractivo = new UsuarioNeg();
@@ -123,6 +124,9 @@ namespace GUI.FormsGestion
                     break;
                 case "usuarios":
                     _frmVistaUsuarios.Editar();
+                    break;
+                case "fechas":
+                    _frmVistaControlFechas.Editar();
                     break;
                 default: break;
             }
@@ -241,9 +245,12 @@ namespace GUI.FormsGestion
 
         private void btnControlFechas_Click(object sender, EventArgs e)
         {
-            frmVistaControlFechas frm = new frmVistaControlFechas();
-            frm.StartPosition = FormStartPosition.CenterParent;
-            frm.ShowDialog();
+            _frmVistaControlFechas = new frmVistaControlFechas();
+            formCall = "Fechas";
+            OrganizadorObj.abrirCont(_frmVistaControlFechas);
+            OrganizadorObj.ocultar(pnlMenus, pnlMenuInicio);
+            OrganizadorObj.mostrar(pnlMenus, pnlMenuDetalles);
+            pnlMenuDetalles.Controls.Remove(btnCambiarEstado);
         }
 
         private void btnReportes_Click(object sender, EventArgs e)

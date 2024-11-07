@@ -44,7 +44,7 @@
             this.dtpVencimiento = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.cmbRol = new System.Windows.Forms.ComboBox();
+            this.cmbMes = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.pnlTop = new System.Windows.Forms.Panel();
             this.prbCerrar = new System.Windows.Forms.PictureBox();
@@ -77,7 +77,7 @@
             // 
             this.panel4.Controls.Add(this.btnCancelar);
             this.panel4.Controls.Add(this.btnGuardar);
-            this.panel4.Location = new System.Drawing.Point(71, 329);
+            this.panel4.Location = new System.Drawing.Point(113, 342);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(266, 55);
             this.panel4.TabIndex = 18;
@@ -199,18 +199,19 @@
             // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.cmbRol);
+            this.panel5.Controls.Add(this.cmbMes);
             this.panel5.Controls.Add(this.label4);
             this.panel5.Location = new System.Drawing.Point(26, 261);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(443, 44);
             this.panel5.TabIndex = 11;
             // 
-            // cmbRol
+            // cmbMes
             // 
-            this.cmbRol.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.5F);
-            this.cmbRol.FormattingEnabled = true;
-            this.cmbRol.Items.AddRange(new object[] {
+            this.cmbMes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMes.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.5F);
+            this.cmbMes.FormattingEnabled = true;
+            this.cmbMes.Items.AddRange(new object[] {
             "Enero",
             "Febrero",
             "Marzo ",
@@ -223,10 +224,10 @@
             "Octubre",
             "Noviembre",
             "Diciembre"});
-            this.cmbRol.Location = new System.Drawing.Point(0, 18);
-            this.cmbRol.Name = "cmbRol";
-            this.cmbRol.Size = new System.Drawing.Size(413, 26);
-            this.cmbRol.TabIndex = 1;
+            this.cmbMes.Location = new System.Drawing.Point(0, 18);
+            this.cmbMes.Name = "cmbMes";
+            this.cmbMes.Size = new System.Drawing.Size(413, 26);
+            this.cmbMes.TabIndex = 1;
             // 
             // label4
             // 
@@ -301,15 +302,15 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel5;
-        public System.Windows.Forms.ComboBox cmbRol;
+        public System.Windows.Forms.ComboBox cmbMes;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel pnlTop;
         private System.Windows.Forms.PictureBox prbCerrar;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnGuardar;
-        private System.Windows.Forms.DateTimePicker dtpFinConsumo;
-        private System.Windows.Forms.DateTimePicker dtpVencimiento;
         private System.Windows.Forms.ErrorProvider ErrorNotificador;
+        public System.Windows.Forms.DateTimePicker dtpFinConsumo;
+        public System.Windows.Forms.DateTimePicker dtpVencimiento;
     }
 }

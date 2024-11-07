@@ -13,18 +13,13 @@ namespace Controllers
             this.crt = new ControlFechasFacturas();
         }
 
-        public ControlFechasNeg(string mes, DateTime fechavencimiento, DateTime fechahasta)
+        public ControlFechasNeg(int idcontrol,string mes, DateTime fechavencimiento, DateTime fechahasta)
         {
             this.crt = new ControlFechasFacturas();
             crt.Mes = mes;
             crt.FechaHasta = fechahasta;
             crt.FechaVencimiento = fechavencimiento;
             crt.FechaGeneracion = DateTime.Now;
-        }
-
-        public Boolean insertar()
-        {
-            return crt.Agregar();
         }
 
         public Boolean Procesar() 
@@ -37,7 +32,6 @@ namespace Controllers
             {
                 return crt.Actualizar();
             }
-            return false;
         }
         public int getId()
         {

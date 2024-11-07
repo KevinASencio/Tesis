@@ -7,7 +7,7 @@ namespace CapaNegocio
     {
         private Clientes cl;
 
-        public ClientesNeg() { }
+        public ClientesNeg() { this.cl = new Clientes(); }
         public ClientesNeg( string nombres, string apellidos, string direccion, string dui, string telefono, string estado)
         {
             this.cl = new Clientes();

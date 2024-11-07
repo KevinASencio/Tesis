@@ -27,9 +27,8 @@ namespace Controllers
         {
             return this.servicio.IdCuotaConsumo;
         }
-        public Boolean actualizar(int idcuota) 
+        public Boolean actualizar() 
         {
-            servicio = new ServiciosConsumo(idcuota);
             return servicio.actualizarConsumo(); 
         }
     }

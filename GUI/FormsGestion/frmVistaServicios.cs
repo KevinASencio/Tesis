@@ -87,13 +87,14 @@ namespace GUI.FormsGestion
             pnlPrincipal.Controls.Add(_frmGestionConsumo);
             _frmGestionConsumo.BringToFront();
             agregando = true;
-            _frmGestionConsumo._servicio.setIdCliente(this.servicio.getIdCliente());
+            _frmGestionConsumo._servicio= new ServiciosNeg(new ServiciosConsumoNeg(int.Parse(dtgvServiciosConsumo.CurrentRow.Cells["idconsumo"].Value.ToString()), int.Parse(dtgvServiciosConsumo.CurrentRow.Cells["idcuota"].Value.ToString()))
+                , new ServiciosAcometidaNeg(),this.servicio.getIdCliente());
             _frmGestionConsumo.txbComentario.Text = dtgvServiciosConsumo.CurrentRow.Cells["comentario"].Value.ToString();
             _frmGestionConsumo.txbId.Text = dtgvServiciosConsumo.CurrentRow.Cells["idservicio"].Value.ToString();
             _frmGestionConsumo.cmbColonia.SelectedValue = dtgvServiciosConsumo.CurrentRow.Cells["idcolonia"].Value.ToString();
             _frmGestionConsumo.cmbCuota.SelectedValue = dtgvServiciosConsumo.CurrentRow.Cells["idcuota"].Value.ToString();
             _frmGestionConsumo.cmbEstado.Text = dtgvServiciosConsumo.CurrentRow.Cells["estado"].Value.ToString();
-            _frmGestionConsumo._consumo = new ServiciosConsumoNeg(int.Parse(dtgvServiciosConsumo.CurrentRow.Cells["idconsumo"].Value.ToString()), int.Parse(dtgvServiciosConsumo.CurrentRow.Cells["idcuota"].Value.ToString()));
+            //_frmGestionConsumo._consumo = ;
             _frmGestionConsumo.Show();
         }
 

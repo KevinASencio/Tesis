@@ -36,7 +36,7 @@ namespace GUI.FormsGestion
         }
         public void CargarDatos(string mes, DateTime fechavencimiento, DateTime fechavencimientohasta) 
         {
-            FechaNeg = new ControlFechasNeg(mes,fechavencimiento,fechavencimientohasta);
+            FechaNeg = new ControlFechasNeg(0,mes,fechavencimiento,fechavencimientohasta);
         }
     }
 }

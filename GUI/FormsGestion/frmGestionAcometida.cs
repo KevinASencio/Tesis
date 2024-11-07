@@ -1,6 +1,7 @@
 ﻿using Controllers;
 using GUI.Clases;
 using System;
+using System.Net.NetworkInformation;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -14,6 +15,7 @@ namespace GUI.FormsGestion
         const string patronDecimal = @"\.";
         Boolean punto = false;
         Regex validar;
+        int auxalcular;
         public frmGestionAcometida()
         {
             InitializeComponent();
@@ -86,7 +88,11 @@ namespace GUI.FormsGestion
             {
                 punto = Regex.IsMatch(this.txbMonto.Text.ToString(), patronDecimal) ? true : false;
                 Validacion.Decimales(e, punto);
-                txbNCuotas.Text = (float.Parse(txbMonto.Text.ToString()) / float.Parse(cmbCuota.GetItemText(cmbCuota.SelectedItem))).ToString();
+                if (cmbColonia.SelectedIndex > 0)
+                {
+                    auxalcular = int.Parse(txbMonto.Text.ToString()) / int.Parse(cmbCuota.GetItemText(cmbCuota.SelectedItem));
+                    txbNCuotas.Text = auxalcular.ToString();
+                }
                 txbNCuotas.Update();
             }
             catch (Exception ex)

@@ -16,6 +16,13 @@ namespace Controllers
             _Servicio = new Servicios();
         }
 
+        public ServiciosNeg(ServiciosConsumoNeg con,ServiciosAcometidaNeg aco,int idcliente) 
+        {
+            _Servicio = new Servicios(idcliente);
+            this.consumo = con;
+            this.acometida = aco;
+        }
+
         public ServiciosNeg(int idservicio, int idCliente, int idColonia)
         {
             this._Servicio = new Servicios();
@@ -90,7 +97,7 @@ namespace Controllers
                 else
                 {
                     _Servicio.IdServicio = idServicio;
-                    if (consumo.actualizar(idCuota))
+                    if (consumo.actualizar())
                     {
                         return _Servicio.ActualizarServicio();
                     }

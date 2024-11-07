@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
+using System.Windows.Forms;
 
 namespace CapaDatos.Entidades
 {
@@ -77,13 +78,13 @@ namespace CapaDatos.Entidades
             StringBuilder sentencia = new StringBuilder();
             DBOperacion operacion = new DBOperacion();
             sentencia.Append("update clientes set ");
-            sentencia.Append("nombres= @nombres,");
-            sentencia.Append("apellidos=@apellidos,");
-            sentencia.Append("direccion=@direccion,");
-            sentencia.Append("dui=@dui,");
-            sentencia.Append("telefono= @telefono,");
-            sentencia.Append("estado=@estado");
-            sentencia.Append("where idcliente=@idcliente;");
+            sentencia.Append(" nombres= @nombres,");
+            sentencia.Append(" apellidos=@apellidos,");
+            sentencia.Append(" direccion=@direccion,");
+            sentencia.Append(" dui=@dui,");
+            sentencia.Append(" telefono= @telefono,");
+            sentencia.Append(" estado=@estado");
+            sentencia.Append(" where idcliente=@idcliente;");
             Dictionary<string, object> dic = new Dictionary<string, object>();
             dic.Add("nombres", Nombres);
             dic.Add("apellidos", Apellidos);
@@ -100,6 +101,7 @@ namespace CapaDatos.Entidades
             catch (Exception ex)
             {
                 Console.Error.WriteLine(ex.ToString());
+                MessageBox.Show(ex.Message);
                 return false;
             }
         }
@@ -108,7 +110,7 @@ namespace CapaDatos.Entidades
         {
             StringBuilder sentencia = new StringBuilder();
             DBOperacion operacion = new DBOperacion();
-            sentencia.Append("update clientes set estado = '@estado' where idcliente=@idcliente;");
+            sentencia.Append("update clientes set estado = @estado where idcliente=@idcliente;");
             Dictionary<string, object> dic = new Dictionary<string, object>();
             dic.Add("estado", Estado);
             dic.Add("idcliente", IdCliente);
