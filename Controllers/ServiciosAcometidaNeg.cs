@@ -10,7 +10,11 @@ namespace Controllers
         {
             this._Acometida = new ServiciosAcometida();
         }
-
+        public ServiciosAcometidaNeg(int idacometida)
+        {
+            this._Acometida = new ServiciosAcometida();
+            this._Acometida.Idcuotaacometida = idacometida;
+        }
         public void setIdAcometida(int id) { _Acometida.Idserviciosacometida = id; }
         public void setIdcuota(int id) { _Acometida.Idcuotaacometida = id; }
         public void setMonto(float monto) { _Acometida.Monto = monto; }

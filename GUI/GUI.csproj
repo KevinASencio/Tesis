@@ -120,6 +120,9 @@
     <Compile Include="Clases\AppManager.cs" />
     <Compile Include="Clases\OrganizadorObj.cs" />
     <Compile Include="Clases\Validacion.cs" />
+    <Compile Include="Datasets\dsfacturas.cs">
+      <DependentUpon>dsfacturas.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Datasets\dsfacturas.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

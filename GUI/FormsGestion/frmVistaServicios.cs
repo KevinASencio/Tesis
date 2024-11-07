@@ -2,7 +2,10 @@
 using GUI.Clases;
 using System;
 using System.Drawing;
+using System.Windows;
 using System.Windows.Forms;
+using MessageBox = System.Windows.Forms.MessageBox;
+using Size = System.Drawing.Size;
 namespace GUI.FormsGestion
 {
     public partial class frmVistaServicios : Form
@@ -87,8 +90,9 @@ namespace GUI.FormsGestion
             pnlPrincipal.Controls.Add(_frmGestionConsumo);
             _frmGestionConsumo.BringToFront();
             agregando = true;
-            _frmGestionConsumo._servicio= new ServiciosNeg(new ServiciosConsumoNeg(int.Parse(dtgvServiciosConsumo.CurrentRow.Cells["idconsumo"].Value.ToString()), int.Parse(dtgvServiciosConsumo.CurrentRow.Cells["idcuota"].Value.ToString()))
-                , new ServiciosAcometidaNeg(),this.servicio.getIdCliente());
+            //cargar informacion en el formulario de gestion 
+            ServiciosConsumoNeg servicioconsumo = new ServiciosConsumoNeg(int.Parse(dtgvServiciosConsumo.CurrentRow.Cells["idconsumo"].Value.ToString()), int.Parse(dtgvServiciosConsumo.CurrentRow.Cells["idcuota"].Value.ToString()));
+            _frmGestionConsumo._servicio = new ServiciosNeg(servicioconsumo, new ServiciosAcometidaNeg(), this.servicio.getIdCliente());
             _frmGestionConsumo.txbComentario.Text = dtgvServiciosConsumo.CurrentRow.Cells["comentario"].Value.ToString();
             _frmGestionConsumo.txbId.Text = dtgvServiciosConsumo.CurrentRow.Cells["idservicio"].Value.ToString();
             _frmGestionConsumo.cmbColonia.SelectedValue = dtgvServiciosConsumo.CurrentRow.Cells["idcolonia"].Value.ToString();
@@ -97,7 +101,7 @@ namespace GUI.FormsGestion
             //_frmGestionConsumo._consumo = ;
             _frmGestionConsumo.Show();
         }
-
+        
         private void frmVistaServicios_ControlAdded(object sender, ControlEventArgs e)
         {
             CargarDatos(this.servicio.getIdCliente());
@@ -120,7 +124,7 @@ namespace GUI.FormsGestion
             _frmGestionAcometida.Size = new Size(this.Width, this.Height);
             agregando = true;
             _frmGestionAcometida._acometida.setIdAcometida(0);
-            _frmGestionAcometida._servicio.setIdCliente(this.servicio.getIdCliente());
+            _frmGestionAcometida._servicio=new ServiciosNeg(this.servicio.getIdCliente());
             _frmGestionAcometida.Show();
         }
 
@@ -136,8 +140,9 @@ namespace GUI.FormsGestion
             _frmGestionAcometida.BringToFront();
             _frmGestionAcometida.Size = new Size(this.Width, this.Height);
             agregando = true;
-            _frmGestionAcometida._servicio.setIdCliente(this.servicio.getIdCliente());
-            _frmGestionAcometida._acometida.setIdAcometida(int.Parse(dtgvServiciosAcometida.CurrentRow.Cells["idacometida"].Value.ToString()));
+
+            ServiciosAcometidaNeg servicioacometida = new ServiciosAcometidaNeg(int.Parse(dtgvServiciosAcometida.CurrentRow.Cells["idacometida"].Value.ToString()));
+            _frmGestionAcometida._servicio=new ServiciosNeg(new ServiciosConsumoNeg(),servicioacometida,this.servicio.getIdCliente());
             _frmGestionAcometida.txbId.Text = dtgvServiciosAcometida.CurrentRow.Cells["idservicioA"].Value.ToString();
             _frmGestionAcometida.txbComentario.Text = dtgvServiciosAcometida.CurrentRow.Cells["comentarioA"].Value.ToString();
             _frmGestionAcometida.txbMonto.Text = dtgvServiciosAcometida.CurrentRow.Cells["monto"].Value.ToString();

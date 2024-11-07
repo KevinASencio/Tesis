@@ -12,6 +12,7 @@ namespace GUI.FormsGestion
         public CuotasNeg cuotas;
         public ServiciosNeg _servicio;
         public ServiciosAcometidaNeg _acometida;
+        public ColoniasNeg _colonias;
         const string patronDecimal = @"\.";
         Boolean punto = false;
         Regex validar;
@@ -38,16 +39,17 @@ namespace GUI.FormsGestion
                 if (_servicio.InsertarAcometida(int.Parse(txbId.Text.ToString()), int.Parse(cmbColonia.SelectedValue.ToString()),
                                             int.Parse(cmbCuota.SelectedValue.ToString()), float.Parse(txbMonto.Text.ToString()),
                                             float.Parse(txbSaldo.Text.ToString()), int.Parse(txbCuotasPagadas.Text.ToString()),
-                                            int.Parse(txbNCuotas.Text.ToString()), cmbEstado.Text.ToString(), txbComentario.Text.ToString())) 
+                                            int.Parse(txbNCuotas.Text.ToString()), cmbEstado.Text.ToString(), txbComentario.Text.ToString()))
                 {
                     Validacion.frmMessageBox("Registro Guardado", "¡Exito!");
                     this.Close();
                 }
             }
-        } 
+        }
         public void CargarDatos()
         {
-            this.cmbColonia.DataSource = ColoniasNeg.consultar();
+            _colonias = new ColoniasNeg();
+            this.cmbColonia.DataSource = _colonias.consultar();
             this.cmbCuota.DataSource = CuotasNeg.consultarCuotasAcometida();
             cmbColonia.ValueMember = "idcolonia";
             cmbColonia.DisplayMember = "colonia";
@@ -61,7 +63,8 @@ namespace GUI.FormsGestion
         {
             try
             {
-                txbNCuotas.Text = (float.Parse(txbMonto.Text.ToString()) / float.Parse(cmbCuota.GetItemText(cmbCuota.SelectedItem))).ToString();
+                auxalcular = int.Parse(txbMonto.Text.ToString()) / int.Parse(cmbCuota.GetItemText(cmbCuota.SelectedItem));
+                txbNCuotas.Text = auxalcular.ToString();
                 txbNCuotas.Update();
             }
             catch (Exception ex) { }
@@ -71,7 +74,8 @@ namespace GUI.FormsGestion
         {
             try
             {
-                txbNCuotas.Text = (float.Parse(txbMonto.Text.ToString()) / float.Parse(cmbCuota.GetItemText(cmbCuota.SelectedItem))).ToString();
+                auxalcular = (int)(double.Parse(txbMonto.Text.ToString()) / double.Parse(cmbCuota.GetItemText(cmbCuota.SelectedItem)));
+                txbNCuotas.Text = auxalcular.ToString();
                 txbNCuotas.Update();
             }
             catch (Exception ex) { }
@@ -88,15 +92,9 @@ namespace GUI.FormsGestion
             {
                 punto = Regex.IsMatch(this.txbMonto.Text.ToString(), patronDecimal) ? true : false;
                 Validacion.Decimales(e, punto);
-                if (cmbColonia.SelectedIndex > 0)
-                {
-                    auxalcular = int.Parse(txbMonto.Text.ToString()) / int.Parse(cmbCuota.GetItemText(cmbCuota.SelectedItem));
-                    txbNCuotas.Text = auxalcular.ToString();
-                }
-                txbNCuotas.Update();
             }
             catch (Exception ex)
-            { 
+            {
                 Validacion.ErrorBox(ex);
             }
         }

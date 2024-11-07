@@ -62,10 +62,12 @@ namespace CapaDatos.Entidades
             dic.Add("monto", Monto);
             dic.Add("doc", Doc);
             dic.Add("empleado", Empleado);
-            dic.Add("emisor", Emisor);
+            if (!String.IsNullOrEmpty(Emisor)) dic.Add("emisor", Emisor);
+            else dic.Add("emisor", String.Empty);
 
             try
             {
+                //aqui detente xd
                 return operacion.Insertar(sentencia.ToString(),dic);
             }
             catch (Exception ex) { return false; }

@@ -307,6 +307,8 @@ namespace GUI.Datasets {
             
             private global::System.Data.DataColumn columntextsaldo;
             
+            private global::System.Data.DataColumn columnmorac;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public facturasDataTable() {
@@ -454,6 +456,14 @@ namespace GUI.Datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn moracColumn {
+                get {
+                    return this.columnmorac;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -489,7 +499,7 @@ namespace GUI.Datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public facturasRow AddfacturasRow(long idfactura, int idcliente, string cliente, System.DateTime fecha_hasta, System.DateTime fecha_vencimiento, decimal mora, decimal saldo, decimal cuota, string mes, string colonia, int cont_pendiente, decimal total, string textmeses, string textsaldo) {
+            public facturasRow AddfacturasRow(long idfactura, int idcliente, string cliente, System.DateTime fecha_hasta, System.DateTime fecha_vencimiento, decimal mora, decimal saldo, decimal cuota, string mes, string colonia, int cont_pendiente, decimal total, string textmeses, string textsaldo, string morac) {
                 facturasRow rowfacturasRow = ((facturasRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         idfactura,
@@ -505,7 +515,8 @@ namespace GUI.Datasets {
                         cont_pendiente,
                         total,
                         textmeses,
-                        textsaldo};
+                        textsaldo,
+                        morac};
                 rowfacturasRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowfacturasRow);
                 return rowfacturasRow;
@@ -542,6 +553,7 @@ namespace GUI.Datasets {
                 this.columntotal = base.Columns["total"];
                 this.columntextmeses = base.Columns["textmeses"];
                 this.columntextsaldo = base.Columns["textsaldo"];
+                this.columnmorac = base.Columns["morac"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -575,6 +587,8 @@ namespace GUI.Datasets {
                 base.Columns.Add(this.columntextmeses);
                 this.columntextsaldo = new global::System.Data.DataColumn("textsaldo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntextsaldo);
+                this.columnmorac = new global::System.Data.DataColumn("morac", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmorac);
                 this.columncont_pendiente.Caption = "meses_pendientes";
             }
             
@@ -942,6 +956,22 @@ namespace GUI.Datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string morac {
+                get {
+                    try {
+                        return ((string)(this[this.tablefacturas.moracColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'morac\' de la tabla \'facturas\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablefacturas.moracColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsidfacturaNull() {
                 return this.IsNull(this.tablefacturas.idfacturaColumn);
             }
@@ -1106,6 +1136,18 @@ namespace GUI.Datasets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SettextsaldoNull() {
                 this[this.tablefacturas.textsaldoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsmoracNull() {
+                return this.IsNull(this.tablefacturas.moracColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetmoracNull() {
+                this[this.tablefacturas.moracColumn] = global::System.Convert.DBNull;
             }
         }
         

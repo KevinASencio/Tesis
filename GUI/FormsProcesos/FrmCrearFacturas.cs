@@ -1,19 +1,23 @@
 ﻿using Controllers;
 using GUI.Clases;
 using System;
+using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Windows.Forms;
 
 namespace GUI.FormsGestion
 {
     public partial class FrmCrearFacturas : Form
     {
+        ColoniasNeg colonias = new ColoniasNeg();
         FacturasNeg fac = new FacturasNeg();
         ControlFechasNeg fecha;
         public static ProgressBar pgsCrear;
         public FrmCrearFacturas()
         {
             InitializeComponent();
+            CargarDatos();
             pgsCrear = pgbCrear;
         }
         private void prbCerrar_Click(object sender, EventArgs e)
@@ -73,6 +77,39 @@ namespace GUI.FormsGestion
 
         private void btnImpimir_Click(object sender, EventArgs e)
         {
+            Imprimir(int.Parse(cmbColonia.SelectedValue.ToString()));
+        }
+
+        public void CargarDatos() 
+        {
+            cmbColonia.DataSource=colonias.consultar();
+            cmbColonia.DisplayMember = "colonia";
+            cmbColonia.ValueMember = "idcolonia";
+            cmbColonia.SelectedIndex = -1;
+        }
+
+        public void Imprimir(int idcolonia)
+        {
+            //Crear una instancia del reporte
+            Reportes.RepFacturasColonia reporte = new Reportes.RepFacturasColonia();
+            // Obtener los datos para el reporte
+            DataTable dtFactura = fac.ConsultarReporteGen(idcolonia); reporte.SetDataSource(dtFactura);
+            // Configurar el nombre del documento para imprimir
+            PrintDocument printDocument1 = new PrintDocument(); printDocument1.DocumentName = "RepFacturaCobrar";
+            // Mostrar el cuadro de diálogo de impresión
+            PrintDialog printDialog = new PrintDialog(); printDialog.Document = printDocument1;
+            if (printDialog.ShowDialog() == DialogResult.OK)
+            {
+
+                // Configurar la impresora
+                reporte.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
+                try
+                {  //Imprimir el reporte
+                    reporte.PrintToPrinter(printDialog.PrinterSettings.Copies, false, 0, 0);
+                    MessageBox.Show("Reporte impreso correctamente.");
+                }
+                catch (Exception ex) { MessageBox.Show("Error al imprimir el reporte: " + ex.Message); }
+            }
         }
     }
 }

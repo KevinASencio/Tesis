@@ -5,6 +5,7 @@ namespace Controllers
 {
     public class ColoniasNeg
     {
-        public static DataTable consultar() { return Colonias.consultar(); }
+        Colonias _colonias = new Colonias();
+        public DataTable consultar() { return _colonias.consultar(); }
     }
 }

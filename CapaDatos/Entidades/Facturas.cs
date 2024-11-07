@@ -221,7 +221,7 @@ namespace CapaDatos.Entidades
                         Fac.Estado = "Transferida";
                         if (Fac.Actualzar())
                         {
-                            Fac.Saldo = Saldo + double.Parse(rw.ItemArray[3].ToString());
+                            Fac.Saldo +=  double.Parse(rw.ItemArray[3].ToString());
                             Fac.Mora += mora;
                             Fac.ContPendientes += 1;
                             Fac.IdControlFecha = idcontrol;
@@ -252,17 +252,18 @@ namespace CapaDatos.Entidades
             return Resultado;
         }
 
-        public Facturas consultarFactura(string idfactura)
+        public Boolean consultarFactura(string idfactura)
         {
+            //cambiar esto para usar diccionarios
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
             sentencia.Append(@"SELECT idfactura, saldo, mora, estado, estado_pago, idservicio, cont_pendiente, descuento, idcontrolfecha, comentario 
-                                FROM db_acacuvan.facturas where idfactura= " + idfactura + ";");
-
+                                FROM db_acacuvan.facturas where idfactura= @idfactura;");
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            dic.Add("idfactura", int.Parse(idfactura));
             try
             {
-                DataRow rw = operacion.Consultar(sentencia.ToString()).Rows[0];
-                Facturas factura = new Facturas();
+                DataRow rw = operacion.Consultar(sentencia.ToString(),dic).Rows[0];
                 this.IdFactura = int.Parse(rw.ItemArray[0].ToString());
                 this.Saldo = double.Parse(rw.ItemArray[1].ToString());
                 this.Mora = double.Parse(rw.ItemArray[2].ToString());
@@ -273,11 +274,11 @@ namespace CapaDatos.Entidades
                 this.Descuento = double.Parse(rw.ItemArray[7].ToString());
                 this.IdControlFecha = int.Parse(rw.ItemArray[8].ToString());
                 this.Comentario = rw.ItemArray[9].ToString();
-                return factura;
+                return true;
             }
             catch (Exception ex)
             {
-                return null;
+                return false;
             }
         }
 
@@ -315,16 +316,17 @@ namespace CapaDatos.Entidades
             sentencia.Append("update facturas set ");
             sentencia.Append("comentario = @comentario, ");
             sentencia.Append("descuento = @descuento, ");
-            sentencia.Append("estado_pago=@estadopago, ");
+            sentencia.Append("estado_pago=@estado_pago, ");
             sentencia.Append("estado=@estado, ");
+            sentencia.Append("cont_pendiente=@cont_pendiente, ");
             sentencia.Append("idcontrolfecha=@idcontrol");
-            sentencia.Append("where idfactura=@idfactura;");
+            sentencia.Append(" where idfactura=@idfactura;");
             Dictionary<string, object> dic = new Dictionary<string, object>();
             dic.Add("estado", Estado);
             dic.Add("estado_pago", EstadoPago);
             dic.Add("cont_pendiente", ContPendientes);
             dic.Add("descuento", Descuento);
-            dic.Add("idcontrolfecha", IdControlFecha);
+            dic.Add("idcontrol", IdControlFecha);
             dic.Add("comentario", Comentario);
             dic.Add("idfactura", IdFactura);
             try
@@ -397,7 +399,7 @@ namespace CapaDatos.Entidades
             DBOperacion operacion =new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
             sentencia.Append("select fac.idfactura, serv.idcliente, concat(cli.nombres, ', ', cli.apellidos) as 'cliente', ctrl.fecha_hasta,ctrl.fecha_vencimiento, upper(ctrl.mes)as 'mes',(fac.saldo + fac.mora) as 'total', ");
-            sentencia.Append("(fac.saldo / (fac.cont_pendiente + 1)) as 'cuota',fac.mora, fac.saldo, fac.cont_pendiente, col.colonia,fac.idservicio from facturas fac inner join servicios serv on serv.idservicio = fac.idservicio ");
+            sentencia.Append("(fac.saldo / (fac.cont_pendiente + 1)) as 'cuota',fac.mora, fac.saldo, fac.cont_pendiente, col.colonia,fac.idservicio,if(isnull(serv.idconsumo),2,1) as 'tipo' from facturas fac inner join servicios serv on serv.idservicio = fac.idservicio ");
             sentencia.Append("inner join fecha_control_facturas ctrl on fac.idcontrolfecha = ctrl.idcontrol ");
             sentencia.Append("inner join colonias col on serv.idcolonia = col.idcolonia ");
             sentencia.Append("inner join clientes cli on serv.idcliente = cli.idcliente ");
@@ -412,7 +414,7 @@ namespace CapaDatos.Entidades
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
             sentencia.Append("select fac.idfactura, serv.idcliente, concat(cli.nombres, ', ', cli.apellidos) as 'cliente', ctrl.fecha_hasta,ctrl.fecha_vencimiento, upper(ctrl.mes)as 'mes',(fac.saldo + fac.mora) as 'total', ");
-            sentencia.Append("(fac.saldo / (fac.cont_pendiente + 1)) as 'cuota',fac.mora, fac.saldo, fac.cont_pendiente, col.colonia,fac.idservicio from facturas fac inner join servicios serv on serv.idservicio = fac.idservicio ");
+            sentencia.Append("(fac.saldo / (fac.cont_pendiente + 1)) as 'cuota',fac.mora, fac.saldo, fac.cont_pendiente, col.colonia,fac.idservicio,if(isnull(serv.idconsumo),1,2) as 'tipo' from facturas fac inner join servicios serv on serv.idservicio = fac.idservicio ");
             sentencia.Append("inner join fecha_control_facturas ctrl on fac.idcontrolfecha = ctrl.idcontrol ");
             sentencia.Append("inner join colonias col on serv.idcolonia = col.idcolonia ");
             sentencia.Append("inner join clientes cli on serv.idcliente = cli.idcliente ");

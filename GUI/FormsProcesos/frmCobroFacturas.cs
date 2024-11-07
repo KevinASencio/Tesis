@@ -3,6 +3,7 @@ using Controllers;
 using GUI.Clases;
 using GUI.FormsGestion;
 using GUI.FormsMessageBox;
+using GUI.Reportes;
 using System;
 using System.Data;
 using System.Drawing.Printing;
@@ -42,16 +43,21 @@ namespace GUI.FormsProcesos
 
         private void btnProcesar_Click(object sender, EventArgs e)
         {
-            if (factura.procesar(double.Parse(txbTotalPagar.Text.ToString()), double.Parse(txbDescuento.Text.ToString()), frmPrincipal.useractivo.usuario()))
+            if (double.Parse(txbDescuento.Text.ToString()) < double.Parse(txbTotalPagar.Text.ToString()))
             {
-                Validacion.frmMessageBox("¡Cobro realizado!", "Exito");
-                btnImprimir.Enabled = false;
-                LimpiarInf();
+                if (factura.procesar(double.Parse(txbTotalPagar.Text.ToString()), double.Parse(txbDescuento.Text.ToString()), frmPrincipal.useractivo.usuario()))
+                {
+                    Validacion.frmMessageBox("¡Cobro realizado!", "Exito");
+                    btnImprimir.Enabled = false;
+                    LimpiarInf();
+                }
             }
+            else Validacion.frmMessageBox("El descuento no puede ser \\n mayor al monto a pagar", "Error");
         }
 
         public Boolean buscar(string idfactura)
         {
+            btnImprimir.Enabled = true;
             return factura.ConsultarFactura(idfactura, this);
         }
         public void LimpiarInf()
@@ -69,34 +75,33 @@ namespace GUI.FormsProcesos
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-            CargarDatos();
+            Imprimir();
 
         }
 
         //cargar reporte cunado la factura es impresa al momento de pagar
-        public void CargarDatos()
+        public void Imprimir()
         {
+            ParametrosNeg _parametros = new ParametrosNeg();
+            //Crear una instancia del reporte
+            Reportes.RepFacturaCobrar reporte = new Reportes.RepFacturaCobrar();
+            // Obtener los datos para el reporte
+            DataTable dtFactura = factura.ConsultarReporteGen(0); reporte.SetDataSource(dtFactura);
+            // Configurar el nombre del documento para imprimir
+            PrintDocument printDocument1 = new PrintDocument(); printDocument1.DocumentName = "RepFacturaCobrar";
+            // Mostrar el cuadro de diálogo de impresión
+            PrintDialog printDialog = new PrintDialog(); printDialog.Document = printDocument1;
+            if (printDialog.ShowDialog() == DialogResult.OK)
             {
-                //Crear una instancia del reporte
-                Reportes.RepFacturaCobrar reporte = new Reportes.RepFacturaCobrar();
-                // Obtener los datos para el reporte
-                DataTable dtFactura = factura.ConsultarReporteGen(0); reporte.SetDataSource(dtFactura);
-                // Configurar el nombre del documento para imprimir
-                PrintDocument printDocument1 = new PrintDocument(); printDocument1.DocumentName = "RepFacturaCobrar";
-                // Mostrar el cuadro de diálogo de impresión
-                PrintDialog printDialog = new PrintDialog(); printDialog.Document = printDocument1; 
-                if (printDialog.ShowDialog() == DialogResult.OK)
-                {
 
-                    // Configurar la impresora
-                    reporte.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
-                    try
-                    {  //Imprimir el reporte
-                        reporte.PrintToPrinter(printDialog.PrinterSettings.Copies, false, 0, 0);
-                        MessageBox.Show("Reporte impreso correctamente.");
-                    }
-                    catch (Exception ex) { MessageBox.Show("Error al imprimir el reporte: " + ex.Message); }
+                // Configurar la impresora
+                reporte.PrintOptions.PrinterName = printDialog.PrinterSettings.PrinterName;
+                try
+                {  //Imprimir el reporte
+                    reporte.PrintToPrinter(printDialog.PrinterSettings.Copies, false, 0, 0);
+                    MessageBox.Show("Reporte impreso correctamente.");
                 }
+                catch (Exception ex) { MessageBox.Show("Error al imprimir el reporte: " + ex.Message); }
             }
         }
     }

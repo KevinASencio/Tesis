@@ -35,6 +35,18 @@ namespace CapaDatos.Entidades
             catch (Exception ex) { return null; }
         }
 
+        public DataTable ConsultarParametro()
+        {
+            DBOperacion operacion = new DBOperacion();
+            StringBuilder sentencia = new StringBuilder();
+            sentencia.Append("select MoraConsumo, MoraAcometida, cuotasPenMax from parametros;");
+            try
+            {
+                return operacion.Consultar(sentencia.ToString());
+            }
+            catch (Exception ex) { return new DataTable(); }
+        }
+
         public Boolean Actualizar()
         {
             DBOperacion operacion = new DBOperacion();

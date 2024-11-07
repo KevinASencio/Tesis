@@ -11,7 +11,7 @@ namespace CapaDatos.Entidades
         public int IdColonia { get => _IdColonia; set => _IdColonia = value; }
         public string Colonia { get => _Colonia; set => _Colonia = value; }
 
-        public static DataTable consultar()
+        public  DataTable consultar()
         {
             DBOperacion operacion = new DBOperacion();
             string sentencia = "select idcolonia, colonia from colonias;";

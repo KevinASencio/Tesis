@@ -9,6 +9,7 @@ namespace GUI.FormsGestion
     {
         public ServiciosNeg _servicio;
         public ServiciosConsumoNeg _consumo;
+        public ColoniasNeg _colonias;
         BindingSource cuotasConsumo = new BindingSource();
         public frmGestionConsumo()
         {
@@ -27,7 +28,8 @@ namespace GUI.FormsGestion
 
         private void CargarDatos()
         {
-            this.cmbColonia.DataSource = ColoniasNeg.consultar();
+            _colonias = new ColoniasNeg();
+            this.cmbColonia.DataSource = _colonias.consultar();
 
             this.cmbCuota.DataSource = CuotasNeg.consultarCuotasConsumo();
             cmbColonia.ValueMember = "idcolonia";

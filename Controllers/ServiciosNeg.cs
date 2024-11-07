@@ -15,6 +15,10 @@ namespace Controllers
         {
             _Servicio = new Servicios();
         }
+        public ServiciosNeg(int idcliente)
+        {
+            _Servicio = new Servicios(idcliente);
+        }
 
         public ServiciosNeg(ServiciosConsumoNeg con,ServiciosAcometidaNeg aco,int idcliente) 
         {

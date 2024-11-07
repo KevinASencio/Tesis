@@ -49,6 +49,7 @@
     <Compile Include="CuotasNeg.cs" />
     <Compile Include="FacturasNeg.cs" />
     <Compile Include="MovimientosNeg.cs" />
+    <Compile Include="ParametrosNeg.cs" />
     <Compile Include="PermisosNeg.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RolesNeg.cs" />

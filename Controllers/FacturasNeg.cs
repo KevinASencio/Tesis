@@ -21,6 +21,10 @@ namespace Controllers
         Cuotas cuotas = new Cuotas();
         Parametros parametros = new Parametros();
         ControlMensualCaja ct = new ControlMensualCaja();
+        public FacturasNeg() 
+        {
+            parametros = parametros.Consultar();
+        }
         public DataTable Generar(int idcontrol, ProgressBar psbBar, Label conta)
         {
             return fac.GenerarFacturasConsumo(idcontrol, parametros.MoraConsumo, psbBar, conta);
@@ -32,7 +36,6 @@ namespace Controllers
         //cosultar a la base de datos y rellenar informacion del formulario
         public Boolean ConsultarFactura(string idfactura, Form contenedor)
         {
-            parametros=parametros.Consultar();
             fac.consultarFactura(idfactura);
             servicio.IdServicio=fac.IdServicio;
             servicio = servicio.ConsultarServicio();
@@ -56,17 +59,8 @@ namespace Controllers
         //funcion a llamar en el formalario de pago;
         public bool procesar(double pagado, double descuento, string empleado)
         {
-            //variable para calcular la mora que se esta pagando en caso de ser pago parcial
-            Double MoraParcial = 0;
             //validamos la fecha, esto para cobrar o no el dolar por pago despues de la fecha de vencimiento
-            if (fechacontrol.FechaVencimiento < DateTime.Now)
-            {
-                if (MessageBox.Show("Desea cobrar mora por pago tardio?", "Ojo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    if (servicio.IdConsumo == 0) { fac.Comentario = fac.Comentario + "Se cobro $ " + parametros.MoraConsumo + " por pago tardio"; fac.Mora = fac.Mora + parametros.MoraConsumo; }
-                    else { fac.Comentario = fac.Comentario + "Se cobro $ " + parametros.MoraAcometida + " por pago tardio;"; fac.Mora = fac.Mora + parametros.MoraAcometida; }
-                }
-            }
+            pagado = vencida(pagado);
             double aux = fac.Saldo + fac.Mora;
             if (pagado < aux)
             {
@@ -83,11 +77,34 @@ namespace Controllers
             else { return PagoCompleto(pagado, descuento, empleado); }
             return false;
         }
+
+        public double vencida(double pagado) 
+        {
+            if (fechacontrol.FechaVencimiento < DateTime.Now)
+            {
+                if (MessageBox.Show("Desea cobrar mora por pago tardio?", "Ojo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    if (servicio.IdConsumo != 0)
+                    {
+                        fac.Comentario = fac.Comentario + "Se cobro $ " + parametros.MoraConsumo + " por pago tardio";
+                        fac.Mora = fac.Mora + parametros.MoraConsumo;
+                        pagado += parametros.MoraConsumo;
+                    }
+                    else
+                    {
+                        fac.Comentario = fac.Comentario + "Se cobro $ " + parametros.MoraAcometida + " por pago tardio;";
+                        fac.Mora = fac.Mora + parametros.MoraAcometida;
+                        pagado += parametros.MoraAcometida;
+                    }
+                }
+            }
+            return pagado;
+        }
         public string getMes()
         {
             return fechacontrol.Mes;
         }
-        
+
         public string GetMesesPendientes(string mes, int pendiente)
         {
             // arreglo para crear la cedena de meses pendientes 
@@ -97,7 +114,7 @@ namespace Controllers
             //acceder al indice del mes que se esta cobrando en la factura para recorrer desde ahi el arreglo 
             int cont = Array.IndexOf(meses, mes);
             int contPendiente = pendiente;
-            while(contPendiente > 0)
+            while (contPendiente > 0)
             {
                 cont++;
                 if (cont >= 11)
@@ -111,13 +128,13 @@ namespace Controllers
                 }
                 contPendiente--;
             };
-            return aux.ToString().Remove(0, 2);
+            return !String.IsNullOrEmpty(aux.ToString()) ? aux.ToString().Remove(0, 2) : String.Empty;
         }
         public Boolean PagoCompleto(double pagado, double descuento, string empleado)
         {
             if (descuento > 0)
             {
-                fac.Comentario += "se le desconto el valor de $ " + descuento + ";";
+                fac.Comentario += " se le desconto el valor de $ " + descuento + ";";
                 fac.Descuento = descuento;
             }
             fac.EstadoPago = "Cancelado";
@@ -136,7 +153,7 @@ namespace Controllers
                 movimientos.IdControlBanco = 0;
                 movimientos.IdCliente = servicio.IdCliente;
                 movimientos.Fecha = DateTime.Now;
-                movimientos.Monto = pagado;
+                movimientos.Monto = pagado-descuento;
                 return movimientos.Insertar();
             }
             return false;
@@ -180,7 +197,7 @@ namespace Controllers
                             movimiento.IdControlBanco = 0;
                             movimiento.IdCliente = servicio.IdCliente;
                             movimiento.Fecha = DateTime.Now;
-                            movimiento.Monto = pagado;
+                            movimiento.Monto = pagado-descuento;
                             movimiento.Insertar();
                             //generar factura con saldo pendeinte
                             facParcial.Saldo = fac.Saldo - cancelada.Saldo;
@@ -252,7 +269,7 @@ namespace Controllers
                         movimiento.IdControlBanco = 0;
                         movimiento.IdCliente = servicio.IdCliente;
                         movimiento.Fecha = DateTime.Now;
-                        movimiento.Monto = adelantada.Saldo;
+                        movimiento.Monto = adelantada.Saldo-descuento;
                         return movimiento.Insertar();
                     }
                 }
@@ -286,11 +303,14 @@ namespace Controllers
             else resultado = fac.ConsultarReporteBuscar();
             resultado.Columns.Add("textmeses");
             resultado.Columns.Add("textsaldo");
+            resultado.Columns.Add("morac");
             ConvertiraLetras conv= new ConvertiraLetras();
-            foreach (DataRow row in resultado.Rows) 
+            foreach (DataRow row in resultado.Rows)
             {
                 row["textmeses"] = GetMesesPendientes(row["mes"].ToString(), int.Parse(row["cont_pendiente"].ToString())).ToUpper();
                 row["textsaldo"] = conv.Convertir(double.Parse(row["total"].ToString()));
+                if (row["tipo"].ToString().Equals("1")) { row["morac"] = parametros.MoraConsumo.ToString("$ 0.00"); }
+                else { row["morac"] = parametros.MoraAcometida.ToString("$ 0.00"); }
             }
             return resultado;
         }
