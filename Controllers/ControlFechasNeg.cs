@@ -16,6 +16,7 @@ namespace Controllers
         public ControlFechasNeg(int idcontrol,string mes, DateTime fechavencimiento, DateTime fechahasta)
         {
             this.crt = new ControlFechasFacturas();
+            crt.IdControl = idcontrol;
             crt.Mes = mes;
             crt.FechaHasta = fechahasta;
             crt.FechaVencimiento = fechavencimiento;

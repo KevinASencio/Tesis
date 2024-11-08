@@ -239,31 +239,63 @@ namespace GUI.FormsGestion
 
         private void btnRoles_Click(object sender, EventArgs e)
         {
-            frmGestionRolesPermisos frmpermisos= new frmGestionRolesPermisos();
+            frmGestionRolesPermisos frmpermisos = new frmGestionRolesPermisos();
             OrganizadorObj.abrirCont(frmpermisos);
         }
 
         private void btnControlFechas_Click(object sender, EventArgs e)
         {
             _frmVistaControlFechas = new frmVistaControlFechas();
-            formCall = "Fechas";
+            formCall = "fechas";
             OrganizadorObj.abrirCont(_frmVistaControlFechas);
             OrganizadorObj.ocultar(pnlMenus, pnlMenuInicio);
             OrganizadorObj.mostrar(pnlMenus, pnlMenuDetalles);
             pnlMenuDetalles.Controls.Remove(btnCambiarEstado);
+            pnlMenuDetalles.Controls.Remove(btnServicios);
+            pnlMenuDetalles.Controls.Remove(btnFacturasU);
         }
 
         private void btnReportes_Click(object sender, EventArgs e)
         {
             frmRepFacturasColonia frm = new frmRepFacturasColonia();
-            frm.StartPosition=FormStartPosition.CenterParent;
+            frm.StartPosition = FormStartPosition.CenterParent;
             frm.ShowDialog();
         }
 
         private void btnImportar_Click(object sender, EventArgs e)
         {
-            ConvertiraLetras convert=new ConvertiraLetras();
+            ConvertiraLetras convert = new ConvertiraLetras();
             MessageBox.Show(convert.Convertir(235.08));
+        }
+
+        private void btnCorte_Click(object sender, EventArgs e)
+        {
+
+
+            if (MessageBox.Show(@"¿Seguro desea Realizar Corte de Mes? El nuevo control de mes comenzara:" +
+                DateTime.Now.AddDays(1).ToString("dd-MM-yyyy"), "Advertencia", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                ControlBancoNeg controlbanco = new ControlBancoNeg();
+                ControlCajaNeg controlcaja = new ControlCajaNeg();
+                if (controlbanco.CierreCaja() && controlcaja.CierreCaja())
+                {
+                    Validacion.frmMessageBox("Cierre de Caja Ralializo", "Exito");
+                }
+            }
+
+        }
+
+        private void btnServiciosMora_Click(object sender, EventArgs e)
+        {
+            frmServiciosPeligroSuspension frmServicionsuspendidos = new frmServiciosPeligroSuspension();
+            OrganizadorObj.abrirCont(frmServicionsuspendidos);
+        }
+
+        private void btnParametros_Click(object sender, EventArgs e)
+        {
+            frmGestionParametros frmParametros = new frmGestionParametros();
+            frmParametros.StartPosition = FormStartPosition.CenterParent;
+            frmParametros.ShowDialog();
         }
     }
 }

@@ -102,10 +102,10 @@ namespace CapaDatos.Entidades
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
             sentencia.Append("update fecha_control_facturas set ");
-            sentencia.Append(" fecha_vencimiento= @fecha_vencimiento");
-            sentencia.Append(" fecha_hasta =  @fecha_hasta");
+            sentencia.Append(" fecha_vencimiento= @fecha_vencimiento,");
+            sentencia.Append(" fecha_hasta =  @fecha_hasta,");
             sentencia.Append(" mes=@mes");
-            sentencia.Append(" where idcontro=@idcontrol;");
+            sentencia.Append(" where idcontrol=@idcontrol;");
 
             Dictionary<string, object> dic = new Dictionary<string, object>();
             dic.Add("fecha_vencimiento", FechaVencimiento);

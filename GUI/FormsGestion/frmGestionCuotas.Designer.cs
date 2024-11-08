@@ -52,8 +52,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
             this.dgtvAcometida = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -63,6 +61,8 @@
             this.txbIdAco = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.ErrorNotificador = new System.Windows.Forms.ErrorProvider(this.components);
+            this.idacometida = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.acomonto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             this.pnlContenedor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splContenedor)).BeginInit();
@@ -174,6 +174,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgtvConsumo.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgtvConsumo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgtvConsumo.ShowCellToolTips = false;
             this.dgtvConsumo.Size = new System.Drawing.Size(322, 205);
             this.dgtvConsumo.TabIndex = 10;
             this.dgtvConsumo.DoubleClick += new System.EventHandler(this.dgtvConsumo_DoubleClick);
@@ -307,8 +308,8 @@
             this.dgtvAcometida.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgtvAcometida.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgtvAcometida.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6});
+            this.idacometida,
+            this.acomonto});
             this.dgtvAcometida.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgtvAcometida.EnableHeadersVisualStyles = false;
             this.dgtvAcometida.GridColor = System.Drawing.SystemColors.Control;
@@ -323,22 +324,10 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgtvAcometida.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgtvAcometida.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgtvAcometida.ShowCellToolTips = false;
             this.dgtvAcometida.Size = new System.Drawing.Size(322, 205);
             this.dgtvAcometida.TabIndex = 10;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "idcuotaacometida";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Id Cuota";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "monto";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Cuota";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dgtvAcometida.DoubleClick += new System.EventHandler(this.dgtvAcometida_DoubleClick);
             // 
             // panel6
             // 
@@ -429,6 +418,20 @@
             // 
             this.ErrorNotificador.ContainerControl = this;
             // 
+            // idacometida
+            // 
+            this.idacometida.DataPropertyName = "idcuotaacometida";
+            this.idacometida.HeaderText = "Id Cuota";
+            this.idacometida.Name = "idacometida";
+            this.idacometida.ReadOnly = true;
+            // 
+            // acomonto
+            // 
+            this.acomonto.DataPropertyName = "monto";
+            this.acomonto.HeaderText = "Cuota";
+            this.acomonto.Name = "acomonto";
+            this.acomonto.ReadOnly = true;
+            // 
             // frmGestionCuotas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -489,12 +492,12 @@
         private System.Windows.Forms.DataGridView dgtvConsumo;
         private System.Windows.Forms.DataGridViewTextBoxColumn idcuota;
         private System.Windows.Forms.DataGridViewTextBoxColumn monto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ErrorProvider ErrorNotificador;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idacometida;
+        private System.Windows.Forms.DataGridViewTextBoxColumn acomonto;
     }
 }

@@ -45,7 +45,7 @@ namespace CapaDatos.Entidades
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
-            sentencia.Append("insert into control_mensual_caja (fecha_inicio, saldoinicial, saldofinal)");
+            sentencia.Append("insert into control_mensual_banco (fecha_inicio, saldoinicial, saldofinal)");
             sentencia.Append("values(");
             sentencia.Append(" @fecha_inicio, ");
             sentencia.Append(" @saldoinicial, ");
@@ -57,16 +57,16 @@ namespace CapaDatos.Entidades
             try { return operacion.Insertar(sentencia.ToString(),dic); } catch (Exception ex) { return false; }
         }
 
-        public bool ActualizarSaldoFinal()
+        public bool CierreMes()
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
 
             sentencia.Append("update control_mensual_banco set ");
-            sentencia.Append(" saldofinal =@saldofinal");
-            sentencia.Append("where idcontrol_banco =@idcontrolbanco;");
+            sentencia.Append(" fecha_cierre =@fecha");
+            sentencia.Append(" where idcontrol_banco =@idcontrolbanco;");
             Dictionary<string,object> dic = new Dictionary<string,object>();
-            dic.Add("saldofinal", SaldoFinal);
+            dic.Add("fecha", DateTime.Now);
             dic.Add("idcontrolbanco", IdControlBanco);
             try { return operacion.Actualizar(sentencia.ToString(), dic); } catch (Exception ex) { return false; }
         }

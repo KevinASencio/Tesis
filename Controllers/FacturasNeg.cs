@@ -36,7 +36,7 @@ namespace Controllers
         //cosultar a la base de datos y rellenar informacion del formulario
         public Boolean ConsultarFactura(string idfactura, Form contenedor)
         {
-            fac.consultarFactura(idfactura);
+            fac.ConsultarFactura(idfactura);
             servicio.IdServicio=fac.IdServicio;
             servicio = servicio.ConsultarServicio();
             cliente.IdCliente = servicio.IdCliente;
@@ -315,9 +315,9 @@ namespace Controllers
             return resultado;
         }
 
-        public DataTable ConsultarReporteBuscar() 
+        public DataTable ConsultarServPeligro() 
         {
-            return fac.ConsultarReporteBuscar();
+            return fac.ConsultarServPeligro(parametros.CuotasPenMax);
         }
 
     }

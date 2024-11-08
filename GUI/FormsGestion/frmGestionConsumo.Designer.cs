@@ -268,9 +268,10 @@
             this.pnlPrincipal.Controls.Add(this.panel4);
             this.pnlPrincipal.Controls.Add(this.panel5);
             this.pnlPrincipal.Controls.Add(this.pnlBoton);
-            this.pnlPrincipal.Location = new System.Drawing.Point(0, 41);
+            this.pnlPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlPrincipal.Location = new System.Drawing.Point(0, 25);
             this.pnlPrincipal.Name = "pnlPrincipal";
-            this.pnlPrincipal.Size = new System.Drawing.Size(872, 528);
+            this.pnlPrincipal.Size = new System.Drawing.Size(872, 544);
             this.pnlPrincipal.TabIndex = 11;
             // 
             // ErrorNotificador

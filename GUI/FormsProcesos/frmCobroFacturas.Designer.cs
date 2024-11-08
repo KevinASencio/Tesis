@@ -318,6 +318,7 @@
             this.txbTotalPagar.Name = "txbTotalPagar";
             this.txbTotalPagar.Size = new System.Drawing.Size(483, 24);
             this.txbTotalPagar.TabIndex = 3;
+            this.txbTotalPagar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbTotalPagar_KeyPress);
             // 
             // label11
             // 
@@ -350,6 +351,7 @@
             this.txbDescuento.Name = "txbDescuento";
             this.txbDescuento.Size = new System.Drawing.Size(482, 24);
             this.txbDescuento.TabIndex = 3;
+            this.txbDescuento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbDescuento_KeyPress);
             // 
             // label12
             // 

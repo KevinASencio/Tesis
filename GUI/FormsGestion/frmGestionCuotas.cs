@@ -44,6 +44,8 @@ namespace GUI.FormsGestion
             dgtvAcometida.AutoGenerateColumns=false;
             dgtvConsumo.DataSource = CuotasNeg.consultarCuotasConsumo();
             dgtvConsumo.AutoGenerateColumns = false;
+            dgtvAcometida.Update();
+            dgtvConsumo.Update();
         }
 
         private void dgtvConsumo_DoubleClick(object sender, EventArgs e)
@@ -95,7 +97,8 @@ namespace GUI.FormsGestion
                 Validacion.Decimales(e, punto);
             }
             catch (Exception ex)
-            { //Validacion.ErrorBox(ex);
+            { 
+                Validacion.ErrorBox(ex);
             }
         }
 
@@ -108,7 +111,7 @@ namespace GUI.FormsGestion
             else
             {
                 if (String.IsNullOrEmpty(txbIdAco.Text)) {txbIdAco.Text = "0"; }
-                if (cuota.ProcesarCuotaConsumo(int.Parse(txbIdAco.Text.ToString()), float.Parse(txbCuotaAco.Text.ToString())))
+                if (cuota.ProcesarCuotaAcometida(int.Parse(txbIdAco.Text.ToString()), float.Parse(txbCuotaAco.Text.ToString())))
                 {
                     Validacion.frmMessageBox("¡Registro Guardado!", "¡Exito!");
                     txbCuotaAco.Clear();
@@ -116,6 +119,12 @@ namespace GUI.FormsGestion
                     cargardatos();
                 }
             }
+        }
+
+        private void dgtvAcometida_DoubleClick(object sender, EventArgs e)
+        {
+            txbIdAco.Text = dgtvAcometida.CurrentRow.Cells["idacometida"].Value.ToString();
+            txbCuotaAco.Text = dgtvAcometida.CurrentRow.Cells["acomonto"].Value.ToString();
         }
     }
 }

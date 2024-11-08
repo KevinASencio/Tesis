@@ -52,10 +52,10 @@ namespace CapaDatos.Entidades
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
 
-            sentencia.Append("update parametros ser");
-            sentencia.Append("MoraConsumo=@moraconsumo");
-            sentencia.Append("MoraAcometida=@moraacometida");
-            sentencia.Append("cuotasPenMax=@contmax");
+            sentencia.Append("update parametros set");
+            sentencia.Append(" MoraConsumo=@moraconsumo,");
+            sentencia.Append(" MoraAcometida=@moraacometida,");
+            sentencia.Append(" cuotasPenMax=@contmax where id=1;");
             Dictionary<string,object> dic= new Dictionary<string,object>();
             dic.Add("moraconsumo", MoraConsumo);
             dic.Add("moraacometida", MoraAcometida);

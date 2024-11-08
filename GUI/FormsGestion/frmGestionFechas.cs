@@ -18,11 +18,12 @@ namespace GUI.FormsGestion
         public frmGestionFechas()
         {
             InitializeComponent();
+            FechaNeg=new ControlFechasNeg();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
+            Cerrar();
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -30,7 +31,8 @@ namespace GUI.FormsGestion
             if (!Validacion.esVacio(pnlPrincipal, ErrorNotificador) && Validacion.seguroModificar()) 
             {
                 if (String.IsNullOrEmpty(txbId.Text)) { txbId.Text = "0"; }
-                if (FechaNeg.Procesar()) { Validacion.frmMessageBox("Registro Guardado", "Exito"); }
+                FechaNeg = new ControlFechasNeg(int.Parse(txbId.Text.ToString()), cmbMes.Text.ToString(), dtpVencimiento.Value, dtpFinConsumo.Value);
+                if (FechaNeg.Procesar()) { Validacion.frmMessageBox("Registro Guardado", "Exito"); this.Close(); }
                 else { Validacion.frmMessageBox("Error al Guardar el Registro","Error"); }
             }
         }
@@ -38,5 +40,13 @@ namespace GUI.FormsGestion
         {
             FechaNeg = new ControlFechasNeg(0,mes,fechavencimiento,fechavencimientohasta);
         }
+
+        private void prbCerrar_Click(object sender, EventArgs e)
+        {
+            Cerrar();
+        }
+        public void Cerrar() { this.Close(); }
+
+       
     }
 }

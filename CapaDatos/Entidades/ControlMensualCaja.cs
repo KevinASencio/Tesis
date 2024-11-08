@@ -58,17 +58,17 @@ namespace CapaDatos.Entidades
             try { return operacion.Insertar(sentencia.ToString(), dic); }catch (Exception ex) { return false; }
         }
 
-        public bool ActualizarSaldoFinal()
+        public bool CierreCaja()
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
 
             sentencia.Append("update control_mensual_caja set ");
-            sentencia.Append(" saldofinal =@saldofinal");
-            sentencia.Append("where idcontrol_caja =@idcontrolcaja;");
+            sentencia.Append(" fecha_cierre =@fecha");
+            sentencia.Append(" where idcontrol_caja =@idcontrolcaja;");
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic.Add("saldofinal", SaldoFinal);
-            dic.Add("idcontrolbanco", IdControlCaja);
+            dic.Add("fecha", DateTime.Now);
+            dic.Add("idcontrolcaja", IdControlCaja);
             try { return operacion.Actualizar(sentencia.ToString(), dic); }catch (Exception ex) { return false; }
         }
     }

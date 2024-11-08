@@ -146,6 +146,12 @@
     <Compile Include="FormsGestion\frmGestionFechas.Designer.cs">
       <DependentUpon>frmGestionFechas.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormsGestion\frmGestionParametros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsGestion\frmGestionParametros.Designer.cs">
+      <DependentUpon>frmGestionParametros.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormsGestion\frmGestionRolesPermisos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,6 +163,12 @@
     </Compile>
     <Compile Include="FormsGestion\frmGestionUsuarios.Designer.cs">
       <DependentUpon>frmGestionUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsGestion\frmServiciosPeligroSuspension.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsGestion\frmServiciosPeligroSuspension.Designer.cs">
+      <DependentUpon>frmServiciosPeligroSuspension.cs</DependentUpon>
     </Compile>
     <Compile Include="FormsGestion\frmVerFacturasCli.cs">
       <SubType>Form</SubType>
@@ -271,11 +283,17 @@
     <EmbeddedResource Include="FormsGestion\frmGestionFechas.resx">
       <DependentUpon>frmGestionFechas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormsGestion\frmGestionParametros.resx">
+      <DependentUpon>frmGestionParametros.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormsGestion\frmGestionRolesPermisos.resx">
       <DependentUpon>frmGestionRolesPermisos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormsGestion\frmGestionUsuarios.resx">
       <DependentUpon>frmGestionUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsGestion\frmServiciosPeligroSuspension.resx">
+      <DependentUpon>frmServiciosPeligroSuspension.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormsGestion\frmVerFacturasCli.resx">
       <DependentUpon>frmVerFacturasCli.cs</DependentUpon>

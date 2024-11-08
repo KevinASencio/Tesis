@@ -33,10 +33,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVerFacturasCli));
             this.dtgvFacturas = new System.Windows.Forms.DataGridView();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.txbFiltro = new System.Windows.Forms.ToolStripTextBox();
-            this.toolStripCerrar = new System.Windows.Forms.ToolStripButton();
             this.idfactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.saldo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mora = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,6 +42,10 @@
             this.estado_pago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cont_pendiente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.comentario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.txbFiltro = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripCerrar = new System.Windows.Forms.ToolStripButton();
             this.tsbCobrar = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvFacturas)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -57,7 +57,7 @@
             this.dtgvFacturas.AllowUserToDeleteRows = false;
             this.dtgvFacturas.AllowUserToResizeColumns = false;
             this.dtgvFacturas.AllowUserToResizeRows = false;
-            this.dtgvFacturas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgvFacturas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dtgvFacturas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtgvFacturas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -106,6 +106,78 @@
             this.dtgvFacturas.Size = new System.Drawing.Size(881, 478);
             this.dtgvFacturas.TabIndex = 10;
             // 
+            // idfactura
+            // 
+            this.idfactura.DataPropertyName = "idfactura";
+            this.idfactura.HeaderText = "No Factura";
+            this.idfactura.Name = "idfactura";
+            this.idfactura.ReadOnly = true;
+            this.idfactura.Width = 87;
+            // 
+            // saldo
+            // 
+            this.saldo.DataPropertyName = "saldo";
+            this.saldo.HeaderText = "Saldo";
+            this.saldo.Name = "saldo";
+            this.saldo.ReadOnly = true;
+            this.saldo.Width = 67;
+            // 
+            // mora
+            // 
+            this.mora.DataPropertyName = "mora";
+            this.mora.HeaderText = "Mora";
+            this.mora.Name = "mora";
+            this.mora.ReadOnly = true;
+            this.mora.Width = 64;
+            // 
+            // mes
+            // 
+            this.mes.DataPropertyName = "mes";
+            this.mes.HeaderText = "Mes";
+            this.mes.Name = "mes";
+            this.mes.ReadOnly = true;
+            this.mes.Width = 60;
+            // 
+            // fachavencimiento
+            // 
+            this.fachavencimiento.DataPropertyName = "fecha_vencimiento";
+            this.fachavencimiento.HeaderText = "Fecha Vencimiento";
+            this.fachavencimiento.Name = "fachavencimiento";
+            this.fachavencimiento.ReadOnly = true;
+            this.fachavencimiento.Width = 121;
+            // 
+            // estado
+            // 
+            this.estado.DataPropertyName = "estado";
+            this.estado.HeaderText = "Estado";
+            this.estado.Name = "estado";
+            this.estado.ReadOnly = true;
+            this.estado.Width = 73;
+            // 
+            // estado_pago
+            // 
+            this.estado_pago.DataPropertyName = "estado_pago";
+            this.estado_pago.HeaderText = "Estado Pago";
+            this.estado_pago.Name = "estado_pago";
+            this.estado_pago.ReadOnly = true;
+            this.estado_pago.Width = 94;
+            // 
+            // cont_pendiente
+            // 
+            this.cont_pendiente.DataPropertyName = "cont_pendiente";
+            this.cont_pendiente.HeaderText = "Cuotas Pendientes";
+            this.cont_pendiente.Name = "cont_pendiente";
+            this.cont_pendiente.ReadOnly = true;
+            this.cont_pendiente.Width = 119;
+            // 
+            // comentario
+            // 
+            this.comentario.DataPropertyName = "comentario";
+            this.comentario.HeaderText = "Comentario";
+            this.comentario.Name = "comentario";
+            this.comentario.ReadOnly = true;
+            this.comentario.Width = 93;
+            // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -143,69 +215,6 @@
             this.toolStripCerrar.Size = new System.Drawing.Size(23, 22);
             this.toolStripCerrar.Text = "toolStripButton1";
             this.toolStripCerrar.Click += new System.EventHandler(this.toolStripCerrar_Click);
-            // 
-            // idfactura
-            // 
-            this.idfactura.DataPropertyName = "idfactura";
-            this.idfactura.HeaderText = "No Factura";
-            this.idfactura.Name = "idfactura";
-            this.idfactura.ReadOnly = true;
-            // 
-            // saldo
-            // 
-            this.saldo.DataPropertyName = "saldo";
-            this.saldo.HeaderText = "Saldo";
-            this.saldo.Name = "saldo";
-            this.saldo.ReadOnly = true;
-            // 
-            // mora
-            // 
-            this.mora.DataPropertyName = "mora";
-            this.mora.HeaderText = "Mora";
-            this.mora.Name = "mora";
-            this.mora.ReadOnly = true;
-            // 
-            // mes
-            // 
-            this.mes.DataPropertyName = "mes";
-            this.mes.HeaderText = "Mes";
-            this.mes.Name = "mes";
-            this.mes.ReadOnly = true;
-            // 
-            // fachavencimiento
-            // 
-            this.fachavencimiento.DataPropertyName = "fecha_vencimiento";
-            this.fachavencimiento.HeaderText = "Fecha Vencimiento";
-            this.fachavencimiento.Name = "fachavencimiento";
-            this.fachavencimiento.ReadOnly = true;
-            // 
-            // estado
-            // 
-            this.estado.DataPropertyName = "estado";
-            this.estado.HeaderText = "Estado";
-            this.estado.Name = "estado";
-            this.estado.ReadOnly = true;
-            // 
-            // estado_pago
-            // 
-            this.estado_pago.DataPropertyName = "estado_pago";
-            this.estado_pago.HeaderText = "Estado Pago";
-            this.estado_pago.Name = "estado_pago";
-            this.estado_pago.ReadOnly = true;
-            // 
-            // cont_pendiente
-            // 
-            this.cont_pendiente.DataPropertyName = "cont_pendiente";
-            this.cont_pendiente.HeaderText = "Cuotas Pendientes";
-            this.cont_pendiente.Name = "cont_pendiente";
-            this.cont_pendiente.ReadOnly = true;
-            // 
-            // comentario
-            // 
-            this.comentario.DataPropertyName = "comentario";
-            this.comentario.HeaderText = "Comentario";
-            this.comentario.Name = "comentario";
-            this.comentario.ReadOnly = true;
             // 
             // tsbCobrar
             // 

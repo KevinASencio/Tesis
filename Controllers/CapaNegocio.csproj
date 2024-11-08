@@ -44,6 +44,8 @@
   <ItemGroup>
     <Compile Include="ClientesNeg.cs" />
     <Compile Include="ColoniasNeg.cs" />
+    <Compile Include="ControlBancoNeg.cs" />
+    <Compile Include="ControlCajaNeg.cs" />
     <Compile Include="ControlFechasNeg.cs" />
     <Compile Include="ConvertiraLetras.cs" />
     <Compile Include="CuotasNeg.cs" />

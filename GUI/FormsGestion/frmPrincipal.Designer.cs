@@ -511,6 +511,7 @@
             this.btnCorte.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCorte.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCorte.UseVisualStyleBackColor = true;
+            this.btnCorte.Click += new System.EventHandler(this.btnCorte_Click);
             // 
             // btnImportar
             // 
@@ -614,6 +615,7 @@
             this.btnServiciosMora.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnServiciosMora.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnServiciosMora.UseVisualStyleBackColor = true;
+            this.btnServiciosMora.Click += new System.EventHandler(this.btnServiciosMora_Click);
             // 
             // pnlTablasAux
             // 
@@ -622,9 +624,9 @@
             this.pnlTablasAux.Controls.Add(this.btnCuotasConsumno);
             this.pnlTablasAux.Controls.Add(this.btnRoles);
             this.pnlTablasAux.Controls.Add(this.btnControlFechas);
-            this.pnlTablasAux.Controls.Add(this.btnParametros);
             this.pnlTablasAux.Controls.Add(this.btnMovimientos);
             this.pnlTablasAux.Controls.Add(this.btnCFacturas);
+            this.pnlTablasAux.Controls.Add(this.btnParametros);
             this.pnlTablasAux.Enabled = false;
             this.pnlTablasAux.Location = new System.Drawing.Point(0, 0);
             this.pnlTablasAux.Name = "pnlTablasAux";
@@ -714,6 +716,7 @@
             this.btnParametros.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnParametros.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnParametros.UseVisualStyleBackColor = true;
+            this.btnParametros.Click += new System.EventHandler(this.btnParametros_Click);
             // 
             // btnMovimientos
             // 

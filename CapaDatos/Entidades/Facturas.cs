@@ -88,8 +88,7 @@ namespace CapaDatos.Entidades
         }
         public DataTable GenerarFacturasConsumo(int idcontrol, double mora, ProgressBar g, Label conta)
         {
-            DBOperacion operacion = new DBOperacion();
-            StringBuilder sentencia = new StringBuilder();
+           
             /*Datatable, si aparece algun error en tiempo de ejecución se procede a agregar
             la factura para devolver cono resulatdo la lista de facturas que no fueron posibles crear las siguientes
             ejemplo: si se esta generando la facturación para el mes de febrero pero una de estas da error se agrega a Result 
@@ -112,7 +111,7 @@ namespace CapaDatos.Entidades
                 if (int.Parse(rw.ItemArray[2].ToString()) == 0)
                 {
                     Facturas Fac = new Facturas();
-                    Fac = consultarFacturaServicio(rw.ItemArray[0].ToString());
+                    Fac = ConsultarFacturaServicio(rw.ItemArray[0].ToString());
                     //generar factura nueva si la factura anterior ya fue cancelada
                     if (Fac.EstadoPago.Equals("Cancelado") | Fac.EstadoPago.Length==0)
                     {
@@ -172,8 +171,6 @@ namespace CapaDatos.Entidades
 
         public DataTable GenerarFacturasAcometida(int idcontrol, double mora, ProgressBar g, Label conta)
         {
-            DBOperacion operacion = new DBOperacion();
-            StringBuilder sentencia = new StringBuilder();
             /*Datatable, si aparece algun error en tiempo de ejecución se procede a agregar
             la factura para devolver cono resulatdo la lista de facturas que no fueron posibles crear las siguientes
             ejemplo: si se esta generando la facturación para el mes de febrero pero una de estas da error se agrega a Result 
@@ -194,7 +191,7 @@ namespace CapaDatos.Entidades
                 //si el servicio no cueta con facturas pagadas de forma adelantada 
                 if (int.Parse(rw.ItemArray[2].ToString()) == 0)
                 {
-                    Facturas Fac = consultarFacturaServicio(rw.ItemArray[0].ToString());
+                    Facturas Fac = ConsultarFacturaServicio(rw.ItemArray[0].ToString());
                     //generar factura nueva si la factura anterior ya fue cancelada
                     if (Fac.EstadoPago.Equals("Cancelado") | Fac.EstadoPago.Length==0)
                     {
@@ -252,7 +249,7 @@ namespace CapaDatos.Entidades
             return Resultado;
         }
 
-        public Boolean consultarFactura(string idfactura)
+        public Boolean ConsultarFactura(string idfactura)
         {
             //cambiar esto para usar diccionarios
             DBOperacion operacion = new DBOperacion();
@@ -282,7 +279,7 @@ namespace CapaDatos.Entidades
             }
         }
 
-        public Facturas consultarFacturaServicio(string idservicio)
+        public Facturas ConsultarFacturaServicio(string idservicio)
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
@@ -421,6 +418,21 @@ namespace CapaDatos.Entidades
             sentencia.Append(" where fac.idfactura=@idfactura");
             Dictionary<string, object> dic = new Dictionary<string, object>();
             dic.Add("idfactura", IdFactura);
+            try { return operacion.Consultar(sentencia.ToString(), dic); } catch { return new DataTable(); }
+        }
+
+        public DataTable ConsultarServPeligro(int maxpendientes)
+        {
+            DBOperacion operacion = new DBOperacion();
+            StringBuilder sentencia = new StringBuilder();
+            sentencia.Append("select fac.idfactura, serv.idcliente, concat(cli.nombres, ', ', cli.apellidos) as 'cliente', ctrl.fecha_hasta,ctrl.fecha_vencimiento, upper(ctrl.mes)as 'mes',(fac.saldo + fac.mora) as 'total', ");
+            sentencia.Append("(fac.saldo / (fac.cont_pendiente + 1)) as 'cuota',fac.mora, fac.saldo, fac.cont_pendiente, col.colonia,fac.idservicio,if(isnull(serv.idconsumo),2,1) as 'tipo' from facturas fac inner join servicios serv on serv.idservicio = fac.idservicio ");
+            sentencia.Append("inner join fecha_control_facturas ctrl on fac.idcontrolfecha = ctrl.idcontrol ");
+            sentencia.Append("inner join colonias col on serv.idcolonia = col.idcolonia ");
+            sentencia.Append("inner join clientes cli on serv.idcliente = cli.idcliente ");
+            sentencia.Append(" where fac.cont_pendiente>@maxpendientes;");
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            dic.Add("maxpendientes", maxpendientes);
             try { return operacion.Consultar(sentencia.ToString(), dic); } catch { return new DataTable(); }
         }
     }

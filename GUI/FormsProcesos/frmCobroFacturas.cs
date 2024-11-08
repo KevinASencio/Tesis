@@ -7,6 +7,7 @@ using GUI.Reportes;
 using System;
 using System.Data;
 using System.Drawing.Printing;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace GUI.FormsProcesos
@@ -16,6 +17,10 @@ namespace GUI.FormsProcesos
         FacturasNeg factura = new FacturasNeg();
         ClientesNeg cliente = new ClientesNeg();
         DataTable dtFactura = new DataTable();
+        const string patronDecimal = @"\.";
+        Boolean puntoTotal = false;
+        Boolean puntoDescuento = false;
+        Regex validar;
         public frmCobroFacturas()
         {
             InitializeComponent();
@@ -43,7 +48,9 @@ namespace GUI.FormsProcesos
 
         private void btnProcesar_Click(object sender, EventArgs e)
         {
-            if (double.Parse(txbDescuento.Text.ToString()) < double.Parse(txbTotalPagar.Text.ToString()))
+            double descuento = double.Parse(txbDescuento.Text.ToString());
+            double total = double.Parse(txbTotalPagar.Text.ToString());
+            if (descuento>total && total<0)
             {
                 if (factura.procesar(double.Parse(txbTotalPagar.Text.ToString()), double.Parse(txbDescuento.Text.ToString()), frmPrincipal.useractivo.usuario()))
                 {
@@ -52,7 +59,7 @@ namespace GUI.FormsProcesos
                     LimpiarInf();
                 }
             }
-            else Validacion.frmMessageBox("El descuento no puede ser \\n mayor al monto a pagar", "Error");
+            else Validacion.frmMessageBox("Verifique la cantidad a pagar y el descuento", "Error");
         }
 
         public Boolean buscar(string idfactura)
@@ -102,6 +109,32 @@ namespace GUI.FormsProcesos
                     MessageBox.Show("Reporte impreso correctamente.");
                 }
                 catch (Exception ex) { MessageBox.Show("Error al imprimir el reporte: " + ex.Message); }
+            }
+        }
+
+        private void txbTotalPagar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                puntoTotal = Regex.IsMatch(this.txbTotalPagar.Text.ToString(), patronDecimal) ? true : false;
+                Validacion.Decimales(e, puntoTotal);
+            }
+            catch (Exception ex)
+            {
+                Validacion.ErrorBox(ex);
+            }
+        }
+
+        private void txbDescuento_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                puntoDescuento = Regex.IsMatch(this.txbDescuento.Text.ToString(), patronDecimal) ? true : false;
+                Validacion.Decimales(e, puntoDescuento);
+            }
+            catch (Exception ex)
+            {
+                Validacion.ErrorBox(ex);
             }
         }
     }

@@ -1,4 +1,5 @@
 ﻿using Controllers;
+using GUI.Reportes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -35,14 +36,20 @@ namespace GUI.FormsGestion
         }
 
 
-        public void Editar() 
+        public void Editar()
         {
             _frmgestionfechas.dtpFinConsumo.Value = DateTime.Parse(dgtvContorlFechas.CurrentRow.Cells["fecha_hasta"].Value.ToString());
             _frmgestionfechas.dtpVencimiento.Value = DateTime.Parse(dgtvContorlFechas.CurrentRow.Cells["fecha_vencimiento"].Value.ToString());
-            _frmgestionfechas.cmbMes.Text= dgtvContorlFechas.CurrentRow.Cells["mes"].ToString();
-            _frmgestionfechas.txbId.Text= dgtvContorlFechas.CurrentRow.Cells["idcontrol"].ToString();
-            _frmgestionfechas.StartPosition= FormStartPosition.CenterParent;
+            _frmgestionfechas.cmbMes.Text = dgtvContorlFechas.CurrentRow.Cells["mes"].Value.ToString();
+            _frmgestionfechas.txbId.Text = dgtvContorlFechas.CurrentRow.Cells["idcontrol"].Value.ToString();
+            _frmgestionfechas.StartPosition = FormStartPosition.CenterParent;
             _frmgestionfechas.ShowDialog();
+            CargarDatos();
+        }
+
+        private void prbCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

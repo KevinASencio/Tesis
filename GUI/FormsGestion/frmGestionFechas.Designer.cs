@@ -127,6 +127,7 @@
             // 
             this.txbId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txbId.Enabled = false;
             this.txbId.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbId.Location = new System.Drawing.Point(0, 20);
             this.txbId.Name = "txbId";
@@ -259,6 +260,7 @@
             this.prbCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.prbCerrar.TabIndex = 0;
             this.prbCerrar.TabStop = false;
+            this.prbCerrar.Click += new System.EventHandler(this.prbCerrar_Click);
             // 
             // ErrorNotificador
             // 

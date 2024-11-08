@@ -51,9 +51,10 @@ namespace GUI.Clases
 
         public static bool Decimales(KeyPressEventArgs v, Boolean a)
         {
-            if (char.IsDigit(v.KeyChar) || char.IsControl(v.KeyChar) || (v.KeyChar == '.' && !a)) { v.Handled = false; }
+            if (char.IsDigit(v.KeyChar) || (v.KeyChar == '.' && !a )|| v.KeyChar == (char)Keys.Back || v.KeyChar == (char)Keys.Delete) { v.Handled = false;}
             else { v.Handled = true; return false; }
             return true;
+            
         }
 
         public static void ErrorBox(Exception ex)
