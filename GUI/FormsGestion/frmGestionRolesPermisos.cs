@@ -15,7 +15,7 @@ namespace GUI.FormsGestion
     public partial class frmGestionRolesPermisos : Form
     {
         RolesNeg rol = new RolesNeg();
-        PermisosNeg permiso= new PermisosNeg();
+        PermisosNeg permiso = new PermisosNeg();
         public frmGestionRolesPermisos()
         {
             InitializeComponent();
@@ -33,7 +33,7 @@ namespace GUI.FormsGestion
             cmbRoles.ValueMember = "idrol";
             cmbRoles.SelectedIndex = -1;
         }
-        public void CargarPermisos() 
+        public void CargarPermisos()
         {
             dtgvPermisosCon.DataSource = permiso.ConsultarPermisosCon();
             dtgvPermisosDen.DataSource = permiso.ConsultarPErmisosden();
@@ -42,11 +42,11 @@ namespace GUI.FormsGestion
         {
             try
             {
-            permiso = new PermisosNeg(int.Parse(cmbRoles.SelectedValue.ToString()));
-            dtgvPermisosCon.DataSource = permiso.ConsultarPermisosCon();
-            dtgvPermisosDen.DataSource = permiso.ConsultarPErmisosden();
-             }
-              catch { }
+                permiso = new PermisosNeg(int.Parse(cmbRoles.SelectedValue.ToString()));
+                dtgvPermisosCon.DataSource = permiso.ConsultarPermisosCon();
+                dtgvPermisosDen.DataSource = permiso.ConsultarPErmisosden();
+            }
+            catch { }
         }
 
         private void ptbAgregar_Click(object sender, EventArgs e)
@@ -57,7 +57,7 @@ namespace GUI.FormsGestion
                 CargarPermisos();
             }
             catch { Validacion.frmMessageBox("Error!", "Error"); }
-            
+
         }
 
         private void ptbQuitar_Click(object sender, EventArgs e)
@@ -84,6 +84,13 @@ namespace GUI.FormsGestion
                 dtgvPermisosCon.DataSource = new DataTable();
                 dtgvPermisosDen.DataSource = new DataTable();
             }
+        }
+
+        private void frmGestionRolesPermisos_Resize(object sender, EventArgs e)
+        {
+            splitContainer1.SplitterDistance = this.Width / 2;
+            splitContainer1.Panel1.Margin = new Padding(Convert.ToInt16(this.Width*0.2));
+            splitContainer1.Update();
         }
     }
 }

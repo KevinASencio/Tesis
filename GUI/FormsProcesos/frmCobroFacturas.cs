@@ -50,7 +50,7 @@ namespace GUI.FormsProcesos
         {
             double descuento = double.Parse(txbDescuento.Text.ToString());
             double total = double.Parse(txbTotalPagar.Text.ToString());
-            if (descuento>total && total<0)
+            if (descuento<total && total>0)
             {
                 if (factura.procesar(double.Parse(txbTotalPagar.Text.ToString()), double.Parse(txbDescuento.Text.ToString()), frmPrincipal.useractivo.usuario()))
                 {

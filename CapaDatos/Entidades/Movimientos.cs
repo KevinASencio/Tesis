@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Org.BouncyCastle.Asn1.Misc;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -108,6 +110,19 @@ namespace CapaDatos.Entidades
                 return operacion.Actualizar(sentencia.ToString(),dic);
             }
             catch (Exception ex) { return false; }
+        }
+    
+        public DataTable ConsultarRepResumeCaja() 
+        {
+            DBOperacion operacion = new DBOperacion();
+            StringBuilder sentencia = new StringBuilder();
+            sentencia.Append("SELECT idmovimiento, fecha, tipo, concepto, idcliente,if(tipo='ingreso',monto,monto*-1) as 'monto', ");
+            sentencia.Append("idcontrol_banco, idcontrol_caja, doc, idfactura, empleado ");
+            sentencia.Append("FROM db_acacuvan.movimientos where idcontrol_caja=@idcontrol;");
+
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            dic.Add("idcontrol",IdControlCaja);
+            return operacion.Consultar(sentencia.ToString(), dic);
         }
     }
 }

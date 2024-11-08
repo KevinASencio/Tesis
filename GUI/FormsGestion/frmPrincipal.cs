@@ -52,7 +52,7 @@ namespace GUI.FormsGestion
             OrganizadorObj.Organizar(4, 2, pnlBotones, btnClientes.GetType());
             OrganizadorObj.ocultar(pnlMenus, pnlMenuDetalles);
             OrganizadorObj.mostrar(pnlMenus, pnlMenuInicio);
-            OrganizadorObj.Organizar(1, 6, pnlMenuInicio, btnUsuarios.GetType());
+            OrganizadorObj.Organizar(1, 6, pnlMenuInicio, btnTablasCriticas.GetType());
         }
         #region funciones de los botones para el control de la ventana
         private void prbCerrar_Click(object sender, EventArgs e)
@@ -139,15 +139,7 @@ namespace GUI.FormsGestion
 
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
-            formCall = "usuarios";
-            this.pnlMenuDetalles.Enabled = true;
-            this.pnlMenuDetalles.Controls.Remove(btnServicios);
-            this.pnlMenuDetalles.Controls.Remove(btnFacturasU);
-            OrganizadorObj.ocultar(this.pnlMenus, this.pnlMenuInicio);
-            OrganizadorObj.mostrar(this.pnlMenus, this.pnlMenuDetalles);
-            this.pnlMenuDetalles.Refresh();
-            _frmVistaUsuarios = new frmVistaUsuarios();
-            OrganizadorObj.abrirCont(_frmVistaUsuarios);
+            
         }
         private void btnServicios_Click(object sender, EventArgs e)
         {
@@ -190,18 +182,18 @@ namespace GUI.FormsGestion
             }
 
         }
-        private void btnParametro_Click(object sender, EventArgs e)
+        private void btnTablasCriticas_Click(object sender, EventArgs e)
         {
-            switch (btnParametro.Text)
+            switch (btnTablasCriticas.Text)
             {
-                case "Parametros":
+                case "Tablas Criticas":
                     PnlPrincipal.Controls.Remove(pnlBotones);
                     PnlPrincipal.Controls.Add(pnlTablasAux);
                     pnlTablasAux.Visible = true;
                     pnlTablasAux.Enabled = true;
-                    OrganizadorObj.Organizar(3, 2, pnlTablasAux, btnCuotas.GetType());
+                    OrganizadorObj.Organizar(3, 2, pnlTablasAux, btnReportes.GetType());
                     pnlTablasAux.Dock = DockStyle.Fill;
-                    btnParametro.Text = "Inicio";
+                    btnTablasCriticas.Text = "Inicio";
                     break;
                 case "Inicio":
                     PnlPrincipal.Controls.Remove(pnlTablasAux);
@@ -209,7 +201,7 @@ namespace GUI.FormsGestion
                     pnlTablasAux.Visible = false;
                     pnlTablasAux.Enabled = false;
                     pnlTablasAux.Dock = DockStyle.Fill;
-                    btnParametro.Text = "Parametros";
+                    btnTablasCriticas.Text = "tablas";
                     break;
             }
         }
@@ -234,7 +226,7 @@ namespace GUI.FormsGestion
         private void frmPrincipal_Resize(object sender, EventArgs e)
         {
             OrganizadorObj.Organizar(4, 2, pnlBotones, btnClientes.GetType());
-            OrganizadorObj.Organizar(3, 2, pnlTablasAux, btnCuotas.GetType());
+            OrganizadorObj.Organizar(3, 2, pnlTablasAux, btnReportes.GetType());
         }
 
         private void btnRoles_Click(object sender, EventArgs e)
@@ -257,9 +249,7 @@ namespace GUI.FormsGestion
 
         private void btnReportes_Click(object sender, EventArgs e)
         {
-            frmRepFacturasColonia frm = new frmRepFacturasColonia();
-            frm.StartPosition = FormStartPosition.CenterParent;
-            frm.ShowDialog();
+           
         }
 
         private void btnImportar_Click(object sender, EventArgs e)
@@ -296,6 +286,31 @@ namespace GUI.FormsGestion
             frmGestionParametros frmParametros = new frmGestionParametros();
             frmParametros.StartPosition = FormStartPosition.CenterParent;
             frmParametros.ShowDialog();
+        }
+        public void AgregarBotonesFecha() 
+        {
+            pnlMenuDetalles.Controls.Add(btnServicios);
+            pnlMenuDetalles.Controls.Add(btnFacturasU);
+            pnlMenuDetalles.Controls.Add(btnCambiarEstado);
+        }
+
+        private void btnUser_Click(object sender, EventArgs e)
+        {
+            formCall = "usuarios";
+            this.pnlMenuDetalles.Enabled = true;
+            this.pnlMenuDetalles.Controls.Remove(btnServicios);
+            this.pnlMenuDetalles.Controls.Remove(btnFacturasU);
+            OrganizadorObj.ocultar(this.pnlMenus, this.pnlMenuInicio);
+            OrganizadorObj.mostrar(this.pnlMenus, this.pnlMenuDetalles);
+            this.pnlMenuDetalles.Refresh();
+            _frmVistaUsuarios = new frmVistaUsuarios();
+            OrganizadorObj.abrirCont(_frmVistaUsuarios);
+        }
+
+        private void btnRepMovimientos_Click(object sender, EventArgs e)
+        {
+            frmRepResumenCaja _frmRepResumenCaja = new frmRepResumenCaja();
+            OrganizadorObj.abrirCont(_frmRepResumenCaja);
         }
     }
 }

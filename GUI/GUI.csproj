@@ -128,6 +128,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsfacturas.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Datasets\dsResumenCaja.cs">
+      <DependentUpon>dsResumenCaja.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Datasets\dsResumenCaja.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsResumenCaja.xsd</DependentUpon>
+    </Compile>
     <Compile Include="FormInicio\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -256,12 +264,6 @@
     <Compile Include="pruebainterfas.Designer.cs">
       <DependentUpon>pruebainterfas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reportes\frmRepFacturasColonia.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Reportes\frmRepFacturasColonia.Designer.cs">
-      <DependentUpon>frmRepFacturasColonia.cs</DependentUpon>
-    </Compile>
     <Compile Include="Reportes\RepFacturaCobrar.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -273,6 +275,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RepFacturasColonia.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\RepResumenCaja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\RepResumenCaja.Designer.cs">
+      <DependentUpon>RepResumenCaja.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="FormInicio\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
@@ -347,9 +355,6 @@
     <EmbeddedResource Include="pruebainterfas.resx">
       <DependentUpon>pruebainterfas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\frmRepFacturasColonia.resx">
-      <DependentUpon>frmRepFacturasColonia.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\RepFacturaCobrar.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RepFacturaCobrar.cs</LastGenOutput>
@@ -357,6 +362,9 @@
     <EmbeddedResource Include="Reportes\RepFacturasColonia.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RepFacturasColonia.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\RepResumenCaja.resx">
+      <DependentUpon>RepResumenCaja.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Datasets\dsfacturas.xsc">
       <DependentUpon>dsfacturas.xsd</DependentUpon>
@@ -368,6 +376,17 @@
     </None>
     <None Include="Datasets\dsfacturas.xss">
       <DependentUpon>dsfacturas.xsd</DependentUpon>
+    </None>
+    <None Include="Datasets\dsResumenCaja.xsc">
+      <DependentUpon>dsResumenCaja.xsd</DependentUpon>
+    </None>
+    <None Include="Datasets\dsResumenCaja.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsResumenCaja.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Datasets\dsResumenCaja.xss">
+      <DependentUpon>dsResumenCaja.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

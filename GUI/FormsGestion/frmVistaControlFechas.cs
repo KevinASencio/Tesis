@@ -49,7 +49,9 @@ namespace GUI.FormsGestion
 
         private void prbCerrar_Click(object sender, EventArgs e)
         {
+            frmPrincipal.fr.AgregarBotonesFecha();
             this.Close();
+            
         }
     }
 }

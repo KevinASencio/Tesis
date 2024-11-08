@@ -1,6 +1,8 @@
 ﻿using CapaDatos.Entidades;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +29,23 @@ namespace Controllers
             if (contenedor.Controls.Find("cmbLugarPago", true)[0].Text.ToString().Equals("Caja Local")) { movimiento.IdControlCaja = caja.IdControlCaja; movimiento.IdControlBanco = 0; }
             else { movimiento.IdControlBanco = banco.IdControlBanco; movimiento.IdControlCaja = 0; }
                 return movimiento.Insertar();
+        }
+
+        public DataTable ConsultarRepCaja(int idcontrol) 
+        {
+            DataTable movaux = new DataTable();
+            DataTable conaux = new DataTable();
+            movimiento.IdControlCaja = idcontrol;
+            ControlCajaNeg control = new ControlCajaNeg();
+            conaux=control.Consultar(idcontrol);
+            movaux = movimiento.ConsultarRepResumeCaja();
+            movaux.Columns.Add("saldo");
+            foreach(DataRow rw in movaux.Rows) 
+            {
+
+                
+            }
+            return movimiento.ConsultarRepResumeCaja();
         }
     }
 }

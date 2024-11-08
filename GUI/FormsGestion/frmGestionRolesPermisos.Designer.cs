@@ -452,6 +452,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmGestionRolesPermisos";
             this.Text = "frmGestionRolesPermisos";
+            this.Resize += new System.EventHandler(this.frmGestionRolesPermisos_Resize);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.pnlPrincipal.ResumeLayout(false);

@@ -42,6 +42,31 @@ namespace CapaDatos.Entidades
             catch (Exception ex) { return false; }
         }
 
+        public DataTable ConsultarLista()
+        {
+            DBOperacion operacion = new DBOperacion();
+            StringBuilder sentencia = new StringBuilder();
+            sentencia.Append("select caja.idcontrol_caja,concat(DATE_FORMAT(DATE_ADD(caja.fecha_inicio, INTERVAL 10 DAY),'%M'),' - ',  ");
+            sentencia.Append("year(DATE_ADD(caja.fecha_inicio, INTERVAL 10 DAY)))as 'periodo' from control_mensual_caja caja;");
+
+            try
+            {
+                return operacion.Consultar(sentencia.ToString());
+            }
+            catch (Exception ex) { return new DataTable(); }
+        }
+
+        public DataTable ConsultarRep()
+        {
+            DBOperacion operacion = new DBOperacion();
+            StringBuilder sentencia = new StringBuilder();
+            sentencia.Append("select idcontrol_caja, fecha_inicio, fecha_cierre, saldoinicial, saldofinal ");
+            sentencia.Append("from control_mensual_caja where idcontrol_caja=@idcontrol;");
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            dic.Add("idcontrol",IdControlCaja);
+            return operacion.Consultar(sentencia.ToString(), dic);
+        }
+
         public bool insertar()
         {
             DBOperacion operacion = new DBOperacion();

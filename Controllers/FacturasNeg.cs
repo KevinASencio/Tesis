@@ -21,7 +21,7 @@ namespace Controllers
         Cuotas cuotas = new Cuotas();
         Parametros parametros = new Parametros();
         ControlMensualCaja ct = new ControlMensualCaja();
-        public FacturasNeg() 
+        public FacturasNeg()
         {
             parametros = parametros.Consultar();
         }
@@ -37,12 +37,12 @@ namespace Controllers
         public Boolean ConsultarFactura(string idfactura, Form contenedor)
         {
             fac.ConsultarFactura(idfactura);
-            servicio.IdServicio=fac.IdServicio;
+            servicio.IdServicio = fac.IdServicio;
             servicio = servicio.ConsultarServicio();
             cliente.IdCliente = servicio.IdCliente;
             cliente = cliente.ConsultarCliente();
             fechacontrol = fechacontrol.ConsultarControlFecha(fac.IdControlFecha);
-            bool encontrado=ct.Consultar();
+            bool encontrado = ct.Consultar();
             contenedor.Controls.Find("lblcliente", true)[0].Text = cliente.Nombres + ", " + cliente.Apellidos;
             contenedor.Controls.Find("lblMora", true)[0].Text = fac.Mora.ToString("$ 00.00");
             contenedor.Controls.Find("lblMonto", true)[0].Text = fac.Saldo.ToString("$ 00.00");
@@ -62,23 +62,28 @@ namespace Controllers
             //validamos la fecha, esto para cobrar o no el dolar por pago despues de la fecha de vencimiento
             pagado = vencida(pagado);
             double aux = fac.Saldo + fac.Mora;
-            if (pagado < aux)
+            if ((pagado - fac.Mora) % cuotas.ConsultarCuota(servicio.IdConsumo, servicio.IdAcometida) == 0)
             {
-                return PagoParcial(pagado, descuento, empleado);
-            }
-            else if (pagado > aux)
-            {
-                //validamos si el monto que esta pagando es por cuotas enteras 
-                if ((pagado - fac.Mora) % cuotas.ConsultarCuota(servicio.IdConsumo, servicio.IdAcometida) == 0)
+                if (pagado < aux)
                 {
+                    return PagoParcial(pagado, descuento, empleado);
+                }
+                else if (pagado > aux)
+                {
+                    //validamos si el monto que esta pagando es por cuotas enteras 
+
                     return PagoAdelantado(pagado, descuento, empleado);
+
+                }
+                else
+                {
+                    return PagoCompleto(pagado, descuento, empleado);
                 }
             }
-            else { return PagoCompleto(pagado, descuento, empleado); }
-            return false;
+            else { MessageBox.Show("Solo se pueden procesar cuotas enteras","Error",MessageBoxButtons.OK,MessageBoxIcon.Error); return false;}
         }
 
-        public double vencida(double pagado) 
+        public double vencida(double pagado)
         {
             if (fechacontrol.FechaVencimiento < DateTime.Now)
             {
@@ -153,7 +158,7 @@ namespace Controllers
                 movimientos.IdControlBanco = 0;
                 movimientos.IdCliente = servicio.IdCliente;
                 movimientos.Fecha = DateTime.Now;
-                movimientos.Monto = pagado-descuento;
+                movimientos.Monto = pagado - descuento;
                 return movimientos.Insertar();
             }
             return false;
@@ -163,6 +168,7 @@ namespace Controllers
             Facturas facParcial = new Facturas();
             Facturas cancelada = new Facturas();
             int cuopagadas = FacturasPagadas(pagado);
+
             #region creacion y procesamiento de factura con la infromacion de las cuotas pagaas
             if (servicio.IdConsumo > 0) { cancelada.Saldo = pagado - (parametros.MoraConsumo * cuopagadas); }
             else { cancelada.Saldo = pagado - (parametros.MoraAcometida * cuopagadas); }
@@ -197,7 +203,7 @@ namespace Controllers
                             movimiento.IdControlBanco = 0;
                             movimiento.IdCliente = servicio.IdCliente;
                             movimiento.Fecha = DateTime.Now;
-                            movimiento.Monto = pagado-descuento;
+                            movimiento.Monto = pagado - descuento;
                             movimiento.Insertar();
                             //generar factura con saldo pendeinte
                             facParcial.Saldo = fac.Saldo - cancelada.Saldo;
@@ -269,7 +275,7 @@ namespace Controllers
                         movimiento.IdControlBanco = 0;
                         movimiento.IdCliente = servicio.IdCliente;
                         movimiento.Fecha = DateTime.Now;
-                        movimiento.Monto = adelantada.Saldo-descuento;
+                        movimiento.Monto = adelantada.Saldo - descuento;
                         return movimiento.Insertar();
                     }
                 }
@@ -289,22 +295,22 @@ namespace Controllers
             return aux;
         }
 
-        public  DataTable ConsultarFactuServ(int idcliente) 
+        public DataTable ConsultarFactuServ(int idcliente)
         {
             return fac.ConsultarFacServ(idcliente);
         }
 
-        public DataTable ConsultarReporteGen(int idcolonia) 
+        public DataTable ConsultarReporteGen(int idcolonia)
         {
             //inicializar objeto que contendra el resultado 
-            DataTable resultado= new DataTable();
+            DataTable resultado = new DataTable();
             //si el id de la colonia es 0 consulta unicamente una factura en base al idfactura buscado
             if (idcolonia != 0) resultado = fac.ConsultarReporteGen(fechacontrol.ConsultarUltimoCtr(), idcolonia);
             else resultado = fac.ConsultarReporteBuscar();
             resultado.Columns.Add("textmeses");
             resultado.Columns.Add("textsaldo");
             resultado.Columns.Add("morac");
-            ConvertiraLetras conv= new ConvertiraLetras();
+            ConvertiraLetras conv = new ConvertiraLetras();
             foreach (DataRow row in resultado.Rows)
             {
                 row["textmeses"] = GetMesesPendientes(row["mes"].ToString(), int.Parse(row["cont_pendiente"].ToString())).ToUpper();
@@ -315,7 +321,7 @@ namespace Controllers
             return resultado;
         }
 
-        public DataTable ConsultarServPeligro() 
+        public DataTable ConsultarServPeligro()
         {
             return fac.ConsultarServPeligro(parametros.CuotasPenMax);
         }
