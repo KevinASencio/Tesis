@@ -184,10 +184,12 @@ namespace GUI.FormsGestion
         }
         private void btnTablasCriticas_Click(object sender, EventArgs e)
         {
+            PnlPrincipal.Controls.Clear();
             switch (btnTablasCriticas.Text)
             {
                 case "Tablas Criticas":
                     PnlPrincipal.Controls.Remove(pnlBotones);
+                    PnlPrincipal.Controls.Remove(pnlReportes);
                     PnlPrincipal.Controls.Add(pnlTablasAux);
                     pnlTablasAux.Visible = true;
                     pnlTablasAux.Enabled = true;
@@ -201,7 +203,17 @@ namespace GUI.FormsGestion
                     pnlTablasAux.Visible = false;
                     pnlTablasAux.Enabled = false;
                     pnlTablasAux.Dock = DockStyle.Fill;
-                    btnTablasCriticas.Text = "tablas";
+                    btnTablasCriticas.Text = "Tablas Criticas";
+                    break;
+                case "reportes":
+                    PnlPrincipal.Controls.Remove(pnlBotones);
+                    PnlPrincipal.Controls.Remove(pnlReportes);
+                    PnlPrincipal.Controls.Add(pnlTablasAux);
+                    pnlTablasAux.Visible = true;
+                    pnlTablasAux.Enabled = true;
+                    OrganizadorObj.Organizar(3, 2, pnlTablasAux, btnReportes.GetType());
+                    pnlTablasAux.Dock = DockStyle.Fill;
+                    btnTablasCriticas.Text = "Inicio";
                     break;
             }
         }
@@ -311,6 +323,24 @@ namespace GUI.FormsGestion
         {
             frmRepResumenCaja _frmRepResumenCaja = new frmRepResumenCaja();
             OrganizadorObj.abrirCont(_frmRepResumenCaja);
+        }
+
+        private void btnRepBanco_Click(object sender, EventArgs e)
+        {
+            frmRepResumenBanco _frmRepBanco = new frmRepResumenBanco();
+            OrganizadorObj.abrirCont(_frmRepBanco);
+        }
+
+        private void btnReportes_Click_1(object sender, EventArgs e)
+        {
+            PnlPrincipal.Controls.Remove(pnlBotones);
+            PnlPrincipal.Controls.Add(pnlReportes);
+            PnlPrincipal.Controls.Remove(pnlTablasAux);
+            pnlTablasAux.Visible = true;
+            pnlTablasAux.Enabled = true;
+            OrganizadorObj.Organizar(3, 2, pnlTablasAux, btnReportes.GetType());
+            pnlTablasAux.Dock = DockStyle.Fill;
+            btnTablasCriticas.Text = "Inicio";
         }
     }
 }

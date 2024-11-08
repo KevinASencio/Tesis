@@ -128,6 +128,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsfacturas.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Datasets\dsResumenBanco.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsResumenBanco.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Datasets\dsResumenCaja.cs">
       <DependentUpon>dsResumenCaja.xsd</DependentUpon>
     </Compile>
@@ -264,6 +269,12 @@
     <Compile Include="pruebainterfas.Designer.cs">
       <DependentUpon>pruebainterfas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\frmRepResumenBanco.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\frmRepResumenBanco.Designer.cs">
+      <DependentUpon>frmRepResumenBanco.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\RepFacturaCobrar.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -276,11 +287,23 @@
       <DependentUpon>RepFacturasColonia.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reportes\RepResumenBanco1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RepResumenBanco.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reportes\RepResumenCaja.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Reportes\RepResumenCaja.Designer.cs">
       <DependentUpon>RepResumenCaja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\RepResumenCaja1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RepResumenCaja.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <EmbeddedResource Include="FormInicio\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
@@ -355,6 +378,9 @@
     <EmbeddedResource Include="pruebainterfas.resx">
       <DependentUpon>pruebainterfas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\frmRepResumenBanco.resx">
+      <DependentUpon>frmRepResumenBanco.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\RepFacturaCobrar.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RepFacturaCobrar.cs</LastGenOutput>
@@ -363,8 +389,16 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RepFacturasColonia.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\RepResumenBanco.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RepResumenBanco1.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\RepResumenCaja.resx">
       <DependentUpon>RepResumenCaja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\RepResumenCaja.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RepResumenCaja1.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Datasets\dsfacturas.xsc">
       <DependentUpon>dsfacturas.xsd</DependentUpon>
@@ -376,6 +410,17 @@
     </None>
     <None Include="Datasets\dsfacturas.xss">
       <DependentUpon>dsfacturas.xsd</DependentUpon>
+    </None>
+    <None Include="Datasets\dsResumenBanco.xsc">
+      <DependentUpon>dsResumenBanco.xsd</DependentUpon>
+    </None>
+    <None Include="Datasets\dsResumenBanco.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsResumenBanco.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Datasets\dsResumenBanco.xss">
+      <DependentUpon>dsResumenBanco.xsd</DependentUpon>
     </None>
     <None Include="Datasets\dsResumenCaja.xsc">
       <DependentUpon>dsResumenCaja.xsd</DependentUpon>

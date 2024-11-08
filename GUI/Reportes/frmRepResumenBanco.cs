@@ -11,43 +11,32 @@ using System.Windows.Forms;
 
 namespace GUI.Reportes
 {
-    public partial class frmRepResumenCaja : Form
+    public partial class frmRepResumenBanco : Form
     {
-        ControlCajaNeg control = new ControlCajaNeg();
+        ControlBancoNeg control= new ControlBancoNeg();
         MovimientosNeg movimiento = new MovimientosNeg();
-        public frmRepResumenCaja()
+        public frmRepResumenBanco()
         {
             InitializeComponent();
             CargarDatos();
         }
 
-        public void CargarDatos() 
+        public void CargarDatos()
         {
             cmbControl.DataSource = control.ConsultarLista();
             cmbControl.DisplayMember = "periodo";
-            cmbControl.ValueMember = "idcontrol_caja";
-        }
-
-
-        private void tscCerrar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void cmbControl_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
+            cmbControl.ValueMember = "idcontrol_banco";
         }
 
         private void cmbControl_SelectedValueChanged(object sender, EventArgs e)
         {
             try
             {
-                Reportes.RepResumenCaja repResumen = new RepResumenCaja();
-                repResumen.SetDataSource(movimiento.ConsultarRepCaja(int.Parse(cmbControl.SelectedValue.ToString())));
+                Reportes.RepResumenBanco repResumen = new RepResumenBanco();
+                repResumen.SetDataSource(movimiento.ConsultarRepBanco(int.Parse(cmbControl.SelectedValue.ToString())));
                 repResumen.SetParameterValue("mes", cmbControl.GetItemText(cmbControl.SelectedItem));
                 crvResumenCaja.ReportSource = repResumen;
-                
+
             }
             catch { }
         }

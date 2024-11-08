@@ -124,5 +124,19 @@ namespace CapaDatos.Entidades
             dic.Add("idcontrol",IdControlCaja);
             return operacion.Consultar(sentencia.ToString(), dic);
         }
+
+        public DataTable ConsultarRepResumeBanco()
+        {
+            DBOperacion operacion = new DBOperacion();
+            StringBuilder sentencia = new StringBuilder();
+            sentencia.Append("SELECT idmovimiento, fecha, tipo, concepto, idcliente,if(tipo='ingreso',monto,monto*-1) as 'monto', ");
+            sentencia.Append("idcontrol_banco, idcontrol_banco, doc, idfactura, empleado ");
+            sentencia.Append("FROM db_acacuvan.movimientos where idcontrol_banco=@idcontrol;");
+
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            dic.Add("idcontrol", IdControlBanco);
+            return operacion.Consultar(sentencia.ToString(), dic);
+        }
     }
 }
+

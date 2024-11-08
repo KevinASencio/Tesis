@@ -46,11 +46,12 @@ namespace CapaDatos.Entidades
         {
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
-            sentencia.Append("select caja.idcontrol_caja,concat(DATE_FORMAT(DATE_ADD(caja.fecha_inicio, INTERVAL 10 DAY),'%M'),' - ',  ");
-            sentencia.Append("year(DATE_ADD(caja.fecha_inicio, INTERVAL 10 DAY)))as 'periodo' from control_mensual_caja caja;");
+            sentencia.Append("select caja.idcontrol_caja,UPPER(concat(DATE_FORMAT(DATE_ADD(caja.fecha_inicio, INTERVAL 10 DAY),'%M'),' - ',  ");
+            sentencia.Append("year(DATE_ADD(caja.fecha_inicio, INTERVAL 10 DAY))))as 'periodo' from control_mensual_caja caja;");
 
             try
             {
+                operacion.EjecutarProcedure("SET lc_time_names = 'es_ES';",new Dictionary<string, object>());
                 return operacion.Consultar(sentencia.ToString());
             }
             catch (Exception ex) { return new DataTable(); }

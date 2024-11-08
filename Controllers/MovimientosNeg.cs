@@ -31,21 +31,46 @@ namespace Controllers
                 return movimiento.Insertar();
         }
 
-        public DataTable ConsultarRepCaja(int idcontrol) 
+        public DataTable ConsultarRepCaja(int idcontrol)
         {
             DataTable movaux = new DataTable();
             DataTable conaux = new DataTable();
             movimiento.IdControlCaja = idcontrol;
             ControlCajaNeg control = new ControlCajaNeg();
-            conaux=control.Consultar(idcontrol);
+            conaux = control.Consultar(idcontrol);
             movaux = movimiento.ConsultarRepResumeCaja();
-            movaux.Columns.Add("saldo");
-            foreach(DataRow rw in movaux.Rows) 
+            movaux.Columns.Add("saldo", typeof(double));
+            movaux.Rows[0]["saldo"] = (Convert.ToDouble(conaux.Rows[0]["saldoinicial"]).ToString()+ Convert.ToDouble(movaux.Rows[0]["monto"].ToString())).ToString();
+            int cont = 1;
+            for (int i = 1; i < movaux.Rows.Count; i++)
+            {
+                
+                double aux1 = Convert.ToDouble(movaux.Rows[i - 1]["saldo"].ToString());
+                double aux2 = Convert.ToDouble(movaux.Rows[i]["monto"].ToString());
+                movaux.Rows[i]["saldo"] = (aux1 + aux2).ToString();
+            }
+            return movaux;
+        }
+
+        public DataTable ConsultarRepBanco(int idcontrol)
+        {
+            DataTable movaux = new DataTable();
+            DataTable conaux = new DataTable();
+            movimiento.IdControlBanco = idcontrol;
+            ControlMensualBanco control = new ControlMensualBanco();
+            conaux = control.Consultar(idcontrol);
+            movaux = movimiento.ConsultarRepResumeBanco();
+            movaux.Columns.Add("saldo", typeof(double));
+            movaux.Rows[0]["saldo"] = (Convert.ToDouble(conaux.Rows[0]["saldoinicial"].ToString()) + Convert.ToDouble(movaux.Rows[0]["monto"].ToString())).ToString();
+            int cont = 1;
+            for (int i = 1; i < movaux.Rows.Count; i++)
             {
 
-                
+                double aux1 = Convert.ToDouble(movaux.Rows[i - 1]["saldo"].ToString());
+                double aux2 = Convert.ToDouble(movaux.Rows[i]["monto"].ToString());
+                movaux.Rows[i]["saldo"] = (aux1 + aux2).ToString();
             }
-            return movimiento.ConsultarRepResumeCaja();
+            return movaux;
         }
     }
 }
