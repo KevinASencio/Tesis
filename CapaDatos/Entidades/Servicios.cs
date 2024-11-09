@@ -252,7 +252,21 @@ namespace CapaDatos.Entidades
             }
             catch (Exception e) { return new Servicios(); }
         }
-
+        public DataTable ConsulatRep(string estado)
+        {
+            DBOperacion operacion = new DBOperacion();
+            StringBuilder sentencia = new StringBuilder();
+            sentencia.Append("select ser.idservicio, concat(cl.nombres,', ', cl.apellidos)as cliente,ser.idcliente, ser.idconsumo, ser.idacometida,col.Colonia,  ");
+            sentencia.Append("col.idcolonia, ser.estado, ser.cuotas_anticipadas from servicios ser, clientes cl, colonias col where ser.idcliente=cl.idcliente and ");
+            sentencia.Append("col.idcolonia=ser.idcolonia and ser.estado=@estado");
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            dic.Add("estado", estado);
+            try
+            {
+                return operacion.Consultar(sentencia.ToString(), dic);
+            }
+            catch (Exception e) { return new DataTable(); }
+        }
 
 
         public bool ActualizarContAdelantadas()

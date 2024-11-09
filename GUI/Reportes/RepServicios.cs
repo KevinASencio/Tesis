@@ -16,14 +16,14 @@ namespace GUI.Reportes {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class RepResumenBanco : ReportClass {
+    public class RepServicios : ReportClass {
         
-        public RepResumenBanco() {
+        public RepServicios() {
         }
         
         public override string ResourceName {
             get {
-                return "RepResumenBanco.rpt";
+                return "RepServicios.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace GUI.Reportes {
         
         public override string FullResourceName {
             get {
-                return "GUI.Reportes.RepResumenBanco.rpt";
+                return "GUI.Reportes.RepServicios.rpt";
             }
             set {
                 // Do nothing
@@ -95,12 +95,20 @@ namespace GUI.Reportes {
                 return this.DataDefinition.ParameterFields[0];
             }
         }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_ESTADO {
+            get {
+                return this.DataDefinition.ParameterFields[1];
+            }
+        }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedRepResumenBanco : Component, ICachedReport {
+    public class CachedRepServicios : Component, ICachedReport {
         
-        public CachedRepResumenBanco() {
+        public CachedRepServicios() {
         }
         
         [Browsable(false)]
@@ -137,7 +145,7 @@ namespace GUI.Reportes {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            RepResumenBanco rpt = new RepResumenBanco();
+            RepServicios rpt = new RepServicios();
             rpt.Site = this.Site;
             return rpt;
         }

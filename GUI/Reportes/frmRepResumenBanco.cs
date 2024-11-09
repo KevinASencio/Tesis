@@ -13,6 +13,7 @@ namespace GUI.Reportes
 {
     public partial class frmRepResumenBanco : Form
     {
+
         ControlBancoNeg control= new ControlBancoNeg();
         MovimientosNeg movimiento = new MovimientosNeg();
         public frmRepResumenBanco()

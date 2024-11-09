@@ -32,6 +32,7 @@ namespace GUI.FormsGestion
 
         static UsuarioNeg _useractivo = new UsuarioNeg();
         static string formCall;
+        public Dictionary<string, int> permisos = new Dictionary<string, int>();
         int auxancho;
         int auxalto;
         int posicionX;
@@ -41,8 +42,13 @@ namespace GUI.FormsGestion
 
             InitializeComponent();
             fr = this;
+           // permisos = _useractivo.Permisos();
         }
 
+        public void RefescarPermisos() 
+        {
+            this.permisos = _useractivo.Permisos();
+        }
         public static UsuarioNeg useractivo { get => _useractivo; set => _useractivo = value; }
 
         private void GestionClientes_Load(object sender, EventArgs e)
@@ -117,18 +123,21 @@ namespace GUI.FormsGestion
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            switch (formCall)
+            if (permisos.ContainsKey("editar"))
             {
-                case "clientes":
-                    _frmVistaCliente.Editar();
-                    break;
-                case "usuarios":
-                    _frmVistaUsuarios.Editar();
-                    break;
-                case "fechas":
-                    _frmVistaControlFechas.Editar();
-                    break;
-                default: break;
+                switch (formCall)
+                {
+                    case "clientes":
+                        _frmVistaCliente.Editar();
+                        break;
+                    case "usuarios":
+                        _frmVistaUsuarios.Editar();
+                        break;
+                    case "fechas":
+                        _frmVistaControlFechas.Editar();
+                        break;
+                    default: break;
+                }
             }
         }
 
@@ -147,18 +156,21 @@ namespace GUI.FormsGestion
         }
         private void btnCambiarEstado_Click(object sender, EventArgs e)
         {
-
-            switch (formCall)
+            if (permisos.ContainsKey("editar"))
             {
-                case "clientes":
-                    _frmVistaCliente.CambiarEstado();
-                    _frmVistaCliente.CargarDatos();
-                    break;
-                case "usuarios":
-                    //_frmVistaUsuarios.();
-                    break;
-                default: break;
+                switch (formCall)
+                {
+                    case "clientes":
+                        _frmVistaCliente.CambiarEstado();
+                        _frmVistaCliente.CargarDatos();
+                        break;
+                    case "usuarios":
+                        //_frmVistaUsuarios.();
+                        break;
+                    default: break;
+                }
             }
+            
         }
 
         private void btnGenerarFac_Click(object sender, EventArgs e)
@@ -170,16 +182,25 @@ namespace GUI.FormsGestion
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            switch (formCall)
+            if (permisos.ContainsKey("agregar"))
             {
-                case "clientes":
-                    _frmVistaCliente.agregar();
-                    break;
-                case "usuarios":
-                    _frmVistaUsuarios.agregar();
-                    break;
-                default: break;
+                switch (formCall)
+                {
+                    case "clientes":
+                        _frmVistaCliente.agregar();
+                        break;
+                    case "usuarios":
+                        _frmVistaUsuarios.agregar();
+                        break;
+                    default: break;
+                }
             }
+            else 
+            {
+                Validacion.frmMessageBox("No Tiene Permisos","Error");
+            }
+           
+            
 
         }
         private void btnTablasCriticas_Click(object sender, EventArgs e)
@@ -266,8 +287,8 @@ namespace GUI.FormsGestion
 
         private void btnImportar_Click(object sender, EventArgs e)
         {
-            ConvertiraLetras convert = new ConvertiraLetras();
-            MessageBox.Show(convert.Convertir(235.08));
+            AgregarFacBanco ag = new AgregarFacBanco();
+            ag.algo();
         }
 
         private void btnCorte_Click(object sender, EventArgs e)
@@ -341,6 +362,12 @@ namespace GUI.FormsGestion
             OrganizadorObj.Organizar(3, 2, pnlTablasAux, btnReportes.GetType());
             pnlTablasAux.Dock = DockStyle.Fill;
             btnTablasCriticas.Text = "Inicio";
+        }
+
+        private void btnRepEstado_Click(object sender, EventArgs e)
+        {
+            frmRepServicios frm = new frmRepServicios();
+            OrganizadorObj.abrirCont(frm);
         }
     }
 }

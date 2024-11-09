@@ -44,11 +44,7 @@
             this.ptbQuitar = new System.Windows.Forms.PictureBox();
             this.ptbAgregar = new System.Windows.Forms.PictureBox();
             this.dtgvPermisosDen = new System.Windows.Forms.DataGridView();
-            this.acciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtgvPermisosCon = new System.Windows.Forms.DataGridView();
-            this.accion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idpermiso = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idaccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cmbRoles = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -64,6 +60,10 @@
             this.lblDirreccion = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.errorNotificador = new System.Windows.Forms.ErrorProvider(this.components);
+            this.accion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idpermiso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idaccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.acciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             this.pnlPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -188,10 +188,10 @@
             this.dtgvPermisosDen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvPermisosDen.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.acciones});
-            this.dtgvPermisosDen.Dock = System.Windows.Forms.DockStyle.Right;
+            this.dtgvPermisosDen.Dock = System.Windows.Forms.DockStyle.Left;
             this.dtgvPermisosDen.EnableHeadersVisualStyles = false;
             this.dtgvPermisosDen.GridColor = System.Drawing.SystemColors.Control;
-            this.dtgvPermisosDen.Location = new System.Drawing.Point(216, 0);
+            this.dtgvPermisosDen.Location = new System.Drawing.Point(0, 0);
             this.dtgvPermisosDen.MultiSelect = false;
             this.dtgvPermisosDen.Name = "dtgvPermisosDen";
             this.dtgvPermisosDen.ReadOnly = true;
@@ -213,13 +213,6 @@
             this.dtgvPermisosDen.ShowCellToolTips = false;
             this.dtgvPermisosDen.Size = new System.Drawing.Size(152, 253);
             this.dtgvPermisosDen.TabIndex = 8;
-            // 
-            // acciones
-            // 
-            this.acciones.DataPropertyName = "accion";
-            this.acciones.HeaderText = "Permisos Sin Conceder";
-            this.acciones.Name = "acciones";
-            this.acciones.ReadOnly = true;
             // 
             // dtgvPermisosCon
             // 
@@ -244,10 +237,10 @@
             this.accion,
             this.idpermiso,
             this.idaccion});
-            this.dtgvPermisosCon.Dock = System.Windows.Forms.DockStyle.Left;
+            this.dtgvPermisosCon.Dock = System.Windows.Forms.DockStyle.Right;
             this.dtgvPermisosCon.EnableHeadersVisualStyles = false;
             this.dtgvPermisosCon.GridColor = System.Drawing.SystemColors.Control;
-            this.dtgvPermisosCon.Location = new System.Drawing.Point(0, 0);
+            this.dtgvPermisosCon.Location = new System.Drawing.Point(218, 0);
             this.dtgvPermisosCon.MultiSelect = false;
             this.dtgvPermisosCon.Name = "dtgvPermisosCon";
             this.dtgvPermisosCon.ReadOnly = true;
@@ -269,29 +262,6 @@
             this.dtgvPermisosCon.ShowCellToolTips = false;
             this.dtgvPermisosCon.Size = new System.Drawing.Size(150, 253);
             this.dtgvPermisosCon.TabIndex = 7;
-            // 
-            // accion
-            // 
-            this.accion.DataPropertyName = "accion";
-            this.accion.HeaderText = "Permisos Concedidos";
-            this.accion.Name = "accion";
-            this.accion.ReadOnly = true;
-            // 
-            // idpermiso
-            // 
-            this.idpermiso.DataPropertyName = "idpermiso";
-            this.idpermiso.HeaderText = "idpermiso";
-            this.idpermiso.Name = "idpermiso";
-            this.idpermiso.ReadOnly = true;
-            this.idpermiso.Visible = false;
-            // 
-            // idaccion
-            // 
-            this.idaccion.DataPropertyName = "idaccion";
-            this.idaccion.HeaderText = "idaccion";
-            this.idaccion.Name = "idaccion";
-            this.idaccion.ReadOnly = true;
-            this.idaccion.Visible = false;
             // 
             // panel1
             // 
@@ -442,6 +412,36 @@
             // 
             this.errorNotificador.ContainerControl = this;
             // 
+            // accion
+            // 
+            this.accion.DataPropertyName = "accion";
+            this.accion.HeaderText = "Permisos Sin Concender";
+            this.accion.Name = "accion";
+            this.accion.ReadOnly = true;
+            // 
+            // idpermiso
+            // 
+            this.idpermiso.DataPropertyName = "idpermiso";
+            this.idpermiso.HeaderText = "idpermiso";
+            this.idpermiso.Name = "idpermiso";
+            this.idpermiso.ReadOnly = true;
+            this.idpermiso.Visible = false;
+            // 
+            // idaccion
+            // 
+            this.idaccion.DataPropertyName = "idaccion";
+            this.idaccion.HeaderText = "idaccion";
+            this.idaccion.Name = "idaccion";
+            this.idaccion.ReadOnly = true;
+            this.idaccion.Visible = false;
+            // 
+            // acciones
+            // 
+            this.acciones.DataPropertyName = "accion";
+            this.acciones.HeaderText = "Permisos Concedidos";
+            this.acciones.Name = "acciones";
+            this.acciones.ReadOnly = true;
+            // 
             // frmGestionRolesPermisos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -495,10 +495,6 @@
         private System.Windows.Forms.Label label2;
         public System.Windows.Forms.DataGridView dtgvPermisosCon;
         public System.Windows.Forms.DataGridView dtgvPermisosDen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn acciones;
-        private System.Windows.Forms.DataGridViewTextBoxColumn accion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idpermiso;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idaccion;
         private System.Windows.Forms.PictureBox ptbAgregar;
         private System.Windows.Forms.PictureBox ptbQuitar;
         private System.Windows.Forms.Panel panel3;
@@ -511,5 +507,9 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.ErrorProvider errorNotificador;
+        private System.Windows.Forms.DataGridViewTextBoxColumn acciones;
+        private System.Windows.Forms.DataGridViewTextBoxColumn accion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idpermiso;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idaccion;
     }
 }

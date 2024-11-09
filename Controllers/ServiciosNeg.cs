@@ -131,5 +131,10 @@ namespace Controllers
         {
             return _Servicio.ConsultarAco(idcliente);
         }
+
+        public DataTable ConsulatRep( String estado) 
+        {
+            return _Servicio.ConsulatRep(estado);
+        }
     }
 }

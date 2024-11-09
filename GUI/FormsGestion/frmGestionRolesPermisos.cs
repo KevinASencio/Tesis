@@ -53,20 +53,22 @@ namespace GUI.FormsGestion
         {
             try
             {
-                permiso.AgregarPermiso(int.Parse(cmbRoles.SelectedValue.ToString()), int.Parse(dtgvPermisosDen.CurrentRow.Cells["idaccion"].Value.ToString()));
+                permiso.EliminarPermisos(int.Parse(dtgvPermisosCon.CurrentRow.Cells["idpermiso"].Value.ToString()));
                 CargarPermisos();
+                CargarPermisos();
+                frmPrincipal.fr.RefescarPermisos();
             }
             catch { Validacion.frmMessageBox("Error!", "Error"); }
-
         }
 
         private void ptbQuitar_Click(object sender, EventArgs e)
         {
+            
             try
             {
-                permiso.EliminarPermisos(int.Parse(dtgvPermisosCon.CurrentRow.Cells["idpermiso"].Value.ToString()));
+                permiso.AgregarPermiso(int.Parse(cmbRoles.SelectedValue.ToString()), int.Parse(dtgvPermisosDen.CurrentRow.Cells["idaccion"].Value.ToString()));
                 CargarPermisos();
-                CargarPermisos();
+                frmPrincipal.fr.RefescarPermisos();
             }
             catch { Validacion.frmMessageBox("Error!", "Error"); }
 

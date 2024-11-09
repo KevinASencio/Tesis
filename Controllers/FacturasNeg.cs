@@ -21,6 +21,7 @@ namespace Controllers
         Cuotas cuotas = new Cuotas();
         Parametros parametros = new Parametros();
         ControlMensualCaja ct = new ControlMensualCaja();
+        ControlBancoNeg bn = new ControlBancoNeg();
         public FacturasNeg()
         {
             parametros = parametros.Consultar();
@@ -80,7 +81,7 @@ namespace Controllers
                     return PagoCompleto(pagado, descuento, empleado);
                 }
             }
-            else { MessageBox.Show("Solo se pueden procesar cuotas enteras","Error",MessageBoxButtons.OK,MessageBoxIcon.Error); return false;}
+            else { MessageBox.Show("Solo se pueden procesar cuotas enteras", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return false; }
         }
 
         public double vencida(double pagado)
@@ -152,6 +153,35 @@ namespace Controllers
                 movimientos.Concepto = "CANCELACION POR SUMINISTRO DE AGUA SEGUN RECIBOS";
                 movimientos.Tipo = "Ingreso";
                 movimientos.IdControlCaja = ct.IdControlCaja;
+                movimientos.Doc = fac.IdFactura.ToString();
+                movimientos.IdFactura = fac.IdFactura;
+                movimientos.Empleado = empleado;
+                movimientos.IdControlBanco = 0;
+                movimientos.IdCliente = servicio.IdCliente;
+                movimientos.Fecha = DateTime.Now;
+                movimientos.Monto = pagado - descuento;
+                return movimientos.Insertar();
+            }
+            return false;
+        }
+
+        public Boolean CancelarBamco (double pagado, double descuento, string empleado,int idbanco)
+        {
+            if (descuento > 0)
+            {
+                fac.Comentario += " se le desconto el valor de $ " + descuento + ";";
+                fac.Descuento = descuento;
+            }
+            fac.EstadoPago = "Cancelado";
+
+            if (fac.Actualzar())
+            {
+                Movimientos movimientos = new Movimientos();
+                movimientos.IdFactura = fac.IdFactura;
+                movimientos.IdControlCaja = ct.IdControlCaja;
+                movimientos.Concepto = "CANCELACION POR SUMINISTRO DE AGUA SEGUN RECIBOS";
+                movimientos.Tipo = "Ingreso";
+                movimientos.IdControlBanco = idbanco;
                 movimientos.Doc = fac.IdFactura.ToString();
                 movimientos.IdFactura = fac.IdFactura;
                 movimientos.Empleado = empleado;
@@ -324,6 +354,20 @@ namespace Controllers
         public DataTable ConsultarServPeligro()
         {
             return fac.ConsultarServPeligro(parametros.CuotasPenMax);
+        }
+
+        public Boolean IngresarFacBanco(string idfac)
+        {
+            fac.ConsultarFactura(idfac);
+            servicio.IdServicio = fac.IdServicio;
+            servicio = servicio.ConsultarServicio();
+            cliente.IdCliente = servicio.IdCliente;
+            cliente = cliente.ConsultarCliente();
+            fechacontrol = fechacontrol.ConsultarControlFecha(fac.IdControlFecha);
+            bool encontrado = ct.Consultar();
+            bn = new ControlBancoNeg();
+            bn.getCtBanco();
+            return (CancelarBamco(fac.Mora + fac.Saldo, 0, "admin", bn.getid()));
         }
 
     }

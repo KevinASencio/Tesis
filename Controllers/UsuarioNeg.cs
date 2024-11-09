@@ -1,5 +1,7 @@
 ﻿using CapaDatos.Entidades;
+using Controllers;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
 using System.Runtime.InteropServices.ComTypes;
@@ -11,13 +13,15 @@ namespace CapaNegocio.UsuarioNeg
 
         private Usuario user = new Usuario();
 
+        Dictionary<string, int> permisos = new Dictionary<string, int>();
+
         public static DataTable consultar() { return Usuario.Consultar(); }
 
         public Boolean Iniciar(string usuario, string pass)
         {
             DataTable result = new DataTable();
             user.Uusuario = usuario;
-            user.Contraseña= pass;
+            user.Contraseña = pass;
             result = user.Validar(usuario, pass);
             if (result.Rows.Count > 0)
             {
@@ -35,9 +39,17 @@ namespace CapaNegocio.UsuarioNeg
         public string usuario() { return user.Uusuario; }
         public string nombres() { return user.Nombres; }
         public string rol() { return user.Rol; }
-        public int[] Permisos()
+        public Dictionary<string, int> Permisos()
         {
-            return user.permisos();
+            Dictionary<string, int> lista = new Dictionary<string, int>();
+            DataTable permisos = new DataTable();
+            PermisosNeg per = new PermisosNeg(user.IdRol);
+            permisos = per.ConsultarPErmisosden();
+            foreach(DataRow rw in permisos.Rows)
+            {
+                lista.Add(rw["accion"].ToString(), Convert.ToInt16(rw["idaccion"].ToString()));
+            }
+            return lista;
         }
 
 

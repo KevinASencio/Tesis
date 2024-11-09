@@ -50,6 +50,9 @@
             this.btnFacturasU = new System.Windows.Forms.Button();
             this.btnCambiarEstado = new System.Windows.Forms.Button();
             this.PnlPrincipal = new System.Windows.Forms.Panel();
+            this.pnlReportes = new System.Windows.Forms.Panel();
+            this.btnRepBanco = new System.Windows.Forms.Button();
+            this.btnRepMovimientos = new System.Windows.Forms.Button();
             this.pnlTablasAux = new System.Windows.Forms.Panel();
             this.btnCuotasConsumno = new System.Windows.Forms.Button();
             this.btnRoles = new System.Windows.Forms.Button();
@@ -65,9 +68,7 @@
             this.btnTransacciones = new System.Windows.Forms.Button();
             this.btnCobro = new System.Windows.Forms.Button();
             this.btnServiciosMora = new System.Windows.Forms.Button();
-            this.pnlReportes = new System.Windows.Forms.Panel();
-            this.btnRepBanco = new System.Windows.Forms.Button();
-            this.btnRepMovimientos = new System.Windows.Forms.Button();
+            this.btnRepEstado = new System.Windows.Forms.Button();
             this.pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbRestaurar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbMaximizar)).BeginInit();
@@ -79,9 +80,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlMenuDetalles.SuspendLayout();
             this.PnlPrincipal.SuspendLayout();
+            this.pnlReportes.SuspendLayout();
             this.pnlTablasAux.SuspendLayout();
             this.pnlBotones.SuspendLayout();
-            this.pnlReportes.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlTop
@@ -384,15 +385,66 @@
             // PnlPrincipal
             // 
             this.PnlPrincipal.BackColor = System.Drawing.SystemColors.Control;
-            this.PnlPrincipal.Controls.Add(this.pnlTablasAux);
             this.PnlPrincipal.Controls.Add(this.pnlBotones);
-            this.PnlPrincipal.Controls.Add(this.pnlReportes);
             this.PnlPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PnlPrincipal.Location = new System.Drawing.Point(221, 48);
             this.PnlPrincipal.Name = "PnlPrincipal";
             this.PnlPrincipal.Size = new System.Drawing.Size(803, 652);
             this.PnlPrincipal.TabIndex = 6;
             this.PnlPrincipal.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.PnlPrincipal_ControlRemoved);
+            // 
+            // pnlReportes
+            // 
+            this.pnlReportes.Controls.Add(this.btnRepEstado);
+            this.pnlReportes.Controls.Add(this.btnRepBanco);
+            this.pnlReportes.Controls.Add(this.btnRepMovimientos);
+            this.pnlReportes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlReportes.Location = new System.Drawing.Point(0, 0);
+            this.pnlReportes.Name = "pnlReportes";
+            this.pnlReportes.Size = new System.Drawing.Size(803, 652);
+            this.pnlReportes.TabIndex = 62;
+            // 
+            // btnRepBanco
+            // 
+            this.btnRepBanco.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnRepBanco.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRepBanco.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(198)))));
+            this.btnRepBanco.FlatAppearance.BorderSize = 0;
+            this.btnRepBanco.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnRepBanco.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRepBanco.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRepBanco.ForeColor = System.Drawing.Color.Black;
+            this.btnRepBanco.Image = ((System.Drawing.Image)(resources.GetObject("btnRepBanco.Image")));
+            this.btnRepBanco.Location = new System.Drawing.Point(284, 44);
+            this.btnRepBanco.Name = "btnRepBanco";
+            this.btnRepBanco.Size = new System.Drawing.Size(170, 150);
+            this.btnRepBanco.TabIndex = 63;
+            this.btnRepBanco.Text = "Resumen Banco";
+            this.btnRepBanco.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnRepBanco.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnRepBanco.UseVisualStyleBackColor = true;
+            this.btnRepBanco.Click += new System.EventHandler(this.btnRepBanco_Click);
+            // 
+            // btnRepMovimientos
+            // 
+            this.btnRepMovimientos.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnRepMovimientos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRepMovimientos.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(198)))));
+            this.btnRepMovimientos.FlatAppearance.BorderSize = 0;
+            this.btnRepMovimientos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnRepMovimientos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRepMovimientos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRepMovimientos.ForeColor = System.Drawing.Color.Black;
+            this.btnRepMovimientos.Image = ((System.Drawing.Image)(resources.GetObject("btnRepMovimientos.Image")));
+            this.btnRepMovimientos.Location = new System.Drawing.Point(46, 44);
+            this.btnRepMovimientos.Name = "btnRepMovimientos";
+            this.btnRepMovimientos.Size = new System.Drawing.Size(170, 150);
+            this.btnRepMovimientos.TabIndex = 62;
+            this.btnRepMovimientos.Text = "Resumen Caja";
+            this.btnRepMovimientos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnRepMovimientos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnRepMovimientos.UseVisualStyleBackColor = true;
+            this.btnRepMovimientos.Click += new System.EventHandler(this.btnRepMovimientos_Click);
             // 
             // pnlTablasAux
             // 
@@ -698,57 +750,26 @@
             this.btnServiciosMora.UseVisualStyleBackColor = true;
             this.btnServiciosMora.Click += new System.EventHandler(this.btnServiciosMora_Click);
             // 
-            // pnlReportes
+            // btnRepEstado
             // 
-            this.pnlReportes.Controls.Add(this.btnRepBanco);
-            this.pnlReportes.Controls.Add(this.btnRepMovimientos);
-            this.pnlReportes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlReportes.Location = new System.Drawing.Point(0, 0);
-            this.pnlReportes.Name = "pnlReportes";
-            this.pnlReportes.Size = new System.Drawing.Size(803, 652);
-            this.pnlReportes.TabIndex = 62;
-            // 
-            // btnRepBanco
-            // 
-            this.btnRepBanco.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnRepBanco.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRepBanco.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(198)))));
-            this.btnRepBanco.FlatAppearance.BorderSize = 0;
-            this.btnRepBanco.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
-            this.btnRepBanco.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRepBanco.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRepBanco.ForeColor = System.Drawing.Color.Black;
-            this.btnRepBanco.Image = ((System.Drawing.Image)(resources.GetObject("btnRepBanco.Image")));
-            this.btnRepBanco.Location = new System.Drawing.Point(284, 44);
-            this.btnRepBanco.Name = "btnRepBanco";
-            this.btnRepBanco.Size = new System.Drawing.Size(170, 150);
-            this.btnRepBanco.TabIndex = 63;
-            this.btnRepBanco.Text = "Clientes";
-            this.btnRepBanco.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnRepBanco.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnRepBanco.UseVisualStyleBackColor = true;
-            this.btnRepBanco.Click += new System.EventHandler(this.btnRepBanco_Click);
-            // 
-            // btnRepMovimientos
-            // 
-            this.btnRepMovimientos.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnRepMovimientos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRepMovimientos.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(198)))));
-            this.btnRepMovimientos.FlatAppearance.BorderSize = 0;
-            this.btnRepMovimientos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
-            this.btnRepMovimientos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRepMovimientos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRepMovimientos.ForeColor = System.Drawing.Color.Black;
-            this.btnRepMovimientos.Image = ((System.Drawing.Image)(resources.GetObject("btnRepMovimientos.Image")));
-            this.btnRepMovimientos.Location = new System.Drawing.Point(46, 44);
-            this.btnRepMovimientos.Name = "btnRepMovimientos";
-            this.btnRepMovimientos.Size = new System.Drawing.Size(170, 150);
-            this.btnRepMovimientos.TabIndex = 62;
-            this.btnRepMovimientos.Text = "Clientes";
-            this.btnRepMovimientos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnRepMovimientos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnRepMovimientos.UseVisualStyleBackColor = true;
-            this.btnRepMovimientos.Click += new System.EventHandler(this.btnRepMovimientos_Click);
+            this.btnRepEstado.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnRepEstado.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRepEstado.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(198)))));
+            this.btnRepEstado.FlatAppearance.BorderSize = 0;
+            this.btnRepEstado.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.btnRepEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRepEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRepEstado.ForeColor = System.Drawing.Color.Black;
+            this.btnRepEstado.Image = ((System.Drawing.Image)(resources.GetObject("btnRepEstado.Image")));
+            this.btnRepEstado.Location = new System.Drawing.Point(490, 44);
+            this.btnRepEstado.Name = "btnRepEstado";
+            this.btnRepEstado.Size = new System.Drawing.Size(170, 150);
+            this.btnRepEstado.TabIndex = 64;
+            this.btnRepEstado.Text = "Reporte Saervicios";
+            this.btnRepEstado.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnRepEstado.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnRepEstado.UseVisualStyleBackColor = true;
+            this.btnRepEstado.Click += new System.EventHandler(this.btnRepEstado_Click);
             // 
             // frmPrincipal
             // 
@@ -776,9 +797,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlMenuDetalles.ResumeLayout(false);
             this.PnlPrincipal.ResumeLayout(false);
+            this.pnlReportes.ResumeLayout(false);
             this.pnlTablasAux.ResumeLayout(false);
             this.pnlBotones.ResumeLayout(false);
-            this.pnlReportes.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -824,5 +845,6 @@
         private System.Windows.Forms.Panel pnlReportes;
         private System.Windows.Forms.Button btnRepMovimientos;
         private System.Windows.Forms.Button btnRepBanco;
+        private System.Windows.Forms.Button btnRepEstado;
     }
 }

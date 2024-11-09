@@ -284,10 +284,12 @@ namespace CapaDatos.Entidades
             DBOperacion operacion = new DBOperacion();
             StringBuilder sentencia = new StringBuilder();
             sentencia.Append(@"SELECT idfactura, saldo, mora, estado, estado_pago, idservicio, cont_pendiente, descuento, idcontrolfecha, comentario 
-                                FROM db_acacuvan.facturas where idservicio= " + idservicio + "  order  by idfactura desc limit 1;");
+                                FROM db_acacuvan.facturas where idservicio= @idservicio order  by idfactura desc limit 1;");
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            dic.Add("idservicio", idservicio);
             try
             {
-                DataRow rw = operacion.Consultar(sentencia.ToString()).Rows[0];
+                DataRow rw = operacion.Consultar(sentencia.ToString(),dic).Rows[0];
                 Facturas factura = new Facturas();
                 factura.IdFactura = int.Parse(rw.ItemArray[0].ToString());
                 factura.Saldo = double.Parse(rw.ItemArray[1].ToString());
@@ -434,6 +436,36 @@ namespace CapaDatos.Entidades
             Dictionary<string, object> dic = new Dictionary<string, object>();
             dic.Add("maxpendientes", maxpendientes);
             try { return operacion.Consultar(sentencia.ToString(), dic); } catch { return new DataTable(); }
+        }
+
+        public Facturas ConsultarFact(int idfactura)
+        {
+            DBOperacion operacion = new DBOperacion();
+            StringBuilder sentencia = new StringBuilder();
+            sentencia.Append(@"SELECT idfactura, saldo, mora, estado, estado_pago, idservicio, cont_pendiente, descuento, idcontrolfecha, comentario 
+                                FROM db_acacuvan.facturas where  idfactura=@idfactura;");
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            dic.Add("idservicio", idfactura);
+            try
+            {
+                DataRow rw = operacion.Consultar(sentencia.ToString(), dic).Rows[0];
+                Facturas factura = new Facturas();
+                factura.IdFactura = int.Parse(rw.ItemArray[0].ToString());
+                factura.Saldo = double.Parse(rw.ItemArray[1].ToString());
+                factura.Mora = double.Parse(rw.ItemArray[2].ToString());
+                factura.Estado = rw.ItemArray[3].ToString();
+                factura.EstadoPago = rw.ItemArray[4].ToString();
+                factura.IdServicio = int.Parse(rw.ItemArray[5].ToString());
+                factura.ContPendientes = int.Parse(rw.ItemArray[6].ToString());
+                factura.Descuento = double.Parse(rw.ItemArray[7].ToString());
+                factura.IdControlFecha = int.Parse(rw.ItemArray[8].ToString());
+                factura.Comentario = rw.ItemArray[9].ToString();
+                return factura;
+            }
+            catch (Exception ex)
+            {
+                return new Facturas();
+            }
         }
     }
 }

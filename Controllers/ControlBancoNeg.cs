@@ -12,6 +12,12 @@ namespace Controllers
     {
         ControlMensualBanco _ControlBanco;
 
+        public void getCtBanco() 
+        {
+            _ControlBanco= new ControlMensualBanco();
+            _ControlBanco.Consultar();
+        }
+        public int getid() { return this._ControlBanco.IdControlBanco; }
         public Boolean CierreCaja()
         {
             _ControlBanco = new ControlMensualBanco();

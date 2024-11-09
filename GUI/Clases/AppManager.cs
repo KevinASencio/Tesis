@@ -16,6 +16,7 @@ namespace GUI.Clases
             if (login())
               {
                   frmPrincipal.useractivo = _usuario;
+                frmPrincipal.fr.permisos = _usuario.Permisos();
                   FrmPrincipal.ShowDialog();
                   Application.Exit();
               }
